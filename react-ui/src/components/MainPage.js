@@ -4,7 +4,7 @@ const MainPage = () => {
   return (
     <>
       <div id={"main-page"}>
-        <Audio className={"auido-element"}></Audio>
+        
       </div>
     </>
   )
