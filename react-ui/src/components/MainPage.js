@@ -5,7 +5,12 @@ const MainPage = () => {
   return (
     <>
       <div id={"main-page"}>
-        
+      <audio
+        controls
+        src={psychoTantricJuju}>            
+        Your browser does not support the
+        <code>audio</code> element.
+      </audio>
       </div>
     </>
   )
