@@ -7,7 +7,9 @@ const MainPage = () => {
       <div id={"main-page"}>
       <audio
         controls
-        src={psychoTantricJuju}>            
+        src={psychoTantricJuju}
+        autoplay
+        >            
         Your browser does not support the
         <code>audio</code> element.
       </audio>
