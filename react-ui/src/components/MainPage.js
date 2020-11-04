@@ -7,7 +7,7 @@ const MainPage = () => {
       <div id={"main-page"}>
         <h1 id={"main-page__title"} >Formless Audio Player</h1>
         <div id={"audio"} >
-          
+          <div id={"audio__volume"}></div>
         </div>
       <audio
         controls
