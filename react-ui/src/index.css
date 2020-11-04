@@ -25,17 +25,32 @@ body {
   height: 345px;
   width: 500px;
   border: 1px solid rgb(0, 225, 255);
-  border-radius: 20px;
+  border-radius: 999px;
   margin: 0px 0px 30px 0px;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  background: rgb(175,0,255);
+  background: linear-gradient(45deg, rgba(175,0,255,1) 0%, rgba(255,0,215,1) 28%, rgba(0,212,255,1) 100%);
 }
 #audio__volume {
-  width: 120px;
+  width: 122px;
   height: 120px;
   border-radius: 999px;
   border: 1px solid rgb(0, 225, 255);
+}
+#audio__top {
+  height: 30%;
+  width: 100%;
+  border: 1px solid hotpink;
+}
+#audio__middle {
+  border: 1px solid green;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
 
