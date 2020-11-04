@@ -10,6 +10,7 @@ const MainPage = () => {
         controls
         src={psychoTantricJuju}
         autoplay
+        loop={true}
         >            
         Your browser does not support the
         <code>audio</code> element.
