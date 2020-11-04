@@ -1,5 +1,6 @@
 import React from 'react';
 import psychoTantricJuju from '../media/TrillianGreen-PsychoTantricJujuJazz-01-BhenPaUlRaga.wav'
+import playButton from '../images/playButton.svg'
 
 const MainPage = () => {
   return (
@@ -11,6 +12,7 @@ const MainPage = () => {
           <div  id={"audio__middle"}>
             <div id={"audio__play-circle"}>
               <div id={"audio__play-circle__inner"}>
+                <img id={"audio__play-circle__inner__button"} src={playButton}></img>
                 <div></div>
               </div>
             </div>

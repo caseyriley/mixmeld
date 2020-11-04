@@ -39,6 +39,7 @@ body {
   height: 120px;
   border-radius: 999px;
   border: 1px solid rgb(0, 225, 255);
+  background-color: rgb(0, 0, 0, .7);
 }
 #audio__top {
   height: 30%;
@@ -51,6 +52,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  
+}
+#audio__play-circle__inner__button {
+  height: 100px;
+  opacity: .7;
   
 }
 
