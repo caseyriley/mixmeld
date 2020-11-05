@@ -8,11 +8,13 @@ const MainPage = () => {
       <div id={"main-page"}>
         <h1 id={"main-page__title"} >Formless Audio Player</h1>
         <div id={"audio"} >
-          <div id={"audio__top"} ></div>
+          <div id={"audio__top"} >
+            <p id={"audio__top__song-name"}>Song Name</p>
+          </div>
           <div  id={"audio__middle"}>
             <div id={"audio__play-circle"}>
               <div id={"audio__play-circle__inner"}>
-                <img id={"audio__play-circle__inner__button"} src={playButton}></img>
+                <img id={"audio__play-circle__inner__button"} src={playButton} alt={""}></img>
                 <div></div>
               </div>
             </div>
@@ -21,7 +23,7 @@ const MainPage = () => {
           </div>
           
         </div>
-      <audio
+      {/* <audio
         controls
         src={psychoTantricJuju}
         autoplay
@@ -29,7 +31,7 @@ const MainPage = () => {
         >            
         Your browser does not support the
         <code>audio</code> element.
-      </audio>
+      </audio> */}
       </div>
     </>
   )

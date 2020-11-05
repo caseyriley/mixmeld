@@ -51,6 +51,12 @@ body {
   height: 30%;
   width: 100%;
   border: 1px solid hotpink;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#audio__top__song-name {
+  font-size: 30px;
 }
 #audio__middle {
   border: 1px solid green;
