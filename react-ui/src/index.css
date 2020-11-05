@@ -57,6 +57,8 @@ body {
 }
 #audio__top__song-name {
   font-size: 30px;
+  font-family: 'Electrolize', sans-serif;
+  font-weight: 900;
 }
 #audio__middle {
   border: 1px solid green;
