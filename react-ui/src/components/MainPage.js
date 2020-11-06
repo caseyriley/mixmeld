@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import psychoTantricJuju from '../media/TrillianGreen-PsychoTantricJujuJazz-01-BhenPaUlRaga.wav'
 import playButton from '../images/playButton.svg'
 
 const MainPage = () => {
 
-  const [timeState, setTimeState] = useState(0);
-  
+  const [timeState, setTimeState] = useState("0:00");
+
   return (
     <>
       <div id={"main-page"}>
@@ -25,7 +25,11 @@ const MainPage = () => {
             <div id={"audio__stop"} ></div>
           </div>
           <div id={"audio__bottom"} > 
-            <span id={"audio__bottom__time"} >{}</span>
+            <div id={"audio__bottom__time"}>
+              <span id={"audio__bottom__time__start"} >{timeState}</span>
+              <span id={"audio__bottom__time__end"} >{timeState}</span>
+            </div>
+            <div id={"audio__bottom__playhead"} ></div>
 
           </div>
           
