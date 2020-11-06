@@ -29,7 +29,9 @@ const MainPage = () => {
               <span id={"audio__bottom__time__start"} >{timeState}</span>
               <span id={"audio__bottom__time__end"} >{timeState}</span>
             </div>
-            <div id={"audio__bottom__playhead"} ></div>
+            <div id={"audio__bottom__playhead"} >
+              <div id={"audio__bottom__playhead__left"} ></div>
+            </div>
 
           </div>
           
