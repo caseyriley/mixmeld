@@ -21,6 +21,9 @@ const MainPage = () => {
             <div id={"audio__volume"}></div>
             <div id={"audio__stop"} ></div>
           </div>
+          <div id={"audio__bottom"} > 
+
+          </div>
           
         </div>
       {/* <audio

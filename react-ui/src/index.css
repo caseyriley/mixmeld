@@ -73,4 +73,12 @@ body {
   opacity: .7;
   
 }
+#audio__bottom {
+  height: 30%;
+  width: 100%;
+  border: 1px solid hotpink;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
