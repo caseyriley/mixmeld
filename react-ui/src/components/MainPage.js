@@ -3,6 +3,9 @@ import psychoTantricJuju from '../media/TrillianGreen-PsychoTantricJujuJazz-01-B
 import playButton from '../images/playButton.svg'
 
 const MainPage = () => {
+
+  const [timeState, setTimeState] = useState(0);
+  
   return (
     <>
       <div id={"main-page"}>
@@ -22,6 +25,7 @@ const MainPage = () => {
             <div id={"audio__stop"} ></div>
           </div>
           <div id={"audio__bottom"} > 
+            <span id={"audio__bottom__time"} >{}</span>
 
           </div>
           
