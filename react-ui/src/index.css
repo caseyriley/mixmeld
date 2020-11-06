@@ -50,7 +50,6 @@ body {
 #audio__top {
   height: 30%;
   width: 100%;
-  border: 1px solid hotpink;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -61,7 +60,6 @@ body {
   font-weight: 900;
 }
 #audio__middle {
-  border: 1px solid green;
   width: 100%;
   display: flex;
   justify-content: space-evenly;
@@ -76,7 +74,6 @@ body {
 #audio__bottom {
   height: 30%;
   width: 100%;
-  border: 1px solid hotpink;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
