@@ -6,6 +6,11 @@ const MainPage = () => {
 
   const [timeState, setTimeState] = useState("0:00");
 
+  function play(){
+    const audio = document.getElementById("audio");
+    audio.audioTracks[0].enabled = true;
+  }
+
   return (
     <>
       <div id={"main-page"}>
@@ -17,7 +22,7 @@ const MainPage = () => {
           <div  id={"audio__middle"}>
             <div id={"audio__play-circle"}>
               <div id={"audio__play-circle__inner"}>
-                <img id={"audio__play-circle__inner__button"} src={playButton} alt={""}></img>
+                <img id={"audio__play-circle__inner__button"} src={playButton} alt={""} onClick={play}></img>
                 <div></div>
               </div>
             </div>
@@ -37,6 +42,7 @@ const MainPage = () => {
           
         </div>
       <audio
+        id={"audio"}
         // controls
         src={psychoTantricJuju}
         autoplay
