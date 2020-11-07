@@ -48,6 +48,10 @@ body {
   height: 97px;
   border-radius: 10px;
   background-color: rgb(0, 0, 0, .7);
+  transition: background-color .5s;
+}
+#audio__stop:hover {
+  background-color: rgb(0, 0, 0, .4);
 }
 #audio__top {
   height: 30%;
