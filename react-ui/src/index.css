@@ -71,7 +71,10 @@ body {
 #audio__play-circle__inner__button {
   height: 100px;
   opacity: .7;
-  
+  transition: opacity .5s;
+}
+#audio__play-circle__inner__button:hover {
+  opacity: .4;
 }
 #audio__bottom {
   height: 30%;
