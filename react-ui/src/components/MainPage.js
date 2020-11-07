@@ -36,15 +36,15 @@ const MainPage = () => {
           </div>
           
         </div>
-      {/* <audio
-        controls
+      <audio
+        // controls
         src={psychoTantricJuju}
         autoplay
         loop={true}
         >            
         Your browser does not support the
         <code>audio</code> element.
-      </audio> */}
+      </audio>
       </div>
     </>
   )
