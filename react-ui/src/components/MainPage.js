@@ -33,7 +33,7 @@ const MainPage = () => {
             <div className={"controls"}>
               <div id={"audio__play-circle"}>
                 <div id={"audio__play-circle__inner"}>
-                  <img id={"audio__play-circle__inner__button"} src={playButton} alt={""} onClick={play}></img>
+                  <img className={"play"} src={playButton} alt={""} onClick={play}></img>
                 </div>
               </div>
               <div id={"audio__volume"}></div>

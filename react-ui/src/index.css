@@ -81,12 +81,12 @@ body {
   justify-content: space-evenly;
   align-items: center;
 }
-#audio__play-circle__inner__button {
+.play {
   height: 100px;
   opacity: .7;
   transition: opacity .5s;
 }
-#audio__play-circle__inner__button:hover {
+.play:hover {
   opacity: .4;
 }
 #audio__bottom {
