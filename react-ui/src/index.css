@@ -97,7 +97,7 @@ body {
   align-items: center;
   flex-flow: column;
 }
-#audio__bottom__time {
+.timer {
   width: 100%;
   font-size: 30px;
   font-family: 'Electrolize', sans-serif;
@@ -105,7 +105,23 @@ body {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  position: relative;
 }
+/* .timer div {
+  position: absolute;
+  background-color: rgba(255,255,255,0.2);
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 38px;
+  z-index: 2;
+}
+
+.timer span {
+  position: absolute;
+  z-index: 3;
+  left: 19px;
+} */
 #audio__bottom__playhead {
   width: 60%;
   height: 30px;
