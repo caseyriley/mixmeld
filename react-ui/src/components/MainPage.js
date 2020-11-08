@@ -18,9 +18,9 @@ const MainPage = () => {
         <div id={"audio"} >
           <audio
             id={"audio"}
-            // controls
+            controls
             src={psychoTantricJuju}
-            autoplay
+            autoPlay
             loop={true}
             >            
             Your browser does not support the
@@ -30,14 +30,15 @@ const MainPage = () => {
             <p id={"audio__top__song-name"}>Song Name</p>
           </div>
           <div  id={"audio__middle"}>
-            <div id={"audio__play-circle"}>
-              <div id={"audio__play-circle__inner"}>
-                <img id={"audio__play-circle__inner__button"} src={playButton} alt={""} onClick={play}></img>
-                <div></div>
+            <div className={"controls"}>
+              <div id={"audio__play-circle"}>
+                <div id={"audio__play-circle__inner"}>
+                  <img id={"audio__play-circle__inner__button"} src={playButton} alt={""} onClick={play}></img>
+                </div>
               </div>
+              <div id={"audio__volume"}></div>
+              <div id={"audio__stop"} ></div>
             </div>
-            <div id={"audio__volume"}></div>
-            <div id={"audio__stop"} ></div>
           </div>
           <div id={"audio__bottom"} > 
             <div id={"audio__bottom__time"}>

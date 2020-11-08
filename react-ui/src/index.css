@@ -75,6 +75,12 @@ body {
   align-items: center;
   
 }
+.controls {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
 #audio__play-circle__inner__button {
   height: 100px;
   opacity: .7;
