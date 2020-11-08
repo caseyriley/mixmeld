@@ -37,12 +37,14 @@ const MainPage = () => {
                 </div>
               </div>
               <div id={"audio__volume"}></div>
-              <div id={"audio__stop"} ></div>
+              <div className={"stop"} ></div>
             </div>
           </div>
           <div id={"audio__bottom"} > 
             <div id={"audio__bottom__time"}>
-              <span id={"audio__bottom__time__start"} >{timeState}</span>
+              <div class="timer">
+                <span id={"audio__bottom__time__start"} >{timeState}</span>
+              </div>
               <span id={"audio__bottom__time__end"} >{timeState}</span>
             </div>
             <div id={"audio__bottom__playhead"} >

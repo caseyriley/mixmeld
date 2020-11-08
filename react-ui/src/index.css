@@ -45,14 +45,14 @@ body {
   text-shadow: 2px 2px 0 rgb(239, 142, 248), 2px -2px 0 #25ff99, -2px 2px 0 #56caf8, -2px -2px 0 #56caf8, 2px 0px 0 #f7b867, 0px 2px 0 #dd4338, -2px 0px 0 #0c6fe9, 0px -2px 0 #f010e5;
   transition: background-color .5s;
 }
-#audio__stop {
+.stop {
   width: 97px;
   height: 97px;
   border-radius: 10px;
   background-color: rgb(0, 0, 0, .7);
   transition: background-color .5s;
 }
-#audio__stop:hover,
+.stop:hover,
 #audio__volume:hover {
   background-color: rgb(0, 0, 0, .4);
 }

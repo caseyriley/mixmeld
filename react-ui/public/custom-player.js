@@ -4,5 +4,8 @@ window.addEventListener('DOMContentLoaded', event => {
   const play = document.querySelector('.play');
   const stop = document.querySelector('.stop');
 
+  console.log("play", play)
+  console.log("stop", stop)
+
 
 })
