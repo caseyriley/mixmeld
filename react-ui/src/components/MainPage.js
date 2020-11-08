@@ -16,6 +16,16 @@ const MainPage = () => {
       <div id={"main-page"}>
         <h1 id={"main-page__title"} >Formless Audio Player</h1>
         <div id={"audio"} >
+          <audio
+            id={"audio"}
+            // controls
+            src={psychoTantricJuju}
+            autoplay
+            loop={true}
+            >            
+            Your browser does not support the
+            <code>audio</code> element.
+          </audio>
           <div id={"audio__top"} >
             <p id={"audio__top__song-name"}>Song Name</p>
           </div>
@@ -41,16 +51,6 @@ const MainPage = () => {
           </div>
           
         </div>
-      <audio
-        id={"audio"}
-        // controls
-        src={psychoTantricJuju}
-        autoplay
-        loop={true}
-        >            
-        Your browser does not support the
-        <code>audio</code> element.
-      </audio>
       </div>
     </>
   )
