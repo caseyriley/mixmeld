@@ -36,6 +36,20 @@ function playPauseMedia() {
   }
 }
 
+function stopMedia() {
+  media.pause();
+  media.currentTime = 0;
+  // play.setAttribute('data-icon','P');
+  play.src = playButton;
+  // rwd.classList.remove('active');
+  // fwd.classList.remove('active');
+  // clearInterval(intervalRwd);
+  // clearInterval(intervalFwd);
+}
+
+
+
+
   const [timeState, setTimeState] = useState("0:00");
 
   // function play(){
@@ -50,7 +64,7 @@ function playPauseMedia() {
         <div id={"audio"} >
           <audio
             id={"audio"}
-            controls
+            // controls
             src={psychoTantricJuju}
             // autoPlay
             loop={true}
@@ -69,7 +83,7 @@ function playPauseMedia() {
                 </div>
               </div>
               <div id={"audio__volume"}></div>
-              <div className={"stop"} ></div>
+              <div className={"stop"} onClick={stopMedia} ></div>
             </div>
           </div>
           <div id={"audio__bottom"} > 
