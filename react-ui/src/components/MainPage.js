@@ -6,10 +6,10 @@ const MainPage = () => {
 
   const [timeState, setTimeState] = useState("0:00");
 
-  function play(){
-    const audio = document.getElementById("audio");
-    audio.audioTracks[0].enabled = true;
-  }
+  // function play(){
+  //   const audio = document.getElementById("audio");
+  //   audio.audioTracks[0].enabled = true;
+  // }
 
   return (
     <>
@@ -33,7 +33,7 @@ const MainPage = () => {
             <div className={"controls"}>
               <div id={"audio__play-circle"}>
                 <div id={"audio__play-circle__inner"}>
-                  <img className={"play"} src={playButton} alt={""} onClick={play}></img>
+                  <img className={"play"} src={playButton} alt={""} ></img>
                 </div>
               </div>
               <div id={"audio__volume"}></div>
