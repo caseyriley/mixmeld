@@ -72,7 +72,10 @@ function playPauseMedia() {
   rwd.classList.remove('active');
   fwd.classList.remove('active');
   clearInterval(intervalRwd);
-  clearInterval(intervalFwd);
+  if (intervalFwdState){
+    clearInterval(intervalFwdState.intervalFwd);
+  }
+  
   if(media.paused) {
     // play.setAttribute('data-icon','u');
     play.src = pauseButton;
@@ -93,7 +96,9 @@ function stopMedia() {
   rwd.classList.remove('active');
   fwd.classList.remove('active');
   clearInterval(intervalRwd);
-  clearInterval(intervalFwd);
+  if (intervalFwdState){
+    clearInterval(intervalFwdState.intervalFwd);
+  }
 }
 // -----------------------------------------------
 
@@ -106,7 +111,7 @@ function stopMedia() {
 
 function mediaBackward() {
   
-  clearInterval(intervalFwd);
+  clearInterval(intervalFwdState.intervalFwd);
   fwd.classList.remove('active');
 
   if(rwd.classList.contains('active')) {
@@ -122,7 +127,10 @@ function mediaBackward() {
 }
 
 function mediaForward() {
-  clearInterval(intervalRwd);
+  if (intervalRwdState){
+    clearInterval(intervalRwdState.intervalRwd);
+  }
+  
   rwd.classList.remove('active');
 
   if(fwd.classList.contains('active')) {
@@ -150,7 +158,7 @@ function windBackward() {
 function windForward() {
   if(media.currentTime >= media.duration - 3) {
     fwd.classList.remove('active');
-    clearInterval(intervalFwd);
+    clearInterval(intervalFwdState.intervalFwd);;
     stopMedia();
   } else {
     media.currentTime += 3;
