@@ -5,17 +5,12 @@ import pauseButton from '../images/pauseButton.png'
 import fastForward from '../images/fastForward.png'
 
 
-
-
 const MainPage = () => {
 const media = document.querySelector('audio');
-// const controls = document.querySelector('.controls');
 const play = document.querySelector('.play');
-// const stop = document.querySelector('.stop');
 
 const rwd = document.querySelector('.rewind');
 const fwd = document.querySelector('.fast-forward');
-console.log("rewind", rwd, "fast-forward", fwd)
 
 const timerWrapper = document.querySelector('.timer');
 const timer = document.querySelector('.timer span');
@@ -25,44 +20,12 @@ const [timeState, setTimeState] = useState(":");
 
 const [intervalFwdState, setIntervalFwdState] = useState();
 const [intervalRwdState, setIntervalRwdState] = useState();
+
 let intervalFwd;
 let intervalRwd;
 
 
 
-useEffect(()=>{
-  setInterval(() => {
-    console.log("wooop")
-    
-    if (media){
-      let minutes = Math.floor(media.currentTime / 60);
-      let seconds = Math.floor(media.currentTime - minutes * 60);
-   
-      let minuteValue;
-      let secondValue;
-    
-      if (minutes < 10) {
-        minuteValue = '0' + minutes;
-      } else {
-        minuteValue = minutes;
-      }
-    
-      if (seconds < 10) {
-        secondValue = '0' + seconds;
-      } else {
-        secondValue = seconds;
-      }
-    
-      let mediaTime = minuteValue + ':' + secondValue;
-      setTimeState(mediaTime)
-      // currentTime = mediaTime;
-      // currentTime += 1;
-      // timer.textContent = mediaTime;
-      let barLength = timerWrapper.clientWidth * (media.currentTime/media.duration);
-      timerBar.style.width = barLength + 'px';
-    }
-  }, 500);
-}, [timeState])
 
 
 // ---------------Play/Pause-Button---------------
@@ -71,7 +34,9 @@ function playPauseMedia() {
   // updateTime();
   rwd.classList.remove('active');
   fwd.classList.remove('active');
-  clearInterval(intervalRwd);
+  if (intervalRwdState){
+    clearInterval(intervalRwdState.intervalRwd);
+  }
   if (intervalFwdState){
     clearInterval(intervalFwdState.intervalFwd);
   }
@@ -103,12 +68,6 @@ function stopMedia() {
 // -----------------------------------------------
 
 // -------------------fast-forward-and-rewind----------------------
-// rwd.addEventListener('click', mediaBackward);
-// fwd.addEventListener('click', mediaForward);
-
-// let intervalFwd;
-// let intervalRwd;
-
 function mediaBackward() {
   
   clearInterval(intervalFwdState.intervalFwd);
@@ -165,6 +124,37 @@ function windForward() {
   }
 }
 
+useEffect(()=>{
+  setInterval(() => {
+    
+    if (media){
+      let minutes = Math.floor(media.currentTime / 60);
+      let seconds = Math.floor(media.currentTime - minutes * 60);
+   
+      let minuteValue;
+      let secondValue;
+    
+      if (minutes < 10) {
+        minuteValue = '0' + minutes;
+      } else {
+        minuteValue = minutes;
+      }
+    
+      if (seconds < 10) {
+        secondValue = '0' + seconds;
+      } else {
+        secondValue = seconds;
+      }
+    
+      let mediaTime = minuteValue + ':' + secondValue;
+      setTimeState(mediaTime)
+
+      let barLength = timerWrapper.clientWidth * (media.currentTime/media.duration);
+      console.log(media.currentTime/media.duration)
+      timerBar.style.width = barLength + 'px';
+    }
+  }, 500);
+}, [timeState])
 // -------------------------------------------------
 
 
@@ -205,8 +195,10 @@ function windForward() {
                id={"audio__bottom__time__start"} >{timeState}</span>
             </div>
             {/* <span id={"audio__bottom__time__end"} >{timeState}</span> */}
-            <div id={"audio__bottom__playhead"} >
-              <div  className={"audio__bottom__playhead__left"} ></div>
+            <div id={"audio__bottom"} >
+              <div id={"audio__bottom__playhead"} >
+                <div className={"audio__bottom__playhead__left"} ></div>
+              </div>
             </div>
 
           </div>
