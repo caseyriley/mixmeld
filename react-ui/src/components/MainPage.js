@@ -2,6 +2,7 @@ import React, {useState, useEffect, useRef} from 'react';
 import psychoTantricJuju from '../media/TrillianGreen-PsychoTantricJujuJazz-01-BhenPaUlRaga.wav'
 import playButton from '../images/playButton.svg'
 import pauseButton from '../images/pauseButton.png'
+import fastForward from '../images/fastForward.png'
 
 
 
@@ -109,13 +110,13 @@ function stopMedia() {
           </div>
           <div  id={"audio__middle"}>
             <div className={"controls"}>
-              <div id={"audio__play-circle"}>
-                <div id={"audio__play-circle__inner"}>
-                  <img className={"play"} src={playButton} alt={""} onClick={playPauseMedia} ></img>
-                </div>
-              </div>
+              <img className={"fast-forward"} src={fastForward} alt={""} ></img>
+        
+              <img className={"play"} src={playButton} alt={""} onClick={playPauseMedia} ></img>
+            
               <div id={"audio__volume"}></div>
               <div className={"stop"} onClick={stopMedia} ></div>
+              <img className={"rewind"} src={fastForward} alt={""} ></img>
             </div>
           </div>
           <div id={"audio__bottom"} > 
