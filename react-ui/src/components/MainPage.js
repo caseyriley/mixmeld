@@ -9,15 +9,24 @@ import fastForward from '../images/fastForward.png'
 
 const MainPage = () => {
 const media = document.querySelector('audio');
-const controls = document.querySelector('.controls');
+// const controls = document.querySelector('.controls');
 const play = document.querySelector('.play');
-const stop = document.querySelector('.stop');
+// const stop = document.querySelector('.stop');
+
+const rwd = document.querySelector('.rewind');
+const fwd = document.querySelector('.fast-forward');
+console.log("rewind", rwd, "fast-forward", fwd)
 
 const timerWrapper = document.querySelector('.timer');
 const timer = document.querySelector('.timer span');
 const timerBar = document.querySelector('.audio__bottom__playhead__left');
 
 const [timeState, setTimeState] = useState(":");
+
+const [intervalFwdState, setIntervalFwdState] = useState();
+const [intervalRwdState, setIntervalRwdState] = useState();
+let intervalFwd;
+let intervalRwd;
 
 
 
@@ -60,10 +69,10 @@ useEffect(()=>{
 function playPauseMedia() {
   setTimeState("00:00")
   // updateTime();
-  // rwd.classList.remove('active');
-  // fwd.classList.remove('active');
-  // clearInterval(intervalRwd);
-  // clearInterval(intervalFwd);
+  rwd.classList.remove('active');
+  fwd.classList.remove('active');
+  clearInterval(intervalRwd);
+  clearInterval(intervalFwd);
   if(media.paused) {
     // play.setAttribute('data-icon','u');
     play.src = pauseButton;
@@ -81,13 +90,74 @@ function stopMedia() {
   media.currentTime = 0;
   // play.setAttribute('data-icon','P');
   play.src = playButton;
-  // rwd.classList.remove('active');
-  // fwd.classList.remove('active');
-  // clearInterval(intervalRwd);
-  // clearInterval(intervalFwd);
+  rwd.classList.remove('active');
+  fwd.classList.remove('active');
+  clearInterval(intervalRwd);
+  clearInterval(intervalFwd);
 }
 // -----------------------------------------------
 
+// -------------------fast-forward-and-rewind----------------------
+// rwd.addEventListener('click', mediaBackward);
+// fwd.addEventListener('click', mediaForward);
+
+// let intervalFwd;
+// let intervalRwd;
+
+function mediaBackward() {
+  
+  clearInterval(intervalFwd);
+  fwd.classList.remove('active');
+
+  if(rwd.classList.contains('active')) {
+    rwd.classList.remove('active');
+    clearInterval(intervalRwdState.intervalRwd);
+    media.play(); //
+  } else {
+    rwd.classList.add('active');
+    media.pause();
+    intervalRwd = setInterval(windBackward, 200);
+    setIntervalRwdState({intervalRwd: intervalRwd})
+  }
+}
+
+function mediaForward() {
+  clearInterval(intervalRwd);
+  rwd.classList.remove('active');
+
+  if(fwd.classList.contains('active')) {
+    fwd.classList.remove('active');
+    clearInterval(intervalFwdState.intervalFwd);
+    media.play();
+  } else {
+    fwd.classList.add('active');
+    media.pause();
+    intervalFwd = setInterval(windForward, 200);
+    setIntervalFwdState({intervalFwd: intervalFwd})
+  }
+}
+
+function windBackward() {
+  if(media.currentTime <= 3) {
+    rwd.classList.remove('active');
+    clearInterval(intervalRwd);
+    stopMedia();
+  } else {
+    media.currentTime -= 3;
+  }
+}
+
+function windForward() {
+  if(media.currentTime >= media.duration - 3) {
+    fwd.classList.remove('active');
+    clearInterval(intervalFwd);
+    stopMedia();
+  } else {
+    media.currentTime += 3;
+  }
+}
+
+// -------------------------------------------------
 
 
   return (
@@ -110,13 +180,13 @@ function stopMedia() {
           </div>
           <div  id={"audio__middle"}>
             <div className={"controls"}>
-              <img className={"fast-forward"} src={fastForward} alt={""} ></img>
+              <img className={"fast-forward"} src={fastForward} alt={""} onClick={mediaForward} ></img>
         
               <img className={"play"} src={playButton} alt={""} onClick={playPauseMedia} ></img>
             
               <div id={"audio__volume"}></div>
               <div className={"stop"} onClick={stopMedia} ></div>
-              <img className={"rewind"} src={fastForward} alt={""} ></img>
+              <img className={"rewind"} src={fastForward} alt={""} onClick={mediaBackward} ></img>
             </div>
           </div>
           <div id={"audio__bottom"} > 
