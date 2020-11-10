@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import psychoTantricJuju from '../media/TrillianGreen-PsychoTantricJujuJazz-01-BhenPaUlRaga.wav'
 import playButton from '../images/playButton.svg'
 import pauseButton from '../images/pauseButton.png'
@@ -12,15 +12,90 @@ const controls = document.querySelector('.controls');
 const play = document.querySelector('.play');
 const stop = document.querySelector('.stop');
 
-// media.removeAttribute('controls');
-// controls.style.visibility = 'visible';
+const timerWrapper = document.querySelector('.timer');
+const timer = document.querySelector('.timer span');
+const timerBar = document.querySelector('.timer div');
 
+const [timeState, setTimeState] = useState(1);
+const playTime = useRef(0);
+// let currentTime = playTime.current;
 
+useEffect(()=>{
+  // playTime.current = playTime.current + 1;
+  setInterval(() => {
+    console.log("wooop")
+    
+    if (media){
+      let minutes = Math.floor(media.currentTime / 60);
+      let seconds = Math.floor(media.currentTime - minutes * 60);
+   
+      let minuteValue;
+      let secondValue;
+    
+      if (minutes < 10) {
+        minuteValue = '0' + minutes;
+      } else {
+        minuteValue = minutes;
+      }
+    
+      if (seconds < 10) {
+        secondValue = '0' + seconds;
+      } else {
+        secondValue = seconds;
+      }
+    
+      let mediaTime = minuteValue + ':' + secondValue;
+      setTimeState(mediaTime)
+      // currentTime = mediaTime;
+      // currentTime += 1;
+      // timer.textContent = mediaTime;
+      // let barLength = timerWrapper.clientWidth * (media.currentTime/media.duration);
+      // timerBar.style.width = barLength + 'px';
+    }
+  }, 500);
+}, [timeState])
 
-// play.addEventListener('click', playPauseMedia);
-
-
+// function updateTime(){
+//   setInterval(() => {
+//     console.log("wooop")
+//     playTime.current = playTime.current + 1;
+//     if (media){
+//       let minutes = Math.floor(media.currentTime / 60);
+//       let seconds = Math.floor(media.currentTime - minutes * 60);
+   
+//       let minuteValue;
+//       let secondValue;
+    
+//       if (minutes < 10) {
+//         minuteValue = '0' + minutes;
+//       } else {
+//         minuteValue = minutes;
+//       }
+    
+//       if (seconds < 10) {
+//         secondValue = '0' + seconds;
+//       } else {
+//         secondValue = seconds;
+//       }
+    
+//       let mediaTime = minuteValue + ':' + secondValue;
+//       // setTimeState(mediaTime)
+//       // currentTime = mediaTime;
+//       currentTime += 1;
+    
+//       // timer.textContent = mediaTime;
+    
+//       // let barLength = timerWrapper.clientWidth * (media.currentTime/media.duration);
+//       // timerBar.style.width = barLength + 'px';
+  
+//     }
+    
+//   }, 500);
+// }
+// ---------------Play/Pause-Button---------------
 function playPauseMedia() {
+  setTimeState(0)
+  // updateTime();
   // rwd.classList.remove('active');
   // fwd.classList.remove('active');
   // clearInterval(intervalRwd);
@@ -35,7 +110,8 @@ function playPauseMedia() {
     media.pause();
   }
 }
-
+// --------------------------------------------------
+// ---------------Stop-Button---------------------------
 function stopMedia() {
   media.pause();
   media.currentTime = 0;
@@ -46,11 +122,46 @@ function stopMedia() {
   // clearInterval(intervalRwd);
   // clearInterval(intervalFwd);
 }
+// -----------------------------------------------
+
+// media.addEventListener('timeupdate', setTime);
+
+// useEffect (() =>{
+//   function setTime() {
+//     if (media){
+//       let minutes = Math.floor(media.currentTime / 60);
+//       let seconds = Math.floor(media.currentTime - minutes * 60);
+   
+//       let minuteValue;
+//       let secondValue;
+    
+//       if (minutes < 10) {
+//         minuteValue = '0' + minutes;
+//       } else {
+//         minuteValue = minutes;
+//       }
+    
+//       if (seconds < 10) {
+//         secondValue = '0' + seconds;
+//       } else {
+//         secondValue = seconds;
+//       }
+    
+//       let mediaTime = minuteValue + ':' + secondValue;
+//       // setTimeState(mediaTime)
+//       playTime.current = mediaTime
+//       // timer.textContent = mediaTime;
+    
+//       // let barLength = timerWrapper.clientWidth * (media.currentTime/media.duration);
+//       // timerBar.style.width = barLength + 'px';
+  
+//     }
+//   }
+//   setTime();
+// }, timeState)
 
 
-
-
-  const [timeState, setTimeState] = useState("0:00");
+ 
 
   // function play(){
   //   const audio = document.getElementById("audio");
@@ -89,7 +200,9 @@ function stopMedia() {
           <div id={"audio__bottom"} > 
             <div className="timer">
               {/* <div></div> */}
-              <span id={"audio__bottom__time__start"} >{timeState}</span>
+              <span
+              //  ref={playTime} 
+               id={"audio__bottom__time__start"} >{timeState}</span>
             </div>
             {/* <span id={"audio__bottom__time__end"} >{timeState}</span> */}
             <div id={"audio__bottom__playhead"} >
