@@ -42,11 +42,9 @@ function playPauseMedia() {
   }
   
   if(media.paused) {
-    // play.setAttribute('data-icon','u');
     play.src = pauseButton;
     media.play();
   } else {
-    // play.setAttribute('data-icon','P');
     play.src = playButton;
     media.pause();
   }
@@ -107,7 +105,9 @@ function mediaForward() {
 function windBackward() {
   if(media.currentTime <= 3) {
     rwd.classList.remove('active');
-    clearInterval(intervalRwd);
+    if (intervalRwdState){
+      clearInterval(intervalRwdState.intervalRwd);
+    }
     stopMedia();
   } else {
     media.currentTime -= 3;
@@ -115,10 +115,12 @@ function windBackward() {
 }
 
 function windForward() {
-  if(media.currentTime >= media.duration - 3) {
+  if(media.currentTime >= media.duration - 4) {
     fwd.classList.remove('active');
-    clearInterval(intervalFwdState.intervalFwd);;
-    stopMedia();
+    if (intervalFwdState){
+      clearInterval(intervalFwdState.intervalFwd);
+    }
+    // stopMedia();
   } else {
     media.currentTime += 3;
   }
@@ -168,7 +170,7 @@ useEffect(()=>{
             // controls
             src={psychoTantricJuju}
             // autoPlay
-            loop={true}
+            loop={false}
             >            
             Your browser does not support the
             <code>audio</code> element.
