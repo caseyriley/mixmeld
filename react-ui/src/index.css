@@ -167,26 +167,26 @@ body {
   opacity: .6;
 }
 #audio__bottom {
+  
   width: 300px;
   position: relative;
-  
- 
 }
-#audio__bottom__playhead {
-  width: 100%;
+.audio__bottom__playhead {
+  display: inline;
+  width: 300px;
   height: 30px;
   border: 1px solid rgb(0, 225, 255);
   margin: 0px 0px 10px 0px;
   border-radius: 10px;
   overflow: hidden;
-  position: relative;
+  /* position: relative; */
+  
   
 }
 .audio__bottom__playhead__left {
   height: 100%;
   width: 0;
   background-color: rgb(0, 0, 0, .7);
-  position: relative;
 }
 
 

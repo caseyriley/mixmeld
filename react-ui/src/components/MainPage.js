@@ -14,8 +14,7 @@ const play = document.querySelector('.play');
 const rwd = document.querySelector('.rewind');
 const fwd = document.querySelector('.fast-forward');
 
-const timerWrapper = document.querySelector('.timer');
-const timer = document.querySelector('.timer span');
+const audioBottomPlayhead = document.querySelector('.audio__bottom__playhead');
 const timerBar = document.querySelector('.audio__bottom__playhead__left');
 
 const [timeState, setTimeState] = useState(":");
@@ -149,8 +148,7 @@ useEffect(()=>{
       let mediaTime = minuteValue + ':' + secondValue;
       setTimeState(mediaTime)
 
-      let barLength = timerWrapper.clientWidth * (media.currentTime/media.duration);
-      console.log(media.currentTime/media.duration)
+      let barLength = audioBottomPlayhead.clientWidth * (media.currentTime/media.duration);
       timerBar.style.width = barLength + 'px';
     }
   }, 500);
@@ -214,7 +212,7 @@ function toggleRandom(){
               
             </div>
             <div id={"audio__bottom"} >
-              <div id={"audio__bottom__playhead"} >
+              <div className={"audio__bottom__playhead"} >
                 <div className={"audio__bottom__playhead__left"} ></div>
               </div>
             </div>
