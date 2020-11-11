@@ -157,13 +157,10 @@ useEffect(()=>{
 }, [timeState])
 // -------------------------------------------------
 //-------------loop----------------------------
-const [loopState, setLoopState] = useState("not-looping")
+const [loopState, setLoopState] = useState(false)
 function toggleLoop(){
-  if (loopState == "not-looping"){
-    setLoopState("looping");
-  } else {
-    setLoopState("not-looping")
-  }
+  const nextState = !loopState;
+  setLoopState(nextState);
 }
 //-------------------------------------------
 //-------------random----------------------------
@@ -187,7 +184,7 @@ function toggleRandom(){
             // controls
             src={psychoTantricJuju}
             // autoPlay
-            loop={false}
+            loop={loopState}
             >            
             Your browser does not support the
             <code>audio</code> element.
@@ -213,7 +210,7 @@ function toggleRandom(){
               <div className="timer">
                 <span id={"audio__bottom__time__start"} >{timeState}</span>
               </div>
-              <img  className={`loop ${loopState}`} src={loop} alt={""} onClick={toggleLoop}></img>
+              <img  className={`loop ${loopState ? "looping" : "not-looping"}`} src={loop} alt={""} onClick={toggleLoop}></img>
               
             </div>
             <div id={"audio__bottom"} >
