@@ -1,8 +1,10 @@
 import React, {useState, useEffect, useRef} from 'react';
-import psychoTantricJuju from '../media/TrillianGreen-PsychoTantricJujuJazz-01-BhenPaUlRaga.wav'
-import playButton from '../images/playButton.svg'
-import pauseButton from '../images/pauseButton.png'
-import fastForward from '../images/fastForward.png'
+import psychoTantricJuju from '../media/TrillianGreen-PsychoTantricJujuJazz-01-BhenPaUlRaga.wav';
+import playButton from '../images/playButton.svg';
+import pauseButton from '../images/pauseButton.png';
+import fastForward from '../images/fastForward.png';
+import loop from '../images/loop.png';
+import random from '../images/random.png';
 
 
 const MainPage = () => {
@@ -23,10 +25,6 @@ const [intervalRwdState, setIntervalRwdState] = useState();
 
 let intervalFwd;
 let intervalRwd;
-
-
-
-
 
 // ---------------Play/Pause-Button---------------
 function playPauseMedia() {
@@ -158,7 +156,26 @@ useEffect(()=>{
   }, 500);
 }, [timeState])
 // -------------------------------------------------
-
+//-------------loop----------------------------
+const [loopState, setLoopState] = useState("not-looping")
+function toggleLoop(){
+  if (loopState == "not-looping"){
+    setLoopState("looping");
+  } else {
+    setLoopState("not-looping")
+  }
+}
+//-------------------------------------------
+//-------------random----------------------------
+const [randomState, setRandomState] = useState("not-random")
+function toggleRandom(){
+  if (randomState == "not-random"){
+    setRandomState("random-play");
+  } else {
+    setRandomState("not-random")
+  }
+}
+//-------------------------------------------
 
   return (
     <>
@@ -189,20 +206,21 @@ useEffect(()=>{
               <img className={"rewind"} src={fastForward} alt={""} onClick={mediaBackward} ></img>
             </div>
           </div>
-          <div id={"audio__bottom"} > 
-            <div className="timer">
-              {/* <div></div> */}
-              <span
-              //  ref={playTime} 
-               id={"audio__bottom__time__start"} >{timeState}</span>
+
+          <div id={"audio__bottom-c"} > 
+            <div id={"timer-loop-random-c"}>
+              <img className={`random ${randomState}`} src={random} alt={""} onClick={toggleRandom}></img>
+              <div className="timer">
+                <span id={"audio__bottom__time__start"} >{timeState}</span>
+              </div>
+              <img  className={`loop ${loopState}`} src={loop} alt={""} onClick={toggleLoop}></img>
+              
             </div>
-            {/* <span id={"audio__bottom__time__end"} >{timeState}</span> */}
             <div id={"audio__bottom"} >
               <div id={"audio__bottom__playhead"} >
                 <div className={"audio__bottom__playhead__left"} ></div>
               </div>
             </div>
-
           </div>
           
         </div>

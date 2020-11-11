@@ -133,24 +133,44 @@ body {
   align-items: center;
   position: relative;
 }
-/* .timer div {
-  position: absolute;
-  background-color: rgba(255,255,255,0.2);
-  left: 0;
-  top: 0;
-  width: 0;
-  height: 38px;
-  z-index: 2;
+#audio__bottom-c {
+  width: 300px;
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
 }
-
-.timer span {
-  position: absolute;
-  z-index: 3;
-  left: 19px;
-} */
+#timer-loop-random-c {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  
+}
+.random {
+  width: 15%;
+  opacity: .4;
+}
+.loop {
+  width: 15%;
+  opacity: .4;
+}
+.random:hover ,
+.loop:hover {
+  opacity: .7;
+}
+.looping,
+.random-play {
+  filter: invert();
+  opacity: .6;
+}
 #audio__bottom {
   width: 300px;
   position: relative;
+  
+ 
 }
 #audio__bottom__playhead {
   width: 100%;
@@ -160,6 +180,7 @@ body {
   border-radius: 10px;
   overflow: hidden;
   position: relative;
+  
 }
 .audio__bottom__playhead__left {
   height: 100%;
@@ -167,4 +188,5 @@ body {
   background-color: rgb(0, 0, 0, .7);
   position: relative;
 }
+
 
