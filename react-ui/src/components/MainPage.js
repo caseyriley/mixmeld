@@ -18,10 +18,16 @@ const fwd = document.querySelector('.fast-forward');
 const audioBottomPlayhead = document.querySelector('.audio__bottom__playhead');
 const timerBar = document.querySelector('.audio__bottom__playhead__left');
 
+const volumeKnob = document.querySelector('.knob')
+const volumeLevel = document.querySelector('.vol-level')
+const volumeSlider = document.querySelector('.slider-wrapper input')
+
+
 const [timeState, setTimeState] = useState(":");
 
 const [intervalFwdState, setIntervalFwdState] = useState();
 const [intervalRwdState, setIntervalRwdState] = useState();
+
 
 let intervalFwd;
 let intervalRwd;
@@ -172,7 +178,21 @@ function toggleRandom(){
   }
 }
 //-------------------------------------------
-
+// ---------------volume------------------------
+const [volumeState, setVolumeState] = useState(-136);
+function changeVolume(){
+  setVolumeState(volumeSlider.value);
+}
+useEffect(()=> {
+  if (volumeKnob){
+    volumeKnob.style.transform= `rotate(${volumeState}deg)`;
+  }
+  if (volumeLevel){
+    volumeLevel.style.transform= `rotate(${volumeState}deg)`;
+  }
+  
+},[volumeState])
+// ---------------------------------------------
   return (
     <>
       <div id={"main-page"}>
@@ -196,7 +216,16 @@ function toggleRandom(){
               <img className={"fast-forward"} src={fastForward} alt={""} onClick={mediaForward} ></img>
         
               <img className={"play"} src={playButton} alt={""} onClick={playPauseMedia} ></img>
-              <VolumeKnobUi/>
+              <div id={"volume-knob-c"}>
+                <VolumeKnobUi/>
+                <div class="slider-wrapper">
+                  <input type={"range"} min={"-136"} max={"136"}
+                  //  value={"7"} 
+                  step={"1"}
+                  onChange={changeVolume}
+                  ></input>
+                </div>
+              </div>
               {/* <div id={"audio__volume"}></div> */}
               <div className={"stop"} onClick={stopMedia} ></div>
               <img className={"rewind"} src={fastForward} alt={""} onClick={mediaBackward} ></img>
