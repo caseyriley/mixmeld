@@ -5,6 +5,7 @@ import pauseButton from '../images/pauseButton.png';
 import fastForward from '../images/fastForward.png';
 import loop from '../images/loop.png';
 import random from '../images/random.png';
+import VolumeKnobUi from './VolumeKnobUi';
 
 
 const MainPage = () => {
@@ -195,8 +196,8 @@ function toggleRandom(){
               <img className={"fast-forward"} src={fastForward} alt={""} onClick={mediaForward} ></img>
         
               <img className={"play"} src={playButton} alt={""} onClick={playPauseMedia} ></img>
-            
-              <div id={"audio__volume"}></div>
+              <VolumeKnobUi/>
+              {/* <div id={"audio__volume"}></div> */}
               <div className={"stop"} onClick={stopMedia} ></div>
               <img className={"rewind"} src={fastForward} alt={""} onClick={mediaBackward} ></img>
             </div>
