@@ -11,9 +11,13 @@ const VolumeKnobUi = () => {
           <span className="panel">
           <img src={texture} alt=""/>
           </span>
+          <div className="knob-shadow" ></div>
           <span className="knob">
+          
             <img src={texture} alt=""/>
+            
           </span>
+          
         </div>
       </div>
     </>
