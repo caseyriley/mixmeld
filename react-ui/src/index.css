@@ -480,6 +480,102 @@ div.volume-control img {
  
 }
 /* ------------Track-List------------ */
+#playlist-c {
+  width: 80%;
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border: 1px solid lightgrey;
+}
+#playlist-c__track-rating {
+  border: 1px solid grey;
+  margin: 0px;
+  width: 10%;
+}
+#playlist-c__track-name {
+  border: 1px solid grey;
+  width: 50%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+#playlist-c__artist-name {
+  border: 1px solid grey;
+  width: 30%;
+  overflow-x: scroll;
+}
+#playlist-c__genre-name {
+  border: 1px solid grey;
+  width: 10%;
+}
+ul {
+  margin: 0px !important;
+  padding: 0px;
+}
+li {
+  margin: 0px;
+}
+.playlist-c_title{
+  color: rgb(2, 160, 36);
+  list-style: none;
+  height: 30px;
+}
+.playlist-c_title h2{
+  height: 30px;
+  color: pink;
+  display: flex;
+  justify-content: center;
+  margin: 0px;
+}
+
+.playlist-c_title h2 {
+  color: pink;
+}
+.playlist-c__track-rating__symbol {
+  color: rgb(255, 253, 112);
+  list-style: none;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  overflow-x: scroll;
+  
+}
+.playlist-c__track-name__string {
+  /* width: auto; */
+  height: 30px;
+  color: rgb(238, 169, 234);
+  margin: 5px 10px 5px 10px;
+  list-style: none;
+  overflow-x: scroll;
+}
+.playlist-c__track-name__string span {
+  height: 30px;
+  color: rgb(148, 148, 223);
+  /* min-width: 800px; */
+}
+.playlist-c__artist-name__string {
+  height: 30px;
+  /* min-width: 100px; */
+  /* width: auto; */
+  color: rgb(149, 238, 245);
+  margin: 5px 10px 5px 10px;
+  list-style: none;
+  overflow-x: scroll;
+}
+.playlist-c__genre-name__string {
+  height: 30px;
+  /* min-width: 100px; */
+  /* width: auto; */
+  color: rgb(149, 238, 245);
+  margin: 5px 10px 5px 10px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  overflow-x: scroll;
+
+}
 .track {
   color: pink;
   font-family: 'Source Code Pro', monospace;
@@ -489,3 +585,4 @@ div.volume-control img {
 .track:hover{
   cursor: pointer;
 }
+
