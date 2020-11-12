@@ -476,3 +476,13 @@ div.volume-control img {
   opacity: 0;
  
 }
+/* ------------Track-List------------ */
+.track {
+  color: pink;
+  font-family: 'Source Code Pro', monospace;
+  font-family: 'Audiowide', cursive;
+
+}
+.track:hover{
+  cursor: pointer;
+}

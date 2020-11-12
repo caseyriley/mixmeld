@@ -1,16 +1,27 @@
 import React, {useState, useEffect, useRef} from 'react';
 import psychoTantricJuju from '../media/TrillianGreen-PsychoTantricJujuJazz-01-BhenPaUlRaga.wav';
+import Afterimage from '../media/Afterimage.wav';
+import CanWeHaveFun from '../media/CanWeHaveFun.wav';
+import Hyperreal from '../media/Hyperreal.mp3';
+import Natures_Joint from '../media/Natures_Joint.mp3';
+import Ritual from '../media/Ritual.mp3';
+import Tears from '../media/Tears.mp3';
+
 import playButton from '../images/playButton.svg';
 import pauseButton from '../images/pauseButton.png';
 import fastForward from '../images/fastForward.png';
 import loop from '../images/loop.png';
 import random from '../images/random.png';
 import VolumeKnobUi from './VolumeKnobUi';
+import Tracklist from './Tracklist';
 
 let vol = .5;
 
+const trackList = [CanWeHaveFun, psychoTantricJuju, Ritual, Natures_Joint,Tears, Afterimage, Hyperreal]
+
 const MainPage = () => {
 const media = document.querySelector('audio');
+// const audioTacks = document.querySelector('audio').audioTracks;
 const play = document.querySelector('.play');
 
 const rwd = document.querySelector('.rewind');
@@ -201,6 +212,21 @@ useEffect(()=> {
   
 },[volumeState])
 // ---------------------------------------------
+//---------------Audio-Tracks-------------------
+// audioTracks.onaddtrack = updateTrackCount;
+// audioTracks.onremovetrack = updateTrackCount;
+
+function updateTrackCount(event) {
+  // let trackCount = audioTacks.length;
+  // drawTrackCountIndicator(trackCount);
+  // console.log(trackCount);
+}
+
+function setTrack(){
+  media.setAttribute("src", CanWeHaveFun);
+
+}
+//----------------------------------------------
   return (
     <>
       <div id={"main-page"}>
@@ -222,7 +248,6 @@ useEffect(()=> {
           <div  id={"audio__middle"}>
             <div className={"controls"}>
               <img className={"fast-forward"} src={fastForward} alt={""} onClick={mediaForward} ></img>
-        
               <img className={"play"} src={playButton} alt={""} onClick={playPauseMedia} ></img>
               <div id={"volume-knob-c"}>
                 <VolumeKnobUi/>
@@ -239,7 +264,6 @@ useEffect(()=> {
               <img className={"rewind"} src={fastForward} alt={""} onClick={mediaBackward} ></img>
             </div>
           </div>
-
           <div id={"audio__bottom-c"} > 
             <div id={"timer-loop-random-c"}>
               <img className={`random ${randomState}`} src={random} alt={""} onClick={toggleRandom}></img>
@@ -247,7 +271,6 @@ useEffect(()=> {
                 <span id={"audio__bottom__time__start"} >{timeState}</span>
               </div>
               <img  className={`loop ${loopState ? "looping" : "not-looping"}`} src={loop} alt={""} onClick={toggleLoop}></img>
-              
             </div>
             <div id={"audio__bottom"} >
               <div className={"audio__bottom__playhead"} >
@@ -257,6 +280,7 @@ useEffect(()=> {
           </div>
           
         </div>
+        <Tracklist setTrack={setTrack}/>
       </div>
     </>
   )
