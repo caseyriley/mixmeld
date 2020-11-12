@@ -222,8 +222,8 @@ function updateTrackCount(event) {
   // console.log(trackCount);
 }
 
-function setTrack(){
-  media.setAttribute("src", CanWeHaveFun);
+function setTrack(track){
+  media.setAttribute("src", track);
 
 }
 //----------------------------------------------
