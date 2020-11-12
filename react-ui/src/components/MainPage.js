@@ -7,6 +7,7 @@ import loop from '../images/loop.png';
 import random from '../images/random.png';
 import VolumeKnobUi from './VolumeKnobUi';
 
+let vol = .5;
 
 const MainPage = () => {
 const media = document.querySelector('audio');
@@ -179,9 +180,16 @@ function toggleRandom(){
 }
 //-------------------------------------------
 // ---------------volume------------------------
-const [volumeState, setVolumeState] = useState(-136);
+const [volumeState, setVolumeState] = useState(0);
+
 function changeVolume(){
   setVolumeState(volumeSlider.value);
+  vol = (Number(volumeState) + 136) / 271;
+  if (vol > 0.98) {
+    vol = 1;
+  }
+  console.log(vol)
+  media.volume = vol;
 }
 useEffect(()=> {
   if (volumeKnob){
