@@ -517,31 +517,37 @@ div.volume-control img {
   position: absolute;
 }
 #playlist-c__track-rating {
-  border: 1px solid grey;
+  border-right: 1px solid grey;
   margin: 0px;
   width: 10%;
+  height: 100%;
   min-width: 90px;
 }
 #playlist-c__track-name {
-  border: 1px solid grey;
+  border-right: 1px solid grey;
   width: 50%;
+  height: 100%;
   overflow-x: scroll;
   overflow-y: hidden;
 }
 #playlist-c__artist-name {
-  border: 1px solid grey;
+  border-right: 1px solid grey;
   width: 30%;
-  overflow-x: scroll;
+  height: 100%;
 }
 #playlist-c__genre-name {
-  border: 1px solid grey;
+  /* border-right: 1px solid grey; */
   width: 10%;
+  height: 100%;
   min-width: 90px;
 }
 ul {
+  height: auto !important;
   margin: 0px !important;
   padding: 0px;
   position: relative;
+  /* border: 1px solid white;
+  border-bottom: transparent; */
 }
 li {
   margin: 0px;
@@ -554,7 +560,6 @@ li {
 
 .playlist-c_title{
 
-  color: rgb(2, 160, 36);
   list-style: none;
   height: 30px;
   width: 100%;
@@ -562,22 +567,24 @@ li {
   /* top: 100px; */
   margin: 0px 10px 0px 0px;
   background-color: black;
+ 
 
   
 }
 .playlist-c_title h2{
   height: 30px;
-  color: pink;
+  color: rgb(0, 0, 0);
   display: flex;
   justify-content: center;
   margin: 0px;
   border-bottom: 1px solid grey;
+  /* color: #FFFFFF; */
+  text-shadow: 1px 1px 0 #6b79ff, 1px -1px 0  #6b79ff, -1px 1px 0  #7986fc, -1px -1px 0 #6b79ff, 1px 0px 0  #6b79ff, 0px 1px 0 #6b79ff, -1px 0px 0 #6b79ff, 0px -1px 0 #6b79ff;
 }
 
-.playlist-c_title h2 {
-  color: pink;
-}
 .playlist-c__track-rating__symbol {
+  min-height: 30px;
+  margin: 5px 10px 5px 10px;
   color: rgb(255, 253, 112);
   list-style: none;
   text-align: center;
