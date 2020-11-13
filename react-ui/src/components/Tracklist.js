@@ -28,33 +28,24 @@ const Tracklist = (props) => {
     <div id={"playlist-border"}>
     <img id={"playlist-border__texture"} src={texture} alt=""/>
       <div id={"playlist-c"} >
-        <ul id={"playlist-c__track-rating"}>
-          <li className={"playlist-c_title"}><h2>Rating</h2></li>
-          <li className={"playlist-c__top"}></li>
-          {trackList ? trackList.map(audio => {
-            return <li className={"playlist-c__track-rating__symbol"}>{audio.rating ? audio.rating : "🎵"}</li>
+        <div id={"playlist-c__top-c"}>
+          <div id={"playlist-c__top-c__rating"}><h2>Rating</h2></div>
+          <div id={"playlist-c__top-c__name"}  ><h2>Name</h2></div>
+          <div id={"playlist-c__top-c__artist-name"}><h2>Artist</h2></div>
+          <div id={"playlist-c__top-c__artist-duration"}><h2>Time</h2></div>
+          <div id={"playlist-c__top-c__genre-name"}><h2>Genre</h2></div>
+        </div>
+        <ul id={"track-ul"}>
+        {trackList ? trackList.map(audio => {
+            return (
+              <li className={"track-ul__li"}>
+                <div className={"track-ul__li__rating"}>{audio.rating ? audio.rating : "🎵"}</div>
+                <div className={"track-ul__li__name"}>{audio.name ? audio.name : "🎵"}</div>
+                <div className={"track-ul__li__artist"} >{audio.artist ? audio.artist : "🎵"}</div>
+                <div className={"track-ul__li__duration"}>{audio.duration ? audio.duration : "🎵"}</div>
+                <div className={"track-ul__li__genre"}>{audio.genre ? audio.genre: "🎵"}</div>
+              </li>)
           }): null}
-        </ul>
-        <ul id={"playlist-c__track-name"}>
-          <li className={"playlist-c_title"}  ><h2>Name</h2></li>
-          <li className={"playlist-c__top"}></li>
-          {trackList ? trackList.map(audio => {
-            return <li className={"playlist-c__track-name__string"} onClick={()=>{props.setTrack(audio.track)}} ><span>{audio.name ? audio.name : "..."}</span></li>
-          }): null}
-        </ul>
-        <ul id={"playlist-c__artist-name"}>
-          <li className={"playlist-c_title"}><h2>Artist</h2></li>
-          <li className={"playlist-c__top"}></li>
-          {trackList ? trackList.map(audio => {
-            return <li className={"playlist-c__artist-name__string"}>{audio.artist ? audio.artist : "..."}</li>
-          }): null}
-        </ul>
-        <ul id={"playlist-c__genre-name"}>
-          <li className={"playlist-c_title"}><h2>Genre</h2></li>
-          <li className={"playlist-c__top"}></li>
-          {trackList ? trackList.map(audio => {
-              return <li className={"playlist-c__genre-name__string"}>{audio.genre ? audio.genre : "..."}</li>
-            }): null}
         </ul>
       </div>
     </div>
