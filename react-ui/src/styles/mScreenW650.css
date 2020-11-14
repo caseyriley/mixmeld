@@ -1,0 +1,16 @@
+@media screen and (max-width: 650px){
+
+  #audio{
+    width: 470px;
+  }
+  #playlist-c__top-c__rating h2,
+  #playlist-c__top-c__name h2,
+  #playlist-c__top-c__artist-name h2,
+  #playlist-c__top-c__genre-name h2,
+  #playlist-c__top-c__artist-duration h2 {
+  font-size: 11px;
+}
+  .track-ul__li {
+    font-size: 12px;
+  }
+}

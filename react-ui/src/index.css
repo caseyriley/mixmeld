@@ -18,12 +18,14 @@ body {
 }
 #main-page__title {
   color: rgb(218, 163, 255);
+  font-size: 4vw;
   font-family: 'Source Code Pro', monospace;
   font-family: 'Goldman', cursive;
   font-family: 'Audiowide', cursive;
   font-family: 'Syncopate', sans-serif;
   letter-spacing: 5px;
   color: #000000;
+  margin: 20px;
   text-shadow: 2px 2px 0 rgb(239, 142, 248), 2px -2px 0 #25ff99, -2px 2px 0 #56caf8, -2px -2px 0 #56caf8, 2px 0px 0 #f7b867, 0px 2px 0 #dd4338, -2px 0px 0 #0c6fe9, 0px -2px 0 #f010e5;
 }
 #audio {
