@@ -484,18 +484,24 @@ div.volume-control img {
   width: calc(90% + 20px);
   height: calc(30% + 20px);
   position: relative;
-  border-radius: 15px;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: inset 1px 1px 3px rgba(125, 45, 255, 0.8), inset 1px 1px 3px rgba(125, 45, 255, 0.8);
+  /* box-shadow: inset 1px 1px 3px rgba(125, 45, 255, 0.8), inset 1px 1px 3px rgba(125, 45, 255, 0.8);
+  box-shadow: inset 1px 1px 3px rgba(179, 152, 223, 0.8), inset 1px 1px 3px rgba(179, 152, 223, 0.8);
+  box-shadow: inset 2px 2px 5px rgba(125, 45, 255, 0.8), inset -2px -2px 5px rgba(125, 45, 255, 0.8), 1px 1px 5px rgba(237, 45, 255, 0.8), -1px -1px 5px rgba(237, 45, 255, 0.8), 1px 1px 10px rgba(241, 145, 250, 0.5), -1px -1px 10px rgba(241, 145, 250, 0.5); */
   overflow: hidden;
   transition: all .5s;
+  background-color: rgba(55, 86, 117, 0.493);
+  /* border: 1px solid cyan; */
+  margin: 30px 0px 30px 0px;
+
 }
-#playlist-border:hover {
+/* #playlist-border:hover {
   border: 1px solid cyan;
   box-shadow: inset 2px 2px 10px rgba(125, 45, 255, 0.8), inset -2px -2px 10px rgba(125, 45, 255, 0.8), 1px 1px 10px rgba(237, 45, 255, 0.8), -1px -1px 10px rgba(237, 45, 255, 0.8), 1px 1px 20px rgba(241, 145, 250, 0.5), -1px -1px 20px rgba(241, 145, 250, 0.5);
-}
+} */
 #playlist-border__texture {
   width: 100%;
   height: 100%;
@@ -503,17 +509,19 @@ div.volume-control img {
   opacity: .01;
 }
 #playlist-c {
-  width: calc(100% - 20px);
-  height: calc(100% - 20px);;
+  width: calc(100%);
+  height: calc(100%);;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-
+  background-color: rgb(0, 0, 0);
   border: 1px solid rgb(111, 0, 255);
-  border-radius: 15px;
-  box-shadow: 1px 1px 5px rgba(237, 45, 255, 0.6), -1px -1px 5px rgba(237, 45, 255, 0.6), 1px 1px 10px rgba(241, 145, 250, 0.5), -1px -1px 10px rgba(241, 145, 250, 0.5);
+  border-radius: 10px;
+  /* box-shadow: 1px 1px 5px rgba(237, 45, 255, 0.6), -1px -1px 5px rgba(237, 45, 255, 0.6), 1px 1px 10px rgba(241, 145, 250, 0.5), -1px -1px 10px rgba(241, 145, 250, 0.5);
+  box-shadow: 1px 1px 5px rgba(221, 182, 224, 0.6), -1px -1px 5px rgba(221, 182, 224, 0.6), 1px 1px 10px rgba(221, 182, 224, 0.6), -1px -1px 10px rgba(221, 182, 224, 0.6); */
   position: absolute;
+  overflow: hidden;
 }
 #playlist-c__top-c {
   height: 30px;
@@ -522,7 +530,9 @@ div.volume-control img {
   justify-content: flex-start;
   align-items: center;
   border-bottom: 1px solid grey;
-  position: relative;
+  /* position: relative; */
+  /* background-color: rgb(136, 202, 233); */
+  background-color: rgb(48, 48, 48);
 
 }
 #playlist-c__top-c__rating {
@@ -561,13 +571,13 @@ div.volume-control img {
 #playlist-c__top-c__artist-duration h2 {
   height: 30px;
   font-size: 20px;
-  color: rgb(0, 0, 0);
+  color: rgb(202, 202, 202);
   display: flex;
   justify-content: center;
   margin: 0px;
  
   /* color: #FFFFFF; */
-  text-shadow: 1px 1px 0 #6b79ff, 1px -1px 0  #6b79ff, -1px 1px 0  #7986fc, -1px -1px 0 #6b79ff, 1px 0px 0  #6b79ff, 0px 1px 0 #6b79ff, -1px 0px 0 #6b79ff, 0px -1px 0 #6b79ff;
+  /* text-shadow: 1px 1px 0 #6b79ff, 1px -1px 0  #6b79ff, -1px 1px 0  #7986fc, -1px -1px 0 #6b79ff, 1px 0px 0  #6b79ff, 0px 1px 0 #6b79ff, -1px 0px 0 #6b79ff, 0px -1px 0 #6b79ff; */
   position: relative;
   top: 4px;
 }
@@ -592,7 +602,7 @@ li {
   min-height: 30px;
   min-width: 100%;
   margin: 0px 0px 0px 0px;
-  color: rgb(255, 253, 112);
+  color: rgb(192, 192, 192);
   list-style: none;
   text-align: center;
   display: flex;
@@ -612,7 +622,7 @@ li {
   overflow: hidden;
   white-space: nowrap;
   overflow-x: scroll;
-  border-right: 1px solid blue;
+  border-right: 1px solid rgb(161, 161, 161);
 
 }
 .track-ul__li__name {
@@ -625,7 +635,7 @@ li {
   overflow: hidden;
   white-space: nowrap;
   overflow-x: scroll;
-  border-right: 1px solid blue;
+  border-right: 1px solid rgb(161, 161, 161);
 }
 .track-ul__li__artist {
   height: 30px;
@@ -637,7 +647,7 @@ li {
   overflow: hidden;
   white-space: nowrap;
   overflow-x: scroll;
-  border-right: 1px solid blue;
+  border-right: 1px solid rgb(161, 161, 161);
 }
 .track-ul__li__duration {
   height: 30px;
@@ -649,7 +659,7 @@ li {
   overflow: hidden;
   white-space: nowrap;
   overflow-x: scroll;
-  border-right: 1px solid blue;
+  border-right: 1px solid rgb(161, 161, 161);
 }
 .track-ul__li__genre {
   height: 30px;
@@ -667,5 +677,11 @@ li {
 }
 .track-ul__li__name:hover{
   cursor: pointer;
+}
+.dark{
+  background-color: rgb(68, 68, 68);
+}
+.light{
+  background-color: rgb(92, 92, 92);
 }
 

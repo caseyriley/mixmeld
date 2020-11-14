@@ -16,8 +16,8 @@ const trackList = [
 {track: Ritual, name: "Ritual", artist: "Adam Hurst", duration: "5:19", rating: "🌿", genre: "World"}, 
 {track: Natures_Joint, name: "Natures Joint", artist: "((O))", duration: "4:46", rating: "🌊", genre: "Downtempo"}, 
 {track: Tears, name: "4 Tears", artist: "Frank Ocean", duration: "1:48", rating: "😭", genre: "Neo-Soul"}, 
-{track: Afterimage, name: "Afterimage", artist: "", duration: "4:19", rating: "⭑⭑⭑⭑⭑", genre: "Lo-Fi"}, 
-{track: Hyperreal, name: "Hyperreal", artist: "Flume", duration: "4:14", rating: "⭑⭑⭑⭑", genre: "EDM"} 
+{track: Afterimage, name: "Afterimage", artist: "", duration: "4:19", rating: "5 ⭐️", genre: "Lo-Fi"}, 
+{track: Hyperreal, name: "Hyperreal", artist: "Flume", duration: "4:14", rating: "4 ⭐️", genre: "EDM"} 
 ]
 
 
@@ -26,7 +26,7 @@ const Tracklist = (props) => {
   return(
     <>
     <div id={"playlist-border"}>
-    <img id={"playlist-border__texture"} src={texture} alt=""/>
+    {/* <img id={"playlist-border__texture"} src={texture} alt=""/> */}
       <div id={"playlist-c"} >
         <div id={"playlist-c__top-c"}>
           <div id={"playlist-c__top-c__rating"}><h2>Rating</h2></div>
@@ -36,19 +36,20 @@ const Tracklist = (props) => {
           <div id={"playlist-c__top-c__genre-name"}><h2>Genre</h2></div>
         </div>
         <ul id={"track-ul"}>
-        {trackList ? trackList.map(audio => {
+        {trackList ? trackList.map((audio, index) => {
             return (
-              <li className={"track-ul__li"}>
-                <div className={"track-ul__li__rating"}><span>{audio.rating ? audio.rating : "🎵"}</span></div>
-                <div className={"track-ul__li__name"} onClick={()=>{props.setTrack(audio.track, audio.name)}}><span>{audio.name ? audio.name : "🎵"}</span></div>
-                <div className={"track-ul__li__artist"} ><span>{audio.artist ? audio.artist : "🎵"}</span></div>
-                <div className={"track-ul__li__duration"}><span>{audio.duration ? audio.duration : "🎵"}</span></div>
-                <div className={"track-ul__li__genre"}><span>{audio.genre ? audio.genre: "🎵"}</span></div>
+              <li className={"track-ul__li"} id={index}>
+                <div className={`track-ul__li__rating ${index % 2 === 1 ? "dark": "light"}`}><span>{audio.rating ? audio.rating : "🎵"}</span></div>
+                <div className={`track-ul__li__name ${index % 2 === 1 ? "dark": "light"}`} onClick={()=>{props.setTrack(audio.track, audio.name)}}><span>{audio.name ? audio.name : "🎵"}</span></div>
+                <div className={`track-ul__li__artist ${index % 2 === 1 ? "dark": "light"}`} ><span>{audio.artist ? audio.artist : "🎵"}</span></div>
+                <div className={`track-ul__li__duration ${index % 2 === 1 ? "dark": "light"}`}><span>{audio.duration ? audio.duration : "🎵"}</span></div>
+                <div className={`track-ul__li__genre ${index % 2 === 1 ? "dark": "light"}`}><span>{audio.genre ? audio.genre: "🎵"}</span></div>
               </li>)
           }): null}
         </ul>
       </div>
     </div>
+    
     {/* <ul id="playlist">
       <li className="track" onClick={()=>{props.setTrack(CanWeHaveFun)}}><span>Can We Have Fun</span></li>
       <li className="track" onClick={()=>{props.setTrack(Natures_Joint)}}><span>Natures Joint</span></li>
