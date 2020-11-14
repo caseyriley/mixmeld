@@ -40,6 +40,8 @@ const [timeState, setTimeState] = useState(":");
 const [intervalFwdState, setIntervalFwdState] = useState();
 const [intervalRwdState, setIntervalRwdState] = useState();
 
+const [songNameState, setSongNameState] = useState("")
+
 
 let intervalFwd;
 let intervalRwd;
@@ -222,9 +224,17 @@ function updateTrackCount(event) {
   // console.log(trackCount);
 }
 
-function setTrack(track){
-  media.setAttribute("src", track);
+function setTrack(track, songName){
 
+  media.setAttribute("src", track);
+  playPauseMedia();
+  let newSongName;
+  if (songName.length > 20){
+    newSongName = songName.slice(0,20) + "..."
+  } else {
+    newSongName = songName
+  }
+  setSongNameState(newSongName);
 }
 //----------------------------------------------
   return (
@@ -243,7 +253,7 @@ function setTrack(track){
             <code>audio</code> element.
           </audio>
           <div id={"audio__top"} >
-            <p id={"audio__top__song-name"}>Song Name</p>
+  <p id={"audio__top__song-name"}>{songNameState}</p>
           </div>
           <div  id={"audio__middle"}>
             <div className={"controls"}>

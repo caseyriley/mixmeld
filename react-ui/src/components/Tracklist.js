@@ -39,11 +39,11 @@ const Tracklist = (props) => {
         {trackList ? trackList.map(audio => {
             return (
               <li className={"track-ul__li"}>
-                <div className={"track-ul__li__rating"}>{audio.rating ? audio.rating : "🎵"}</div>
-                <div className={"track-ul__li__name"}>{audio.name ? audio.name : "🎵"}</div>
-                <div className={"track-ul__li__artist"} >{audio.artist ? audio.artist : "🎵"}</div>
-                <div className={"track-ul__li__duration"}>{audio.duration ? audio.duration : "🎵"}</div>
-                <div className={"track-ul__li__genre"}>{audio.genre ? audio.genre: "🎵"}</div>
+                <div className={"track-ul__li__rating"}><span>{audio.rating ? audio.rating : "🎵"}</span></div>
+                <div className={"track-ul__li__name"} onClick={()=>{props.setTrack(audio.track, audio.name)}}><span>{audio.name ? audio.name : "🎵"}</span></div>
+                <div className={"track-ul__li__artist"} ><span>{audio.artist ? audio.artist : "🎵"}</span></div>
+                <div className={"track-ul__li__duration"}><span>{audio.duration ? audio.duration : "🎵"}</span></div>
+                <div className={"track-ul__li__genre"}><span>{audio.genre ? audio.genre: "🎵"}</span></div>
               </li>)
           }): null}
         </ul>

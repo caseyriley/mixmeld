@@ -481,7 +481,7 @@ div.volume-control img {
 }
 /* ------------Track-List------------ */
 #playlist-border {
-  width: calc(80% + 20px);
+  width: calc(90% + 20px);
   height: calc(30% + 20px);
   position: relative;
   border-radius: 15px;
@@ -510,9 +510,9 @@ div.volume-control img {
   align-items: center;
   flex-direction: column;
 
-  /* border: 1px solid lightgrey; */
+  border: 1px solid rgb(111, 0, 255);
   border-radius: 15px;
-  
+  box-shadow: 1px 1px 5px rgba(237, 45, 255, 0.6), -1px -1px 5px rgba(237, 45, 255, 0.6), 1px 1px 10px rgba(241, 145, 250, 0.5), -1px -1px 10px rgba(241, 145, 250, 0.5);
   position: absolute;
 }
 #playlist-c__top-c {
@@ -522,6 +522,7 @@ div.volume-control img {
   justify-content: flex-start;
   align-items: center;
   border-bottom: 1px solid grey;
+  position: relative;
 
 }
 #playlist-c__top-c__rating {
@@ -544,14 +545,14 @@ div.volume-control img {
   height: 30px;
 }
 #playlist-c__top-c__artist-duration {
-  border-right: 1px solid grey;
+  border-right: 1px solid grey; 
   width: 10%;
   height: 30px;
 }
 #playlist-c__top-c__genre-name {
   width: 10%;
   height: 30px;
-  min-width: 90px;
+  
 }
 #playlist-c__top-c__rating h2,
 #playlist-c__top-c__name h2,
@@ -564,9 +565,11 @@ div.volume-control img {
   display: flex;
   justify-content: center;
   margin: 0px;
-  border-bottom: 1px solid grey;
+ 
   /* color: #FFFFFF; */
   text-shadow: 1px 1px 0 #6b79ff, 1px -1px 0  #6b79ff, -1px 1px 0  #7986fc, -1px -1px 0 #6b79ff, 1px 0px 0  #6b79ff, 0px 1px 0 #6b79ff, -1px 0px 0 #6b79ff, 0px -1px 0 #6b79ff;
+  position: relative;
+  top: 4px;
 }
 li {
   margin: 0px;
@@ -588,14 +591,14 @@ li {
 .track-ul__li {
   min-height: 30px;
   min-width: 100%;
-  margin: 5px 0px 5px 0px;
+  margin: 0px 0px 0px 0px;
   color: rgb(255, 253, 112);
   list-style: none;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow-x: scroll;
+ 
 
   
 }
@@ -605,41 +608,64 @@ li {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: violet;
+
+  overflow: hidden;
+  white-space: nowrap;
+  overflow-x: scroll;
+  border-right: 1px solid blue;
+
 }
 .track-ul__li__name {
   height: 30px;
   width: 45%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: yellowgreen;
+  justify-content: flex-start;
+  
+  overflow: hidden;
+  white-space: nowrap;
+  overflow-x: scroll;
+  border-right: 1px solid blue;
 }
 .track-ul__li__artist {
   height: 30px;
   width: 25%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: turquoise;
+  justify-content: flex-start;
+
+  overflow: hidden;
+  white-space: nowrap;
+  overflow-x: scroll;
+  border-right: 1px solid blue;
 }
 .track-ul__li__duration {
   height: 30px;
   width: 10%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: yellowgreen;
+  justify-content: flex-start;
+
+  overflow: hidden;
+  white-space: nowrap;
+  overflow-x: scroll;
+  border-right: 1px solid blue;
 }
 .track-ul__li__genre {
   height: 30px;
   width: 10%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: tomato;
+  justify-content: flex-start;
+
+  overflow: hidden;
+  white-space: nowrap;
+  overflow-x: scroll;
 }
-.track:hover{
+.track-ul__li div span {
+  margin-left: 5px;
+}
+.track-ul__li__name:hover{
   cursor: pointer;
 }
 
