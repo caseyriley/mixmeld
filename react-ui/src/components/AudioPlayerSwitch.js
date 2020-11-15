@@ -1,20 +1,20 @@
 import React, {useState} from 'react';
 import AudioPlayer1 from './AudioPlayer1'
 
-const AudioPlayerSwitch = ()=>{
-  const [audioSwitchState, SetAudioSwitchState] = useState("AudioPlayer1");
+const AudioPlayerSwitch = (props)=>{
+  
   return (
     <>
       {(()=>{
-        switch(audioSwitchState ? audioSwitchState : "AudioPlayer1") {
-          default: 
-            return (
-              <div></div>
-              )
+        switch(props.audioSwitchState ? props.audioSwitchState : "AudioPlayer1") {
           case "AudioPlayer1":
           return (
             <AudioPlayer1/>
           )
+          default: 
+            return (
+              <div></div>
+              )
         }
       })()}
      

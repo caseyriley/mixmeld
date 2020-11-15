@@ -4,6 +4,7 @@ import './index.css';
 import './styles/mScreenW850.css'
 import './styles/mScreenW650.css'
 import './styles/mScreenW515.css'
+import './styles/MainNav.css'
 
 import App from './App';
 import * as serviceWorker from './serviceWorker';

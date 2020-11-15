@@ -1,0 +1,16 @@
+#main-nav {
+  width: 100vw;
+  height: 30px;
+  background-color: rgb(109, 109, 109);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-nav__option {
+  margin: 10px;
+  /* font-family: 'Source Code Pro', monospace; */
+  /* font-family: 'Goldman', cursive; */
+  /* font-family: 'Audiowide', cursive; */
+  /* font-family: 'Syncopate', sans-serif; */
+  font-family: 'Electrolize', sans-serif;
+}
