@@ -5,6 +5,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   const updateEmail = (e) => setEmail(e.target.value);
+
   const updatePassword = (e) => setPassword(e.target.value);
 
   const handleSubmit = async () => {
@@ -57,7 +58,7 @@ const Login = () => {
             body: JSON.stringify({ email: `${demoEmail}`, password: `${demoPassword}` }),
         });
         const res = await response.json()
-        if (res.auth_token != undefined) {
+        if (res.auth_token !== undefined) {
             window.localStorage.setItem('auth_token', res.auth_token)
             window.location.reload()
         }
