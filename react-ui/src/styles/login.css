@@ -1,0 +1,46 @@
+#login-c{
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+#login-c__login-form{
+  width: 30vw;
+  height: 400px;
+  background-color: grey;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+.login-input-1 {
+  left: 70px;
+  top: 40px;
+  width: 250px;
+  height: 56px;
+  margin: 15px;
+  color: gray;
+  font-weight: 700;
+  font-size: 17px;
+  outline: none;
+  border-radius: 20px;
+  text-align: center;
+  
+}
+.login-input-2 {
+  left: 70px;
+  top: 40px;
+  width: 250px;
+  height: 56px;
+  margin: 15px;
+  color: gray;
+  font-weight: 700;
+  font-size: 17px;
+  outline: none;
+  border-radius: 20px;
+  text-align: center;
+  
+}

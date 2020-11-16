@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import './styles/login.css';
 import './styles/mScreenW850.css'
 import './styles/mScreenW650.css'
 import './styles/mScreenW515.css'
