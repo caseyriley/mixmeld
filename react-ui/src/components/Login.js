@@ -8,7 +8,7 @@ const Login = () => {
   const updatePassword = (e) => setPassword(e.target.value);
 
   const handleSubmit = async () => {
-    const response = await fetch(`${API_URL}/api/auth/login`, {
+    const response = await fetch(`${API_URL}/auth/login`, {
         method: "POST",
         mode: "cors",
         headers: { "Content-Type": "application/json" },
@@ -50,7 +50,7 @@ const Login = () => {
     ghostWriteEmail();
     setTimeout(ghostWritePassword, speed*demoEmail.length);
     const demoLogin = async () => {
-        const response = await fetch(`${API_URL}/api/auth/login`, {
+        const response = await fetch(`${API_URL}/auth/login`, {
             method: "POST",
             mode: "cors",
             headers: { "Content-Type": "application/json" },

@@ -9,7 +9,7 @@ from flask_jwt_extended import (
     verify_jwt_in_request)
 from flask_cors import CORS 
 
-from .config import config
+from .config import Config
 from .models import db
 from .users import user
 
