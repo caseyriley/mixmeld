@@ -24,10 +24,10 @@ def verify_password(password, hashed_password):
 @auth.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
-    
     try:
         email = data['email']
         password = data['password']
+        
         if not email:
             return jsonify(message='Email Required'), 400
         elif not password:

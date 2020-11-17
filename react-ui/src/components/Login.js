@@ -1,8 +1,23 @@
 import React, {useState} from 'react';
 import { API_URL } from "../config";
+import SignupModal from './SignupModal';
+
+
+
 const Login = () => {
+  const [signUpModal, setSignUpModal] = useState(false);
+  const [antiModal, setAntiModal] = useState("login-block")
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const showSignUpModal = () => {
+      setAntiModal("hide-div login-block")
+      setSignUpModal(true)
+  };
+  const hideSignUpModal = () => {
+      setAntiModal("login-block")
+      setSignUpModal(false)
+  };
 
   const updateEmail = (e) => setEmail(e.target.value);
 
@@ -78,6 +93,11 @@ const Login = () => {
           <div className="login-block__demo--container" onClick={loginDemoUser}>
             <span>Log in as Demo User</span>
           </div>
+          <div className="login-block__signup--button" onClick={showSignUpModal}>
+            <span>Sign up</span>
+          </div>
+
+          <SignupModal signUpModal={signUpModal} hideSignUpModal={hideSignUpModal} />
           
         </div>
       </div>
