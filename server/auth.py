@@ -27,13 +27,14 @@ def login():
     try:
         email = data['email']
         password = data['password']
-        
+        print('email========>', email, 'password', password)
         if not email:
             return jsonify(message='Email Required'), 400
         elif not password:
             return jsonify(message='Password Required'), 400
 
         user = User.query.filter_by(email=email).first()
+        print('user=====>', user)
         if not user:
             return jsonify(message='Email Required'), 400
 
