@@ -18,6 +18,7 @@ app.config.from_object(Config)
 CORS(app)
 
 app.register_blueprint(user, url_prefix='/users')
+app.register_blueprint(auth, url_prefix='/auth')
 
 db.init_app(app)
 jwt = JWTManager(app)
