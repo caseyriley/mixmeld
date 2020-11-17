@@ -12,6 +12,7 @@ from flask_cors import CORS
 from .config import Config
 from .models import db
 from .users import user
+from .auth import auth
 
 app = Flask(__name__, static_url_path='')
 app.config.from_object(Config)
