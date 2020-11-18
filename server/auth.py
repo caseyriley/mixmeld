@@ -27,7 +27,6 @@ def login():
     try:
         email = data['email']
         password = data['password']
-        print('email========>', email, 'password', password)
         if not email:
             return jsonify(message='Email Required'), 400
         elif not password:
@@ -55,7 +54,7 @@ def login():
 @auth.route('/signup', methods=['POST'])
 def signup():
     data = request.get_json()
-    print("data", data)
+    print("data================================>", data)
 
     try:
         username = data['username']
