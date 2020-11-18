@@ -76,9 +76,10 @@ def signup():
 
         try:
             hashed_password = set_password(data['password'])
+            print("hashed_password========================>", hashed_password)
         except Exception:
             return jsonify(message='Password Required'), 400
-
+        
         user = User(
             username=username,
             email=email,

@@ -44,6 +44,7 @@ const SignUp = props => {
       body: JSON.stringify(user),
     });
     if (response.ok) {
+      console.log("response OK======================>")
       const res = await response.json();
       if (res.auth_token === undefined) {
         console.log("Bad Auth Token Generated");
