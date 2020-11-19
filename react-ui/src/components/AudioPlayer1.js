@@ -17,220 +17,221 @@ let vol = .5;
 const AudioPlayer = ()=>{
   const media = document.querySelector('audio');
 // const audioTacks = document.querySelector('audio').audioTracks;
-const play = document.querySelector('.play');
+  const play = document.querySelector('.play');
 
-const rwd = document.querySelector('.rewind');
-const fwd = document.querySelector('.fast-forward');
+  const rwd = document.querySelector('.rewind');
+  const fwd = document.querySelector('.fast-forward');
 
-const audioBottomPlayhead = document.querySelector('.audio__bottom__playhead');
-const timerBar = document.querySelector('.audio__bottom__playhead__left');
+  const audioBottomPlayhead = document.querySelector('.audio__bottom__playhead');
+  const timerBar = document.querySelector('.audio__bottom__playhead__left');
 
-const volumeKnob = document.querySelector('.knob')
-const volumeLevel = document.querySelector('.vol-level')
-const volumeSlider = document.querySelector('.slider-wrapper input')
-
-
-const [timeState, setTimeState] = useState(":");
-
-const [intervalFwdState, setIntervalFwdState] = useState();
-const [intervalRwdState, setIntervalRwdState] = useState();
-
-const [songNameState, setSongNameState] = useState("")
+  const volumeKnob = document.querySelector('.knob')
+  const volumeLevel = document.querySelector('.vol-level')
+  const volumeSlider = document.querySelector('.slider-wrapper input')
 
 
-let intervalFwd;
-let intervalRwd;
+  const [timeState, setTimeState] = useState(":");
+
+  const [intervalFwdState, setIntervalFwdState] = useState();
+  const [intervalRwdState, setIntervalRwdState] = useState();
+
+  const [songNameState, setSongNameState] = useState("")
+
+
+  let intervalFwd;
+  let intervalRwd;
 
 // ---------------Play/Pause-Button---------------
-function playPauseMedia() {
-  setTimeState("00:00")
-  // updateTime();
-  rwd.classList.remove('active');
-  fwd.classList.remove('active');
-  if (intervalRwdState){
-    clearInterval(intervalRwdState.intervalRwd);
-  }
-  if (intervalFwdState){
-    clearInterval(intervalFwdState.intervalFwd);
-  }
-  
-  if(media.paused) {
-    play.src = pauseButton;
-    media.play();
-  } else {
-    play.src = playButton;
-    media.pause();
-  }
-}
-// --------------------------------------------------
-// ---------------Stop-Button---------------------------
-function stopMedia() {
-  media.pause();
-  media.currentTime = 0;
-  // play.setAttribute('data-icon','P');
-  play.src = playButton;
-  rwd.classList.remove('active');
-  fwd.classList.remove('active');
-  clearInterval(intervalRwd);
-  if (intervalFwdState){
-    clearInterval(intervalFwdState.intervalFwd);
-  }
-}
-// -----------------------------------------------
-
-// -------------------fast-forward-and-rewind----------------------
-function mediaBackward() {
-  
-  clearInterval(intervalFwdState.intervalFwd);
-  fwd.classList.remove('active');
-
-  if(rwd.classList.contains('active')) {
+  function playPauseMedia() {
+    setTimeState("00:00")
+    // updateTime();
     rwd.classList.remove('active');
-    clearInterval(intervalRwdState.intervalRwd);
-    media.play(); //
-  } else {
-    rwd.classList.add('active');
-    media.pause();
-    intervalRwd = setInterval(windBackward, 200);
-    setIntervalRwdState({intervalRwd: intervalRwd})
-  }
-}
-
-function mediaForward() {
-  if (intervalRwdState){
-    clearInterval(intervalRwdState.intervalRwd);
-  }
-  
-  rwd.classList.remove('active');
-
-  if(fwd.classList.contains('active')) {
     fwd.classList.remove('active');
-    clearInterval(intervalFwdState.intervalFwd);
-    media.play();
-  } else {
-    fwd.classList.add('active');
-    media.pause();
-    intervalFwd = setInterval(windForward, 200);
-    setIntervalFwdState({intervalFwd: intervalFwd})
-  }
-}
-
-function windBackward() {
-  if(media.currentTime <= 3) {
-    rwd.classList.remove('active');
     if (intervalRwdState){
       clearInterval(intervalRwdState.intervalRwd);
     }
-    stopMedia();
-  } else {
-    media.currentTime -= 3;
-  }
-}
-
-function windForward() {
-  if(media.currentTime >= media.duration - 4) {
-    fwd.classList.remove('active');
     if (intervalFwdState){
       clearInterval(intervalFwdState.intervalFwd);
     }
-    // stopMedia();
-  } else {
-    media.currentTime += 3;
-  }
-}
-
-useEffect(()=>{
-  setInterval(() => {
     
-    if (media){
-      let minutes = Math.floor(media.currentTime / 60);
-      let seconds = Math.floor(media.currentTime - minutes * 60);
-   
-      let minuteValue;
-      let secondValue;
-    
-      if (minutes < 10) {
-        minuteValue = '0' + minutes;
-      } else {
-        minuteValue = minutes;
-      }
-    
-      if (seconds < 10) {
-        secondValue = '0' + seconds;
-      } else {
-        secondValue = seconds;
-      }
-    
-      let mediaTime = minuteValue + ':' + secondValue;
-      setTimeState(mediaTime)
-
-      let barLength = audioBottomPlayhead.clientWidth * (media.currentTime/media.duration);
-      timerBar.style.width = barLength + 'px';
+    if(media.paused) {
+      play.src = pauseButton;
+      media.play();
+    } else {
+      play.src = playButton;
+      media.pause();
     }
-  }, 500);
-}, [timeState])
+  }
+// --------------------------------------------------
+// ---------------Stop-Button---------------------------
+  function stopMedia() {
+    media.pause();
+    media.currentTime = 0;
+    // play.setAttribute('data-icon','P');
+    play.src = playButton;
+    rwd.classList.remove('active');
+    fwd.classList.remove('active');
+    clearInterval(intervalRwd);
+    if (intervalFwdState){
+      clearInterval(intervalFwdState.intervalFwd);
+    }
+  }
+// -----------------------------------------------
+
+// -------------------fast-forward-and-rewind----------------------
+  function mediaBackward() {
+    
+    clearInterval(intervalFwdState.intervalFwd);
+    fwd.classList.remove('active');
+
+    if(rwd.classList.contains('active')) {
+      rwd.classList.remove('active');
+      clearInterval(intervalRwdState.intervalRwd);
+      media.play(); //
+    } else {
+      rwd.classList.add('active');
+      media.pause();
+      intervalRwd = setInterval(windBackward, 200);
+      setIntervalRwdState({intervalRwd: intervalRwd})
+    }
+  }
+
+  function mediaForward() {
+    if (intervalRwdState){
+      clearInterval(intervalRwdState.intervalRwd);
+    }
+    
+    rwd.classList.remove('active');
+
+    if(fwd.classList.contains('active')) {
+      fwd.classList.remove('active');
+      clearInterval(intervalFwdState.intervalFwd);
+      media.play();
+    } else {
+      fwd.classList.add('active');
+      media.pause();
+      intervalFwd = setInterval(windForward, 200);
+      setIntervalFwdState({intervalFwd: intervalFwd})
+    }
+  }
+
+  function windBackward() {
+    if(media.currentTime <= 3) {
+      rwd.classList.remove('active');
+      if (intervalRwdState){
+        clearInterval(intervalRwdState.intervalRwd);
+      }
+      stopMedia();
+    } else {
+      media.currentTime -= 3;
+    }
+  }
+
+  function windForward() {
+    if(media.currentTime >= media.duration - 4) {
+      fwd.classList.remove('active');
+      if (intervalFwdState){
+        clearInterval(intervalFwdState.intervalFwd);
+      }
+      // stopMedia();
+    } else {
+      media.currentTime += 3;
+    }
+  }
+
+  useEffect(()=>{
+    setInterval(() => {
+      
+      if (media){
+        let minutes = Math.floor(media.currentTime / 60);
+        let seconds = Math.floor(media.currentTime - minutes * 60);
+    
+        let minuteValue;
+        let secondValue;
+      
+        if (minutes < 10) {
+          minuteValue = '0' + minutes;
+        } else {
+          minuteValue = minutes;
+        }
+      
+        if (seconds < 10) {
+          secondValue = '0' + seconds;
+        } else {
+          secondValue = seconds;
+        }
+      
+        let mediaTime = minuteValue + ':' + secondValue;
+        setTimeState(mediaTime)
+
+        let barLength = audioBottomPlayhead.clientWidth * (media.currentTime/media.duration);
+        timerBar.style.width = barLength + 'px';
+      }
+    }, 500);
+  }, [timeState])
 // -------------------------------------------------
 //-------------loop----------------------------
-const [loopState, setLoopState] = useState(false)
-function toggleLoop(){
-  const nextState = !loopState;
-  setLoopState(nextState);
-}
+  const [loopState, setLoopState] = useState(false)
+  function toggleLoop(){
+    const nextState = !loopState;
+    setLoopState(nextState);
+  }
 //-------------------------------------------
 //-------------random----------------------------
-const [randomState, setRandomState] = useState("not-random")
-function toggleRandom(){
-  if (randomState == "not-random"){
-    setRandomState("random-play");
-  } else {
-    setRandomState("not-random")
+  const [randomState, setRandomState] = useState("not-random")
+  function toggleRandom(){
+    if (randomState == "not-random"){
+      setRandomState("random-play");
+    } else {
+      setRandomState("not-random")
+    }
   }
-}
 //-------------------------------------------
 // ---------------volume------------------------
-const [volumeState, setVolumeState] = useState(0);
+  const [volumeState, setVolumeState] = useState(0);
 
-function changeVolume(){
-  setVolumeState(volumeSlider.value);
-  vol = (Number(volumeState) + 136) / 271;
-  if (vol > 0.98) {
-    vol = 1;
+  function changeVolume(){
+    setVolumeState(volumeSlider.value);
+    vol = (Number(volumeState) + 136) / 271;
+    if (vol > 0.98) {
+      vol = 1;
+    }
+    console.log(vol)
+    media.volume = vol;
   }
-  console.log(vol)
-  media.volume = vol;
-}
-useEffect(()=> {
-  if (volumeKnob){
-    volumeKnob.style.transform= `rotate(${volumeState}deg)`;
-  }
-  if (volumeLevel){
-    volumeLevel.style.transform= `rotate(${volumeState}deg)`;
-  }
-  
-},[volumeState])
+
+  useEffect(()=> {
+    if (volumeKnob){
+      volumeKnob.style.transform= `rotate(${volumeState}deg)`;
+    }
+    if (volumeLevel){
+      volumeLevel.style.transform= `rotate(${volumeState}deg)`;
+    }
+    
+  },[volumeState])
 // ---------------------------------------------
 //---------------Audio-Tracks-------------------
 // audioTracks.onaddtrack = updateTrackCount;
 // audioTracks.onremovetrack = updateTrackCount;
 
-function updateTrackCount(event) {
-  // let trackCount = audioTacks.length;
-  // drawTrackCountIndicator(trackCount);
-  // console.log(trackCount);
-}
-
-function setTrack(track, songName){
-
-  media.setAttribute("src", track);
-  playPauseMedia();
-  let newSongName;
-  if (songName.length > 20){
-    newSongName = songName.slice(0,20) + "..."
-  } else {
-    newSongName = songName
+  function updateTrackCount(event) {
+    // let trackCount = audioTacks.length;
+    // drawTrackCountIndicator(trackCount);
+    // console.log(trackCount);
   }
-  setSongNameState(newSongName);
-}
+
+  function setTrack(track, songName){
+
+    media.setAttribute("src", track);
+    playPauseMedia();
+    let newSongName;
+    if (songName.length > 20){
+      newSongName = songName.slice(0,20) + "..."
+    } else {
+      newSongName = songName
+    }
+    setSongNameState(newSongName);
+  }
 //----------------------------------------------
   return(
     <>
@@ -248,7 +249,7 @@ function setTrack(track, songName){
             <code>audio</code> element.
           </audio>
           <div id={"audio__top"} >
-  <p id={"audio__top__song-name"}>{songNameState}</p>
+            <p id={"audio__top__song-name"}>{songNameState}</p>
           </div>
           <div  id={"audio__middle"}>
             <div className={"controls"}>

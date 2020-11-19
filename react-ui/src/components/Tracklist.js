@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import Dropzone from 'react-dropzone'
+// import Dropzone from 'react-dropzone'
 
 import psychoTantricJuju from '../media/TrillianGreen-PsychoTantricJujuJazz-01-BhenPaUlRaga.wav';
 import Afterimage from '../media/Afterimage.wav';
@@ -10,7 +10,7 @@ import Ritual from '../media/Ritual.mp3';
 import Tears from '../media/Tears.mp3';
 
 
-const trackList1 = [CanWeHaveFun, psychoTantricJuju, Ritual, Natures_Joint,Tears, Afterimage, Hyperreal]
+// const trackList1 = [CanWeHaveFun, psychoTantricJuju, Ritual, Natures_Joint,Tears, Afterimage, Hyperreal]
 const trackList = [
   {track: CanWeHaveFun, name: "Can We Have Fun (In this House Tonight)", artist: "Azekel", duration: "3:35", rating: "🤩", genre: "Neo-Soul"}, 
   {track: psychoTantricJuju, name: "BenPaUIRaga", artist: "Trillian Green", duration: "4:53", rating: "🌿", genre: "World"}, 
@@ -30,7 +30,7 @@ const Tracklist = (props) => {
   
   return(
     <>
-    <Dropzone onDrop={acceptedFiles => console.log(acceptedFiles)}>
+      {/* <Dropzone onDrop={acceptedFiles => console.log(acceptedFiles)}>
             {({getRootProps, getInputProps}) => (
               <section>
                 <div {...getRootProps()}>
@@ -39,7 +39,7 @@ const Tracklist = (props) => {
                 </div>
               </section>
             )}
-          </Dropzone>
+      </Dropzone> */}
 
     <div id={"playlist-border"}>
     {/* <img id={"playlist-border__texture"} src={texture} alt=""/> */}

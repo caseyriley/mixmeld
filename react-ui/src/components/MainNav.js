@@ -4,7 +4,7 @@ const MainNav = (props)=>{
   
   return(
     <div id={"main-nav"}>
-      <div className={"main-nav__option"} onClick={()=>(props.setAudioSwitchState("audioPlayer1"))} >
+      <div className={"main-nav__option"} onClick={()=>(props.switchPlayer("audioPlayer1"))} >
         <span>Stereo</span>
       </div>
       <div className={"main-nav__option"}>
