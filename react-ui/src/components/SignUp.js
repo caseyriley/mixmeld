@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { API_URL } from "../config";
+// import { API_URL } from "../config";
 import CloseButton from '../images/CloseButton';
 
 
@@ -37,7 +37,8 @@ const SignUp = props => {
     }
 
 
-    const response = await fetch(`${API_URL}/auth/signup`, {
+    // const response = await fetch(`${API_URL}/auth/signup`, {
+    const response = await fetch(`http://localhost:5000/auth/signup`, {
       method: "POST",
       mode: "cors",
       headers: { "Content-Type": "application/json" },
