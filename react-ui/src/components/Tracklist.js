@@ -56,7 +56,7 @@ const Tracklist = (props) => {
         <ul id={"track-ul"}>
         {trackList ? trackList.map((audio, index) => {
             return (
-              <li className={"track-ul__li"} id={index}>
+              <li className={"track-ul__li"} key={index}>
                 <div className={`track-ul__li__rating ${index % 2 === 1 ? "dark": "light"}`}><span>{audio.rating ? audio.rating : "🎵"}</span></div>
                 <div className={`track-ul__li__name ${index % 2 === 1 ? "dark": "light"}`} onClick={()=>{props.setTrack(audio.track, audio.name)}}><span>{audio.name ? audio.name : "🎵"}</span></div>
                 <div className={`track-ul__li__artist ${index % 2 === 1 ? "dark": "light"}`} ><span>{audio.artist ? audio.artist : "🎵"}</span></div>
