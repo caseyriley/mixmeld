@@ -188,7 +188,7 @@ const AudioPlayer = ()=>{
 //-------------random----------------------------
   const [randomState, setRandomState] = useState("not-random")
   function toggleRandom(){
-    if (randomState == "not-random"){
+    if (randomState === "not-random"){
       setRandomState("random-play");
     } else {
       setRandomState("not-random")
@@ -222,15 +222,15 @@ const AudioPlayer = ()=>{
 // audioTracks.onaddtrack = updateTrackCount;
 // audioTracks.onremovetrack = updateTrackCount;
 
-  function updateTrackCount(event) {
+  // function updateTrackCount(event) {
     // let trackCount = audioTacks.length;
     // drawTrackCountIndicator(trackCount);
     // console.log(trackCount);
-  }
+  // }
 
   function setTrack(track, songName){
 
-    media.setAttribute("src", track);
+    media.current.setAttribute("src", track);
     playPauseMedia();
     let newSongName;
     if (songName.length > 20){

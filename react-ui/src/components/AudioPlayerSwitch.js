@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import AudioPlayer1 from './AudioPlayer1'
 
 const AudioPlayerSwitch = (props)=>{

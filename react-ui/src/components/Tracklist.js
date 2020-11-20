@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React from 'react';
 // import Dropzone from 'react-dropzone'
 
 import psychoTantricJuju from '../media/TrillianGreen-PsychoTantricJujuJazz-01-BhenPaUlRaga.wav';
@@ -8,6 +8,7 @@ import Hyperreal from '../media/Hyperreal.mp3';
 import Natures_Joint from '../media/Natures_Joint.mp3';
 import Ritual from '../media/Ritual.mp3';
 import Tears from '../media/Tears.mp3';
+import UploadingTrack from './UploadingTrack';
 
 
 // const trackList1 = [CanWeHaveFun, psychoTantricJuju, Ritual, Natures_Joint,Tears, Afterimage, Hyperreal]
@@ -46,8 +47,9 @@ const Tracklist = (props) => {
       <div id={"playlist-c"} >
         <div id={"playlist-c__top-c"}>
           <div id={"playlist-c__top-c__rating"}><h2>Rating</h2></div>
-          <div id={"playlist-c__top-c__name"}  ><h2>Name</h2>
-          
+          <div id={"playlist-c__top-c__name"}  >
+            <UploadingTrack/>
+            <h2>Name</h2>
           </div>
           <div id={"playlist-c__top-c__artist-name"}><h2>Artist</h2></div>
           <div id={"playlist-c__top-c__artist-duration"}><h2>Time</h2></div>

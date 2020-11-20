@@ -4,6 +4,7 @@ import Login from './components/Login';
 import MainPage from './components/MainPage';
 
 function App() {
+  require('dotenv').config();
   const loggedIn = window.localStorage.getItem("auth_token");
 
   return (
