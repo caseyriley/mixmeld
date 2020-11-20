@@ -15,15 +15,20 @@ let vol = .5;
 
 
 const AudioPlayer = ()=>{
-  const media = document.querySelector('audio');
+  const media = useRef()
+  // const media = document.querySelector('audio');
 // const audioTacks = document.querySelector('audio').audioTracks;
-  const play = document.querySelector('.play');
+  const play = useRef()
+  // const play = document.querySelector('.play');
 
-  const rwd = document.querySelector('.rewind');
-  const fwd = document.querySelector('.fast-forward');
-
-  const audioBottomPlayhead = document.querySelector('.audio__bottom__playhead');
-  const timerBar = document.querySelector('.audio__bottom__playhead__left');
+  const rwd = useRef();
+  const fwd = useRef();
+  // const rwd = document.querySelector('.rewind');
+  // const fwd = document.querySelector('.fast-forward');
+  const audioBottomPlayhead = useRef();
+  const timerBar = useRef();
+  // const audioBottomPlayhead = document.querySelector('.audio__bottom__playhead');
+  // const timerBar = document.querySelector('.audio__bottom__playhead__left');
 
   const volumeKnob = document.querySelector('.knob')
   const volumeLevel = document.querySelector('.vol-level')
@@ -45,8 +50,8 @@ const AudioPlayer = ()=>{
   function playPauseMedia() {
     setTimeState("00:00")
     // updateTime();
-    rwd.classList.remove('active');
-    fwd.classList.remove('active');
+    rwd.current.classList.remove('active');
+    fwd.current.classList.remove('active');
     if (intervalRwdState){
       clearInterval(intervalRwdState.intervalRwd);
     }
@@ -54,23 +59,23 @@ const AudioPlayer = ()=>{
       clearInterval(intervalFwdState.intervalFwd);
     }
     
-    if(media.paused) {
-      play.src = pauseButton;
-      media.play();
+    if(media.current.paused) {
+      play.current.src = pauseButton;
+      media.current.play();
     } else {
-      play.src = playButton;
-      media.pause();
+      play.current.src = playButton;
+      media.current.pause();
     }
   }
 // --------------------------------------------------
 // ---------------Stop-Button---------------------------
   function stopMedia() {
-    media.pause();
-    media.currentTime = 0;
+    media.current.pause();
+    media.current.currentTime = 0;
     // play.setAttribute('data-icon','P');
-    play.src = playButton;
-    rwd.classList.remove('active');
-    fwd.classList.remove('active');
+    play.current.src = playButton;
+    rwd.current.classList.remove('active');
+    fwd.current.classList.remove('active');
     clearInterval(intervalRwd);
     if (intervalFwdState){
       clearInterval(intervalFwdState.intervalFwd);
@@ -82,15 +87,15 @@ const AudioPlayer = ()=>{
   function mediaBackward() {
     
     clearInterval(intervalFwdState.intervalFwd);
-    fwd.classList.remove('active');
+    fwd.current.classList.remove('active');
 
-    if(rwd.classList.contains('active')) {
-      rwd.classList.remove('active');
+    if(rwd.current.classList.contains('active')) {
+      rwd.current.classList.remove('active');
       clearInterval(intervalRwdState.intervalRwd);
-      media.play(); //
+      media.current.play(); //
     } else {
-      rwd.classList.add('active');
-      media.pause();
+      rwd.current.classList.add('active');
+      media.current.pause();
       intervalRwd = setInterval(windBackward, 200);
       setIntervalRwdState({intervalRwd: intervalRwd})
     }
@@ -101,41 +106,41 @@ const AudioPlayer = ()=>{
       clearInterval(intervalRwdState.intervalRwd);
     }
     
-    rwd.classList.remove('active');
+    rwd.current.classList.remove('active');
 
-    if(fwd.classList.contains('active')) {
-      fwd.classList.remove('active');
+    if(fwd.current.classList.contains('active')) {
+      fwd.current.classList.remove('active');
       clearInterval(intervalFwdState.intervalFwd);
-      media.play();
+      media.current.play();
     } else {
-      fwd.classList.add('active');
-      media.pause();
+      fwd.current.classList.add('active');
+      media.current.pause();
       intervalFwd = setInterval(windForward, 200);
       setIntervalFwdState({intervalFwd: intervalFwd})
     }
   }
 
   function windBackward() {
-    if(media.currentTime <= 3) {
-      rwd.classList.remove('active');
+    if(media.current.currentTime <= 3) {
+      rwd.current.classList.remove('active');
       if (intervalRwdState){
         clearInterval(intervalRwdState.intervalRwd);
       }
       stopMedia();
     } else {
-      media.currentTime -= 3;
+      media.current.currentTime -= 3;
     }
   }
 
   function windForward() {
     if(media.currentTime >= media.duration - 4) {
-      fwd.classList.remove('active');
+      fwd.current.classList.remove('active');
       if (intervalFwdState){
         clearInterval(intervalFwdState.intervalFwd);
       }
       // stopMedia();
     } else {
-      media.currentTime += 3;
+      media.current.currentTime += 3;
     }
   }
 
@@ -143,8 +148,8 @@ const AudioPlayer = ()=>{
     setInterval(() => {
       
       if (media){
-        let minutes = Math.floor(media.currentTime / 60);
-        let seconds = Math.floor(media.currentTime - minutes * 60);
+        let minutes = Math.floor(media.current.currentTime / 60);
+        let seconds = Math.floor(media.current.currentTime - minutes * 60);
     
         let minuteValue;
         let secondValue;
@@ -164,8 +169,8 @@ const AudioPlayer = ()=>{
         let mediaTime = minuteValue + ':' + secondValue;
         setTimeState(mediaTime)
 
-        let barLength = audioBottomPlayhead.clientWidth * (media.currentTime/media.duration);
-        timerBar.style.width = barLength + 'px';
+        let barLength = audioBottomPlayhead.current.clientWidth * (media.currentTime/media.duration);
+        timerBar.current.style.width = barLength + 'px';
       }
     }, 500);
   }, [timeState])
@@ -197,7 +202,7 @@ const AudioPlayer = ()=>{
       vol = 1;
     }
     console.log(vol)
-    media.volume = vol;
+    media.current.volume = vol;
   }
 
   useEffect(()=> {
@@ -240,6 +245,7 @@ const AudioPlayer = ()=>{
         <div id={"audio"} >
           <audio
             id={"audio"}
+            ref={media}
             // controls
             src={psychoTantricJuju}
             // autoPlay
@@ -253,8 +259,8 @@ const AudioPlayer = ()=>{
           </div>
           <div  id={"audio__middle"}>
             <div className={"controls"}>
-              <img className={"fast-forward"} src={fastForward} alt={""} onClick={mediaForward} ></img>
-              <img className={"play"} src={playButton} alt={""} onClick={playPauseMedia} ></img>
+              <img className={"fast-forward"} ref={fwd} src={fastForward} alt={""} onClick={mediaForward} ></img>
+              <img className={"play"} ref={play} src={playButton} alt={""} onClick={playPauseMedia} ></img>
               <div id={"volume-knob-c"}>
                 <VolumeKnobUi/>
                 <div class="slider-wrapper">
@@ -267,7 +273,7 @@ const AudioPlayer = ()=>{
               </div>
               {/* <div id={"audio__volume"}></div> */}
               <div className={"stop"} onClick={stopMedia} ></div>
-              <img className={"rewind"} src={fastForward} alt={""} onClick={mediaBackward} ></img>
+              <img  className={"rewind"} ref={rwd} src={fastForward} alt={""} onClick={mediaBackward} ></img>
             </div>
           </div>
           <div id={"audio__bottom-c"} > 
@@ -279,8 +285,8 @@ const AudioPlayer = ()=>{
               <img  className={`loop ${loopState ? "looping" : "not-looping"}`} src={loop} alt={""} onClick={toggleLoop}></img>
             </div>
             <div id={"audio__bottom"} >
-              <div className={"audio__bottom__playhead"} >
-                <div className={"audio__bottom__playhead__left"} ></div>
+              <div className={"audio__bottom__playhead"} ref={audioBottomPlayhead} >
+                <div className={"audio__bottom__playhead__left"} ref={timerBar} ></div>
               </div>
             </div>
           </div>
