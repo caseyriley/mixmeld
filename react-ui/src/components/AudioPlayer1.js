@@ -30,9 +30,12 @@ const AudioPlayer = ()=>{
   // const audioBottomPlayhead = document.querySelector('.audio__bottom__playhead');
   // const timerBar = document.querySelector('.audio__bottom__playhead__left');
 
-  const volumeKnob = document.querySelector('.knob')
-  const volumeLevel = document.querySelector('.vol-level')
-  const volumeSlider = document.querySelector('.slider-wrapper input')
+  const volumeKnob =useRef();
+  const volumeLevel =useRef();
+  const volumeSlider =useRef();
+  // const volumeKnob = document.querySelector('.knob')
+  // const volumeLevel = document.querySelector('.vol-level')
+  // const volumeSlider = document.querySelector('.slider-wrapper input')
 
 
   const [timeState, setTimeState] = useState(":");
@@ -169,7 +172,7 @@ const AudioPlayer = ()=>{
         let mediaTime = minuteValue + ':' + secondValue;
         setTimeState(mediaTime)
 
-        let barLength = audioBottomPlayhead.current.clientWidth * (media.currentTime/media.duration);
+        let barLength = audioBottomPlayhead.current.clientWidth * (media.current.currentTime/media.current.duration);
         timerBar.current.style.width = barLength + 'px';
       }
     }, 500);
@@ -196,7 +199,7 @@ const AudioPlayer = ()=>{
   const [volumeState, setVolumeState] = useState(0);
 
   function changeVolume(){
-    setVolumeState(volumeSlider.value);
+    setVolumeState(volumeSlider.current.value);
     vol = (Number(volumeState) + 136) / 271;
     if (vol > 0.98) {
       vol = 1;
@@ -207,10 +210,10 @@ const AudioPlayer = ()=>{
 
   useEffect(()=> {
     if (volumeKnob){
-      volumeKnob.style.transform= `rotate(${volumeState}deg)`;
+      volumeKnob.current.style.transform= `rotate(${volumeState}deg)`;
     }
     if (volumeLevel){
-      volumeLevel.style.transform= `rotate(${volumeState}deg)`;
+      volumeLevel.current.style.transform= `rotate(${volumeState}deg)`;
     }
     
   },[volumeState])
@@ -262,11 +265,12 @@ const AudioPlayer = ()=>{
               <img className={"fast-forward"} ref={fwd} src={fastForward} alt={""} onClick={mediaForward} ></img>
               <img className={"play"} ref={play} src={playButton} alt={""} onClick={playPauseMedia} ></img>
               <div id={"volume-knob-c"}>
-                <VolumeKnobUi/>
+                <VolumeKnobUi volumeKnob={volumeKnob} volumeLevel={volumeLevel}/>
                 <div class="slider-wrapper">
                   <input type={"range"} min={"-136"} max={"136"}
                   //  value={"7"} 
                   step={"1"}
+                  ref={volumeSlider}
                   onChange={changeVolume}
                   ></input>
                 </div>
