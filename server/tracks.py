@@ -10,8 +10,7 @@ from flask_cors import CORS
 
 tracks = Blueprint('tracks', __name__)
 
-@tracks.route('/post', methods=["POST", "DELETE"])
-@jwt_required
+@tracks.route('/post', methods=["POST"])
 def post_track():
 
     data = json.loads(request.data)
@@ -28,4 +27,4 @@ def post_track():
     db.session.add(track)
     db.session.commit()
 
-    return jsonify(Confirm='Track sumitted')
+    return jsonify(Goodjob='you posted to db')

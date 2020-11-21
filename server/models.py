@@ -42,6 +42,7 @@ class User(db.Model):
 
 class Track(db.Model):
     __tablename__ = 'track'
+
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     trackname = db.Column(db.String(100), nullable=False)
@@ -52,7 +53,7 @@ class Track(db.Model):
     trackgenre = db.Column(db.String(200), nullable=True)
     trackart = db.Column(db.Text, nullable=True)
 
-    def to_safe_object(self):
+    def to_dict(self):
         return {
           "id": self.id,
           "user_id": self.user_id,

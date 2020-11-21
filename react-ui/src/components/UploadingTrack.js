@@ -34,32 +34,33 @@ const UploadingTrack = (props) => {
     getCurrentUser();
   }, [])
 
-  // const upload = (e) => {
-  //   const newTrack = async (uploadLocation) => {
-  //     // const trackData = { user_id: , trackname: , trackrating: props.imageModalState.description, user_id: id }
-  //     const options = {
-  //       method: 'POST',
-  //       headers: { 'Content-Type': 'application/json' },
-  //     }
-  //     fetch(`${API_URL}/track?user_id=${currentUser.id}&href=${uploadLocation}`, options)
+  const upload = (e) => {
+    const newTrack = async (uploadLocation) => {
+      const trackData = { user_id: currentUser.id, trackname: "trackname", tracklocation: uploadLocation}
+      console.log("trackData======>",trackData)
+      const options = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(trackData),
+      }
+      fetch(`${API_URL}/track/post`, options)
 
-  //   }
+    }
   
 
 
-  //   S3FileUpload.uploadFile(e.target.files[0], config)
-  //     .then((data) => {
-  //       console.log("data========================>",data)
-  //       newTrack(data.location) 
-  //     }).then(() => window.location.reload())
-  //     .catch((err) => {
-  //       alert(err)
-  //     })
+    S3FileUpload.uploadFile(e.target.files[0], config)
+      .then((data) => {
+        newTrack(data.location) 
+      }).then(() => window.location.reload())
+      .catch((err) => {
+        alert(err)
+      })
        
-  // }
+  }
   return (
     <>
-      {/* <input className={"uploading-track"} type="file" onChange={upload} /> */}
+      <input className={"uploading-track"} type="file" onChange={upload} />
     </>
 
   )
