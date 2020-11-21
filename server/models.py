@@ -27,6 +27,8 @@ class User(db.Model):
     profile_pic = db.Column(db.String)
     banner_pic = db.Column(db.String)
 
+    tracks = db.relationship("Track", backref="user")
+
     def to_safe_object(self):
         return {
             "id": self.id,
@@ -41,7 +43,7 @@ class User(db.Model):
         }
 
 class Track(db.Model):
-    __tablename__ = 'track'
+    __tablename__ = 'tracks'
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
@@ -59,6 +61,7 @@ class Track(db.Model):
           "user_id": self.user_id,
           "trackname": self.trackname,
           "trackartist": self.trackartist,
+          "tracklocation": self.tracklocation,
           "tracktime": self.tracktime,
           "trackrating": self.trackrating,
           "trackgenre": self.trackgenre,

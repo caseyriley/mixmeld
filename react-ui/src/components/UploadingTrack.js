@@ -43,7 +43,8 @@ const UploadingTrack = (props) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(trackData),
       }
-      fetch(`${API_URL}/track/post`, options)
+      // fetch(`${API_URL}/tracks/post`, options)
+      fetch(`${API_URL}/tracks/post?user_id=${currentUser.id}&tracklocation=${uploadLocation}&trackname=trackname`, options)
 
     }
   
@@ -51,8 +52,10 @@ const UploadingTrack = (props) => {
 
     S3FileUpload.uploadFile(e.target.files[0], config)
       .then((data) => {
+        console.log("data.location========>",data.location)
         newTrack(data.location) 
-      }).then(() => window.location.reload())
+      })
+      // .then(() => window.location.reload())
       .catch((err) => {
         alert(err)
       })
