@@ -40,5 +40,29 @@ class User(db.Model):
             "banner_pic": self.banner_pic,
         }
 
+class Track(db.Model):
+    __tablename__ = 'track'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    trackname = db.Column(db.String(100), nullable=False)
+    trackartist = db.Column(db.String(100), nullable=True)
+    tracklocation = db.Column(db.String(200), nullable=False)
+    tracktime = db.Column(db.String(7), nullable=True)
+    trackrating = db.Column(db.String(10), nullable=True)
+    trackgenre = db.Column(db.String(200), nullable=True)
+    trackart = db.Column(db.Text, nullable=True)
+
+    def to_safe_object(self):
+        return {
+          "id": self.id,
+          "user_id": self.user_id,
+          "trackname": self.trackname,
+          "trackartist": self.trackartist,
+          "tracktime": self.tracktime,
+          "trackrating": self.trackrating,
+          "trackgenre": self.trackgenre,
+          "trackart": self.trackart,
+        }
+
 
 

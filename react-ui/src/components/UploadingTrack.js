@@ -12,7 +12,7 @@ const UploadingTrack = (props) => {
     secretAccessKey: process.env.REACT_APP_SECRETACCESSKEY
   }
 
-  const [user, setUser] = useState({});
+  const [currentUser, setCurrentUser] = useState({});
 
   useEffect(() => {
 
@@ -24,41 +24,42 @@ const UploadingTrack = (props) => {
         headers: { "Authorization": `Bearer ${token}` },
       })
       if (!response.ok) {
-        // console.log("getCurrent user response failed in Uploading.js");
+        console.log("getCurrent user response failed in Uploading.js");
       } else {
         const json = await response.json();
-        setUser(json);
-        // console.log(json)
+        setCurrentUser(json);
+        console.log(json)
       }
     }
     getCurrentUser();
   }, [])
 
-  const upload = (e) => {
-    // const newTrack = async (uploadLocation) => {
-    //   const options = {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //   }
-    //   fetch(`${API_URL}/users/profile?user_id=${user.id}&href=${uploadLocation}`, options)
+  // const upload = (e) => {
+  //   const newTrack = async (uploadLocation) => {
+  //     // const trackData = { user_id: , trackname: , trackrating: props.imageModalState.description, user_id: id }
+  //     const options = {
+  //       method: 'POST',
+  //       headers: { 'Content-Type': 'application/json' },
+  //     }
+  //     fetch(`${API_URL}/track?user_id=${currentUser.id}&href=${uploadLocation}`, options)
 
-    // }
+  //   }
   
 
 
-    S3FileUpload.uploadFile(e.target.files[0], config)
-      .then((data) => {
-        console.log("data========================>",data)
-        // newTrack(data.location) 
-      }).then(() => window.location.reload())
-      .catch((err) => {
-        alert(err)
-      })
+  //   S3FileUpload.uploadFile(e.target.files[0], config)
+  //     .then((data) => {
+  //       console.log("data========================>",data)
+  //       newTrack(data.location) 
+  //     }).then(() => window.location.reload())
+  //     .catch((err) => {
+  //       alert(err)
+  //     })
        
-  }
+  // }
   return (
     <>
-      <input className={"uploading-track"} type="file" onChange={upload} />
+      {/* <input className={"uploading-track"} type="file" onChange={upload} /> */}
     </>
 
   )
