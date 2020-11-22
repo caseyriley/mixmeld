@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import { API_URL } from '../config';
-// import Dropzone from 'react-dropzone'
 
 import psychoTantricJuju from '../media/TrillianGreen-PsychoTantricJujuJazz-01-BhenPaUlRaga.wav';
 import Afterimage from '../media/Afterimage.wav';
@@ -78,16 +77,6 @@ const Tracklist = (props) => {
   
   return(
     <>
-      {/* <Dropzone onDrop={acceptedFiles => console.log(acceptedFiles)}>
-            {({getRootProps, getInputProps}) => (
-              <section>
-                <div {...getRootProps()}>
-                  <input {...getInputProps()} />
-                  <p>Drag 'n' drop some files here, or click to select files</p>
-                </div>
-              </section>
-            )}
-      </Dropzone> */}
 
     <div id={"playlist-border"}>
     {/* <img id={"playlist-border__texture"} src={texture} alt=""/> */}
@@ -96,7 +85,9 @@ const Tracklist = (props) => {
           <div id={"playlist-c__top-c__rating"}><h2>Rating</h2></div>
           <div id={"playlist-c__top-c__name"}  >
             <UploadingTrack/>
-            <h2>Name</h2>
+            <div id={"playlist-name-c"}>
+              <h2>Name</h2>
+            </div> 
           </div>
           <div id={"playlist-c__top-c__artist-name"}><h2>Artist</h2></div>
           <div id={"playlist-c__top-c__artist-duration"}><h2>Time</h2></div>

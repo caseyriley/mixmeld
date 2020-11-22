@@ -65,7 +65,10 @@ const UploadingTrack = (props) => {
 
   return (
     <>
-      <input className={"uploading-track"} type="file" onChange={upload} />
+      <div id={"uploading-track-c"}>
+        <span id={"uploading-track-c__span"}>Drop Tracks Here</span>
+        <input id={"uploading-track"} type="file" onChange={upload} />
+      </div>
     </>
 
   )

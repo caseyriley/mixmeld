@@ -537,9 +537,41 @@ div.volume-control img {
 }
 
 #playlist-c__top-c__name {
+  position: relative;
   border-right: 1px solid grey;
   width: 45%;
   height: 30px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+#uploading-track-c {
+  width: 30%;
+  border: 1px dashed lightgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 0px 0px 5px;
+  cursor: pointer;
+  font-size: 12px;
+  font-family: 'Electrolize', sans-serif;
+}
+#uploading-track-c__span{
+  position: absolute;
+  color: rgb(202, 202, 202);
+}
+#uploading-track {
+  opacity: 0;
+}
+#playlist-name-c {
+  width: 100%;
+  pointer-events: none;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #playlist-c__top-c__artist-name {
   border-right: 1px solid grey;
@@ -557,7 +589,7 @@ div.volume-control img {
   
 }
 #playlist-c__top-c__rating h2,
-#playlist-c__top-c__name h2,
+#playlist-name-c h2,
 #playlist-c__top-c__artist-name h2,
 #playlist-c__top-c__genre-name h2,
 #playlist-c__top-c__artist-duration h2 {
@@ -617,8 +649,8 @@ li {
   white-space: nowrap;
   overflow-x: scroll;
   border-right: 1px solid rgb(161, 161, 161);
-
 }
+
 .track-ul__li__name {
   height: 30px;
   width: 45%;

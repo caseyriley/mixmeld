@@ -12,5 +12,21 @@
 }
   .track-ul__li {
     font-size: 12px;
-  }
+}
+
+#uploading-track-c__span{
+  font-size: 8px;
+}
+#playlist-c__top-c__rating h2,
+#playlist-c__top-c__artist-name h2,
+#playlist-c__top-c__artist-duration h2,
+#playlist-c__top-c__genre-name h2 {
+  margin-top: 3px;
+}
+#playlist-name-c h2 {
+  margin-top: 6px;
+}
+
+    
+
 }
