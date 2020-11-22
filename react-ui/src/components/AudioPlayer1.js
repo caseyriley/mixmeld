@@ -232,12 +232,11 @@ const AudioPlayer = ()=>{
 
     media.current.setAttribute("src", track);
     playPauseMedia();
-    let newSongName;
-    if (songName.length > 20){
-      newSongName = songName.slice(0,20) + "..."
-    } else {
-      newSongName = songName
-    }
+
+    let newSongName = songName.slice(34,-4)
+    if (newSongName.length > 20){
+      newSongName = newSongName.slice(0, 20) + "..."
+    } 
     setSongNameState(newSongName);
   }
 //----------------------------------------------
