@@ -59,7 +59,10 @@ const UploadingTrack = (props) => {
         alert(err)
       })
        
-  }
+    }
+
+
+
   return (
     <>
       <input className={"uploading-track"} type="file" onChange={upload} />

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import { API_URL } from '../config';
 // import Dropzone from 'react-dropzone'
 
 import psychoTantricJuju from '../media/TrillianGreen-PsychoTantricJujuJazz-01-BhenPaUlRaga.wav';
@@ -24,8 +25,54 @@ const trackList = [
 
 
 const Tracklist = (props) => {
+  //---------Get-Current_User--------------
+  const [currentUser, setCurrentUser] = useState({});
 
+  useEffect(() => {
 
+    const getCurrentUser = async () => {
+      const token = window.localStorage.getItem('auth_token')
+      const response = await fetch(`${API_URL}/users/token`, {
+        method: "GET",
+        mode: "cors",
+        headers: { "Authorization": `Bearer ${token}` },
+      })
+      if (!response.ok) {
+        console.log("getCurrent user response failed in Uploading.js");
+      } else {
+        const json = await response.json();
+        setCurrentUser(json);
+        console.log(json)
+      }
+    }
+    getCurrentUser();
+    console.log("user=======>", currentUser.id)
+  }, [])
+// ----------------------------------------------
+
+// ---------------------Get-Users-Tracks----------
+  const [trackArrayState, setTrackArrayState] = useState([])
+
+  useEffect(() => {
+    // if (props.user.id === profileUser){
+    const token = window.localStorage.getItem('auth_token');
+    const getUserTracks = async () => {
+
+      const response = await fetch(`${API_URL}/tracks/user/${currentUser.id}`, {
+        method: "GET",
+        mode: "cors",
+        headers: { "Authorizaion": `Bearer ${token}` }
+      })
+      if (!response.ok) { console.log("error in getUserTracks") }
+      else {
+        const json = await response.json();
+        setTrackArrayState(json.reverse());
+      }
+    }
+    getUserTracks();
+    // }
+  }, [props])
+// -----------------------------------------------------
 
      
   
@@ -56,14 +103,14 @@ const Tracklist = (props) => {
           <div id={"playlist-c__top-c__genre-name"}><h2>Genre</h2></div>
         </div>
         <ul id={"track-ul"}>
-        {trackList ? trackList.map((audio, index) => {
+        {trackArrayState ? trackArrayState.map((audio, index) => {
             return (
               <li className={"track-ul__li"} key={index}>
-                <div className={`track-ul__li__rating ${index % 2 === 1 ? "dark": "light"}`}><span>{audio.rating ? audio.rating : "🎵"}</span></div>
-                <div className={`track-ul__li__name ${index % 2 === 1 ? "dark": "light"}`} onClick={()=>{props.setTrack(audio.track, audio.name)}}><span>{audio.name ? audio.name : "🎵"}</span></div>
-                <div className={`track-ul__li__artist ${index % 2 === 1 ? "dark": "light"}`} ><span>{audio.artist ? audio.artist : "🎵"}</span></div>
-                <div className={`track-ul__li__duration ${index % 2 === 1 ? "dark": "light"}`}><span>{audio.duration ? audio.duration : "🎵"}</span></div>
-                <div className={`track-ul__li__genre ${index % 2 === 1 ? "dark": "light"}`}><span>{audio.genre ? audio.genre: "🎵"}</span></div>
+                <div className={`track-ul__li__rating ${index % 2 === 1 ? "dark": "light"}`}><span>{audio.trackrating ? audio.trackrating : "🎵"}</span></div>
+                <div className={`track-ul__li__name ${index % 2 === 1 ? "dark": "light"}`} onClick={()=>{props.setTrack(audio.tracklocation, audio.tracklocation)}}><span>{audio.trackname ? audio.trackname : "🎵"}</span></div>
+                <div className={`track-ul__li__artist ${index % 2 === 1 ? "dark": "light"}`} ><span>{audio.trackartist ? audio.trackartist : "🎵"}</span></div>
+                <div className={`track-ul__li__duration ${index % 2 === 1 ? "dark": "light"}`}><span>{audio.tracktime ? audio.tracktime : "🎵"}</span></div>
+                <div className={`track-ul__li__genre ${index % 2 === 1 ? "dark": "light"}`}><span>{audio.trackgenre ? audio.trackgenre: "🎵"}</span></div>
               </li>)
           }): null}
         </ul>

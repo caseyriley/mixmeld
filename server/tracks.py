@@ -15,9 +15,7 @@ tracks = Blueprint('tracks', __name__)
 @tracks.route('/post', methods=["POST"])
 def post_track():
 
-    print("before daaaaatttaaaaaa===========>")
     data = json.loads(request.data)
-    print("daaaaaattttaaaa=======>",data)
     track = Track(
         user_id=data["user_id"],
         trackname=data["trackname"],
@@ -26,3 +24,16 @@ def post_track():
     db.session.add(track)
     db.session.commit()
     return jsonify(Goodjob='you posted to db')
+
+
+@tracks.route("/user/<id>", methods=["GET"])
+def get_user_tracks(id):
+
+    model_tracks = Track.query.filter(Track.user_id == id).all()
+    tracks = []
+    for model_track in model_tracks:
+        track = model_track.to_dict()
+        track["user"] = model_track.user.to_safe_object()
+        tracks.append(track)
+
+    return jsonify(tracks)
