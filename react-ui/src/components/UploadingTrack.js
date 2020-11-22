@@ -35,17 +35,16 @@ const UploadingTrack = (props) => {
   }, [])
 
   const upload = (e) => {
+    const trackName = e.target.value.slice(12,).slice(0,-4)
     const newTrack = async (uploadLocation) => {
-      const trackData = { user_id: currentUser.id, trackname: "trackname", tracklocation: uploadLocation}
+      const trackData = { user_id: currentUser.id, trackname: trackName, tracklocation: uploadLocation}
       console.log("trackData======>",trackData)
       const options = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(trackData),
       }
-      // fetch(`${API_URL}/tracks/post`, options)
-      fetch(`${API_URL}/tracks/post?user_id=${currentUser.id}&tracklocation=${uploadLocation}&trackname=trackname`, options)
-
+      fetch(`${API_URL}/tracks/post`, options)
     }
   
 
