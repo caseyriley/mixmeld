@@ -26,6 +26,22 @@ def post_track():
     return jsonify(Goodjob='you posted to db')
 
 
+@tracks.route('/artist_name', methods=["POST"])
+def update_track_artist_name():
+
+    data = json.loads(request.data)
+    
+    track_id = data["id"]
+    new_artist_name = data["name"]
+  
+    track = Track.query.filter(Track.id == track_id).first()
+    print('parameters@@@@@@@@@@@@@@@', track)
+    track.trackartist = new_artist_name
+    db.session.commit()
+    print('eeeeeeeedddddiiiiitt aaaarttttiiiiist nnnnnaaaaaammmeeeee')
+    return jsonify(Good='you changed the track name%%%%%%%%%%%%%%%%%%%%%%%%%%%')
+
+
 @tracks.route("/user/<id>", methods=["GET"])
 def get_user_tracks(id):
 
@@ -37,3 +53,6 @@ def get_user_tracks(id):
         tracks.append(track)
 
     return jsonify(tracks)
+
+
+

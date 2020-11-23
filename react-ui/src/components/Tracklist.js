@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
+import {useForm} from "react-hook-form";
 import { API_URL } from '../config';
 
 import psychoTantricJuju from '../media/TrillianGreen-PsychoTantricJujuJazz-01-BhenPaUlRaga.wav';
@@ -70,10 +71,37 @@ const Tracklist = (props) => {
     }
     getUserTracks();
     // }
-  }, [props])
+  }, [currentUser])
 // -----------------------------------------------------
+// ---------------Update-Artist-Name--------------------
+  const [artistNameState, setArtistNameState] = useState();
+  // const trackArtistNameInput = useRef();
+  function updateTrackArtistName(e) {
+    console.log("Before newName--------->", e.target.firstChild.value)
+    const newName = e.target.firstChild.value;
+    const newTrack = async () => {
+      const trackData = { id: currentUser.id, name: newName}
+      console.log("trackData======>",trackData)
+      const options = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(trackData),
+      }
+      fetch(`${API_URL}/tracks/artist_name`, options)
+    }
+    newTrack();
+  }
+  const handleKeypress = e => {
+    if (e.keyCode === 13) {
+      updateTrackArtistName()
+    }
+  };
+// -----------------------------------------------------
+  const {register, handleSubmit} = useForm();
 
-     
+  const onSubmit = (e) => {
+    console.log(e.target.firstChild.value)
+  }
   
   return(
     <>
@@ -99,7 +127,25 @@ const Tracklist = (props) => {
               <li className={"track-ul__li"} key={index}>
                 <div className={`track-ul__li__rating ${index % 2 === 1 ? "dark": "light"}`}><span>{audio.trackrating ? audio.trackrating : "🎵"}</span></div>
                 <div className={`track-ul__li__name ${index % 2 === 1 ? "dark": "light"}`} onClick={()=>{props.setTrack(audio.tracklocation, audio.tracklocation)}}><span>{audio.trackname ? audio.trackname : "🎵"}</span></div>
-                <div className={`track-ul__li__artist ${index % 2 === 1 ? "dark": "light"}`} ><span>{audio.trackartist ? audio.trackartist : "🎵"}</span></div>
+                <div className={`track-ul__li__artist ${index % 2 === 1 ? "dark": "light"}`} >
+                  {/* <span>{audio.trackartist ? audio.trackartist : "🎵"}</span> */}
+                  <form onSubmit={e=> {e.preventDefault(); updateTrackArtistName(e)}}> 
+                    <input 
+                      type={"text"}
+                      className={"track-artist-name-input"} 
+                      onChange={e=>setArtistNameState(e.target.value)} 
+                      // onSubmit={handleKeypress}
+                      value={artistNameState} 
+                      // onKeyPress={handleKeypress}
+                      key={index + 1}
+                      maxLength={100} 
+                      ref={register} 
+                      name={"trackArtistNameInput"}
+                      placeholder={audio.trackartist ? audio.trackartist : "🎵"} 
+                    />
+                    <input type={"submit"} />
+                  </form> 
+                </div>
                 <div className={`track-ul__li__duration ${index % 2 === 1 ? "dark": "light"}`}><span>{audio.tracktime ? audio.tracktime : "🎵"}</span></div>
                 <div className={`track-ul__li__genre ${index % 2 === 1 ? "dark": "light"}`}><span>{audio.trackgenre ? audio.trackgenre: "🎵"}</span></div>
               </li>)

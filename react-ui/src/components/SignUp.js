@@ -59,7 +59,7 @@ const SignUp = props => {
     }
   };
 
-
+  
   return (
     <div className="signup-pop--container">
       <div className="signup-head--container">
