@@ -77,10 +77,12 @@ const Tracklist = (props) => {
   const [artistNameState, setArtistNameState] = useState();
   // const trackArtistNameInput = useRef();
   function updateTrackArtistName(e) {
-    console.log("Before newName--------->", e.target.firstChild.value)
+    console.log("Before newName--------->", e.target.firstChild)
     const newName = e.target.firstChild.value;
+    const key = e.target.firstChild.key
+    console.log("key****************************>",key)
     const newTrack = async () => {
-      const trackData = { id: currentUser.id, name: newName}
+      const trackData = { id: key, name: newName}
       console.log("trackData======>",trackData)
       const options = {
         method: 'POST',
@@ -134,16 +136,15 @@ const Tracklist = (props) => {
                       type={"text"}
                       className={"track-artist-name-input"} 
                       onChange={e=>setArtistNameState(e.target.value)} 
-                      // onSubmit={handleKeypress}
                       value={artistNameState} 
                       // onKeyPress={handleKeypress}
-                      key={index + 1}
+                      key={audio.id}
                       maxLength={100} 
                       ref={register} 
                       name={"trackArtistNameInput"}
                       placeholder={audio.trackartist ? audio.trackartist : "🎵"} 
                     />
-                    <input type={"submit"} />
+                    <input className={"track-artist-name-submit"} type={"submit"} />
                   </form> 
                 </div>
                 <div className={`track-ul__li__duration ${index % 2 === 1 ? "dark": "light"}`}><span>{audio.tracktime ? audio.tracktime : "🎵"}</span></div>
