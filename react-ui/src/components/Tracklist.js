@@ -74,8 +74,6 @@ const Tracklist = (props) => {
   }, [currentUser])
 // -----------------------------------------------------
 // ---------------Update-Artist-Name--------------------
-  const [artistNameState, setArtistNameState] = useState();
-  // const trackArtistNameInput = useRef();
   function updateTrackArtistName(e) {
     console.log("Before newName--------->", e.target.firstChild)
     const newName = e.target.firstChild.value;
@@ -93,17 +91,7 @@ const Tracklist = (props) => {
     }
     newTrack();
   }
-  const handleKeypress = e => {
-    if (e.keyCode === 13) {
-      updateTrackArtistName()
-    }
-  };
 // -----------------------------------------------------
-  const {register, handleSubmit} = useForm();
-
-  const onSubmit = (e) => {
-    console.log(e.target.firstChild.value)
-  }
   
   return(
     <>
@@ -135,7 +123,6 @@ const Tracklist = (props) => {
                     <input 
                       type={"text"}
                       className={"track-artist-name-input"} 
-                      value={artistNameState} 
                       maxLength={100} 
                       placeholder={audio.trackartist ? audio.trackartist : "🎵"} 
                     />
