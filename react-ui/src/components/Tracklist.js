@@ -73,6 +73,25 @@ const Tracklist = (props) => {
     // }
   }, [currentUser])
 // -----------------------------------------------------
+// ---------------Update-Track-Rating--------------------
+function updateTrackRating(e) {
+  // console.log("Before newName--------->", e.target.firstChild)
+  const inputRating = e.target.firstChild.value;
+  const trackId = e.target.name
+  // console.log("key****************************>",key)
+  const newRating = async () => {
+    const trackData = { id: trackId, rating: inputRating}
+    // console.log("trackData======>",trackData)
+    const options = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(trackData),
+    }
+    fetch(`${API_URL}/tracks/track_rating`, options)
+  }
+  newRating();
+}
+// -----------------------------------------------------
 // ---------------Update-Artist-Name--------------------
   function updateTrackArtistName(e) {
     console.log("Before newName--------->", e.target.firstChild)
@@ -115,7 +134,17 @@ const Tracklist = (props) => {
         {trackArrayState ? trackArrayState.map((audio, index) => {
             return (
               <li className={"track-ul__li"} key={index}>
-                <div className={`track-ul__li__rating ${index % 2 === 1 ? "dark": "light"}`}><span>{audio.trackrating ? audio.trackrating : "🎵"}</span></div>
+                <div className={`track-ul__li__rating ${index % 2 === 1 ? "dark": "light"}`}>
+                  <form name={audio.id} onSubmit={e=> {e.preventDefault(); updateTrackRating(e)}}> 
+                    <input 
+                      type={"text"}
+                      className={"track-artist-name-input"} 
+                      maxLength={100} 
+                      placeholder={audio.trackrating ? audio.trackrating : "🎵"} 
+                    />
+                    <input className={"track-artist-name-submit"} type={"submit"} />
+                  </form> 
+                </div>
                 <div className={`track-ul__li__name ${index % 2 === 1 ? "dark": "light"}`} onClick={()=>{props.setTrack(audio.tracklocation, audio.tracklocation)}}><span>{audio.trackname ? audio.trackname : "🎵"}</span></div>
                 <div className={`track-ul__li__artist ${index % 2 === 1 ? "dark": "light"}`} >
                   {/* <span>{audio.trackartist ? audio.trackartist : "🎵"}</span> */}
