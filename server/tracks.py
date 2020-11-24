@@ -42,6 +42,20 @@ def update_track_rating():
     return jsonify(Good='you changed the track rating')
 
 
+    
+
+@tracks.route('/track_name', methods=["POST"])
+def update_track_name():
+
+    data = json.loads(request.data)
+    track_id = data["id"]
+    new_name = data["rating"]
+    track = Track.query.filter(Track.id == track_id).first()
+    track.trackname = new_name
+    db.session.commit()
+    return jsonify(Good='you changed the track rating')
+
+
 @tracks.route('/artist_name', methods=["POST"])
 def update_track_artist_name():
 
@@ -56,6 +70,20 @@ def update_track_artist_name():
     db.session.commit()
     print('eeeeeeeedddddiiiiitt aaaarttttiiiiist nnnnnaaaaaammmeeeee')
     return jsonify(Good='you changed the track name%%%%%%%%%%%%%%%%%%%%%%%%%%%')
+
+
+@tracks.route('/genre', methods=["POST"])
+def update_track_genre():
+
+    data = json.loads(request.data)
+    
+    track_id = data["id"]
+    genre = data["genre"]
+  
+    track = Track.query.filter(Track.id == track_id).first()
+    track.trackgenre = genre
+    db.session.commit()
+    return jsonify(Good='you changed the genre')
 
 
 @tracks.route("/user/<id>", methods=["GET"])
