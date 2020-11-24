@@ -79,7 +79,7 @@ const Tracklist = (props) => {
   function updateTrackArtistName(e) {
     console.log("Before newName--------->", e.target.firstChild)
     const newName = e.target.firstChild.value;
-    const key = e.target.firstChild.key
+    const key = e.target.name
     console.log("key****************************>",key)
     const newTrack = async () => {
       const trackData = { id: key, name: newName}
@@ -131,17 +131,12 @@ const Tracklist = (props) => {
                 <div className={`track-ul__li__name ${index % 2 === 1 ? "dark": "light"}`} onClick={()=>{props.setTrack(audio.tracklocation, audio.tracklocation)}}><span>{audio.trackname ? audio.trackname : "🎵"}</span></div>
                 <div className={`track-ul__li__artist ${index % 2 === 1 ? "dark": "light"}`} >
                   {/* <span>{audio.trackartist ? audio.trackartist : "🎵"}</span> */}
-                  <form onSubmit={e=> {e.preventDefault(); updateTrackArtistName(e)}}> 
+                  <form name={audio.id} onSubmit={e=> {e.preventDefault(); updateTrackArtistName(e)}}> 
                     <input 
                       type={"text"}
                       className={"track-artist-name-input"} 
-                      onChange={e=>setArtistNameState(e.target.value)} 
                       value={artistNameState} 
-                      // onKeyPress={handleKeypress}
-                      key={audio.id}
                       maxLength={100} 
-                      ref={register} 
-                      name={"trackArtistNameInput"}
                       placeholder={audio.trackartist ? audio.trackartist : "🎵"} 
                     />
                     <input className={"track-artist-name-submit"} type={"submit"} />
