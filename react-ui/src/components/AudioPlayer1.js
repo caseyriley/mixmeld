@@ -8,6 +8,7 @@ import loop from '../images/loop.png';
 import random from '../images/random.png';
 import VolumeKnobUi from './VolumeKnobUi';
 import Tracklist from './Tracklist';
+import TimeRemaining from './TimeRemaining';
 
 let vol = .5;
 
@@ -242,16 +243,6 @@ const AudioPlayer = ()=>{
   }
 //----------------------------------------------
 
-  // useEffect(() => {
-
-  //     mediaDuration.current = new Date((media.current ? media.current.duration : "") * 1000).toISOString().substr(11, 8)
-    
-    
-  //   if (isNaN(mediaDuration.current)){
-  //     mediaDuration.current = ""
-  //   }
-  // })
-
 
   return(
     <>
@@ -303,28 +294,7 @@ const AudioPlayer = ()=>{
             <div id={"audio__bottom"} >
               <div className={"audio__bottom__playhead"} ref={audioBottomPlayhead} >
                 <div className={"audio__bottom__playhead__left"} ref={timerBar} ></div>
-  {/* <span className={"audio__bottom__playhead__time-remaining"}>
-    {`${media.current?(new Date((media.current  ? media.current.duration : 0) * 1000).toISOString().substr(11, 8)): ""}`}
-    </span> */}
-    {
-      ()=>{
-        if (media.current > 3600){
-          return  (<span className={"audio__bottom__playhead__time-remaining"}>{new Date((media.current.duration ? media.current.duration : 0) * 1000).toISOString().substr(14, 5)}</span>)
-        } else {
-          return  (<span className={"audio__bottom__playhead__time-remaining"}>{new Date((media.current.duration ? media.current.duration : 0) * 1000).toISOString().substr(11, 8)}</span>)
-        }  
-      }
-    }
-  {/* <span className={"audio__bottom__playhead__time-remaining"}>{ `${ 
-    // media.current ? 
-    if (media.current > 3600){
-      new Date((media.current.duration ? media.current.duration : 0) * 1000).toISOString().substr(14, 5);
-    } else {
-      new Date((media.current.duration ? media.current.duration : 0) * 1000).toISOString().substr(11, 8) 
-    }  
-    // : "" 
-    }` }
-  </span> */}
+                <TimeRemaining media={media}/>
               </div>
             </div>
           </div>
