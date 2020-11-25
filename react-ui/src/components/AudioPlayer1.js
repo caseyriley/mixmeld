@@ -221,14 +221,6 @@ const AudioPlayer = ()=>{
   },[volumeState])
 // ---------------------------------------------
 //---------------Audio-Tracks-------------------
-// audioTracks.onaddtrack = updateTrackCount;
-// audioTracks.onremovetrack = updateTrackCount;
-
-  // function updateTrackCount(event) {
-    // let trackCount = audioTacks.length;
-    // drawTrackCountIndicator(trackCount);
-    // console.log(trackCount);
-  // }
 
   function setTrack(track, songName){
 
