@@ -38,7 +38,7 @@ const UploadingTrack = (props) => {
     const trackName = e.target.value.slice(12,).slice(0,-4)
     const newTrack = async (uploadLocation) => {
       const trackData = { user_id: currentUser.id, trackname: trackName, tracklocation: uploadLocation}
-      console.log("trackData======>",trackData)
+      // console.log("trackData======>",trackData)
       const options = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -48,11 +48,32 @@ const UploadingTrack = (props) => {
     }
   
 
-
+    let location;
     S3FileUpload.uploadFile(e.target.files[0], config)
       .then((data) => {
-        console.log("data.location========>",data.location)
+        // console.log("data.location========>",data.location)
         newTrack(data.location) 
+        location = data.location
+      })
+      .then(()=>{
+        console.log("data.location========>", location)
+        // Create a non-dom allocated Audio element
+        let au = document.createElement('audio');
+
+        // Define the URL of the MP3 audio file
+        au.src = location;
+
+        // Once the metadata has been loaded, display the duration in the console
+        au.addEventListener('loadedmetadata', function(){
+            // Obtain the duration in seconds of the audio file (with milliseconds as well, a float value)
+            const duration = au.duration;
+
+            // example 12.3234 seconds
+            console.log("The duration of the song is of: " + duration + " seconds");
+            // Alternatively, just display the integer value with
+            // parseInt(duration)
+            // 12 seconds
+        },false);
       })
       // .then(() => window.location.reload())
       .catch((err) => {
