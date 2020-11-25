@@ -197,6 +197,15 @@ body {
   /* background: rgb(0,34,207); */
   /* background: linear-gradient(45deg, rgba(0,34,207,1) 0%, rgba(0,77,170,1) 19%, rgba(0,168,201,1) 60%, rgba(0,186,179,1) 100%); */
 }
+.audio__bottom__playhead__time-remaining {
+  /* color: rgb(202, 202, 202); */
+  font-size: 13px;
+  position: absolute;
+  top: -0px;
+  left: 250px;
+  font-family: 'Electrolize', sans-serif;
+
+}
 
 
 

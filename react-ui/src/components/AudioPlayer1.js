@@ -16,6 +16,7 @@ let vol = .5;
 
 const AudioPlayer = ()=>{
   const media = useRef()
+  const mediaDuration = useRef()
   // const media = document.querySelector('audio');
 // const audioTacks = document.querySelector('audio').audioTracks;
   const play = useRef()
@@ -240,6 +241,18 @@ const AudioPlayer = ()=>{
     setSongNameState(newSongName);
   }
 //----------------------------------------------
+
+  // useEffect(() => {
+
+  //     mediaDuration.current = new Date((media.current ? media.current.duration : "") * 1000).toISOString().substr(11, 8)
+    
+    
+  //   if (isNaN(mediaDuration.current)){
+  //     mediaDuration.current = ""
+  //   }
+  // })
+
+
   return(
     <>
       <div id={"main-page"}>
@@ -290,6 +303,28 @@ const AudioPlayer = ()=>{
             <div id={"audio__bottom"} >
               <div className={"audio__bottom__playhead"} ref={audioBottomPlayhead} >
                 <div className={"audio__bottom__playhead__left"} ref={timerBar} ></div>
+  {/* <span className={"audio__bottom__playhead__time-remaining"}>
+    {`${media.current?(new Date((media.current  ? media.current.duration : 0) * 1000).toISOString().substr(11, 8)): ""}`}
+    </span> */}
+    {
+      ()=>{
+        if (media.current > 3600){
+          return  (<span className={"audio__bottom__playhead__time-remaining"}>{new Date((media.current.duration ? media.current.duration : 0) * 1000).toISOString().substr(14, 5)}</span>)
+        } else {
+          return  (<span className={"audio__bottom__playhead__time-remaining"}>{new Date((media.current.duration ? media.current.duration : 0) * 1000).toISOString().substr(11, 8)}</span>)
+        }  
+      }
+    }
+  {/* <span className={"audio__bottom__playhead__time-remaining"}>{ `${ 
+    // media.current ? 
+    if (media.current > 3600){
+      new Date((media.current.duration ? media.current.duration : 0) * 1000).toISOString().substr(14, 5);
+    } else {
+      new Date((media.current.duration ? media.current.duration : 0) * 1000).toISOString().substr(11, 8) 
+    }  
+    // : "" 
+    }` }
+  </span> */}
               </div>
             </div>
           </div>
