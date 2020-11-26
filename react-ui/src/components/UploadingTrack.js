@@ -44,15 +44,22 @@ const UploadingTrack = (props) => {
     } 
     const formattedTime = `${new Date(time * 1000).toISOString().substr(start, end)}`
     return formattedTime;
-
-
   }
 
-  const upload = (e) => {
+  // const [formattedTime, setFormattedTime] = useState("nothing was formatted")
 
+  // const formatTimeFunc = async (time) => {
+  //   const fT = formatTime(time);
+  //   setFormattedTime(fT)
+  // }
+
+
+  const upload = (e) => {
+    let formattedTime;
     const trackName = e.target.value.slice(12,).slice(0,-4)
-    const newTrack = async (uploadLocation, duration) => {
-      const trackData = { user_id: currentUser.id, trackname: trackName, tracklocation: uploadLocation, tracktime: duration}
+
+    const newTrack = async (uploadLocation) => {
+      const trackData = { user_id: currentUser.id, trackname: trackName, tracklocation: uploadLocation, tracktime: formattedTime}
       console.log("trackData^^^^^^^^^^^^^^^^^^^^^^", trackData)
       const options = {
         method: 'POST',
@@ -62,26 +69,24 @@ const UploadingTrack = (props) => {
       fetch(`${API_URL}/tracks/post`, options)
     }
   
-    let location;
-    let duration;
-
+    let location
+    
     S3FileUpload.uploadFile(e.target.files[0], config)
       .then((data) => {
 
 // ---------------Get-TracK-Length-Variable---------------------
-        location = data.location
-        console.log("data.location========>", location)
+        location = data.location;
         let au = document.createElement('audio');
         au.src = location;
+
         au.addEventListener('loadedmetadata', function(){
-        duration = formatTime(au.duration);
-
-        console.log("The duration of the song is of: ", duration);
+        formattedTime = formatTime(au.duration)
+        console.log('formattedTime88888888888888888',formattedTime)
         },false);
+        console.log('formattedTime99999999999999999',formattedTime)
 // -------------------------------------------------------------
-
-        newTrack(data.location, duration) 
-        
+      }).then(()=>{
+        newTrack(location)
       })
 //       .then(()=>{
 
