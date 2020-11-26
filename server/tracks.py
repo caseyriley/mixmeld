@@ -19,7 +19,8 @@ def post_track():
     track = Track(
         user_id=data["user_id"],
         trackname=data["trackname"],
-        tracklocation=data["tracklocation"]
+        tracklocation=data["tracklocation"],
+        tracktime=data["tracktime"]
     )
     db.session.add(track)
     db.session.commit()

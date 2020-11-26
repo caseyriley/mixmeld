@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import S3FileUpload from 'react-s3';
 import { API_URL } from '../config';
+import useFormatTime from './useFormatTime';
 
 const UploadingTrack = (props) => {
   
@@ -34,10 +35,25 @@ const UploadingTrack = (props) => {
     getCurrentUser();
   }, [])
 
+  function formatTime(time){
+    let start = 12;
+    let end = 8;
+    if (time < 3600){
+      start = 14;
+      end = 5;
+    } 
+    const formattedTime = `${new Date(time * 1000).toISOString().substr(start, end)}`
+    return formattedTime;
+
+
+  }
+
   const upload = (e) => {
+
     const trackName = e.target.value.slice(12,).slice(0,-4)
-    const newTrack = async (uploadLocation) => {
-      const trackData = { user_id: currentUser.id, trackname: trackName, tracklocation: uploadLocation}
+    const newTrack = async (uploadLocation, duration) => {
+      const trackData = { user_id: currentUser.id, trackname: trackName, tracklocation: uploadLocation, tracktime: duration}
+      console.log("trackData^^^^^^^^^^^^^^^^^^^^^^", trackData)
       const options = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -47,23 +63,40 @@ const UploadingTrack = (props) => {
     }
   
     let location;
+    let duration;
 
     S3FileUpload.uploadFile(e.target.files[0], config)
       .then((data) => {
-        newTrack(data.location) 
+
+// ---------------Get-TracK-Length-Variable---------------------
         location = data.location
-      })
-      .then(()=>{
         console.log("data.location========>", location)
         let au = document.createElement('audio');
         au.src = location;
         au.addEventListener('loadedmetadata', function(){
-            const duration = au.duration;
+        duration = formatTime(au.duration);
 
-            console.log("The duration of the song is of: " + duration + " seconds");
-
+        console.log("The duration of the song is of: ", duration);
         },false);
+// -------------------------------------------------------------
+
+        newTrack(data.location, duration) 
+        
       })
+//       .then(()=>{
+
+// // ---------------Get-TracK-Length-Variable---------------------
+//         console.log("data.location========>", location)
+//         let au = document.createElement('audio');
+//         au.src = location;
+//         au.addEventListener('loadedmetadata', function(){
+//             const duration = au.duration;
+
+//             console.log("The duration of the song is of: " + duration + " seconds");
+//         },false);
+// // -------------------------------------------------------------
+
+//       })
       // .then(() => window.location.reload())
       .catch((err) => {
         alert(err)
