@@ -150,7 +150,7 @@ function updateTrackGenre(e) {
             <div id={"playlist-name-c"}>
               <h2>Name</h2>
             </div> 
-            <img className={"tracklist-edit-pen"} src={pen} alt={""} onClick={toggleTrackEditState} />
+            <img className={`tracklist-edit-pen ${trackEditState ? "pen--on":""}`} src={pen} alt={""} onClick={toggleTrackEditState} />
           </div>
           <div id={"playlist-c__top-c__artist-name"}><h2>Artist</h2></div>
           <div id={"playlist-c__top-c__artist-duration"}><h2>Time</h2></div>
@@ -172,6 +172,7 @@ function updateTrackGenre(e) {
                   </form> 
                 </div>
                 <div className={`track-ul__li__name ${index % 2 === 1 ? "dark": "light"}`} >
+                  {trackEditState ? 
                   <form name={audio.id} onSubmit={e=> {e.preventDefault(); updateTrackName(e)}}> 
                     <input 
                       type={"text"}
@@ -180,7 +181,9 @@ function updateTrackGenre(e) {
                       placeholder={audio.trackname ? audio.trackname : "🎵"} 
                     />
                     <input className={"track-artist-name-submit"} type={"submit"} />
-                  </form> 
+                  </form> :
+                  <span className={"track-artist-name-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.tracklocation)}} >{audio.trackname ? audio.trackname : "🎵"} </span>
+                  }
                   </div>
                 <div className={`track-ul__li__artist ${index % 2 === 1 ? "dark": "light"}`} >
                   {/* <span>{audio.trackartist ? audio.trackartist : "🎵"}</span> */}
@@ -207,7 +210,6 @@ function updateTrackGenre(e) {
                     <input className={"track-artist-name-submit"} type={"submit"} />
                   </form> 
                   </div>
-              <div className={`track-pointer-block ${trackEditState ? "pointer-events-none":""}`} onClick={()=>{props.setTrack(audio.tracklocation, audio.tracklocation)}} ></div>
             </li>)
           }): null}
         </ul>
