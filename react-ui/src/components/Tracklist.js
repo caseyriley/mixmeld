@@ -189,7 +189,7 @@ function updateTrackGenre(e) {
                   }
                   </div>
                 <div className={`track-ul__li__artist ${index % 2 === 1 ? "dark": "light"}`} >
-                  {/* <span>{audio.trackartist ? audio.trackartist : "🎵"}</span> */}
+                {trackEditState ? 
                   <form name={audio.id} onSubmit={e=> {e.preventDefault(); updateTrackArtistName(e)}}> 
                     <input 
                       type={"text"}
@@ -199,19 +199,24 @@ function updateTrackGenre(e) {
                       // value={`${audio.trackartist ? audio.trackartist : ""}`}
                     />
                     <input className={"track-artist-name-submit"} type={"submit"} />
-                  </form> 
+                  </form> :
+                  <span className={"track-artist-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.tracklocation)}} >{audio.trackartist ? audio.trackartist : ""} </span>
+                }
                 </div>
                 <div className={`track-ul__li__duration ${index % 2 === 1 ? "dark": "light"}`}><span>{audio.tracktime ? audio.tracktime : "🎵"}</span></div>
                 <div className={`track-ul__li__genre ${index % 2 === 1 ? "dark": "light"}`}>
+                {trackEditState ? 
                   <form name={audio.id} onSubmit={e=> {e.preventDefault(); updateTrackGenre(e)}}> 
                     <input 
                       type={"text"}
                       className={"track-artist-name-input"} 
                       maxLength={100} 
-                      placeholder={audio.trackgenre ? audio.trackgenre: "🎵"} 
+                      placeholder={audio.trackgenre ? audio.trackgenre: ""} 
                     />
                     <input className={"track-artist-name-submit"} type={"submit"} />
-                  </form> 
+                  </form> :
+                  <span className={"track-genre-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.tracklocation)}} >{audio.trackgenre ? audio.trackgenre: ""} </span>
+                }
                   </div>
             </li>)
           }): null}

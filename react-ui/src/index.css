@@ -748,7 +748,9 @@ li {
   margin: 0px 0px 0px 5px;
 
 }
-.track-artist-name-span {
+.track-artist-name-span,
+.track-artist-span,
+ .track-genre-span{
   width: calc(100% -7px); 
   height: 100%;
   font-family: 'Electrolize', sans-serif;
@@ -760,6 +762,7 @@ li {
   position: relative;
   left: 2px;
 }
+
 .track-artist-name-input::placeholder {
   color: rgb(192, 192, 192);
 }
