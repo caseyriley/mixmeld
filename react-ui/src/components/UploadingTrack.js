@@ -35,7 +35,7 @@ const UploadingTrack = (props) => {
     getCurrentUser();
   }, [])
 
-  function formatTime(time){
+  async function formatTime(time){
     let start = 12;
     let end = 8;
     if (time < 3600){
@@ -80,14 +80,20 @@ const UploadingTrack = (props) => {
         au.src = location;
 
         au.addEventListener('loadedmetadata', function(){
-        formattedTime = formatTime(au.duration)
+          async function inner(){
+            formattedTime = await formatTime(au.duration)
+            newTrack(location)
+          }
+          inner()
         console.log('formattedTime88888888888888888',formattedTime)
         },false);
         console.log('formattedTime99999999999999999',formattedTime)
 // -------------------------------------------------------------
-      }).then(()=>{
-        newTrack(location)
       })
+
+
+        
+      
 //       .then(()=>{
 
 // // ---------------Get-TracK-Length-Variable---------------------
@@ -103,9 +109,10 @@ const UploadingTrack = (props) => {
 
 //       })
       // .then(() => window.location.reload())
-      .catch((err) => {
-        alert(err)
-      })
+
+      // .catch((err) => {
+      //   alert(err)
+      // })
        
     }
 
