@@ -165,7 +165,7 @@ function updateTrackGenre(e) {
                   <form name={audio.id} onSubmit={e=> {e.preventDefault(); updateTrackRating(e)}}> 
                     <input 
                       type={"text"}
-                      className={"track-artist-name-input"} 
+                      className={"track-genre-input"} 
                       maxLength={100} 
                       placeholder={audio.trackrating ? audio.trackrating : "🎵"} 
                     />
@@ -176,7 +176,7 @@ function updateTrackGenre(e) {
                 </div>
                 <div className={`track-ul__li__name ${index % 2 === 1 ? "dark": "light"}`} >
                   {trackEditState ? 
-                  <form name={audio.id} onSubmit={e=> {e.preventDefault(); updateTrackName(e)}}> 
+                  <form className={"tracklist-form"} name={audio.id} onSubmit={e=> {e.preventDefault(); updateTrackName(e)}}> 
                     <input 
                       type={"text"}
                       className={"track-artist-name-input"} 

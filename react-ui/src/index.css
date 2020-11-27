@@ -682,6 +682,31 @@ li {
   white-space: nowrap;
   overflow-x: scroll;
   border-right: 1px solid rgb(161, 161, 161);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.track-genre-input {
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  font-family: 'Electrolize', sans-serif;
+  font-size: 15px;
+  color: rgb(192, 192, 192);
+  border: none;
+  outline: none;
+  margin: 0px 0px 0px 0px;
+  text-align: center;
+  padding: 0px;
+  
+}
+.track-artist-rating-span {
+  margin-left: 0px !important;
+  font-size: 15px;
+  position: relative;
+  top: -1px;
+  
+
 }
 
 .track-ul__li__name {
@@ -707,6 +732,9 @@ li {
   white-space: nowrap;
   overflow-x: scroll;
   border-right: 1px solid rgb(161, 161, 161);
+}
+.tracklist-form {
+  width: 100%;
 }
 .track-artist-name-input {
   background-color: transparent;
