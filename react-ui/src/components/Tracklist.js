@@ -1,30 +1,20 @@
-import React, {useEffect, useState, useRef} from 'react';
-import {useForm} from "react-hook-form";
+import React, {useEffect, useState} from 'react';
+
 import { API_URL } from '../config';
 
-import psychoTantricJuju from '../media/TrillianGreen-PsychoTantricJujuJazz-01-BhenPaUlRaga.wav';
-import Afterimage from '../media/Afterimage.wav';
-import CanWeHaveFun from '../media/CanWeHaveFun.wav';
-import Hyperreal from '../media/Hyperreal.mp3';
-import Natures_Joint from '../media/Natures_Joint.mp3';
-import Ritual from '../media/Ritual.mp3';
-import Tears from '../media/Tears.mp3';
 import UploadingTrack from './UploadingTrack';
-
-
-// const trackList1 = [CanWeHaveFun, psychoTantricJuju, Ritual, Natures_Joint,Tears, Afterimage, Hyperreal]
-const trackList = [
-  {track: CanWeHaveFun, name: "Can We Have Fun (In this House Tonight)", artist: "Azekel", duration: "3:35", rating: "🤩", genre: "Neo-Soul"}, 
-  {track: psychoTantricJuju, name: "BenPaUIRaga", artist: "Trillian Green", duration: "4:53", rating: "🌿", genre: "World"}, 
-  {track: Ritual, name: "Ritual", artist: "Adam Hurst", duration: "5:19", rating: "🌿", genre: "World"}, 
-  {track: Natures_Joint, name: "Natures Joint", artist: "((O))", duration: "4:46", rating: "🌊", genre: "Downtempo"}, 
-  {track: Tears, name: "4 Tears", artist: "Frank Ocean", duration: "1:48", rating: "😭", genre: "Neo-Soul"}, 
-  {track: Afterimage, name: "Afterimage", artist: "", duration: "4:19", rating: "5 ⭐️", genre: "Lo-Fi"}, 
-  {track: Hyperreal, name: "Hyperreal", artist: "Flume", duration: "4:14", rating: "4 ⭐️", genre: "EDM"} 
-]
+import pen from '../images/pen.png';
 
 
 const Tracklist = (props) => {
+
+  const [trackEditState, setTrackEditState] = useState(false);
+
+  function toggleTrackEditState(){
+    const newState = !trackEditState;
+    setTrackEditState(newState);
+  }
+
   //---------Get-Current_User--------------
   const [currentUser, setCurrentUser] = useState({});
 
@@ -160,6 +150,7 @@ function updateTrackGenre(e) {
             <div id={"playlist-name-c"}>
               <h2>Name</h2>
             </div> 
+            <img className={"tracklist-edit-pen"} src={pen} alt={""} onClick={toggleTrackEditState} />
           </div>
           <div id={"playlist-c__top-c__artist-name"}><h2>Artist</h2></div>
           <div id={"playlist-c__top-c__artist-duration"}><h2>Time</h2></div>
@@ -180,7 +171,7 @@ function updateTrackGenre(e) {
                     <input className={"track-artist-name-submit"} type={"submit"} />
                   </form> 
                 </div>
-                <div className={`track-ul__li__name ${index % 2 === 1 ? "dark": "light"}`} onClick={()=>{props.setTrack(audio.tracklocation, audio.tracklocation)}}>
+                <div className={`track-ul__li__name ${index % 2 === 1 ? "dark": "light"}`} >
                   <form name={audio.id} onSubmit={e=> {e.preventDefault(); updateTrackName(e)}}> 
                     <input 
                       type={"text"}
@@ -216,7 +207,8 @@ function updateTrackGenre(e) {
                     <input className={"track-artist-name-submit"} type={"submit"} />
                   </form> 
                   </div>
-              </li>)
+              <div className={`track-pointer-block ${trackEditState ? "pointer-events-none":""}`} onClick={()=>{props.setTrack(audio.tracklocation, audio.tracklocation)}} ></div>
+            </li>)
           }): null}
         </ul>
       </div>
