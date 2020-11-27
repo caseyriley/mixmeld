@@ -161,6 +161,7 @@ function updateTrackGenre(e) {
             return (
               <li className={"track-ul__li"} key={index}>
                 <div className={`track-ul__li__rating ${index % 2 === 1 ? "dark": "light"}`}>
+                {trackEditState ? 
                   <form name={audio.id} onSubmit={e=> {e.preventDefault(); updateTrackRating(e)}}> 
                     <input 
                       type={"text"}
@@ -169,7 +170,9 @@ function updateTrackGenre(e) {
                       placeholder={audio.trackrating ? audio.trackrating : "🎵"} 
                     />
                     <input className={"track-artist-name-submit"} type={"submit"} />
-                  </form> 
+                  </form>  :
+                  <span className={"track-artist-rating-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.tracklocation)}} >{audio.trackrating ? audio.trackrating : "🎵"} </span>
+                }
                 </div>
                 <div className={`track-ul__li__name ${index % 2 === 1 ? "dark": "light"}`} >
                   {trackEditState ? 
