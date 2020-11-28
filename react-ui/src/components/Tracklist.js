@@ -44,12 +44,14 @@ const Tracklist = (props) => {
 // ---------------------Get-Users-Tracks----------
   const [trackArrayState, setTrackArrayState] = useState([])
   const [refreshTrackState, setRefreshTrackState] = useState(1)
+  const [organiseByState, setOrganiseByState] = useState("id")
 
   useEffect(() => {
-    // if (props.user.id === profileUser){
     const token = window.localStorage.getItem('auth_token');
-    const getUserTracks = async () => {
 
+    if (organiseByState === "id") {
+
+    const getUserTracks = async () => {
       const response = await fetch(`${API_URL}/tracks/user/${currentUser.id}`, {
         method: "GET",
         mode: "cors",
@@ -62,8 +64,58 @@ const Tracklist = (props) => {
       }
     }
     getUserTracks();
-    // }
-  }, [currentUser, refreshTrackState])
+
+    } else if (organiseByState === "trackartist") {
+
+      const getUserTracks = async () => {
+        const response = await fetch(`${API_URL}/tracks/user/trackartist/${currentUser.id}`, {
+          method: "GET",
+          mode: "cors",
+          headers: { "Authorizaion": `Bearer ${token}` }
+        })
+        if (!response.ok) { console.log("error in getUserTracks") }
+        else {
+          const json = await response.json();
+          setTrackArrayState(json.reverse());
+        }
+      }
+      getUserTracks();
+
+    } else if (organiseByState === "trackrating") {
+
+      const getUserTracks = async () => {
+        const response = await fetch(`${API_URL}/tracks/user/trackrating/${currentUser.id}`, {
+          method: "GET",
+          mode: "cors",
+          headers: { "Authorizaion": `Bearer ${token}` }
+        })
+        if (!response.ok) { console.log("error in getUserTracks") }
+        else {
+          const json = await response.json();
+          setTrackArrayState(json.reverse());
+        }
+      }
+      getUserTracks();
+
+    } else if (organiseByState === "trackname") {
+
+      const getUserTracks = async () => {
+        const response = await fetch(`${API_URL}/tracks/user/trackname/${currentUser.id}`, {
+          method: "GET",
+          mode: "cors",
+          headers: { "Authorizaion": `Bearer ${token}` }
+        })
+        if (!response.ok) { console.log("error in getUserTracks") }
+        else {
+          const json = await response.json();
+          setTrackArrayState(json.reverse());
+        }
+      }
+      getUserTracks();
+
+    }
+    
+  }, [currentUser, refreshTrackState, organiseByState])
 // -----------------------------------------------------
 // ---------------Update-Track-Rating--------------------
 function updateTrackRating(e) {
@@ -160,18 +212,6 @@ function updateTrackGenre(e) {
     setTrackEditState(false)
   }
 // ----------------------------------------------------
-// ------------------Organise-Tracklist-By-Name--------
-  function organiseTrackListByName() {
-    console.log("trackArrayState^^^^^^^^^^^^^^^^^^^^^^^",trackArrayState)
-    // let newTrackArray = trackArrayState.slice(0,);
-    // let newTrackList = {}
-    // for (let i = 0; i < newTrackArray.length; i ++){
-    //   let el = newTrackArray[i]
-    //   newTrackList[el.id] = el;
-    // }
-
-  }
-// ----------------------------------------------------
   
   return(
     <>
@@ -180,17 +220,17 @@ function updateTrackGenre(e) {
     {/* <img id={"playlist-border__texture"} src={texture} alt=""/> */}
       <div id={"playlist-c"} >
         <div id={"playlist-c__top-c"}>
-          <div id={"playlist-c__top-c__rating"}><h2>Rating</h2></div>
+          <div id={"playlist-c__top-c__rating"}><h2 onClick={()=>{setOrganiseByState("trackrating")}}>Rating</h2></div>
           <div id={"playlist-c__top-c__name"}  >
             <UploadingTrack/>
             <div id={"playlist-name-c"} >
-              <h2  onClick={organiseTrackListByName}>Name</h2>
+              <h2 onClick={()=>{setOrganiseByState("trackname")}}>Name</h2>
             </div> 
             <img className={`tracklist-edit-pen ${trackEditState ? "pen--on":""}`} src={pen} alt={""} onClick={toggleTrackEditState} />
           </div>
-          <div id={"playlist-c__top-c__artist-name"}><h2>Artist</h2></div>
-          <div id={"playlist-c__top-c__artist-duration"}><h2>Time</h2></div>
-          <div id={"playlist-c__top-c__genre-name"}><h2>Genre</h2></div>
+          <div id={"playlist-c__top-c__artist-name"}><h2 onClick={()=>{setOrganiseByState("trackartist")}}>Artist</h2></div>
+          <div id={"playlist-c__top-c__artist-duration"}><h2 onClick={()=>{setOrganiseByState("tracktime")}}>Time</h2></div>
+          <div id={"playlist-c__top-c__genre-name"}><h2 onClick={()=>{setOrganiseByState("trackgenre")}}>Genre</h2></div>
         </div>
         <ul id={"track-ul"}>
         {trackArrayState ? trackArrayState.map((audio, index) => {
