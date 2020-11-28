@@ -58,7 +58,7 @@ const Tracklist = (props) => {
       if (!response.ok) { console.log("error in getUserTracks") }
       else {
         const json = await response.json();
-        setTrackArrayState(json);
+        setTrackArrayState(json.reverse());
       }
     }
     getUserTracks();

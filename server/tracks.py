@@ -112,7 +112,7 @@ def get_user_tracks(id):
         tracks.append(track)
     # print("tracks>>>>>>>>>>>>>>",tracks.sort(key=lambda i: i["trackartist"]))
     # return jsonify(tracks)
-    return jsonify(sorted(tracks, key=lambda i: i["trackartist"]))
+    return jsonify(sorted(tracks, key=lambda i: i["id"]))
 
 
 
