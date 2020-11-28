@@ -97,6 +97,10 @@ def update_track_genre():
     return jsonify(Good='you changed the genre')
 
 
+
+
+
+
 @tracks.route("/user/<id>", methods=["GET"])
 def get_user_tracks(id):
 
@@ -106,8 +110,9 @@ def get_user_tracks(id):
         track = model_track.to_dict()
         track["user"] = model_track.user.to_safe_object()
         tracks.append(track)
-
-    return jsonify(tracks)
+    # print("tracks>>>>>>>>>>>>>>",tracks.sort(key=lambda i: i["trackartist"]))
+    # return jsonify(tracks)
+    return jsonify(sorted(tracks, key=lambda i: i["trackartist"]))
 
 
 

@@ -58,7 +58,7 @@ const Tracklist = (props) => {
       if (!response.ok) { console.log("error in getUserTracks") }
       else {
         const json = await response.json();
-        setTrackArrayState(json.reverse());
+        setTrackArrayState(json);
       }
     }
     getUserTracks();
@@ -160,6 +160,18 @@ function updateTrackGenre(e) {
     setTrackEditState(false)
   }
 // ----------------------------------------------------
+// ------------------Organise-Tracklist-By-Name--------
+  function organiseTrackListByName() {
+    console.log("trackArrayState^^^^^^^^^^^^^^^^^^^^^^^",trackArrayState)
+    // let newTrackArray = trackArrayState.slice(0,);
+    // let newTrackList = {}
+    // for (let i = 0; i < newTrackArray.length; i ++){
+    //   let el = newTrackArray[i]
+    //   newTrackList[el.id] = el;
+    // }
+
+  }
+// ----------------------------------------------------
   
   return(
     <>
@@ -171,8 +183,8 @@ function updateTrackGenre(e) {
           <div id={"playlist-c__top-c__rating"}><h2>Rating</h2></div>
           <div id={"playlist-c__top-c__name"}  >
             <UploadingTrack/>
-            <div id={"playlist-name-c"}>
-              <h2>Name</h2>
+            <div id={"playlist-name-c"} >
+              <h2  onClick={organiseTrackListByName}>Name</h2>
             </div> 
             <img className={`tracklist-edit-pen ${trackEditState ? "pen--on":""}`} src={pen} alt={""} onClick={toggleTrackEditState} />
           </div>
@@ -208,7 +220,7 @@ function updateTrackGenre(e) {
                         maxLength={100} 
                         placeholder={audio.trackname ? audio.trackname : "🎵"} 
                       />
-                      <input className={"track-artist-name-submit"} type={"submit"} />
+                      <input className={"track-artist-name-submit"} type={"submit"}  />
                     </form>
                     <img name={audio.id} className={"deleteX"} src={deleteX} alt={""} onClick={e=>{deleteTrack(e.target.name)}}/>
                   </> :
