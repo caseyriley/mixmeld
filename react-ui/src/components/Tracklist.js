@@ -43,6 +43,7 @@ const Tracklist = (props) => {
 
 // ---------------------Get-Users-Tracks----------
   const [trackArrayState, setTrackArrayState] = useState([])
+  const [refreshTrackState, setRefreshTrackState] = useState(1)
 
   useEffect(() => {
     // if (props.user.id === profileUser){
@@ -62,7 +63,7 @@ const Tracklist = (props) => {
     }
     getUserTracks();
     // }
-  }, [currentUser])
+  }, [currentUser, refreshTrackState])
 // -----------------------------------------------------
 // ---------------Update-Track-Rating--------------------
 function updateTrackRating(e) {
@@ -79,8 +80,11 @@ function updateTrackRating(e) {
       body: JSON.stringify(trackData),
     }
     fetch(`${API_URL}/tracks/track_rating`, options)
+    setRefreshTrackState(refreshTrackState + 1)
+    setTrackEditState(false)
   }
   newRating();
+
 }
 // -----------------------------------------------------
 // ---------------Update-Track-Name--------------------
@@ -95,6 +99,8 @@ function updateTrackName(e) {
       body: JSON.stringify(trackData),
     }
     fetch(`${API_URL}/tracks/track_name`, options)
+    setRefreshTrackState(refreshTrackState + 1)
+    setTrackEditState(false)
   }
   newTrackName();
 }
@@ -114,6 +120,8 @@ function updateTrackName(e) {
         body: JSON.stringify(trackData),
       }
       fetch(`${API_URL}/tracks/artist_name`, options)
+      setRefreshTrackState(refreshTrackState + 1)
+      setTrackEditState(false)
     }
     newTrack();
   }
@@ -133,6 +141,8 @@ function updateTrackGenre(e) {
       body: JSON.stringify(trackData),
     }
     fetch(`${API_URL}/tracks/genre`, options)
+    setRefreshTrackState(refreshTrackState + 1)
+    setTrackEditState(false)
   }
   newTrack();
 }
@@ -146,6 +156,8 @@ function updateTrackGenre(e) {
       body: JSON.stringify(trackData)
     }
     fetch(`${API_URL}/tracks/delete`, options)
+    setRefreshTrackState(refreshTrackState + 1)
+    setTrackEditState(false)
   }
 // ----------------------------------------------------
   
