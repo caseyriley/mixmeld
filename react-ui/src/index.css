@@ -773,6 +773,11 @@ li {
   right: 1000px;
   opacity: 0;
 }
+.deleteX {
+  height: 20px;
+  margin: 0px 5px 0px 0px;
+  filter:  brightness(250%)
+}
 .track-ul__li__duration {
   height: 30px;
   width: 10%;

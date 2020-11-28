@@ -16,14 +16,12 @@ tracks = Blueprint('tracks', __name__)
 def post_track():
 
     data = json.loads(request.data)
-    print("data??????????????????????????", data)
     track = Track(
         user_id=data["user_id"],
         trackname=data["trackname"],
         tracklocation=data["tracklocation"],
         tracktime=data["tracktime"]
     )
-    print("track??????????????????????????", track)
     db.session.add(track)
     db.session.commit()
     return jsonify(Goodjob='you posted to db')
@@ -38,11 +36,21 @@ def update_track_rating():
     rating = data["rating"]
   
     track = Track.query.filter(Track.id == track_id).first()
-    print('parameters@@@@@@@@@@@@@@@', track)
     track.trackrating = rating
     db.session.commit()
-    print('eeeeeeeedddddiiiiitt aaaarttttiiiiist nnnnnaaaaaammmeeeee')
     return jsonify(Good='you changed the track rating')
+
+
+@tracks.route('/delete', methods=['DELETE'])
+def delete_track():
+
+    data = json.loads(request.data)
+    track_id = data["id"]
+
+    track = Track.query.filter(Track.id == track_id).first()
+    db.session.delete(track)
+    db.session.commit()
+    return jsonify(Good='you deleted a track')
 
 
     

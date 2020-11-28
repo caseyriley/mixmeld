@@ -4,6 +4,7 @@ import { API_URL } from '../config';
 
 import UploadingTrack from './UploadingTrack';
 import pen from '../images/pen.png';
+import deleteX from '../images/deleteX.png';
 
 
 const Tracklist = (props) => {
@@ -136,6 +137,17 @@ function updateTrackGenre(e) {
   newTrack();
 }
 // ------------------------------------------------------
+// ---------------Delete-Track-------------------------
+  function deleteTrack(trackId){
+    const trackData = {id: trackId}
+    const options = {
+      method: 'DELETE',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(trackData)
+    }
+    fetch(`${API_URL}/tracks/delete`, options)
+  }
+// ----------------------------------------------------
   
   return(
     <>
@@ -176,15 +188,18 @@ function updateTrackGenre(e) {
                 </div>
                 <div className={`track-ul__li__name ${index % 2 === 1 ? "dark": "light"}`} >
                   {trackEditState ? 
-                  <form className={"tracklist-form"} name={audio.id} onSubmit={e=> {e.preventDefault(); updateTrackName(e)}}> 
-                    <input 
-                      type={"text"}
-                      className={"track-artist-name-input"} 
-                      maxLength={100} 
-                      placeholder={audio.trackname ? audio.trackname : "🎵"} 
-                    />
-                    <input className={"track-artist-name-submit"} type={"submit"} />
-                  </form> :
+                  <>
+                    <form className={"tracklist-form"} name={audio.id} onSubmit={e=> {e.preventDefault(); updateTrackName(e)}}> 
+                      <input 
+                        type={"text"}
+                        className={"track-artist-name-input"} 
+                        maxLength={100} 
+                        placeholder={audio.trackname ? audio.trackname : "🎵"} 
+                      />
+                      <input className={"track-artist-name-submit"} type={"submit"} />
+                    </form>
+                    <img name={audio.id} className={"deleteX"} src={deleteX} alt={""} onClick={e=>{deleteTrack(e.target.name)}}/>
+                  </> :
                   <span className={"track-artist-name-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.tracklocation)}} >{audio.trackname ? audio.trackname : "🎵"} </span>
                   }
                   </div>
