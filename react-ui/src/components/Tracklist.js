@@ -76,7 +76,7 @@ const Tracklist = (props) => {
         if (!response.ok) { console.log("error in getUserTracks") }
         else {
           const json = await response.json();
-          setTrackArrayState(json.reverse());
+          setTrackArrayState(json);
         }
       }
       getUserTracks();
@@ -92,7 +92,7 @@ const Tracklist = (props) => {
         if (!response.ok) { console.log("error in getUserTracks") }
         else {
           const json = await response.json();
-          setTrackArrayState(json.reverse());
+          setTrackArrayState(json);
         }
       }
       getUserTracks();
@@ -108,7 +108,23 @@ const Tracklist = (props) => {
         if (!response.ok) { console.log("error in getUserTracks") }
         else {
           const json = await response.json();
-          setTrackArrayState(json.reverse());
+          setTrackArrayState(json);
+        }
+      }
+      getUserTracks();
+
+    } else if (organiseByState === "trackgenre") {
+
+      const getUserTracks = async () => {
+        const response = await fetch(`${API_URL}/tracks/user/trackgenre/${currentUser.id}`, {
+          method: "GET",
+          mode: "cors",
+          headers: { "Authorizaion": `Bearer ${token}` }
+        })
+        if (!response.ok) { console.log("error in getUserTracks") }
+        else {
+          const json = await response.json();
+          setTrackArrayState(json);
         }
       }
       getUserTracks();
