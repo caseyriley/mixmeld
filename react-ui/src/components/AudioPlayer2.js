@@ -178,7 +178,7 @@ const AudioPlayer2 = (props)=>{
   const [randomState, setRandomState] = useState("not-random")
   function toggleRandom(){
     if (randomState === "not-random"){
-      setRandomState("random-play");
+      setRandomState("pl2-random-play");
     } else {
       setRandomState("not-random")
     }
@@ -225,9 +225,9 @@ const AudioPlayer2 = (props)=>{
 
   return(
     <>
-      <div id={"main-page"}>
-        <h1 id={"main-page__title"} >Formless Audio Player</h1>
-        <div id={"audio"} >
+      <div id={"pl2-main-page"}>
+        <h1 id={"pl2-main-page__title"} >Formless Audio Player</h1>
+        <div id={"pl2-audio"} >
           <audio
             id={"audio"}
             ref={media}
@@ -239,16 +239,16 @@ const AudioPlayer2 = (props)=>{
             Your browser does not support the
             <code>audio</code> element.
           </audio>
-          <div id={"audio__top"} >
-            <p id={"audio__top__song-name"}>{songNameState}</p>
+          <div id={"pl2-audio__top"} >
+            <p id={"pl2-audio__top__song-name"}>{songNameState}</p>
           </div>
-          <div  id={"audio__middle"}>
-            <div className={"controls"}>
-              <img className={"fast-forward"} ref={fwd} src={fastForward} alt={""} onClick={mediaForward} ></img>
-              <img className={"play"} ref={play} src={playButton} alt={""} onClick={playPauseMedia} ></img>
+          <div  id={"pl2-audio__middle"}>
+            <div className={"pl2-controls"}>
+              <img className={"pl2-fast-forward"} ref={fwd} src={fastForward} alt={""} onClick={mediaForward} ></img>
+              <img className={"pl2-play"} ref={play} src={playButton} alt={""} onClick={playPauseMedia} ></img>
               <div id={"volume-knob-c"}>
                 <VolumeKnobUi volumeKnob={volumeKnob} volumeLevel={volumeLevel}/>
-                <div class="slider-wrapper">
+                <div class="pl2-slider-wrapper">
                   <input type={"range"} min={"-136"} max={"136"}
                   step={"1"}
                   ref={volumeSlider}
@@ -256,21 +256,21 @@ const AudioPlayer2 = (props)=>{
                   ></input>
                 </div>
               </div>
-              <div className={"stop"} onClick={stopMedia} ></div>
-              <img  className={"rewind"} ref={rwd} src={fastForward} alt={""} onClick={mediaBackward} ></img>
+              <div className={"pl2-stop"} onClick={stopMedia} ></div>
+              <img  className={"pl2-rewind"} ref={rwd} src={fastForward} alt={""} onClick={mediaBackward} ></img>
             </div>
           </div>
-          <div id={"audio__bottom-c"} > 
-            <div id={"timer-loop-random-c"}>
-              <img className={`random ${randomState}`} src={random} alt={""} onClick={toggleRandom}></img>
-              <div className="timer">
-                <span id={"audio__bottom__time__start"} >{timeState}</span>
+          <div id={"pl2-audio__bottom-c"} > 
+            <div id={"pl2-timer-loop-random-c"}>
+              <img className={`s-random ${randomState}`} src={random} alt={""} onClick={toggleRandom}></img>
+              <div className="pl2-timer">
+                <span id={"pl2-audio__bottom__time__start"} >{timeState}</span>
               </div>
-              <img  className={`loop ${loopState ? "looping" : "not-looping"}`} src={loop} alt={""} onClick={toggleLoop}></img>
+              <img  className={`s-loop ${loopState ? "pl2-looping" : "not-looping"}`} src={loop} alt={""} onClick={toggleLoop}></img>
             </div>
-            <div id={"audio__bottom"} >
-              <div className={"audio__bottom__playhead"} ref={audioBottomPlayhead} >
-                <div className={"audio__bottom__playhead__left"} ref={timerBar} ></div>
+            <div id={"pl2-audio__bottom"} >
+              <div className={"pl2-audio__bottom__playhead"} ref={audioBottomPlayhead} >
+                <div className={"pl2-audio__bottom__playhead__left"} ref={timerBar} ></div>
                 <TimeRemaining media={media}/>
               </div>
             </div>
