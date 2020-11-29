@@ -9,6 +9,7 @@ import random from '../images/random.png';
 import VolumeKnobUi from './VolumeKnobUi';
 import Tracklist2 from './Tracklist2';
 import TimeRemaining from './TimeRemaining';
+import VolumeUiSlider from './VolumeUiSlider';
 
 
 
@@ -197,15 +198,15 @@ const AudioPlayer2 = (props)=>{
     media.current.volume = vol;
   }
 
-  useEffect(()=> {
-    if (volumeKnob){
-      volumeKnob.current.style.transform= `rotate(${volumeState}deg)`;
-    }
-    if (volumeLevel){
-      volumeLevel.current.style.transform= `rotate(${volumeState}deg)`;
-    }
+  // useEffect(()=> {
+  //   if (volumeKnob){
+  //     volumeKnob.current.style.transform= `rotate(${volumeState}deg)`;
+  //   }
+  //   if (volumeLevel){
+  //     volumeLevel.current.style.transform= `rotate(${volumeState}deg)`;
+  //   }
     
-  },[volumeState])
+  // },[volumeState])
 // ---------------------------------------------
 //---------------Audio-Tracks-------------------
 
@@ -247,7 +248,8 @@ const AudioPlayer2 = (props)=>{
               <div className={"pl2-controls"}>
                 <img className={"pl2-fast-forward"} ref={fwd} src={fastForward} alt={""} onClick={mediaForward} ></img>
                 <img className={"pl2-play"} ref={play} src={playButton} alt={""} onClick={playPauseMedia} ></img>
-                <div id={"volume-knob-c"}>
+                <VolumeUiSlider/>
+                {/* <div id={"volume-knob-c"}>
                   <VolumeKnobUi volumeKnob={volumeKnob} volumeLevel={volumeLevel}/>
                   <div class="pl2-slider-wrapper">
                     <input type={"range"} min={"-136"} max={"136"}
@@ -256,7 +258,7 @@ const AudioPlayer2 = (props)=>{
                     onChange={changeVolume}
                     ></input>
                   </div>
-                </div>
+                </div> */}
                 <div className={"pl2-stop"} onClick={stopMedia} ></div>
                 <img  className={"pl2-rewind"} ref={rwd} src={fastForward} alt={""} onClick={mediaBackward} ></img>
               </div>
