@@ -20,7 +20,12 @@ def post_track():
         user_id=data["user_id"],
         trackname=data["trackname"],
         tracklocation=data["tracklocation"],
-        tracktime=data["tracktime"]
+        tracktime=data["tracktime"],
+        trackartist="",
+        trackgenre="",
+        trackrating="",
+        trackart=""
+
     )
     db.session.add(track)
     db.session.commit()
@@ -143,6 +148,19 @@ def get_user_tracks_sort_by_trackgenre(id):
         track["user"] = model_track.user.to_safe_object()
         tracks.append(track)
     return jsonify(sorted(tracks, key=lambda i: i["trackgenre"].lower()))
+
+
+
+@tracks.route("/user/tracktime/<id>", methods=["GET"])
+def get_user_tracks_sort_by_tracktime(id):
+
+    model_tracks = Track.query.filter(Track.user_id == id).all()
+    tracks = []
+    for model_track in model_tracks:
+        track = model_track.to_dict()
+        track["user"] = model_track.user.to_safe_object()
+        tracks.append(track)
+    return jsonify(sorted(tracks, key=lambda i: i["tracktime"].lower()))
 
 
 
