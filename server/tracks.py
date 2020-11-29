@@ -106,7 +106,7 @@ def get_user_tracks_sort_by_trackartist(id):
         track = model_track.to_dict()
         track["user"] = model_track.user.to_safe_object()
         tracks.append(track)
-    return jsonify(sorted(tracks, key=lambda i: i["trackartist"]))
+    return jsonify(sorted(tracks, key=lambda i: i["trackartist"].lower()))
 
 
 @tracks.route("/user/trackrating/<id>", methods=["GET"])
@@ -118,7 +118,7 @@ def get_user_tracks_sort_by_trackrating(id):
         track = model_track.to_dict()
         track["user"] = model_track.user.to_safe_object()
         tracks.append(track)
-    return jsonify(sorted(tracks, key=lambda i: i["trackrating"]))
+    return jsonify(sorted(tracks, key=lambda i: i["trackrating"].lower()))
 
 
 @tracks.route("/user/trackname/<id>", methods=["GET"])
@@ -130,7 +130,7 @@ def get_user_tracks_sort_by_trackname(id):
         track = model_track.to_dict()
         track["user"] = model_track.user.to_safe_object()
         tracks.append(track)
-    return jsonify(sorted(tracks, key=lambda i: i["trackname"]))
+    return jsonify(sorted(tracks, key=lambda i: i["trackname"].lower()))
 
 
 @tracks.route("/user/trackgenre/<id>", methods=["GET"])
