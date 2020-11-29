@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import S3FileUpload from 'react-s3';
 import { API_URL } from '../config';
-import useFormatTime from './useFormatTime';
 
 const UploadingTrack = (props) => {
   
@@ -46,12 +45,6 @@ const UploadingTrack = (props) => {
     return formattedTime;
   }
 
-  // const [formattedTime, setFormattedTime] = useState("nothing was formatted")
-
-  // const formatTimeFunc = async (time) => {
-  //   const fT = formatTime(time);
-  //   setFormattedTime(fT)
-  // }
 
 
   const upload = (e) => {
@@ -60,7 +53,6 @@ const UploadingTrack = (props) => {
 
     const newTrack = async (uploadLocation) => {
       const trackData = { user_id: currentUser.id, trackname: trackName, tracklocation: uploadLocation, tracktime: formattedTime}
-      console.log("trackData^^^^^^^^^^^^^^^^^^^^^^", trackData)
       const options = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -85,34 +77,9 @@ const UploadingTrack = (props) => {
             newTrack(location)
           }
           inner()
-        console.log('formattedTime88888888888888888',formattedTime)
         },false);
-        console.log('formattedTime99999999999999999',formattedTime)
 // -------------------------------------------------------------
       })
-
-
-        
-      
-//       .then(()=>{
-
-// // ---------------Get-TracK-Length-Variable---------------------
-//         console.log("data.location========>", location)
-//         let au = document.createElement('audio');
-//         au.src = location;
-//         au.addEventListener('loadedmetadata', function(){
-//             const duration = au.duration;
-
-//             console.log("The duration of the song is of: " + duration + " seconds");
-//         },false);
-// // -------------------------------------------------------------
-
-//       })
-      // .then(() => window.location.reload())
-
-      // .catch((err) => {
-      //   alert(err)
-      // })
        
     }
 
@@ -120,9 +87,9 @@ const UploadingTrack = (props) => {
 
   return (
     <>
-      <div id={"uploading-track-c"}>
-        <span id={"uploading-track-c__span"}>Drop Tracks Here</span>
-        <input id={"uploading-track"} type="file" onChange={upload} />
+      <div id={"s-uploading-track-c"}>
+        <span id={"s-uploading-track-c__span"}>Drop Tracks Here</span>
+        <input id={"s-uploading-track"} type="file" onChange={upload} />
       </div>
     </>
 

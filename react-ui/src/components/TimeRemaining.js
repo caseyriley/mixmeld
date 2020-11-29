@@ -15,7 +15,7 @@ const TimeRemaining = (props)=>{
     }
   })
   return (
-    <span className={"audio__bottom__playhead__time-remaining"}>
+    <span className={"s-audio__bottom__playhead__time-remaining"}>
       {`${props.media.current ? new Date((props.media.current.duration ? props.media.current.duration - Math.floor(props.media.current.currentTime) : 0) * 1000).toISOString().substr(startState, endState) : 0}`}
     </span>
   )

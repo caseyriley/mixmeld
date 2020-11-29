@@ -4,7 +4,7 @@ const MainNav = (props)=>{
 
   async function switchAudioPlayer(player){
     let clearAllIntervals = await function (e) {
-      for(let i=0; i<1000; i++)
+      for(let i=0; i<100; i++)
       {
           window.clearInterval(i);
       }

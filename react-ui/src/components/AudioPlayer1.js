@@ -10,34 +10,24 @@ import VolumeKnobUi from './VolumeKnobUi';
 import Tracklist from './Tracklist';
 import TimeRemaining from './TimeRemaining';
 
+
+
+
 let vol = .5;
 
-
-
-
-const AudioPlayer = ()=>{
+const AudioPlayer2 = (props)=>{
   const media = useRef()
-  const mediaDuration = useRef()
-  // const media = document.querySelector('audio');
-// const audioTacks = document.querySelector('audio').audioTracks;
   const play = useRef()
-  // const play = document.querySelector('.play');
 
   const rwd = useRef();
   const fwd = useRef();
-  // const rwd = document.querySelector('.rewind');
-  // const fwd = document.querySelector('.fast-forward');
+
   const audioBottomPlayhead = useRef();
   const timerBar = useRef();
-  // const audioBottomPlayhead = document.querySelector('.audio__bottom__playhead');
-  // const timerBar = document.querySelector('.audio__bottom__playhead__left');
 
   const volumeKnob =useRef();
   const volumeLevel =useRef();
   const volumeSlider =useRef();
-  // const volumeKnob = document.querySelector('.knob')
-  // const volumeLevel = document.querySelector('.vol-level')
-  // const volumeSlider = document.querySelector('.slider-wrapper input')
 
 
   const [timeState, setTimeState] = useState(":");
@@ -77,7 +67,6 @@ const AudioPlayer = ()=>{
   function stopMedia() {
     media.current.pause();
     media.current.currentTime = 0;
-    // play.setAttribute('data-icon','P');
     play.current.src = playButton;
     rwd.current.classList.remove('active');
     fwd.current.classList.remove('active');
@@ -143,7 +132,6 @@ const AudioPlayer = ()=>{
       if (intervalFwdState){
         clearInterval(intervalFwdState.intervalFwd);
       }
-      // stopMedia();
     } else {
       media.current.currentTime += 3;
     }
@@ -151,7 +139,6 @@ const AudioPlayer = ()=>{
 
   useEffect(()=>{
     setInterval(() => {
-      
       if (media){
         let minutes = Math.floor(media.current.currentTime / 60);
         let seconds = Math.floor(media.current.currentTime - minutes * 60);
@@ -191,7 +178,7 @@ const AudioPlayer = ()=>{
   const [randomState, setRandomState] = useState("not-random")
   function toggleRandom(){
     if (randomState === "not-random"){
-      setRandomState("random-play");
+      setRandomState("s-random-play");
     } else {
       setRandomState("not-random")
     }
@@ -238,9 +225,9 @@ const AudioPlayer = ()=>{
 
   return(
     <>
-      <div id={"main-page"}>
-        <h1 id={"main-page__title"} >Formless Audio Player</h1>
-        <div id={"audio"} >
+      <div id={"s-main-page"}>
+        <h1 id={"s-main-page__title"} >Formless Audio Player</h1>
+        <div id={"s-audio"} >
           <audio
             id={"audio"}
             ref={media}
@@ -252,40 +239,38 @@ const AudioPlayer = ()=>{
             Your browser does not support the
             <code>audio</code> element.
           </audio>
-          <div id={"audio__top"} >
-            <p id={"audio__top__song-name"}>{songNameState}</p>
+          <div id={"s-audio__top"} >
+            <p id={"s-audio__top__song-name"}>{songNameState}</p>
           </div>
-          <div  id={"audio__middle"}>
-            <div className={"controls"}>
-              <img className={"fast-forward"} ref={fwd} src={fastForward} alt={""} onClick={mediaForward} ></img>
-              <img className={"play"} ref={play} src={playButton} alt={""} onClick={playPauseMedia} ></img>
+          <div  id={"s-audio__middle"}>
+            <div className={"s-controls"}>
+              <img className={"s-fast-forward"} ref={fwd} src={fastForward} alt={""} onClick={mediaForward} ></img>
+              <img className={"s-play"} ref={play} src={playButton} alt={""} onClick={playPauseMedia} ></img>
               <div id={"volume-knob-c"}>
                 <VolumeKnobUi volumeKnob={volumeKnob} volumeLevel={volumeLevel}/>
-                <div class="slider-wrapper">
+                <div class="s-slider-wrapper">
                   <input type={"range"} min={"-136"} max={"136"}
-                  //  value={"7"} 
                   step={"1"}
                   ref={volumeSlider}
                   onChange={changeVolume}
                   ></input>
                 </div>
               </div>
-              {/* <div id={"audio__volume"}></div> */}
-              <div className={"stop"} onClick={stopMedia} ></div>
-              <img  className={"rewind"} ref={rwd} src={fastForward} alt={""} onClick={mediaBackward} ></img>
+              <div className={"s-stop"} onClick={stopMedia} ></div>
+              <img  className={"s-rewind"} ref={rwd} src={fastForward} alt={""} onClick={mediaBackward} ></img>
             </div>
           </div>
-          <div id={"audio__bottom-c"} > 
-            <div id={"timer-loop-random-c"}>
-              <img className={`random ${randomState}`} src={random} alt={""} onClick={toggleRandom}></img>
-              <div className="timer">
-                <span id={"audio__bottom__time__start"} >{timeState}</span>
+          <div id={"s-audio__bottom-c"} > 
+            <div id={"s-timer-loop-random-c"}>
+              <img className={`s-random ${randomState}`} src={random} alt={""} onClick={toggleRandom}></img>
+              <div className="s-timer">
+                <span id={"s-audio__bottom__time__start"} >{timeState}</span>
               </div>
-              <img  className={`loop ${loopState ? "looping" : "not-looping"}`} src={loop} alt={""} onClick={toggleLoop}></img>
+              <img  className={`s-loop ${loopState ? "s-looping" : "not-looping"}`} src={loop} alt={""} onClick={toggleLoop}></img>
             </div>
-            <div id={"audio__bottom"} >
-              <div className={"audio__bottom__playhead"} ref={audioBottomPlayhead} >
-                <div className={"audio__bottom__playhead__left"} ref={timerBar} ></div>
+            <div id={"s-audio__bottom"} >
+              <div className={"s-audio__bottom__playhead"} ref={audioBottomPlayhead} >
+                <div className={"s-audio__bottom__playhead__left"} ref={timerBar} ></div>
                 <TimeRemaining media={media}/>
               </div>
             </div>
@@ -297,4 +282,4 @@ const AudioPlayer = ()=>{
     </>
   )
 }
-export default AudioPlayer;
+export default AudioPlayer2;
