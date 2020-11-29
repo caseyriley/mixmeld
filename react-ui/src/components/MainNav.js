@@ -2,11 +2,23 @@ import React from 'react';
 
 const MainNav = (props)=>{
 
-
+  async function switchAudioPlayer(player){
+    let clearAllIntervals = await function (e) {
+      for(let i=0; i<1000; i++)
+      {
+          window.clearInterval(i);
+      }
+    }
+    clearAllIntervals()
+    props.SetAudioSwitchState(player)
+  }
   return(
     <div id={"main-nav"}>
-      <div className={"main-nav__option"} onClick={()=>(props.switchPlayer("audioPlayer1"))} >
+      <div className={"main-nav__option"} onClick={()=>{switchAudioPlayer("AudioPlayer1")}} >
         <span>Stereo</span>
+      </div>
+      <div className={"main-nav__option"} onClick={()=>{switchAudioPlayer("AudioPlayer2")}} >
+        <span>Track List</span>
       </div>
       <div className={"main-nav__option"}>
         <span>Playlist</span>

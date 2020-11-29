@@ -6,13 +6,10 @@ import MainNav from './MainNav';
 
 
 const MainPage = () => {
-  const [audioSwitchState, SetAudioSwitchState] = useState("AudioPlayer1");
-  function switchPlayer(player){
-    SetAudioSwitchState(player);
-  }
+  const [audioSwitchState, SetAudioSwitchState] = useState("AudioPlayer2");
   return (
     <>
-      <MainNav switchPlayer={switchPlayer} audioSwitchState={audioSwitchState} />
+      <MainNav SetAudioSwitchState={SetAudioSwitchState} audioSwitchState={audioSwitchState} />
       <AudioPlayerSwitch audioSwitchState={audioSwitchState}/>
     </>
   )
