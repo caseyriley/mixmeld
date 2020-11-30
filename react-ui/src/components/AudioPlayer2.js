@@ -195,6 +195,9 @@ const AudioPlayer2 = (props)=>{
     if (vol > 0.98) {
       vol = 1;
     }
+    if (vol < 0.04) {
+      vol = 0;
+    }
     console.log(vol)
     media.current.volume = vol;
   }
@@ -266,11 +269,11 @@ const AudioPlayer2 = (props)=>{
             </div>
             <div id={"pl2-audio__bottom-c"} > 
               <div id={"pl2-timer-loop-random-c"}>
-                <img className={`s-random ${randomState}`} src={random} alt={""} onClick={toggleRandom}></img>
+                <img className={`pl2-random ${randomState}`} src={random} alt={""} onClick={toggleRandom}></img>
                 <div className="pl2-timer">
                   <span id={"pl2-audio__bottom__time__start"} >{timeState}</span>
                 </div>
-                <img  className={`s-loop ${loopState ? "pl2-looping" : "not-looping"}`} src={loop} alt={""} onClick={toggleLoop}></img>
+                <img  className={`pl2-loop ${loopState ? "pl2-looping" : "not-looping"}`} src={loop} alt={""} onClick={toggleLoop}></img>
               </div>
               <div id={"pl2-audio__bottom"} >
                 <div className={"pl2-audio__bottom__playhead"} ref={audioBottomPlayhead} >
