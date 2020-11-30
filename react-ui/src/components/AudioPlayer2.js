@@ -248,7 +248,7 @@ const AudioPlayer2 = (props)=>{
               <div className={"pl2-controls"}>
                 <img className={"pl2-fast-forward"} ref={fwd} src={fastForward} alt={""} onClick={mediaForward} ></img>
                 <img className={"pl2-play"} ref={play} src={playButton} alt={""} onClick={playPauseMedia} ></img>
-                <VolumeUiSlider/>
+                <VolumeUiSlider volumeSlider={volumeSlider} changeVolume={changeVolume}/>
                 {/* <div id={"volume-knob-c"}>
                   <VolumeKnobUi volumeKnob={volumeKnob} volumeLevel={volumeLevel}/>
                   <div class="pl2-slider-wrapper">

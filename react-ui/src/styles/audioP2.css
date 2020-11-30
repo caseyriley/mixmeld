@@ -39,8 +39,9 @@
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  background: rgb(175,0,255);
-  background: linear-gradient(45deg, rgba(175,0,255,1) 0%, rgba(255,0,215,1) 28%, rgba(0,212,255,1) 100%);
+  /* background: rgb(175,0,255); */
+  /* background: linear-gradient(45deg, rgba(175,0,255,1) 0%, rgba(255,0,215,1) 28%, rgba(0,212,255,1) 100%); */
+  background-color: rgb(92, 92, 92);
   /* box-shadow: 4px 4px 0 rgb(239, 142, 248), 4px -4px 0 #25ff99, -4px 4px 0 #56caf8, -4px -4px 0 #56caf8, 4px 0px 0 #f7b867, 0px 4px 0 #dd4338, -4px 0px 0 #0c6fe9, 0px -4px 0 #f010e5; */
 }
 .pl2-controls{
@@ -466,17 +467,37 @@ div.volume-control img {
   pointer-events: none;
 }
 /* ----------slider------------ */
-div.control-2
+.control-2
 {
   position: relative;
+  width: 55px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  
+
   /* margin-top: 70px; */
   /* margin-left: 146px; */
   transform: rotate(90deg);
+  border: 1px solid green;
+  pointer-events: none;
+
+}
+.pl2-slider-input {
+  transform: rotate(-90deg);
+  position: absolute;
+  top: 91px;
+  left: -25px;
+  width: 100px;
+  opacity: .5;
+  pointer-events: all;
 }
 
 div.control-2 span.eq
 {
   position: relative;
+  top: 50px;
+  left: 22px;
   /* width: 40px; */
   width: 20px;
   /* height: 200px; */
@@ -484,11 +505,14 @@ div.control-2 span.eq
   display: inline-block;
   border-radius: 100px;
   border: 1px solid rgba(255,255,255,0.05);
+  /* border: 1px solid rgba(255,255,255); */
   margin-right: 45px;
   box-shadow: inset 0 0 65px rgba(0,0,0,0.4),
               inset 0 10px 15px rgba(0,0,0,0.3),
               inset 0 -10px 15px rgba(0,0,0,0.3),
               0 0 5px rgba(0,0,0,0.7);
+  
+    
 }
 
 div.control-2 span.eq:before,
@@ -497,7 +521,7 @@ div.control-2 span.eq:after
   position: absolute;
   content: '';
   /* width: 10px; */
-  width: 5px;
+  width: 3px;
   display: inline-block;
   
   /* top: 50%; */
@@ -512,10 +536,12 @@ div.control-2 span.eq:after
 div.control-2 span.eq:before
 {
   position: relative;
+  left: 3px;
   margin: 0px 0px 0px 0px;
   z-index: 8;
   /* height: 160px; */
   height: 80px;
+  /* border: 1px solid black; */
   box-shadow: inset 0 0 15px rgba(0,0,0,0.7),
               inset 0 7px 10px -2px rgba(0,0,0,0.5),
               inset 0 -7px 10px -2px rgba(0,0,0,0.5);
@@ -523,9 +549,12 @@ div.control-2 span.eq:before
 
 div.control-2 span.eq:after
 {
+  position: relative;
+  top: 10px;
+  left: 0px;
   z-index: 9;
   /* height: 160px; */
-  height: 80px;
+  height: 70px;
   background: #05d4f4;
   margin: 0px 0px 0px 0px;
 
@@ -536,14 +565,14 @@ div.control-2 span.eq:after
 span.eq span.eq-level
 {
   position: absolute;
- 
+  
   /* width: 50px; */
   width: 20px;
   /* height: 75px; */
   height: 30px;
   display: inline-block;
   background: #373542;
-  left: -0px;
+  left: -5px;
   bottom: 25px;
   /* margin-left: -5px; */
   margin-top: 0px;
@@ -623,13 +652,13 @@ div.control-2 span.eq-3 span.eq-level
   margin-top: 35px;
 }
 
-div.control-2 span.text-1
+.text-1
 {
   position: absolute;
   width: 100%;
   display: inline-block;
   top: 0;
-  margin-top: -25px;
+  margin: -15px 0px 0px -5px;
   text-align: center;
   color: rgba(255,255,255,0.4);
   font-size: 12px;
@@ -639,13 +668,15 @@ div.control-2 span.text-1
   transform: rotate(-90deg);
 }
 
-div.control-2 span.text-2
+.text-2
 {
   position: absolute;
   width: 100%;
   display: inline-block;
   bottom: 0;
-  margin-bottom: -25px;
+  margin: 0px 0px 0px -5px;
+  margin-bottom: -48px;
+  
   text-align: center;
   color: rgba(255,255,255,0.4);
   font-size: 12px;
