@@ -231,7 +231,7 @@ const AudioPlayer2 = (props)=>{
   return(
     <>
       <div id={"pl2-main-page"}>
-        <h1 id={"pl2-main-page__title"} >Formless Audio Player</h1>
+        {/* <h1 id={"pl2-main-page__title"} >Formless Audio Player</h1> */}
         <div id={"pl2-audio-tracklist-c"}>
           <div id={"pl2-audio"} >
             <audio
@@ -245,13 +245,27 @@ const AudioPlayer2 = (props)=>{
               Your browser does not support the
               <code>audio</code> element.
             </audio>
-            <div id={"pl2-audio__top"} >
-              <p id={"pl2-audio__top__song-name"}>{songNameState}</p>
-            </div>
+            {/* <div id={"pl2-audio__top"} >
+              
+            </div> */}
             <div  id={"pl2-audio__middle"}>
               <div className={"pl2-controls"}>
-                <img className={"pl2-fast-forward"} ref={fwd} src={fastForward} alt={""} onClick={mediaForward} ></img>
+                <img className={`pl2-random ${randomState}`} src={random} alt={""} onClick={toggleRandom}></img>
+                <img  className={"pl2-rewind"} ref={rwd} src={fastForward} alt={""} onClick={mediaBackward} ></img>
                 <img className={"pl2-play"} ref={play} src={playButton} alt={""} onClick={playPauseMedia} ></img>
+                <div className={"pl2-stop"} onClick={stopMedia} ></div>
+                <img className={"pl2-fast-forward"} ref={fwd} src={fastForward} alt={""} onClick={mediaForward} ></img>
+                <img  className={`pl2-loop ${loopState ? "pl2-looping" : "not-looping"}`} src={loop} alt={""} onClick={toggleLoop}></img>
+                <div id={"pl2-audio__bottom"} >
+                <p id={"pl2-audio__top__song-name"}>{songNameState}</p>
+                <div className={"pl2-audio__bottom__playhead"} ref={audioBottomPlayhead} >
+                  <div className={"pl2-audio__bottom__playhead__left"} ref={timerBar} ></div>
+                    <div className="pl2-timer">
+                      <span id={"pl2-audio__bottom__time__start"} >{timeState}</span>
+                    </div>
+                    <TimeRemaining media={media}/>
+                  </div>
+                </div>
                 <VolumeUiSlider volumeLevel={volumeLevel} volumeFader={volumeFader} volumeSlider={volumeSlider} changeVolume={changeVolume}/>
                 {/* <div id={"volume-knob-c"}>
                   <VolumeKnobUi volumeKnob={volumeKnob} volumeLevel={volumeLevel}/>
@@ -263,25 +277,18 @@ const AudioPlayer2 = (props)=>{
                     ></input>
                   </div>
                 </div> */}
-                <div className={"pl2-stop"} onClick={stopMedia} ></div>
-                <img  className={"pl2-rewind"} ref={rwd} src={fastForward} alt={""} onClick={mediaBackward} ></img>
+                
+                
               </div>
             </div>
-            <div id={"pl2-audio__bottom-c"} > 
+            {/* <div id={"pl2-audio__bottom-c"} > 
               <div id={"pl2-timer-loop-random-c"}>
-                <img className={`pl2-random ${randomState}`} src={random} alt={""} onClick={toggleRandom}></img>
-                <div className="pl2-timer">
-                  <span id={"pl2-audio__bottom__time__start"} >{timeState}</span>
-                </div>
-                <img  className={`pl2-loop ${loopState ? "pl2-looping" : "not-looping"}`} src={loop} alt={""} onClick={toggleLoop}></img>
+                
+                
+                
               </div>
-              <div id={"pl2-audio__bottom"} >
-                <div className={"pl2-audio__bottom__playhead"} ref={audioBottomPlayhead} >
-                  <div className={"pl2-audio__bottom__playhead__left"} ref={timerBar} ></div>
-                  <TimeRemaining media={media}/>
-                </div>
-              </div>
-            </div>
+              
+            </div> */}
           </div>
         
         <Tracklist2 setTrack={setTrack}/>

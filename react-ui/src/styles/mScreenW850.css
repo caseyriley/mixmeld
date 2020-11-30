@@ -1,16 +1,32 @@
 @media screen and (max-width: 850px){
-
-  #playlist-c__top-c__rating h2,
-  #playlist-c__top-c__name h2,
-  #playlist-c__top-c__artist-name h2,
-  #playlist-c__top-c__genre-name h2,
-  #playlist-c__top-c__artist-duration h2 {
+  /* -------Audio-Player-One------ */
+  #s-playlist-c__top-c__rating h2,
+  #s-playlist-c__top-c__name h2,
+  #s-playlist-c__top-c__artist-name h2,
+  #s-playlist-c__top-c__genre-name h2,
+  #s-playlist-c__top-c__artist-duration h2 {
   font-size: 15px;
 }
-  .track-ul__li {
+  .s-track-ul__li {
     font-size: 12px;
   }
-  #uploading-track-c__span{
+  #s-uploading-track-c__span{
     font-size: 10px;
   }
+  /* ----------------------------- */
+  /* -----------Audio-Player-Two----- */
+  #pl2-playlist-c__top-c__rating h2,
+  #pl2-playlist-c__top-c__name h2,
+  #pl2-playlist-c__top-c__artist-name h2,
+  #pl2-playlist-c__top-c__genre-name h2,
+  #pl2-playlist-c__top-c__artist-duration h2 {
+  font-size: 15px;
+}
+  .pl2-track-ul__li {
+    font-size: 12px;
+  }
+  #pl2-uploading-track-c__span{
+    font-size: 10px;
+  }
+  /* -------------------------------- */
 }

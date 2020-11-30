@@ -1,32 +1,58 @@
 @media screen and (max-width: 650px){
-
-  #audio{
+  /* -------Audio-Player-One------ */
+  #s-audio{
     width: 470px;
   }
-  #playlist-c__top-c__rating h2,
-  #playlist-c__top-c__name h2,
-  #playlist-c__top-c__artist-name h2,
-  #playlist-c__top-c__genre-name h2,
-  #playlist-c__top-c__artist-duration h2 {
+  #s-playlist-c__top-c__rating h2,
+  #s-playlist-c__top-c__name h2,
+  #s-playlist-c__top-c__artist-name h2,
+  #s-playlist-c__top-c__genre-name h2,
+  #s-playlist-c__top-c__artist-duration h2 {
   font-size: 11px;
 }
-  .track-ul__li {
+  .s-track-ul__li {
     font-size: 12px;
 }
 
-#uploading-track-c__span{
+#s-uploading-track-c__span{
   font-size: 8px;
 }
-#playlist-c__top-c__rating h2,
-#playlist-c__top-c__artist-name h2,
-#playlist-c__top-c__artist-duration h2,
-#playlist-c__top-c__genre-name h2 {
+#s-playlist-c__top-c__rating h2,
+#s-playlist-c__top-c__artist-name h2,
+#s-playlist-c__top-c__artist-duration h2,
+#s-playlist-c__top-c__genre-name h2 {
   margin-top: 3px;
 }
-#playlist-name-c h2 {
+#s-playlist-name-c h2 {
   margin-top: 6px;
 }
+/* -------------------------------- */
+  /* --------Audio-Player-Two------ */
 
+  #pl2-playlist-c__top-c__rating h2,
+  #pl2-playlist-c__top-c__name h2,
+  #pl2-playlist-c__top-c__artist-name h2,
+  #pl2-playlist-c__top-c__genre-name h2,
+  #pl2-playlist-c__top-c__artist-duration h2 {
+  font-size: 11px;
+}
+  .pl2-track-ul__li {
+    font-size: 12px;
+}
+
+#pl2-uploading-track-c__span{
+  font-size: 8px;
+}
+#pl2-playlist-c__top-c__rating h2,
+#pl2-playlist-c__top-c__artist-name h2,
+#pl2-playlist-c__top-c__artist-duration h2,
+#pl2-playlist-c__top-c__genre-name h2 {
+  margin-top: 3px;
+}
+#pl2-playlist-name-c h2 {
+  margin-top: 6px;
+}
+  /* ------------------------------ */
     
 
 }

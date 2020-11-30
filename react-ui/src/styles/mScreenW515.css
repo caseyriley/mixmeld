@@ -1,9 +1,19 @@
 @media screen and (max-width: 515px){
-  #main-page__title{
+  /* -------Audio-Player-One------ */
+  #s-main-page__title{
     font-size: 3.9vw;
   }
-  #uploading-track-c__span{
+  #s-uploading-track-c__span{
     font-size: 7px;
   }
+  /* ------------------------------ */
+  /* --------Audio-Player-Two------ */
+  #pl2-main-page__title{
+    font-size: 3.9vw;
+  }
+  #pl2-uploading-track-c__span{
+    font-size: 7px;
+  }
+  /* ------------------------------ */
   
 }
