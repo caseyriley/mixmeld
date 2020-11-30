@@ -29,6 +29,7 @@ const AudioPlayer2 = (props)=>{
   const volumeKnob =useRef();
   const volumeLevel =useRef();
   const volumeSlider =useRef();
+  const volumeFader =useRef();
 
 
   const [timeState, setTimeState] = useState(":");
@@ -190,7 +191,7 @@ const AudioPlayer2 = (props)=>{
 
   function changeVolume(){
     setVolumeState(volumeSlider.current.value);
-    vol = (Number(volumeState) + 136) / 271;
+    vol = (Number(volumeState)) / 100;
     if (vol > 0.98) {
       vol = 1;
     }
@@ -198,15 +199,15 @@ const AudioPlayer2 = (props)=>{
     media.current.volume = vol;
   }
 
-  // useEffect(()=> {
-  //   if (volumeKnob){
-  //     volumeKnob.current.style.transform= `rotate(${volumeState}deg)`;
-  //   }
-  //   if (volumeLevel){
-  //     volumeLevel.current.style.transform= `rotate(${volumeState}deg)`;
-  //   }
+  useEffect(()=> {
+    if (volumeFader){
+      volumeFader.current.style.bottom= `${volumeState * .75}px`;
+    }
+    if (volumeLevel){
+      volumeLevel.current.style.height= `${volumeState * .75}px`;
+    }
     
-  // },[volumeState])
+  },[volumeState])
 // ---------------------------------------------
 //---------------Audio-Tracks-------------------
 
@@ -248,7 +249,7 @@ const AudioPlayer2 = (props)=>{
               <div className={"pl2-controls"}>
                 <img className={"pl2-fast-forward"} ref={fwd} src={fastForward} alt={""} onClick={mediaForward} ></img>
                 <img className={"pl2-play"} ref={play} src={playButton} alt={""} onClick={playPauseMedia} ></img>
-                <VolumeUiSlider volumeSlider={volumeSlider} changeVolume={changeVolume}/>
+                <VolumeUiSlider volumeLevel={volumeLevel} volumeFader={volumeFader} volumeSlider={volumeSlider} changeVolume={changeVolume}/>
                 {/* <div id={"volume-knob-c"}>
                   <VolumeKnobUi volumeKnob={volumeKnob} volumeLevel={volumeLevel}/>
                   <div class="pl2-slider-wrapper">

@@ -489,7 +489,7 @@ div.volume-control img {
   top: 91px;
   left: -25px;
   width: 100px;
-  opacity: .5;
+  opacity: .0;
   pointer-events: all;
 }
 
@@ -547,19 +547,34 @@ div.control-2 span.eq:before
               inset 0 -7px 10px -2px rgba(0,0,0,0.5);
 }
 
-div.control-2 span.eq:after
+/* div.control-2 span.eq:after
 {
   position: relative;
   top: 10px;
   left: 0px;
   z-index: 9;
-  /* height: 160px; */
+ 
   height: 70px;
   background: #05d4f4;
   margin: 0px 0px 0px 0px;
 
   box-shadow: inset 0 0 25px rgba(255,255,255,0.5),
               0 0 10px #05d4f4;
+} */
+.pl2-volume-level {
+  position: absolute;
+  /* top: 70px; */
+  left: 26px;
+  bottom: 60px;
+  z-index: 9;
+  height: 37px;
+  width: 2px;
+  background: #05d4f4;
+  margin: 0px 0px 0px 0px;
+
+  box-shadow: inset 0 0 25px rgba(255,255,255,0.5),
+              0 0 10px #05d4f4;
+  /* border: 1px solid yellow; */
 }
 
 span.eq span.eq-level
@@ -573,7 +588,7 @@ span.eq span.eq-level
   display: inline-block;
   background: #373542;
   left: -5px;
-  bottom: 25px;
+  bottom: 37px;
   /* margin-left: -5px; */
   margin-top: 0px;
   border-radius: 100px;
