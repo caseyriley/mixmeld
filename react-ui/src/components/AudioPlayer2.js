@@ -231,6 +231,11 @@ const AudioPlayer2 = (props)=>{
   return(
     <>
       <div id={"pl2-main-page"}>
+        <div id={"pl2-left-column"}>
+          <div id={"pl2-search"}>
+            <input id={"pl2-search__input"} type={"text"} placeholder={"search"} ></input>
+          </div>
+        </div>
         {/* <h1 id={"pl2-main-page__title"} >Formless Audio Player</h1> */}
         <div id={"pl2-audio-tracklist-c"}>
           <div id={"pl2-audio"} >
