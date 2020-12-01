@@ -180,6 +180,7 @@
   align-items: center;
   position: absolute;
   left: -105px;
+  pointer-events: none;
 }
 /* #pl2-audio__bottom-c {
   width: 300px;
@@ -223,6 +224,7 @@
   
   width: 300px;
   position: relative;
+  /* pointer-events: none; */
 }
 .pl2-audio__bottom__playhead {
   position: relative;
@@ -234,7 +236,8 @@
   margin: 0px 0px 5px 0px;
   border-radius: 10px;
   overflow: hidden;
-  /* position: relative; */ 
+  /* pointer-events: none; */
+
 }
 .pl2-audio__bottom__playhead__left {
   height: 100%;
@@ -243,6 +246,7 @@
   background-color: rgba(0, 195, 255, 0.4);
   /* background: rgb(0,34,207); */
   /* background: linear-gradient(45deg, rgba(0,34,207,1) 0%, rgba(0,77,170,1) 19%, rgba(0,168,201,1) 60%, rgba(0,186,179,1) 100%); */
+  /* pointer-events: none; */
 }
 .pl2-audio__bottom__playhead__time-remaining {
   /* color: rgb(202, 202, 202); */
@@ -251,7 +255,12 @@
   /* top: -0px; */
   right: 10px;
   font-family: 'Electrolize', sans-serif;
-
+  pointer-events: none;
+}
+#pl2-playhead-input {
+  width: 300px;
+  position: absolute;
+  opacity: 0;
 }
 
 /* ----------slider------------ */

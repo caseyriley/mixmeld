@@ -31,6 +31,7 @@ const AudioPlayer2 = (props)=>{
   const volumeSlider =useRef();
   const volumeFader =useRef();
 
+  const playHeadSlider = useRef();
 
   const [timeState, setTimeState] = useState(":");
 
@@ -169,6 +170,15 @@ const AudioPlayer2 = (props)=>{
     }, 500);
   }, [timeState])
 // -------------------------------------------------
+// -------------Move-Playhead-onClick---------------
+  function movePlayheadOnClick(e){
+    if (media){
+      media.current.currentTime = parseFloat(media.current.duration * playHeadSlider.current.value);
+    }
+  }
+// -------------------------------------------------
+
+// -------------------------------------------------
 //-------------loop----------------------------
   const [loopState, setLoopState] = useState(false)
   function toggleLoop(){
@@ -250,9 +260,6 @@ const AudioPlayer2 = (props)=>{
               Your browser does not support the
               <code>audio</code> element.
             </audio>
-            {/* <div id={"pl2-audio__top"} >
-              
-            </div> */}
             <div  id={"pl2-audio__middle"}>
               <div className={"pl2-controls"}>
                 <img className={`pl2-random ${randomState}`} src={random} alt={""} onClick={toggleRandom}></img>
@@ -264,36 +271,19 @@ const AudioPlayer2 = (props)=>{
                 <div id={"pl2-audio__bottom"} >
                 <p id={"pl2-audio__top__song-name"}>{songNameState}</p>
                 <div className={"pl2-audio__bottom__playhead"} ref={audioBottomPlayhead} >
+                  <input id={"pl2-playhead-input"} ref={playHeadSlider} type={"range"} min={"0"} max={"1"} step={"0.01"} onChange={movePlayheadOnClick} ></input>
                   <div className={"pl2-audio__bottom__playhead__left"} ref={timerBar} ></div>
+                 
                     <div className="pl2-timer">
                       <span id={"pl2-audio__bottom__time__start"} >{timeState}</span>
                     </div>
                     <TimeRemaining media={media}/>
+                    
                   </div>
                 </div>
                 <VolumeUiSlider volumeLevel={volumeLevel} volumeFader={volumeFader} volumeSlider={volumeSlider} changeVolume={changeVolume}/>
-                {/* <div id={"volume-knob-c"}>
-                  <VolumeKnobUi volumeKnob={volumeKnob} volumeLevel={volumeLevel}/>
-                  <div class="pl2-slider-wrapper">
-                    <input type={"range"} min={"-136"} max={"136"}
-                    step={"1"}
-                    ref={volumeSlider}
-                    onChange={changeVolume}
-                    ></input>
-                  </div>
-                </div> */}
-                
-                
               </div>
             </div>
-            {/* <div id={"pl2-audio__bottom-c"} > 
-              <div id={"pl2-timer-loop-random-c"}>
-                
-                
-                
-              </div>
-              
-            </div> */}
           </div>
         
         <Tracklist2 setTrack={setTrack}/>
