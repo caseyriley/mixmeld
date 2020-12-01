@@ -187,7 +187,7 @@ const AudioPlayer2 = (props)=>{
   }
 //-------------------------------------------
 // ---------------volume------------------------
-  const [volumeState, setVolumeState] = useState(0);
+  const [volumeState, setVolumeState] = useState(50);
 
   function changeVolume(){
     setVolumeState(volumeSlider.current.value);
