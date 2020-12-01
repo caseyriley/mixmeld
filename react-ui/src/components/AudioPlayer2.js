@@ -325,7 +325,7 @@ const AudioPlayer2 = (props)=>{
                 <img className={"pl2-fast-forward"} ref={fwd} src={fastForward} alt={""} onClick={mediaForward} ></img>
                 <img  className={`pl2-loop ${loopState ? "pl2-looping" : "not-looping"}`} src={loop} alt={""} onClick={toggleLoop}></img>
                 <div id={"pl2-audio__bottom"} >
-                <p id={"pl2-audio__top__song-name"}>{songNameState}</p>
+                <p id={"pl2-audio__top__song-name"}>{songNameState ? songNameState : `${firstTrack ? firstTrack[0].trackname : ""}`}</p>
                 <div className={"pl2-audio__bottom__playhead"} ref={audioBottomPlayhead} >
                   <input id={"pl2-playhead-input"} ref={playHeadSlider} type={"range"} min={"0"} max={"1"} step={"0.01"} onChange={movePlayheadOnClick} ></input>
                   <div className={"pl2-audio__bottom__playhead__left"} ref={timerBar} ></div>
