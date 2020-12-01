@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react';
 import psychoTantricJuju from '../media/TrillianGreen-PsychoTantricJujuJazz-01-BhenPaUlRaga.wav';
-
+import { API_URL } from '../config';
 import playButton from '../images/playButton.svg';
 import pauseButton from '../images/pauseButton.png';
 import fastForward from '../images/fastForward.png';
@@ -44,10 +44,66 @@ const AudioPlayer2 = (props)=>{
   let intervalFwd;
   let intervalRwd;
 
+  //---------Get-Current_User--------------
+  const [currentUser, setCurrentUser] = useState({});
+
+  useEffect(() => {
+
+    const getCurrentUser = async () => {
+      const token = window.localStorage.getItem('auth_token')
+      const response = await fetch(`${API_URL}/users/token`, {
+        method: "GET",
+        mode: "cors",
+        headers: { "Authorization": `Bearer ${token}` },
+      })
+      if (!response.ok) {
+        console.log("getCurrent user response failed in Uploading.js");
+      } else {
+        const json = await response.json();
+        setCurrentUser(json);
+        console.log(json)
+
+        
+      }
+    }
+    getCurrentUser();
+    // console.log("user==AudioPlayer2=====>", currentUser.id)
+  }, [])
+// ----------------------------------------------
+// -------------------Get-Users-First-Track---------
+
+  const [firstTrack, setFirstTrack] = useState();
+
+  useEffect(()=>{
+    const token = window.localStorage.getItem('auth_token');
+
+    const getUserFirstTrack = async () => {
+      const response = await fetch(`${API_URL}/tracks/first/${currentUser.id}`, {
+        method: "GET",
+        mode: "cors",
+        headers: { "Authorizaion": `Bearer ${token}` }
+      })
+      if (!response.ok) { console.log("error in getUserTracks") }
+      else {
+        const json = await response.json();
+        setFirstTrack(json);
+      }
+    }
+    getUserFirstTrack();
+
+  },[currentUser])
+  // -----------------------------------------------
+
 // ---------------Play/Pause-Button---------------
+  // const [firstTrack, setFirstTrack] = useState();
+  // const firstTrack = useRef()
+
   function playPauseMedia() {
-    setTimeState("00:00")
-    // updateTime();
+
+    if (!media.current.src){
+      media.current.setAttribute("src", firstTrack[0].tracklocation)
+    }
+    
     rwd.current.classList.remove('active');
     fwd.current.classList.remove('active');
     if (intervalRwdState){
@@ -253,7 +309,7 @@ const AudioPlayer2 = (props)=>{
               id={"audio"}
               ref={media}
               // controls
-              src={psychoTantricJuju}
+              // src={"emptyString"}
               // autoPlay
               loop={loopState}
               >            

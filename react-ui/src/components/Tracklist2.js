@@ -37,11 +37,32 @@ const Tracklist2 = (props) => {
       }
     }
     getCurrentUser();
-    console.log("user=======>", currentUser.id)
+    // console.log("user=======>", currentUser.id)
   }, [])
 // ----------------------------------------------
+// -------------------Get-Users-First-Track---------
 
-// ---------------------Get-User-Track-pl2----------
+
+  useEffect(()=>{
+    const token = window.localStorage.getItem('auth_token');
+
+    const getUserFirstTrack = async () => {
+      const response = await fetch(`${API_URL}/tracks/first/${currentUser.id}`, {
+        method: "GET",
+        mode: "cors",
+        headers: { "Authorizaion": `Bearer ${token}` }
+      })
+      if (!response.ok) { console.log("error in getUserTracks") }
+      else {
+        const json = await response.json();
+        props.firstTrack.current = json;
+      }
+    }
+    getUserFirstTrack();
+
+  },[])
+  // -----------------------------------------------
+// ---------------------Get-User-Tracks-pl2----------
   const [trackArrayState, setTrackArrayState] = useState([])
   const [refreshTrackState, setRefreshTrackState] = useState(1)
   const [organiseByState, setOrganiseByState] = useState("id")
