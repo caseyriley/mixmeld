@@ -274,11 +274,11 @@ function updateTrackGenre(e) {
                       type={"text"}
                       className={"s-track-genre-input"} 
                       maxLength={100} 
-                      placeholder={audio.trackrating ? audio.trackrating : "🎵"} 
+                      placeholder={audio.trackrating ? audio.trackrating : ""} 
                     />
                     <input className={"s-track-artist-name-submit"} type={"submit"} />
                   </form>  :
-                  <span className={"s-track-artist-rating-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.tracklocation)}} >{audio.trackrating ? audio.trackrating : "🎵"} </span>
+                  <span className={"s-track-artist-rating-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.tracklocation)}} >{audio.trackrating ? audio.trackrating : ""} </span>
                 }
                 </div>
                 <div className={`s-track-ul__li__name ${index % 2 === 1 ? "s-dark": "s-light"}`} >
@@ -289,13 +289,13 @@ function updateTrackGenre(e) {
                         type={"text"}
                         className={"s-track-artist-name-input"} 
                         maxLength={100} 
-                        placeholder={audio.trackname ? audio.trackname : "🎵"} 
+                        placeholder={audio.trackname ? audio.trackname : ""} 
                       />
                       <input className={"s-track-artist-name-submit"} type={"submit"}  />
                     </form>
                     <img name={audio.id} className={"s-deleteX"} src={deleteX} alt={""} onClick={e=>{deleteTrack(e.target.name)}}/>
                   </> :
-                  <span className={"s-track-artist-name-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.tracklocation)}} >{audio.trackname ? audio.trackname : "🎵"} </span>
+                  <span className={"s-track-artist-name-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.tracklocation)}} >{audio.trackname ? audio.trackname : ""} </span>
                   }
                   </div>
                 <div className={`s-track-ul__li__artist ${index % 2 === 1 ? "s-dark": "s-light"}`} >
@@ -313,7 +313,7 @@ function updateTrackGenre(e) {
                   <span className={"s-track-artist-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.tracklocation)}} >{audio.trackartist ? audio.trackartist : ""} </span>
                 }
                 </div>
-                <div className={`s-track-ul__li__duration ${index % 2 === 1 ? "s-dark": "s-light"}`}><span>{audio.tracktime ? audio.tracktime : "🎵"}</span></div>
+                <div className={`s-track-ul__li__duration ${index % 2 === 1 ? "s-dark": "s-light"}`}><span>{audio.tracktime ? audio.tracktime : ""}</span></div>
                 <div className={`s-track-ul__li__genre ${index % 2 === 1 ? "s-dark": "s-light"}`}>
                 {trackEditState ? 
                   <form name={audio.id} onSubmit={e=> {e.preventDefault(); updateTrackGenre(e)}}> 
