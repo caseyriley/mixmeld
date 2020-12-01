@@ -283,6 +283,7 @@ function updateTrackGenre(e) {
           <div id={"pl2-playlist-c__top-c__artist-name"}><h2 onClick={()=>{setOrganiseByState("trackartist")}}>Artist</h2></div>
           <div id={"pl2-playlist-c__top-c__artist-duration"}><h2 onClick={()=>{setOrganiseByState("tracktime")}}>Time</h2></div>
           <div id={"pl2-playlist-c__top-c__genre-name"}><h2 onClick={()=>{setOrganiseByState("trackgenre")}}>Genre</h2></div>
+          <div id={"pl2-playlist-c__top-c__date"}><h2 onClick={()=>{setOrganiseByState("date")}}>Date</h2></div>
         </div>
         <ul id={"pl2-track-ul"}>
         {trackArrayState ? trackArrayState.map((audio, index) => {
@@ -348,7 +349,21 @@ function updateTrackGenre(e) {
                   </form> :
                   <span className={"pl2-track-genre-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname)}} >{audio.trackgenre ? audio.trackgenre: ""} </span>
                 }
-                  </div>
+                </div>
+                <div className={`pl2-track-ul__li__date ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`}>
+                {trackEditState ? 
+                  <form name={audio.id} onSubmit={e=> {e.preventDefault(); updateTrackGenre(e)}}> 
+                    <input 
+                      type={"text"}
+                      className={"pl2-track-artist-name-input"} 
+                      maxLength={100} 
+                      placeholder={audio.trackgenre ? audio.trackgenre: ""} 
+                    />
+                    <input className={"pl2-track-artist-name-submit"} type={"submit"} />
+                  </form> :
+                  <span className={"pl2-track-genre-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname)}} >{audio.trackgenre ? audio.trackgenre: ""} </span>
+                }
+                </div>
             </li>)
           }): null}
         </ul>
