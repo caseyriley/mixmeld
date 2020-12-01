@@ -253,7 +253,7 @@ function updateTrackGenre(e) {
         <div id={"pl2-playlist-c__top-c"}>
           <div id={"pl2-playlist-c__top-c__rating"}><h2 onClick={()=>{setOrganiseByState("trackrating")}}>Rating</h2></div>
           <div id={"pl2-playlist-c__top-c__name"}  >
-            <UploadingTrack/>
+            <UploadingTrack refreshTrackState={refreshTrackState} setRefreshTrackState={setRefreshTrackState}/>
             <div id={"pl2-playlist-name-c"} >
               <h2 onClick={()=>{setOrganiseByState("trackname")}}>Name</h2>
             </div> 

@@ -74,7 +74,9 @@ const UploadingTrack = (props) => {
         au.addEventListener('loadedmetadata', function(){
           async function inner(){
             formattedTime = await formatTime(au.duration)
-            newTrack(location)
+            newTrack(location).then(()=>{
+              props.setRefreshTrackState(props.refreshTrackState + 1)
+            })
           }
           inner()
         },false);
