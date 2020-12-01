@@ -41,7 +41,7 @@ const Tracklist2 = (props) => {
   }, [])
 // ----------------------------------------------
 
-// ---------------------Get-Userpl2-Trackpl2----------
+// ---------------------Get-User-Track-pl2----------
   const [trackArrayState, setTrackArrayState] = useState([])
   const [refreshTrackState, setRefreshTrackState] = useState(1)
   const [organiseByState, setOrganiseByState] = useState("id")
@@ -278,7 +278,7 @@ function updateTrackGenre(e) {
                     />
                     <input className={"pl2-track-artist-name-submit"} type={"submit"} />
                   </form>  :
-                  <span className={"pl2-track-artist-rating-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.tracklocation)}} >{audio.trackrating ? audio.trackrating : ""} </span>
+                  <span className={"pl2-track-artist-rating-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname)}} >{audio.trackrating ? audio.trackrating : ""} </span>
                 }
                 </div>
                 <div className={`pl2-track-ul__li__name ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`} >

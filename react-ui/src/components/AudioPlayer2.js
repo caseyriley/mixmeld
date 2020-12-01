@@ -219,7 +219,7 @@ const AudioPlayer2 = (props)=>{
     media.current.setAttribute("src", track);
     playPauseMedia();
 
-    let newSongName = songName.slice(34,-4)
+    let newSongName = songName.slice(0,)
     if (newSongName.length > 20){
       newSongName = newSongName.slice(0, 20) + "..."
     } 
