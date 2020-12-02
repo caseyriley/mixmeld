@@ -843,3 +843,8 @@ li {
 .pl2-light{
   background-color: rgb(92, 92, 92);
 }
+.next-track-info {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}

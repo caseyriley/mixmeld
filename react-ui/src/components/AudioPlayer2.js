@@ -26,12 +26,15 @@ const AudioPlayer2 = (props)=>{
   const audioBottomPlayhead = useRef();
   const timerBar = useRef();
 
-  const volumeKnob =useRef();
+
   const volumeLevel =useRef();
   const volumeSlider =useRef();
   const volumeFader =useRef();
 
   const playHeadSlider = useRef();
+
+  const currentTrack = useRef();
+ 
 
   const [timeState, setTimeState] = useState(":");
 
@@ -280,7 +283,7 @@ const AudioPlayer2 = (props)=>{
 // ---------------------------------------------
 //---------------Audio-Tracks-------------------
 
-  function setTrack(track, songName){
+  function setTrack(track, songName, ntiIndex){
 
     media.current.setAttribute("src", track);
     playPauseMedia();
@@ -290,8 +293,28 @@ const AudioPlayer2 = (props)=>{
       newSongName = newSongName.slice(0, 20) + "..."
     } 
     setSongNameState(newSongName);
+    currentTrack.current = ntiIndex;
+    
   }
 //----------------------------------------------
+
+function nextTrack() {
+  console.log("nnnnnneeeeeeexttttttttTraaaaaaaaaack")
+  console.log('currrrrrrreeeeeennnnnttTraaaack',currentTrack)
+  const nti = document.getElementById(`nti${currentTrack.current + 1}`).innerHTML;
+  console.log("nnnnnnttttttttiiiiiii",nti)
+  const newTrackObj = JSON.parse(nti);
+  console.log('nnnnnneeeeeewwTraaaackOOOOObj', newTrackObj)
+  setTrack(newTrackObj.tracklocation, newTrackObj.trackname, currentTrack.current + 1);
+}
+
+// useEffect(()=>{
+//   if(media.current){
+//     media.current.addEventListener('ended', next, false);
+//       media.current.setAttribute("src", firstTrack[0].tracklocation)
+//   } 
+// })
+
 
 
   return(
@@ -309,8 +332,8 @@ const AudioPlayer2 = (props)=>{
               id={"audio"}
               ref={media}
               // controls
-              // src={"emptyString"}
               // autoPlay
+              onEnded={nextTrack}
               loop={loopState}
               >            
               Your browser does not support the
@@ -327,7 +350,7 @@ const AudioPlayer2 = (props)=>{
                 <div id={"pl2-audio__bottom"} >
                 <p id={"pl2-audio__top__song-name"}>{songNameState ? songNameState : `${firstTrack ? firstTrack[0].trackname : ""}`}</p>
                 <div className={"pl2-audio__bottom__playhead"} ref={audioBottomPlayhead} >
-                  <input id={"pl2-playhead-input"} ref={playHeadSlider} type={"range"} min={"0"} max={"1"} step={"0.01"} onChange={movePlayheadOnClick} ></input>
+                  <input id={"pl2-playhead-input"} ref={playHeadSlider} type={"range"} min={"0"} max={"1"} step={"0.0005"} onChange={movePlayheadOnClick} ></input>
                   <div className={"pl2-audio__bottom__playhead__left"} ref={timerBar} ></div>
                  
                     <div className="pl2-timer">

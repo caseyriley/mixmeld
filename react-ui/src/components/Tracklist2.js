@@ -281,6 +281,7 @@ function updateTrackGenre(e) {
     setTrackEditState(false)
   }
 // ----------------------------------------------------
+// ---------Convert-to-standard-time---------
 function toStandardTime(militaryTime) {
   let first = militaryTime.slice(0,3);
   let last = militaryTime.slice(3);
@@ -291,7 +292,9 @@ function toStandardTime(militaryTime) {
   }
   return `${first}:` + last + amPm;
 }
-  
+// -------------------------------------------
+ 
+
   return(
     <>
 
@@ -313,8 +316,23 @@ function toStandardTime(militaryTime) {
         </div>
         <ul id={"pl2-track-ul"}>
         {trackArrayState ? trackArrayState.map((audio, index) => {
+          // ref={el => (myRefs.current[i] = el)}
+          // Here is the full version:
+          
+          // {
+          //   [1, 2, 3].map((v, i) => {
+          //     return (
+          //       <button
+          //         ref={(el) => (myRefs.current[i] = el)}
+          //         id={i}
+          //         onClick={submitClick}
+          //       >{`Button${i}`}</button>
+          //     );
+          //   });
+          // }
             return (
-              <li className={"pl2-track-ul__li"} key={index}>
+              <li name={index} className={"pl2-track-ul__li"} key={index} >
+                <div id={`nti${index}`} className={"next-track-info"}>{`{"tracklocation":"${audio.tracklocation}","trackname":"${audio.trackname}","nti":"${index}"}`}</div>
                 <div className={`pl2-track-ul__li__rating ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`}>
                 {trackEditState ? 
                   <form name={audio.id} onSubmit={e=> {e.preventDefault(); updateTrackRating(e)}}> 
@@ -326,7 +344,7 @@ function toStandardTime(militaryTime) {
                     />
                     <input className={"pl2-track-artist-name-submit"} type={"submit"} />
                   </form>  :
-                  <span className={"pl2-track-artist-rating-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname)}} >{audio.trackrating ? audio.trackrating : ""} </span>
+                  <span className={"pl2-track-artist-rating-span"}  >{audio.trackrating ? audio.trackrating : ""} </span>
                 }
                 </div>
                 <div className={`pl2-track-ul__li__name ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`} >
@@ -343,7 +361,8 @@ function toStandardTime(militaryTime) {
                     </form>
                     <img name={audio.id} className={"pl2-deleteX"} src={deleteX} alt={""} onClick={e=>{deleteTrack(e.target.name)}}/>
                   </> :
-                  <span className={"pl2-track-artist-name-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname)}} >{audio.trackname ? audio.trackname : ""} </span>
+                  <span className={"pl2-track-artist-name-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, index)}} >{audio.trackname ? audio.trackname : ""} </span>
+
                   }
                   </div>
                 <div className={`pl2-track-ul__li__artist ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`} >
@@ -392,7 +411,7 @@ function toStandardTime(militaryTime) {
                   // <span className={"pl2-track-genre-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname)}} >{toStandardTime("20:00")} </span>
                 }
                 </div>
-            </li>)
+              </li>)
           }): null}
         </ul>
       </div>
