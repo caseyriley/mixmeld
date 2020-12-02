@@ -265,6 +265,16 @@ function updateTrackGenre(e) {
     setTrackEditState(false)
   }
 // ----------------------------------------------------
+function toStandardTime(militaryTime) {
+  let first = militaryTime.slice(0,3);
+  let last = militaryTime.slice(3);
+  let amPm = " am"
+  if (Number.parseInt(first) > 12){
+    first = Number.parseInt(first) - 12;
+    amPm = " pm";
+  }
+  return `${first}:` + last + amPm;
+}
   
   return(
     <>
@@ -361,7 +371,9 @@ function updateTrackGenre(e) {
                     />
                     <input className={"pl2-track-artist-name-submit"} type={"submit"} />
                   </form> :
-                  <span className={"pl2-track-genre-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname)}} >{audio.trackgenre ? audio.trackgenre: ""} </span>
+                  // <span className={"pl2-track-genre-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname)}} >{audio.created_date ? audio.created_date.slice(5, 22) : ""} </span>
+                  <span className={"pl2-track-genre-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname)}} >{audio.created_date ? audio.created_date.slice(5, 16)+ " " + toStandardTime(audio.created_date.slice(16, 22)) : ""} </span>
+                  // <span className={"pl2-track-genre-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname)}} >{toStandardTime("20:00")} </span>
                 }
                 </div>
             </li>)

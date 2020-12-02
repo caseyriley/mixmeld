@@ -54,6 +54,7 @@ class Track(db.Model):
     trackrating = db.Column(db.String(10), nullable=True)
     trackgenre = db.Column(db.String(200), nullable=True)
     trackart = db.Column(db.Text, nullable=True)
+    created_date = db.Column(db.Text, nullable=False)
 
     def to_dict(self):
         return {
@@ -66,6 +67,7 @@ class Track(db.Model):
           "trackrating": self.trackrating,
           "trackgenre": self.trackgenre,
           "trackart": self.trackart,
+          "created_date": self.created_date,
         }
 
 
