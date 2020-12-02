@@ -25,7 +25,8 @@ def post_track():
         trackartist="",
         trackgenre="",
         trackrating="",
-        trackart=""
+        trackart="",
+        created_date= func.current_timestamp()
 
     )
     db.session.add(track)
@@ -122,7 +123,7 @@ def get_user_tracks_sort_by_trackrating(id):
         track = model_track.to_dict()
         track["user"] = model_track.user.to_safe_object()
         tracks.append(track)
-    return jsonify(sorted(tracks, key=lambda i: i["trackrating"].lower()))
+    return jsonify(sorted(tracks, reverse=True, key=lambda i: i["trackrating"].lower()))
 
 
 @tracks.route("/user/trackname/<id>", methods=["GET"])
@@ -171,7 +172,7 @@ def get_user_tracks_sort_by_date(id):
         track = model_track.to_dict()
         track["user"] = model_track.user.to_safe_object()
         tracks.append(track)
-    return jsonify(sorted(tracks, key=lambda i: i["created_date"]))
+    return jsonify(sorted(tracks, reverse=True, key=lambda i: i["created_date"]))
 
 
 
