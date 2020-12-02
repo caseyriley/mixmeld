@@ -166,6 +166,22 @@ const Tracklist2 = (props) => {
       }
       getUserTracks();
 
+    } else if (organiseByState === "date") {
+
+      const getUserTracks = async () => {
+        const response = await fetch(`${API_URL}/tracks/user/date/${currentUser.id}`, {
+          method: "GET",
+          mode: "cors",
+          headers: { "Authorizaion": `Bearer ${token}` }
+        })
+        if (!response.ok) { console.log("error in getUserTracks") }
+        else {
+          const json = await response.json();
+          setTrackArrayState(json);
+        }
+      }
+      getUserTracks();
+
     }
     
   }, [currentUser, refreshTrackState, organiseByState])

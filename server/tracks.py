@@ -162,6 +162,18 @@ def get_user_tracks_sort_by_tracktime(id):
     return jsonify(sorted(tracks, key=lambda i: i["tracktime"].lower()))
 
 
+@tracks.route("/user/date/<id>", methods=["GET"])
+def get_user_tracks_sort_by_date(id):
+
+    model_tracks = Track.query.filter(Track.user_id == id).all()
+    tracks = []
+    for model_track in model_tracks:
+        track = model_track.to_dict()
+        track["user"] = model_track.user.to_safe_object()
+        tracks.append(track)
+    return jsonify(sorted(tracks, key=lambda i: i["created_date"]))
+
+
 
 @tracks.route("/user/<id>", methods=["GET"])
 def get_user_tracks(id):
