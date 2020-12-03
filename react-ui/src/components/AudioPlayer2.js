@@ -296,15 +296,11 @@ const AudioPlayer2 = (props)=>{
 //----------------------------------------------
 
 function nextTrack() {
-  console.log("newTrack currentTrack",currentTrack.current) //audioId of current track
-  const trackLi = document.getElementsByClassName(`audioId${currentTrack.current}`) //get Li element of current track recgardless of sort choice
+  const trackLi = document.getElementsByClassName(`audioId${currentTrack.current}`) //get Li element of current track regarless of sort choice
   const trackLiIdNumber = Number(trackLi[0].id.slice(3))
-  console.log("trackLiIdNumber", trackLiIdNumber)
-  const newTrackLi = document.getElementById(`nti${trackLiIdNumber + 1}`) //get Li of next track regardless of sort choice
-  console.log('traaaaaackLiiiiii',trackLi[0].id)
-  console.log('neeeeeeewtraaaaaackLiiiiii', newTrackLi.innerHTML)
-  const newTrackObj = JSON.parse(newTrackLi.innerHTML);
-  setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.audioId);
+  const newTrackLi = document.getElementById(`nti${trackLiIdNumber + 1}`) //get Li element of next track regardless of sort choice
+  const newTrackObj = JSON.parse(newTrackLi.innerHTML); //get key values of next track info
+  setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.audioId); // start the next track
 }
 
   return(

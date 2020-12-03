@@ -348,7 +348,7 @@ function toStandardTime(militaryTime) {
                     </form>
                     <img name={audio.id} className={"pl2-deleteX"} src={deleteX} alt={""} onClick={e=>{deleteTrack(e.target.name)}}/>
                   </> :
-                  <span className={"pl2-track-artist-name-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, index)}} >{audio.trackname ? audio.trackname : ""} </span>
+                  <span className={"pl2-track-artist-name-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.id)}} >{audio.trackname ? audio.trackname : ""} </span>
 
                   }
                   </div>
@@ -364,7 +364,7 @@ function toStandardTime(militaryTime) {
                     />
                     <input className={"pl2-track-artist-name-submit"} type={"submit"} />
                   </form> :
-                  <span className={"pl2-track-artist-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, index)}} >{audio.trackartist ? audio.trackartist : ""} </span>
+                  <span className={"pl2-track-artist-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.id)}} >{audio.trackartist ? audio.trackartist : ""} </span>
                 }
                 </div>
 
@@ -381,12 +381,12 @@ function toStandardTime(militaryTime) {
                     />
                     <input className={"pl2-track-artist-name-submit"} type={"submit"} />
                   </form> :
-                  <span className={"pl2-track-genre-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, index)}} >{audio.trackgenre ? audio.trackgenre: ""} </span>
+                  <span className={"pl2-track-genre-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.id)}} >{audio.trackgenre ? audio.trackgenre: ""} </span>
                 }
                 </div>
 
                 <div className={`pl2-track-ul__li__date ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`}>
-                  <span className={"pl2-track-genre-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, index)}} >{audio.created_date ? audio.created_date.slice(5, 16)+ " " + toStandardTime(audio.created_date.slice(16, 22)) : ""} </span>
+                  <span className={"pl2-track-genre-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.id)}} >{audio.created_date ? audio.created_date.slice(5, 16)+ " " + toStandardTime(audio.created_date.slice(16, 22)) : ""} </span>
                 </div>
 
               </li>)  
