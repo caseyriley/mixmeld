@@ -31,9 +31,8 @@ const AudioPlayer2 = (props)=>{
 
   const playHeadSlider = useRef();
 
-  const currentTrack = useRef();
+  const currentTrack = useRef([]);
  
-
   const [timeState, setTimeState] = useState(":");
 
   // const [intervalFwdState, setIntervalFwdState] = useState();
@@ -62,8 +61,7 @@ const AudioPlayer2 = (props)=>{
       } else {
         const json = await response.json();
         setCurrentUser(json);
-        console.log(json)
-
+       
       }
     }
     getCurrentUser();
@@ -87,8 +85,7 @@ const AudioPlayer2 = (props)=>{
       else {
         const json = await response.json();
         setFirstTrack(json);
-        currentTrack.current = json[0].id
-        
+        currentTrack.current = json[0].id;
       }
     }
     getUserFirstTrack();
@@ -138,6 +135,22 @@ const AudioPlayer2 = (props)=>{
   }
 // -----------------------------------------------
 // --------------Skip-Track------------------------
+  function skipBack(){
+    const trackLi = document.getElementsByClassName(`audioId${currentTrack.current}`) //get Li element of current track regarless of sort choice
+    const trackLiIdNumber = Number(trackLi[0].id.slice(3)) //get index of current track
+    const newTrackLi = document.getElementById(`nti${trackLiIdNumber - 1}`) //get Li element of previous track regardless of sort choice
+    const newTrackObj = JSON.parse(newTrackLi.innerHTML); //get key values of next track info
+    setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.audioId); // start the next track
+  }
+
+  // function nextTrack() {
+  //   const trackLi = document.getElementsByClassName(`audioId${currentTrack.current}`) //get Li element of current track regarless of sort choice
+  //   const trackLiIdNumber = Number(trackLi[0].id.slice(3)) //get index of current track
+  //   const newTrackLi = document.getElementById(`nti${trackLiIdNumber + 1}`) //get Li element of next track regardless of sort choice
+  //   const newTrackObj = JSON.parse(newTrackLi.innerHTML); //get key values of next track info
+  //   setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.audioId); // start the next track
+  //   beenPlayedArray.current.push({tracklocation:newTrackObj.tracklocation, trackname: newTrackObj.trackname, audioId: newTrackObj.audioId})
+  // }
 // ------------------------------------------------
 
 // -------------------fast-forward-and-rewind----------------------
@@ -301,7 +314,7 @@ const AudioPlayer2 = (props)=>{
 
 function nextTrack() {
   const trackLi = document.getElementsByClassName(`audioId${currentTrack.current}`) //get Li element of current track regarless of sort choice
-  const trackLiIdNumber = Number(trackLi[0].id.slice(3))
+  const trackLiIdNumber = Number(trackLi[0].id.slice(3)) //get index of current track
   const newTrackLi = document.getElementById(`nti${trackLiIdNumber + 1}`) //get Li element of next track regardless of sort choice
   const newTrackObj = JSON.parse(newTrackLi.innerHTML); //get key values of next track info
   setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.audioId); // start the next track
@@ -332,7 +345,7 @@ function nextTrack() {
             <div  id={"pl2-audio__middle"}>
               <div className={"pl2-controls"}>
                 <img className={`pl2-random ${randomState}`} src={random} alt={""} onClick={toggleRandom}></img>
-                <img  className={"pl2-rewind"} ref={rwd} src={fastForward} alt={""} ></img>
+                <img  className={"pl2-rewind"} ref={rwd} src={fastForward} alt={""} onClick={skipBack} ></img>
                 <img className={"pl2-play"} ref={play} src={playButton} alt={""} onClick={playPauseMedia} ></img>
                 <div className={"pl2-stop"} onClick={stopMedia} ></div>
                 <img className={"pl2-fast-forward"} onClick={nextTrack} ref={fwd} src={fastForward} alt={""}  ></img>
