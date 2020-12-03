@@ -1,10 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import S3FileUpload from 'react-s3';
 import { API_URL } from '../config';
+const jsmediatags = require('jsmediatags');
 
 const UploadingTrack = (props) => {
-  
 
+// ---------------get-mp3-meta-data---------------
+function getMp3MetaData(){
+  new Promise((resolve, reject) => {
+    new jsmediatags.Reader('/path/to/song.mp3')
+      .read({
+        onSuccess: (tag) => {
+          console.log('Success!');
+          resolve(tag);
+        },
+        onError: (error) => {
+          console.log('Error');
+          reject(error);
+        }
+    });
+  })
+    .then(tagInfo => {
+      console.log(tagInfo);
+      // handle the onSuccess return
+    })
+    .catch(error => {
+      // handle errors
+    });
+} 
+// -----------------------------------------------
   const config = {
     bucketName: process.env.REACT_APP_BUCKETNAME,
     region: process.env.REACT_APP_REGION,
@@ -28,7 +52,6 @@ const UploadingTrack = (props) => {
       } else {
         const json = await response.json();
         setCurrentUser(json);
-        console.log(json)
       }
     }
     getCurrentUser();
@@ -75,6 +98,7 @@ const UploadingTrack = (props) => {
           async function inner(){
             formattedTime = await formatTime(au.duration)
             newTrack(location).then(()=>{
+              getMp3MetaData(location);
               props.setRefreshTrackState(props.refreshTrackState + 1)
             })
           }

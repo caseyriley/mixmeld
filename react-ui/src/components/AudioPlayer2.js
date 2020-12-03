@@ -313,6 +313,7 @@ const AudioPlayer2 = (props)=>{
     } 
     setSongNameState(newSongName);
     setArtistNameState(newArtistName);
+    
     currentTrack.current = audioId;
     
   }
@@ -357,6 +358,7 @@ function nextTrack() {
                 <div className={"pl2-stop"} onClick={stopMedia} ></div>
                 <img className={"pl2-fast-forward"} onClick={nextTrack} ref={fwd} src={fastForward} alt={""}  ></img>
                 <img  className={`pl2-loop ${loopState ? "pl2-looping" : "not-looping"}`} src={loop} alt={""} onClick={toggleLoop}></img>
+                <img className={"track-art"} src={""} alt={""}/>
                 <div id={"pl2-audio__bottom"} >
                 <p id={"pl2-audio__top__song-name"}>{songNameState ? songNameState : `${firstTrack ? firstTrack[0].trackname : ""}`}</p>
                 <p id={"pl2-audio__top__song-artist"}>{artistNameState ? artistNameState : `${firstTrack ? firstTrack[0].trackartist : ""}`}</p>

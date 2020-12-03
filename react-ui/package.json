@@ -3,12 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "buffer": "^6.0.3",
     "dotenv": "^8.2.0",
+    "jsmediatags": "^3.9.3",
     "mini-create-react-context": "^0.4.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-dropzone": "^11.2.4",
     "react-hook-form": "^6.11.5",
+    "react-native-fs": "^2.16.6",
     "react-s3-uploader": "^5.0.0",
     "react-scripts": "^2.1.8"
   },
