@@ -25,7 +25,7 @@ const AudioPlayer2 = (props)=>{
   const timerBar = useRef();
 
 
-  const volumeLevel =useRef();
+  const volumeLevel =useRef(.5);
   const volumeSlider =useRef();
   const volumeFader =useRef();
 
