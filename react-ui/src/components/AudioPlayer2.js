@@ -87,6 +87,8 @@ const AudioPlayer2 = (props)=>{
       else {
         const json = await response.json();
         setFirstTrack(json);
+        currentTrack.current = json[0].id
+        
       }
     }
     getUserFirstTrack();
@@ -135,6 +137,8 @@ const AudioPlayer2 = (props)=>{
     // }
   }
 // -----------------------------------------------
+// --------------Skip-Track------------------------
+// ------------------------------------------------
 
 // -------------------fast-forward-and-rewind----------------------
   // function mediaBackward() {
@@ -331,7 +335,7 @@ function nextTrack() {
                 <img  className={"pl2-rewind"} ref={rwd} src={fastForward} alt={""} ></img>
                 <img className={"pl2-play"} ref={play} src={playButton} alt={""} onClick={playPauseMedia} ></img>
                 <div className={"pl2-stop"} onClick={stopMedia} ></div>
-                <img className={"pl2-fast-forward"} ref={fwd} src={fastForward} alt={""}  ></img>
+                <img className={"pl2-fast-forward"} onClick={nextTrack} ref={fwd} src={fastForward} alt={""}  ></img>
                 <img  className={`pl2-loop ${loopState ? "pl2-looping" : "not-looping"}`} src={loop} alt={""} onClick={toggleLoop}></img>
                 <div id={"pl2-audio__bottom"} >
                 <p id={"pl2-audio__top__song-name"}>{songNameState ? songNameState : `${firstTrack ? firstTrack[0].trackname : ""}`}</p>
