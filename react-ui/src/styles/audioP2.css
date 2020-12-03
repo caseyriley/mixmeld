@@ -118,13 +118,15 @@
   font-size: 12px;
   font-family: 'Electrolize', sans-serif;
   font-weight: 900;
-  margin: 0px;
+  color: rgb(202, 202, 202);
+  margin: 2px 0px 0px 0px;
 }
 #pl2-audio__top__song-artist {
-  font-size: 12px;
+  font-size: 10px;
   font-family: 'Electrolize', sans-serif;
   font-weight: 900;
-  margin: 0px;
+  color: rgb(182, 181, 181);
+  margin: 0px 0px 2px 0px;
 }
 #pl2-audio__middle {
   width: 100%;
@@ -178,9 +180,10 @@
 }
 .pl2-timer {
   width: 100%;
-  font-size: 20px;
+  font-size: 12px;
   font-family: 'Electrolize', sans-serif;
   font-weight: 900;
+  color: rgb(202, 202, 202);
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -248,15 +251,17 @@
 .pl2-audio__bottom__playhead__left {
   height: 100%;
   width: 0;
-  background-color: rgb(0, 0, 0, .7);
   background-color: rgba(0, 195, 255, 0.4);
+  background: rgb(23,0,143);
+  background: linear-gradient(45deg, rgba(23,0,143,1) 0%, rgba(0,59,133,1) 28%, rgba(0,99,139,1) 66%, rgba(0,125,113,1) 100%);
   /* background: rgb(0,34,207); */
   /* background: linear-gradient(45deg, rgba(0,34,207,1) 0%, rgba(0,77,170,1) 19%, rgba(0,168,201,1) 60%, rgba(0,186,179,1) 100%); */
   /* pointer-events: none; */
 }
 .pl2-audio__bottom__playhead__time-remaining {
   /* color: rgb(202, 202, 202); */
-  font-size: 20px;
+  font-size: 12px;
+  color: rgb(202, 202, 202);
   position: absolute;
   /* top: -0px; */
   right: 10px;
