@@ -7,26 +7,16 @@ const UploadingTrack = (props) => {
 
 // ---------------get-mp3-meta-data---------------
 function getMp3MetaData(){
-  new Promise((resolve, reject) => {
-    new jsmediatags.Reader('/path/to/song.mp3')
-      .read({
-        onSuccess: (tag) => {
-          console.log('Success!');
-          resolve(tag);
-        },
-        onError: (error) => {
-          console.log('Error');
-          reject(error);
-        }
-    });
-  })
-    .then(tagInfo => {
-      console.log(tagInfo);
-      // handle the onSuccess return
-    })
-    .catch(error => {
-      // handle errors
-    });
+  new jsmediatags.Reader("https://formless.s3.amazonaws.com/12 Pretty Bird (Freestyle) [feat. Common].mp3")
+  .setTagsToRead(["title", "artist"])
+  .read({
+    onSuccess: function(tag) {
+      console.log("ttttttttaaaaaaaaaaaggggggg",tag);
+    },
+    onError: function(error) {
+      console.log(':(', error.type, error.info);
+    }
+  });
 } 
 // -----------------------------------------------
   const config = {

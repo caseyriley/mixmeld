@@ -9,13 +9,14 @@ import deleteX from '../images/deleteX.png';
 
 const Tracklist2 = (props) => {
 
+  // ----------Toggle-Track-Edit-----------
   const [trackEditState, setTrackEditState] = useState(false);
 
   function toggleTrackEditState(){
     const newState = !trackEditState;
     setTrackEditState(newState);
   }
-
+  // -------------------------------------- 
   //---------Get-Current_User--------------
   const [currentUser, setCurrentUser] = useState({});
 
@@ -81,6 +82,7 @@ const Tracklist2 = (props) => {
       else {
         const json = await response.json();
         setTrackArrayState(json.reverse());
+        props.setTrackArrayLengthState(json.length)
       }
     }
     getUserTracks();
@@ -97,6 +99,7 @@ const Tracklist2 = (props) => {
         else {
           const json = await response.json();
           setTrackArrayState(json);
+          props.setTrackArrayLengthState(json.length);
         }
       }
       getUserTracks();
@@ -113,6 +116,7 @@ const Tracklist2 = (props) => {
         else {
           const json = await response.json();
           setTrackArrayState(json);
+          props.setTrackArrayLengthState(json.length);
         }
       }
       getUserTracks();
@@ -129,6 +133,7 @@ const Tracklist2 = (props) => {
         else {
           const json = await response.json();
           setTrackArrayState(json);
+          props.setTrackArrayLengthState(json.length);
         }
       }
       getUserTracks();
@@ -145,6 +150,7 @@ const Tracklist2 = (props) => {
         else {
           const json = await response.json();
           setTrackArrayState(json);
+          props.setTrackArrayLengthState(json.length);
         }
       }
       getUserTracks();
@@ -161,6 +167,7 @@ const Tracklist2 = (props) => {
         else {
           const json = await response.json();
           setTrackArrayState(json);
+          props.setTrackArrayLengthState(json.length);
         }
       }
       getUserTracks();
@@ -177,6 +184,7 @@ const Tracklist2 = (props) => {
         else {
           const json = await response.json();
           setTrackArrayState(json);
+          props.setTrackArrayLengthState(json.length);
         }
       }
       getUserTracks();
