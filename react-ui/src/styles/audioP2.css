@@ -115,7 +115,13 @@
   border: 1px solid blue;
 } */
 #pl2-audio__top__song-name {
-  font-size: 20px;
+  font-size: 12px;
+  font-family: 'Electrolize', sans-serif;
+  font-weight: 900;
+  margin: 0px;
+}
+#pl2-audio__top__song-artist {
+  font-size: 12px;
   font-family: 'Electrolize', sans-serif;
   font-weight: 900;
   margin: 0px;

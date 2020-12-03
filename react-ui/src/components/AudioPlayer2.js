@@ -39,6 +39,7 @@ const AudioPlayer2 = (props)=>{
   // const [intervalRwdState, setIntervalRwdState] = useState();
 
   const [songNameState, setSongNameState] = useState("")
+  const [artistNameState, setArtistNameState] = useState("")
 
 
   // let intervalFwd;
@@ -140,7 +141,7 @@ const AudioPlayer2 = (props)=>{
     const trackLiIdNumber = Number(trackLi[0].id.slice(3)) //get index of current track
     const newTrackLi = document.getElementById(`nti${trackLiIdNumber - 1}`) //get Li element of previous track regardless of sort choice
     const newTrackObj = JSON.parse(newTrackLi.innerHTML); //get key values of next track info
-    setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.audioId); // start the next track
+    setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId); // start the next track
   }
 
   // function nextTrack() {
@@ -297,7 +298,7 @@ const AudioPlayer2 = (props)=>{
 // ---------------------------------------------
 //---------------Audio-Tracks-------------------
 
-  function setTrack(track, songName, audioId){
+  function setTrack(track, songName, artistName, audioId){
 
     media.current.setAttribute("src", track);
     playPauseMedia();
@@ -306,7 +307,12 @@ const AudioPlayer2 = (props)=>{
     if (newSongName.length > 20){
       newSongName = newSongName.slice(0, 20) + "..."
     } 
+    let newArtistName = artistName.slice(0,)
+    if (newArtistName.length > 20){
+      newArtistName = newArtistName.slice(0, 20) + "..."
+    } 
     setSongNameState(newSongName);
+    setArtistNameState(newArtistName);
     currentTrack.current = audioId;
     
   }
@@ -317,7 +323,8 @@ function nextTrack() {
   const trackLiIdNumber = Number(trackLi[0].id.slice(3)) //get index of current track
   const newTrackLi = document.getElementById(`nti${trackLiIdNumber + 1}`) //get Li element of next track regardless of sort choice
   const newTrackObj = JSON.parse(newTrackLi.innerHTML); //get key values of next track info
-  setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.audioId); // start the next track
+  console.log("nnneeeeewwTrackObj====>", newTrackObj)
+  setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId); // start the next track
 }
 
   return(
@@ -352,6 +359,7 @@ function nextTrack() {
                 <img  className={`pl2-loop ${loopState ? "pl2-looping" : "not-looping"}`} src={loop} alt={""} onClick={toggleLoop}></img>
                 <div id={"pl2-audio__bottom"} >
                 <p id={"pl2-audio__top__song-name"}>{songNameState ? songNameState : `${firstTrack ? firstTrack[0].trackname : ""}`}</p>
+                <p id={"pl2-audio__top__song-artist"}>{artistNameState ? artistNameState : `${firstTrack ? firstTrack[0].trackartist : ""}`}</p>
                 <div className={"pl2-audio__bottom__playhead"} ref={audioBottomPlayhead} >
                   <input id={"pl2-playhead-input"} ref={playHeadSlider} type={"range"} min={"0"} max={"1"} step={"0.0005"} onChange={movePlayheadOnClick} ></input>
                   <div className={"pl2-audio__bottom__playhead__left"} ref={timerBar} ></div>
