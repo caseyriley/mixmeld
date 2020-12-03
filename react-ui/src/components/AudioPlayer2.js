@@ -1,12 +1,10 @@
 import React, {useState, useEffect, useRef} from 'react';
-import psychoTantricJuju from '../media/TrillianGreen-PsychoTantricJujuJazz-01-BhenPaUlRaga.wav';
 import { API_URL } from '../config';
 import playButton from '../images/playButton.svg';
 import pauseButton from '../images/pauseButton.png';
 import fastForward from '../images/fastForward.png';
 import loop from '../images/loop.png';
 import random from '../images/random.png';
-import VolumeKnobUi from './VolumeKnobUi';
 import Tracklist2 from './Tracklist2';
 import TimeRemaining from './TimeRemaining';
 import VolumeUiSlider from './VolumeUiSlider';
@@ -38,14 +36,14 @@ const AudioPlayer2 = (props)=>{
 
   const [timeState, setTimeState] = useState(":");
 
-  const [intervalFwdState, setIntervalFwdState] = useState();
-  const [intervalRwdState, setIntervalRwdState] = useState();
+  // const [intervalFwdState, setIntervalFwdState] = useState();
+  // const [intervalRwdState, setIntervalRwdState] = useState();
 
   const [songNameState, setSongNameState] = useState("")
 
 
-  let intervalFwd;
-  let intervalRwd;
+  // let intervalFwd;
+  // let intervalRwd;
 
   //---------Get-Current_User--------------
   const [currentUser, setCurrentUser] = useState({});
@@ -66,7 +64,6 @@ const AudioPlayer2 = (props)=>{
         setCurrentUser(json);
         console.log(json)
 
-        
       }
     }
     getCurrentUser();
@@ -109,12 +106,12 @@ const AudioPlayer2 = (props)=>{
     
     rwd.current.classList.remove('active');
     fwd.current.classList.remove('active');
-    if (intervalRwdState){
-      clearInterval(intervalRwdState.intervalRwd);
-    }
-    if (intervalFwdState){
-      clearInterval(intervalFwdState.intervalFwd);
-    }
+    // if (intervalRwdState){
+    //   clearInterval(intervalRwdState.intervalRwd);
+    // }
+    // if (intervalFwdState){
+    //   clearInterval(intervalFwdState.intervalFwd);
+    // }
     
     if(media.current.paused) {
       play.current.src = pauseButton;
@@ -132,72 +129,72 @@ const AudioPlayer2 = (props)=>{
     play.current.src = playButton;
     rwd.current.classList.remove('active');
     fwd.current.classList.remove('active');
-    clearInterval(intervalRwd);
-    if (intervalFwdState){
-      clearInterval(intervalFwdState.intervalFwd);
-    }
+    // clearInterval(intervalRwd);
+    // if (intervalFwdState){
+    //   clearInterval(intervalFwdState.intervalFwd);
+    // }
   }
 // -----------------------------------------------
 
 // -------------------fast-forward-and-rewind----------------------
-  function mediaBackward() {
+  // function mediaBackward() {
     
-    clearInterval(intervalFwdState.intervalFwd);
-    fwd.current.classList.remove('active');
+  //   clearInterval(intervalFwdState.intervalFwd);
+  //   fwd.current.classList.remove('active');
 
-    if(rwd.current.classList.contains('active')) {
-      rwd.current.classList.remove('active');
-      clearInterval(intervalRwdState.intervalRwd);
-      media.current.play(); //
-    } else {
-      rwd.current.classList.add('active');
-      media.current.pause();
-      intervalRwd = setInterval(windBackward, 200);
-      setIntervalRwdState({intervalRwd: intervalRwd})
-    }
-  }
+  //   if(rwd.current.classList.contains('active')) {
+  //     rwd.current.classList.remove('active');
+  //     clearInterval(intervalRwdState.intervalRwd);
+  //     media.current.play(); //
+  //   } else {
+  //     rwd.current.classList.add('active');
+  //     media.current.pause();
+  //     intervalRwd = setInterval(windBackward, 200);
+  //     setIntervalRwdState({intervalRwd: intervalRwd})
+  //   }
+  // }
 
-  function mediaForward() {
-    if (intervalRwdState){
-      clearInterval(intervalRwdState.intervalRwd);
-    }
+  // function mediaForward() {
+  //   if (intervalRwdState){
+  //     clearInterval(intervalRwdState.intervalRwd);
+  //   }
     
-    rwd.current.classList.remove('active');
+  //   rwd.current.classList.remove('active');
 
-    if(fwd.current.classList.contains('active')) {
-      fwd.current.classList.remove('active');
-      clearInterval(intervalFwdState.intervalFwd);
-      media.current.play();
-    } else {
-      fwd.current.classList.add('active');
-      media.current.pause();
-      intervalFwd = setInterval(windForward, 200);
-      setIntervalFwdState({intervalFwd: intervalFwd})
-    }
-  }
+  //   if(fwd.current.classList.contains('active')) {
+  //     fwd.current.classList.remove('active');
+  //     clearInterval(intervalFwdState.intervalFwd);
+  //     media.current.play();
+  //   } else {
+  //     fwd.current.classList.add('active');
+  //     media.current.pause();
+  //     intervalFwd = setInterval(windForward, 200);
+  //     setIntervalFwdState({intervalFwd: intervalFwd})
+  //   }
+  // }
 
-  function windBackward() {
-    if(media.current.currentTime <= 3) {
-      rwd.current.classList.remove('active');
-      if (intervalRwdState){
-        clearInterval(intervalRwdState.intervalRwd);
-      }
-      stopMedia();
-    } else {
-      media.current.currentTime -= 3;
-    }
-  }
+  // function windBackward() {
+  //   if(media.current.currentTime <= 3) {
+  //     rwd.current.classList.remove('active');
+  //     if (intervalRwdState){
+  //       clearInterval(intervalRwdState.intervalRwd);
+  //     }
+  //     stopMedia();
+  //   } else {
+  //     media.current.currentTime -= 3;
+  //   }
+  // }
 
-  function windForward() {
-    if(media.currentTime >= media.duration - 4) {
-      fwd.current.classList.remove('active');
-      if (intervalFwdState){
-        clearInterval(intervalFwdState.intervalFwd);
-      }
-    } else {
-      media.current.currentTime += 3;
-    }
-  }
+  // function windForward() {
+  //   if(media.currentTime >= media.duration - 4) {
+  //     fwd.current.classList.remove('active');
+  //     if (intervalFwdState){
+  //       clearInterval(intervalFwdState.intervalFwd);
+  //     }
+  //   } else {
+  //     media.current.currentTime += 3;
+  //   }
+  // }
 
   useEffect(()=>{
     setInterval(() => {
@@ -283,7 +280,7 @@ const AudioPlayer2 = (props)=>{
 // ---------------------------------------------
 //---------------Audio-Tracks-------------------
 
-  function setTrack(track, songName, ntiIndex){
+  function setTrack(track, songName, audioId){
 
     media.current.setAttribute("src", track);
     playPauseMedia();
@@ -293,29 +290,22 @@ const AudioPlayer2 = (props)=>{
       newSongName = newSongName.slice(0, 20) + "..."
     } 
     setSongNameState(newSongName);
-    currentTrack.current = ntiIndex;
+    currentTrack.current = audioId;
     
   }
 //----------------------------------------------
 
 function nextTrack() {
-  console.log("nnnnnneeeeeeexttttttttTraaaaaaaaaack")
-  console.log('currrrrrrreeeeeennnnnttTraaaack',currentTrack)
-  const nti = document.getElementById(`nti${currentTrack.current + 1}`).innerHTML;
-  console.log("nnnnnnttttttttiiiiiii",nti)
-  const newTrackObj = JSON.parse(nti);
-  console.log('nnnnnneeeeeewwTraaaackOOOOObj', newTrackObj)
-  setTrack(newTrackObj.tracklocation, newTrackObj.trackname, currentTrack.current + 1);
+  console.log("newTrack currentTrack",currentTrack.current) //audioId of current track
+  const trackLi = document.getElementsByClassName(`audioId${currentTrack.current}`) //get Li element of current track recgardless of sort choice
+  const trackLiIdNumber = Number(trackLi[0].id.slice(3))
+  console.log("trackLiIdNumber", trackLiIdNumber)
+  const newTrackLi = document.getElementById(`nti${trackLiIdNumber + 1}`) //get Li of next track regardless of sort choice
+  console.log('traaaaaackLiiiiii',trackLi[0].id)
+  console.log('neeeeeeewtraaaaaackLiiiiii', newTrackLi.innerHTML)
+  const newTrackObj = JSON.parse(newTrackLi.innerHTML);
+  setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.audioId);
 }
-
-// useEffect(()=>{
-//   if(media.current){
-//     media.current.addEventListener('ended', next, false);
-//       media.current.setAttribute("src", firstTrack[0].tracklocation)
-//   } 
-// })
-
-
 
   return(
     <>
@@ -342,10 +332,10 @@ function nextTrack() {
             <div  id={"pl2-audio__middle"}>
               <div className={"pl2-controls"}>
                 <img className={`pl2-random ${randomState}`} src={random} alt={""} onClick={toggleRandom}></img>
-                <img  className={"pl2-rewind"} ref={rwd} src={fastForward} alt={""} onClick={mediaBackward} ></img>
+                <img  className={"pl2-rewind"} ref={rwd} src={fastForward} alt={""} ></img>
                 <img className={"pl2-play"} ref={play} src={playButton} alt={""} onClick={playPauseMedia} ></img>
                 <div className={"pl2-stop"} onClick={stopMedia} ></div>
-                <img className={"pl2-fast-forward"} ref={fwd} src={fastForward} alt={""} onClick={mediaForward} ></img>
+                <img className={"pl2-fast-forward"} ref={fwd} src={fastForward} alt={""}  ></img>
                 <img  className={`pl2-loop ${loopState ? "pl2-looping" : "not-looping"}`} src={loop} alt={""} onClick={toggleLoop}></img>
                 <div id={"pl2-audio__bottom"} >
                 <p id={"pl2-audio__top__song-name"}>{songNameState ? songNameState : `${firstTrack ? firstTrack[0].trackname : ""}`}</p>

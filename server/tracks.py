@@ -183,7 +183,7 @@ def get_user_tracks(id):
     tracks = []
     for model_track in model_tracks:
         track = model_track.to_dict()
-        track["user"] = model_track.user.to_safe_object()
+        # track["user"] = model_track.user.to_safe_object()
         tracks.append(track)
     return jsonify(sorted(tracks, key=lambda i: i["id"]))
 
