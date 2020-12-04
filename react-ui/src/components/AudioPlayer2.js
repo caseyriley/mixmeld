@@ -137,9 +137,16 @@ const AudioPlayer2 = (props)=>{
     // }
   }
 // -----------------------------------------------
-// --------------Skip-Track------------------------
+// --------------Skip-Back------------------------
   function skipBack(){
-    const trackLi = document.getElementsByClassName(`audioId${currentTrack.current}`) //get Li element of current track regarless of sort choice
+
+    console.log("timeState",media.current.currentTime);
+    if (media.current.currentTime > 5) {
+      if (media){
+        media.current.currentTime = 0;
+      }
+    } else {
+      const trackLi = document.getElementsByClassName(`audioId${currentTrack.current}`) //get Li element of current track regarless of sort choice
     let trackLiIdNumber = Number(trackLi[0].id.slice(3)) //get index of current track
     if (trackLiIdNumber === 0){
       trackLiIdNumber = 1
@@ -147,16 +154,9 @@ const AudioPlayer2 = (props)=>{
     const newTrackLi = document.getElementById(`nti${trackLiIdNumber - 1}`) //get Li element of previous track regardless of sort choice
     const newTrackObj = JSON.parse(newTrackLi.innerHTML); //get key values of next track info
     setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId); // start the next track
-  }
+    }
 
-  // function nextTrack() {
-  //   const trackLi = document.getElementsByClassName(`audioId${currentTrack.current}`) //get Li element of current track regarless of sort choice
-  //   const trackLiIdNumber = Number(trackLi[0].id.slice(3)) //get index of current track
-  //   const newTrackLi = document.getElementById(`nti${trackLiIdNumber + 1}`) //get Li element of next track regardless of sort choice
-  //   const newTrackObj = JSON.parse(newTrackLi.innerHTML); //get key values of next track info
-  //   setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.audioId); // start the next track
-  //   beenPlayedArray.current.push({tracklocation:newTrackObj.tracklocation, trackname: newTrackObj.trackname, audioId: newTrackObj.audioId})
-  // }
+  }
 // ------------------------------------------------
 
 // -------------------fast-forward-and-rewind----------------------
@@ -342,7 +342,7 @@ function nextTrack() {
     // console.log("nnneeeeewwTrackObj====>", newTrackObj)
     setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId); // start the next track
   } else {
-    
+
     if (loopState && trackLiIdNumber >= trackArrayLengthState -1){
       trackLiIdNumber = -1;
     }
