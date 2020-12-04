@@ -77,7 +77,7 @@
   background-color: rgb(92, 92, 92);
   /* box-shadow: 4px 4px 0 rgb(239, 142, 248), 4px -4px 0 #25ff99, -4px 4px 0 #56caf8, -4px -4px 0 #56caf8, 4px 0px 0 #f7b867, 0px 4px 0 #dd4338, -4px 0px 0 #0c6fe9, 0px -4px 0 #f010e5; */
 }
-.pl2-controls{
+.pl2-audio__top__inner{
   height: 50px;
   width: 100%;
   display: flex;
@@ -85,6 +85,12 @@
   align-items: center;
   /* border: 1px solid pink; */
 }
+#pl2-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #pl2-audio__volume {
   width: 25%;
   height: 120px;
@@ -128,7 +134,7 @@
   color: rgb(182, 181, 181);
   margin: 0px 0px 2px 0px;
 }
-#pl2-audio__middle {
+#pl2-audio__top {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
@@ -146,15 +152,17 @@
   width: 20px;
   opacity: .7;
   transition: opacity .5s;
+  margin: 0px 5px 0px 0px;
 
 }
 .pl2-fast-forward:hover{
   opacity: .4;
 }
 .pl2-play {
-  width: 20px;
+  width: 25px;
   opacity: .7;
   transition: opacity .5s;
+  margin: 0px 5px 0px 0px;
 }
 .pl2-play:hover {
   opacity: .4;
@@ -164,6 +172,7 @@
   opacity: .7;
   transform: rotate(180deg);
   transition: opacity .5s;
+  margin: 0px 5px 0px 0px;
 }
 .pl2-rewind:hover{
   opacity: .4;
@@ -176,7 +185,9 @@
   align-items: center;
   flex-flow: column;
   /* border: 1px solid yellow; */
-
+}
+#pl2-track-display {
+  display: flex;
 }
 .pl2-timer {
   width: 100%;
@@ -194,7 +205,11 @@
 .track-art {
   width: 50px;
   height: 50px;
-  border: 1px solid rgb(202, 202, 202);
+  background-color: rgba(136, 136, 136);
+  margin: 0px 5px 0px 0px;
+  /* border: 1px solid rgb(202, 202, 202); */
+  /* background-image: url("../images/formless-music-icon.png"); */
+  /* background-image: image("../images/formless-music-icon.png"); */
 }
 /* #pl2-audio__bottom-c {
   width: 300px;
@@ -217,13 +232,14 @@
 .pl2-random {
   height: 20px;
   width: 20px;
-  opacity: .4;
+  opacity: .6;
+  margin: 0px 5px 0px 0px;
   
 }
 .pl2-loop {
   height: 20px;
   width: 20px;
-  opacity: .4;
+  opacity: .6;
 }
 .pl2-random:hover ,
 .pl2-loop:hover {

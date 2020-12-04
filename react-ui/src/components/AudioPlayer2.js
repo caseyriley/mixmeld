@@ -8,6 +8,7 @@ import random from '../images/random.png';
 import Tracklist2 from './Tracklist2';
 import TimeRemaining from './TimeRemaining';
 import VolumeUiSlider from './VolumeUiSlider';
+import formlessMusicIcon from "../images/formless-music-icon.png"
 
 
 
@@ -386,29 +387,35 @@ function nextTrack() {
               Your browser does not support the
               <code>audio</code> element.
             </audio>
-            <div  id={"pl2-audio__middle"}>
-              <div className={"pl2-controls"}>
-                <img className={`pl2-random ${randomState}`} src={random} alt={""} onClick={toggleRandom}></img>
-                <img  className={"pl2-rewind"} ref={rwd} src={fastForward} alt={""} onClick={skipBack} ></img>
-                <img className={"pl2-play"} ref={play} src={playButton} alt={""} onClick={playPauseMedia} ></img>
-                <div className={"pl2-stop"} onClick={stopMedia} ></div>
-                <img className={"pl2-fast-forward"} onClick={nextTrack} ref={fwd} src={fastForward} alt={""}  ></img>
-                <img  className={`pl2-loop ${loopState ? "pl2-looping" : "not-looping"}`} src={loop} alt={""} onClick={toggleLoop}></img>
-                <img className={"track-art"} src={""} alt={""}/>
-                <div id={"pl2-audio__bottom"} >
-                <p id={"pl2-audio__top__song-name"}>{songNameState ? songNameState : `${firstTrack ? firstTrack[0].trackname : ""}`}</p>
-                <p id={"pl2-audio__top__song-artist"}>{artistNameState ? artistNameState : `${firstTrack ? firstTrack[0].trackartist : ""}`}</p>
+            <div  id={"pl2-audio__top"}>
+              <div className={"pl2-audio__top__inner"}>
+                <div id={"pl2-controls"}>
+                  <img className={`pl2-random ${randomState}`} src={random} alt={""} onClick={toggleRandom}></img>
+                  <img  className={"pl2-rewind"} ref={rwd} src={fastForward} alt={""} onClick={skipBack} ></img>
+                  <img className={"pl2-play"} ref={play} src={playButton} alt={""} onClick={playPauseMedia} ></img>
+                  {/* <div className={"pl2-stop"} onClick={stopMedia} ></div> */}
+                  <img className={"pl2-fast-forward"} onClick={nextTrack} ref={fwd} src={fastForward} alt={""}  ></img>
+                  <img  className={`pl2-loop ${loopState ? "pl2-looping" : "not-looping"}`} src={loop} alt={""} onClick={toggleLoop}></img>
+                </div>
+
+                <div id={"pl2-track-display"}>
+                  <img className={"track-art"} src={formlessMusicIcon} alt={""}/>
+                  <div id={"pl2-audio__bottom"} >
+                  <p id={"pl2-audio__top__song-name"}>{songNameState ? songNameState : `${firstTrack ? firstTrack[0].trackname : ""}`}</p>
+                  <p id={"pl2-audio__top__song-artist"}>{artistNameState ? artistNameState : `${firstTrack ? firstTrack[0].trackartist : ""}`}</p>
+                
+
                 <div className={"pl2-audio__bottom__playhead"} ref={audioBottomPlayhead} >
                   <input id={"pl2-playhead-input"} ref={playHeadSlider} type={"range"} min={"0"} max={"1"} step={"0.01"} onChange={movePlayheadOnClick} ></input>
                   <div className={"pl2-audio__bottom__playhead__left"} ref={timerBar} ></div>
-                 
                     <div className="pl2-timer">
                       <span id={"pl2-audio__bottom__time__start"} >{timeState}</span>
                     </div>
                     <TimeRemaining media={media}/>
-                    
                   </div>
                 </div>
+                </div>
+
                 <VolumeUiSlider volumeLevel={volumeLevel} volumeFader={volumeFader} volumeSlider={volumeSlider} changeVolume={changeVolume}/>
               </div>
             </div>

@@ -2,7 +2,6 @@ from flask import Blueprint, jsonify, request
 from sqlalchemy.orm import subqueryload, joinedload
 from sqlalchemy import func
 from .models import db, Track
-# from .models import db, Tweet
 import requests
 import json
 from flask_jwt_extended  import jwt_required
