@@ -5,6 +5,7 @@ import { API_URL } from '../config';
 import UploadingTrack from './UploadingTrack';
 import pen from '../images/pen.png';
 import deleteX from '../images/deleteX.png';
+import UploadModal from './UploadModal';
 
 
 const Tracklist2 = (props) => {
@@ -297,17 +298,17 @@ function toStandardTime(militaryTime) {
   return `${first}:` + last + amPm;
 }
 // -------------------------------------------
- 
+  const [uploadModalState, setUploadModalState] = useState("no-modal");
 
   return(
     <>
-
+    <UploadModal uploadModalState={uploadModalState}/>
     <div id={"pl2-playlist-border"}>
       <div id={"pl2-playlist-c"} >
         <div id={"pl2-playlist-c__top-c"}>
           <div id={"pl2-playlist-c__top-c__rating"}><h2 onClick={()=>{setOrganiseByState("trackrating")}}>Rating</h2></div>
           <div id={"pl2-playlist-c__top-c__name"}  >
-            <UploadingTrack refreshTrackState={refreshTrackState} setRefreshTrackState={setRefreshTrackState}/>
+            <UploadingTrack refreshTrackState={refreshTrackState} setRefreshTrackState={setRefreshTrackState} setUploadModalState={setUploadModalState}/>
             <div id={"pl2-playlist-name-c"} >
               <h2 onClick={()=>{setOrganiseByState("trackname")}}>Name</h2>
             </div> 

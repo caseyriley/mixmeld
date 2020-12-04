@@ -6,18 +6,18 @@ const jsmediatags = require('jsmediatags');
 const UploadingTrack = (props) => {
 
 // ---------------get-mp3-meta-data---------------
-function getMp3MetaData(){
-  new jsmediatags.Reader("https://formless.s3.amazonaws.com/12 Pretty Bird (Freestyle) [feat. Common].mp3")
-  .setTagsToRead(["title", "artist"])
-  .read({
-    onSuccess: function(tag) {
-      console.log("ttttttttaaaaaaaaaaaggggggg",tag);
-    },
-    onError: function(error) {
-      console.log(':(', error.type, error.info);
-    }
-  });
-} 
+// function getMp3MetaData(){
+//   new jsmediatags.Reader("https://formless.s3.amazonaws.com/12 Pretty Bird (Freestyle) [feat. Common].mp3")
+//   .setTagsToRead(["title", "artist"])
+//   .read({
+//     onSuccess: function(tag) {
+//       console.log("ttttttttaaaaaaaaaaaggggggg",tag);
+//     },
+//     onError: function(error) {
+//       console.log(':(', error.type, error.info);
+//     }
+//   });
+// } 
 // -----------------------------------------------
   const config = {
     bucketName: process.env.REACT_APP_BUCKETNAME,
@@ -61,9 +61,11 @@ function getMp3MetaData(){
 
 
   const upload = (e) => {
+    props.setUploadModalState("upload-modal");
+    
     let formattedTime;
     const trackName = e.target.value.slice(12,).slice(0,-4)
-
+   
     const newTrack = async (uploadLocation) => {
       const trackData = { user_id: currentUser.id, trackname: trackName, tracklocation: uploadLocation, tracktime: formattedTime}
       const options = {
@@ -88,7 +90,6 @@ function getMp3MetaData(){
           async function inner(){
             formattedTime = await formatTime(au.duration)
             newTrack(location).then(()=>{
-              getMp3MetaData(location);
               props.setRefreshTrackState(props.refreshTrackState + 1)
             })
           }
