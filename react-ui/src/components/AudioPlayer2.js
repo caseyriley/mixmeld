@@ -25,7 +25,7 @@ const AudioPlayer2 = (props)=>{
   const timerBar = useRef();
 
 
-  const volumeLevel =useRef(.5);
+  const volumeLevel =useRef();
   const volumeSlider =useRef();
   const volumeFader =useRef();
 
@@ -91,6 +91,7 @@ const AudioPlayer2 = (props)=>{
       }
     }
     getUserFirstTrack();
+    media.current.volume = .5;
 
   },[currentUser])
   // -----------------------------------------------
@@ -326,23 +327,41 @@ const AudioPlayer2 = (props)=>{
 function nextTrack() {
   const trackLi = document.getElementsByClassName(`audioId${currentTrack.current}`) //get Li element of current track regarless of sort choice
   let trackLiIdNumber = Number(trackLi[0].id.slice(3)) //get index of current track
+  console.log(randomState)
 
-  if (loopState && trackLiIdNumber >= trackArrayLengthState -1){
-    trackLiIdNumber = -1;
-  }
+  if (randomState === "pl2-random-play"){
 
-  if (!loopState && trackLiIdNumber >= trackArrayLengthState -1){
-    trackLiIdNumber = -1;
-    const newTrackLi = document.getElementById(`nti${trackLiIdNumber + 1}`) //get Li element of next track regardless of sort choice
-    const newTrackObj = JSON.parse(newTrackLi.innerHTML); //get key values of next track info
-    setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId); // start the next track
-    stopMedia()
-  } else {
-    const newTrackLi = document.getElementById(`nti${trackLiIdNumber + 1}`) //get Li element of next track regardless of sort choice
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * Math.floor(max));
+    }
+
+    const randomNum = getRandomInt(trackArrayLengthState -1);
+    console.log("randomNum==================>", randomNum)
+    const newTrackLi = document.getElementById(`nti${randomNum}`) //get Li element of next track regardless of sort choice
     const newTrackObj = JSON.parse(newTrackLi.innerHTML); //get key values of next track info
     // console.log("nnneeeeewwTrackObj====>", newTrackObj)
     setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId); // start the next track
+  } else {
+    
+    if (loopState && trackLiIdNumber >= trackArrayLengthState -1){
+      trackLiIdNumber = -1;
+    }
+  
+    if (!loopState && trackLiIdNumber >= trackArrayLengthState -1){
+      trackLiIdNumber = -1;
+      const newTrackLi = document.getElementById(`nti${trackLiIdNumber + 1}`) //get Li element of next track regardless of sort choice
+      const newTrackObj = JSON.parse(newTrackLi.innerHTML); //get key values of next track info
+      setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId); // start the next track
+      stopMedia()
+    } else {
+      const newTrackLi = document.getElementById(`nti${trackLiIdNumber + 1}`) //get Li element of next track regardless of sort choice
+      const newTrackObj = JSON.parse(newTrackLi.innerHTML); //get key values of next track info
+      // console.log("nnneeeeewwTrackObj====>", newTrackObj)
+      setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId); // start the next track
+    }
   }
+
+ 
 }
 
   return(
@@ -380,7 +399,7 @@ function nextTrack() {
                 <p id={"pl2-audio__top__song-name"}>{songNameState ? songNameState : `${firstTrack ? firstTrack[0].trackname : ""}`}</p>
                 <p id={"pl2-audio__top__song-artist"}>{artistNameState ? artistNameState : `${firstTrack ? firstTrack[0].trackartist : ""}`}</p>
                 <div className={"pl2-audio__bottom__playhead"} ref={audioBottomPlayhead} >
-                  <input id={"pl2-playhead-input"} ref={playHeadSlider} type={"range"} min={"0"} max={"1"} step={"0.0005"} onChange={movePlayheadOnClick} ></input>
+                  <input id={"pl2-playhead-input"} ref={playHeadSlider} type={"range"} min={"0"} max={"1"} step={"0.01"} onChange={movePlayheadOnClick} ></input>
                   <div className={"pl2-audio__bottom__playhead__left"} ref={timerBar} ></div>
                  
                     <div className="pl2-timer">
