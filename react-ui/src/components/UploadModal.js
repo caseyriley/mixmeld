@@ -23,7 +23,8 @@ function updateTrackInfo(e) {
       body: JSON.stringify(trackData),
     }
     fetch(`${API_URL}/tracks/track_info`, options)
-    // setRefreshTrackState(refreshTrackState + 1)
+    props.setRefreshTrackState(props.refreshTrackState + 1)
+    props.setUploadModalState("no-modal")
   }
   newTrack();
 }
@@ -63,7 +64,7 @@ function updateTrackInfo(e) {
                         placeholder={""} 
                     />
                     { props.trackLocationState ?
-                      <input className={""} type={"submit"} />
+                      <input id={"upload-modal__submit"} type={"submit"} />
                       : ""
                     }
                     </form>

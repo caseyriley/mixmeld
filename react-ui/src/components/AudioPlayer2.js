@@ -303,8 +303,10 @@ const AudioPlayer2 = (props)=>{
   },[volumeState])
 // ---------------------------------------------
 //---------------Audio-Tracks-------------------
+ 
+  const [trackArtState, setTrackArtState] = useState();
 
-  function setTrack(track, songName, artistName, audioId){
+  function setTrack(track, songName, artistName, audioId, trackArt){
 
     media.current.setAttribute("src", track);
     playPauseMedia();
@@ -319,6 +321,7 @@ const AudioPlayer2 = (props)=>{
     } 
     setSongNameState(newSongName);
     setArtistNameState(newArtistName);
+    setTrackArtState(trackArt);
     
     currentTrack.current = audioId;
     
@@ -399,7 +402,7 @@ function nextTrack() {
                 </div>
 
                 <div id={"pl2-track-display"}>
-                  <img className={"track-art"} src={formlessMusicIcon} alt={""}/>
+                  <img className={"track-art"} src={`${trackArtState ? trackArtState : formlessMusicIcon}`} alt={""}/>
                   <div id={"pl2-audio__bottom"} >
                   <p id={"pl2-audio__top__song-name"}>{songNameState ? songNameState : `${firstTrack ? firstTrack[0].trackname : ""}`}</p>
                   <p id={"pl2-audio__top__song-artist"}>{artistNameState ? artistNameState : `${firstTrack ? firstTrack[0].trackartist : ""}`}</p>

@@ -306,7 +306,7 @@ function toStandardTime(militaryTime) {
 
   return(
     <>
-    <UploadModal uploadModalState={uploadModalState} trackLocationState={trackLocationState}/>
+    <UploadModal refreshTrackState={refreshTrackState} setRefreshTrackState={setRefreshTrackState} uploadModalState={uploadModalState} setUploadModalState={setUploadModalState} trackLocationState={trackLocationState}/>
     <div id={"pl2-playlist-border"}>
       <div id={"pl2-playlist-c"} >
         <div id={"pl2-playlist-c__top-c"}>
@@ -327,7 +327,7 @@ function toStandardTime(militaryTime) {
         {trackArrayState ? trackArrayState.map((audio, index) => {
             return (
               <li name={index} className={"pl2-track-ul__li"} key={index} >
-                <div id={`nti${index}`} className={`next-track-info audioId${audio.id}`}>{`{"tracklocation":"${audio.tracklocation}","trackname":"${audio.trackname}","audioId":"${audio.id}", "trackartist":"${audio.trackartist}"}`}</div> 
+                <div id={`nti${index}`} className={`next-track-info audioId${audio.id}`}>{`{"tracklocation":"${audio.tracklocation}","trackname":"${audio.trackname}","audioId":"${audio.id}", "trackartist":"${audio.trackartist}", "trackart":"${audio.trackart}"}`}</div> 
                 <div className={`pl2-track-ul__li__rating ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`}>
                 {trackEditState ? 
                   <>
@@ -341,7 +341,7 @@ function toStandardTime(militaryTime) {
                       <input className={"pl2-track-artist-name-submit"} type={"submit"} />
                     </form> 
                   </> :
-                  <span className={"pl2-track-artist-rating-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.trackartist, audio.id)}}>{audio.trackrating ? audio.trackrating : ""} </span>
+                  <span className={"pl2-track-artist-rating-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.trackartist, audio.id, audio.trackart)}}>{audio.trackrating ? audio.trackrating : ""} </span>
                   
                 }
                 </div>
@@ -361,7 +361,7 @@ function toStandardTime(militaryTime) {
                     </form>
                     <img name={audio.id} className={"pl2-deleteX"} src={deleteX} alt={""} onClick={e=>{deleteTrack(e.target.name)}}/>
                   </> :
-                  <span className={"pl2-track-artist-name-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.trackartist, audio.id)}} >{audio.trackname ? audio.trackname : ""} </span>
+                  <span className={"pl2-track-artist-name-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.trackartist, audio.id, audio.trackart)}} >{audio.trackname ? audio.trackname : ""} </span>
 
                   }
                   </div>
@@ -377,7 +377,7 @@ function toStandardTime(militaryTime) {
                     />
                     <input className={"pl2-track-artist-name-submit"} type={"submit"} />
                   </form> :
-                  <span className={"pl2-track-artist-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.trackartist, audio.id)}} >{audio.trackartist ? audio.trackartist : ""} </span>
+                  <span className={"pl2-track-artist-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.trackartist, audio.id, audio.trackart)}} >{audio.trackartist ? audio.trackartist : ""} </span>
                 }
                 </div>
 
@@ -394,12 +394,12 @@ function toStandardTime(militaryTime) {
                     />
                     <input className={"pl2-track-artist-name-submit"} type={"submit"} />
                   </form> :
-                  <span className={"pl2-track-genre-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.trackartist, audio.id)}} >{audio.trackgenre ? audio.trackgenre: ""} </span>
+                  <span className={"pl2-track-genre-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.trackartist, audio.id, audio.trackart)}} >{audio.trackgenre ? audio.trackgenre: ""} </span>
                 }
                 </div>
 
                 <div className={`pl2-track-ul__li__date ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`}>
-                  <span className={"pl2-track-genre-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.trackartist, audio.id)}} >{audio.created_date ? audio.created_date.slice(5, 16)+ " " + toStandardTime(audio.created_date.slice(16, 22)) : ""} </span>
+                  <span className={"pl2-track-genre-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.trackartist, audio.id, audio.trackart)}} >{audio.created_date ? audio.created_date.slice(5, 16)+ " " + toStandardTime(audio.created_date.slice(16, 22)) : ""} </span>
                 </div>
 
               </li>)  

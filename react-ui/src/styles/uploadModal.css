@@ -12,8 +12,8 @@
 }
 .upload-modal {
   width: 50vw;
-  height: 80vw;
-  margin: 0px 0px 0px 25vw;
+  height: 90vh;
+  margin: 5vh 0px 0px 25vw;
   background-color: rgb(245, 245, 245, .7);
   display: flex;
   justify-content: flex-start;
@@ -35,7 +35,8 @@
 
 #uploaded-image-c {
   display: flex;
-  position: absolute;
+  position: relative;
+  left: 12px;
 }
 #uploaded-image-c div {
   
@@ -83,6 +84,20 @@
 #upload-modal__form__track-artist,
 #upload-modal__form__track-name,
 #upload-modal__form__genre-name{
+  height: 30px;
+  min-width: 80%;
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  font-size: 12px;
+  color: rgb(131, 131, 131);
+  font-family: 'Electrolize', sans-serif;
+  margin: 0px 0px 10px 0px;
+
+}
+#upload-modal__submit {
+  height: 30px;
+  min-width: 80%;
   outline: none;
   border: none;
   border-radius: 3px;
@@ -93,7 +108,7 @@
 }
 
 #uploading-image-c {
-  position: absolute;
+  /* position: absolute; */
   width: 100px;
   height: 100px;
   border: 1px solid white;
