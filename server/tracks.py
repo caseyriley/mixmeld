@@ -47,6 +47,20 @@ def update_track_rating():
     return jsonify(Good='you changed the track rating')
 
 
+@tracks.route('/art', methods=["POST"])
+def update_track_art():
+
+    data = json.loads(request.data)
+    
+    track_location = data["tracklocation"]
+    track_art = data["trackart"]
+
+    track = Track.query.filter(Track.tracklocation == track_location).first()
+    track.trackart = track_art
+    db.session.commit()
+    return jsonify(Good='you changed the track art')
+
+
 @tracks.route('/delete', methods=['DELETE'])
 def delete_track():
 

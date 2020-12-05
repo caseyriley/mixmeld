@@ -83,6 +83,9 @@ const UploadingTrack = (props) => {
 
 // ---------------Get-TracK-Length-Variable---------------------
         location = data.location;
+
+        
+
         let au = document.createElement('audio');
         au.src = location;
 
@@ -90,10 +93,12 @@ const UploadingTrack = (props) => {
           async function inner(){
             formattedTime = await formatTime(au.duration)
             newTrack(location).then(()=>{
+              props.setTrackLocationState(location)
               props.setRefreshTrackState(props.refreshTrackState + 1)
             })
           }
           inner()
+          
         },false);
 // -------------------------------------------------------------
       })

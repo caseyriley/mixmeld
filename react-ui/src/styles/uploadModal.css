@@ -15,8 +15,74 @@
   height: 80vw;
   margin: 0px 0px 0px 25vw;
   background-color: rgb(245, 245, 245, .7);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+
 
 }
-.upload-modal {
+#uploaded-image-c {
+  display: flex;
+}
+#uploaded-image-c div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  width: 20px;
 
+  font-size: 15px;
+  font-family: 'Electrolize', sans-serif;
+  color: white;
+  margin: 35px 0px 0px 5px;
+  border-radius: 999px;
+}
+#uploaded-image-c div img {
+  height: 20px;
+  width: 20px;
+}
+#uploaded-image {
+  height: 100px;
+  width: 100px;
+}
+#upload-modal__form {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+#upload-modal__form__track-artist{
+  outline: none;
+  border: none;
+}
+#upload-modal__form__track-name{
+  outline: none;
+  border: none;
+}
+#upload-modal__form__genre-name{
+  outline: none;
+  border: none;
+}
+#uploading-image-c {
+  width: 100px;
+  height: 100px;
+  border: 1px solid white;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+#uploading-image-c__span {
+  font-size: 22px;
+  font-family: 'Electrolize', sans-serif;
+  pointer-events: none;
+  position: absolute;
+  text-align: center;
+}
+#uploading-image-c__input {
+  width: 100px;
+  height: 100px;
+  opacity: 0;
 }
