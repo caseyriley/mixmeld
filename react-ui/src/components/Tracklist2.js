@@ -298,8 +298,8 @@ function toStandardTime(militaryTime) {
   return `${first}:` + last + amPm;
 }
 // -------------------------------------------
-  // const [uploadModalState, setUploadModalState] = useState("no-modal");
-  const [uploadModalState, setUploadModalState] = useState("upload-modal"); 
+  const [uploadModalState, setUploadModalState] = useState("no-modal");
+  // const [uploadModalState, setUploadModalState] = useState("upload-modal"); 
   const [trackLocationState, setTrackLocationState] = useState();
  
   

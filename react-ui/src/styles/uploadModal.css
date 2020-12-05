@@ -19,13 +19,26 @@
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-
-
 }
+#upload-modal-title {
+  margin: 20px 0px 10px 0px;
+  font-size: 20px;
+  font-family: 'Electrolize', sans-serif;
+  color: rgb(71, 71, 71);
+}
+#upload-modal-instructions {
+  margin: 0px 20px 10px 20px;
+  font-size: 15px;
+  font-family: 'Electrolize', sans-serif;
+  color: rgb(116, 116, 116);
+}
+
 #uploaded-image-c {
   display: flex;
+  position: absolute;
 }
 #uploaded-image-c div {
+  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,10 +60,15 @@
   width: 100px;
 }
 #waiting {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100px;
   height: 100px;
   border: 1px solid white;
   background-color: black;
+  margin: 0px 0px 10px 0px;
 }
 #loading-ripples {
   height: 100px;
@@ -62,19 +80,20 @@
   align-items: center;
   flex-direction: column;
 }
-#upload-modal__form__track-artist{
-  outline: none;
-  border: none;
-}
-#upload-modal__form__track-name{
-  outline: none;
-  border: none;
-}
+#upload-modal__form__track-artist,
+#upload-modal__form__track-name,
 #upload-modal__form__genre-name{
   outline: none;
   border: none;
+  border-radius: 3px;
+  font-size: 12px;
+  color: rgb(131, 131, 131);
+  font-family: 'Electrolize', sans-serif;
+  margin: 0px 0px 10px 0px;
 }
+
 #uploading-image-c {
+  position: absolute;
   width: 100px;
   height: 100px;
   border: 1px solid white;
@@ -82,6 +101,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0px 0px 10px 0px;
 
 }
 #uploading-image-c__span {
