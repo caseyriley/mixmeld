@@ -34,7 +34,10 @@ const UploadModal = (props) => {
                         maxLength={100} 
                         placeholder={""} 
                       />
-                      <input className={""} type={"submit"} />
+                      { props.trackLocationState ?
+                        <input className={""} type={"submit"} />
+                        : ""
+                      }
                     </form>
                   </div>
                 </div>

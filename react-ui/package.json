@@ -6,6 +6,7 @@
     "buffer": "^6.0.3",
     "dotenv": "^8.2.0",
     "jsmediatags": "^3.9.3",
+    "lottie": "0.0.1",
     "mini-create-react-context": "^0.4.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",

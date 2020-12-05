@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import S3FileUpload from 'react-s3';
 import { API_URL } from '../config';
+import lottie from 'lottie-web';
 import deleteX from '../images/deleteX.png'
+import LoadingRipples from '../images/LoadingRipples';
 
 
 const UploadingImage = (props) => {
@@ -40,19 +42,40 @@ const UploadingImage = (props) => {
     }
         
   return (
-    <>{trackArtLocationState ? 
-      <div id={"uploaded-image-c"} >
-        <img id={"uploaded-image"} src={trackArtLocationState} alt={""}/>
-        <div onClick={()=>{setTrackArtLocationState("")}}> 
-          <img src={deleteX} alt={""}/> 
-        </div>
-      </div>
-        : 
-        <div id={"uploading-image-c"}>
-          <span id={"uploading-image-c__span"}>Drop Track Art Here</span>
-          <input id={"uploading-image-c__input"} type="file" onChange={upload} />
-        </div>
-      }
+    <>
+      {(()=>{
+        switch(props.trackLocationState ? "uploading-image" : "waiting") {
+          case "uploading-image":
+            return (
+              <>
+                {trackArtLocationState ? 
+                  <div id={"uploaded-image-c"} >
+                    <img id={"uploaded-image"} src={trackArtLocationState} alt={""}/>
+                    <div onClick={()=>{setTrackArtLocationState("")}}> 
+                      <img src={deleteX} alt={""}/> 
+                    </div>
+                  </div>
+                  : 
+                  <div id={"uploading-image-c"}>
+                    <span id={"uploading-image-c__span"}>Drop Track Art Here</span>
+                    <input id={"uploading-image-c__input"} type="file" onChange={upload} />
+                  </div>
+                }
+              </>
+            )
+          case "waiting":
+            return (
+              <div id={"waiting"}>
+                <LoadingRipples/>
+              </div>
+            )
+          default: 
+            return (
+              <div></div>
+              )
+        }
+      })()}
+      
       
     </>
 

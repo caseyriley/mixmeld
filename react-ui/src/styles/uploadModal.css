@@ -46,6 +46,16 @@
   height: 100px;
   width: 100px;
 }
+#waiting {
+  width: 100px;
+  height: 100px;
+  border: 1px solid white;
+  background-color: black;
+}
+#loading-ripples {
+  height: 100px;
+  
+}
 #upload-modal__form {
   display: flex;
   justify-content: flex-start;
