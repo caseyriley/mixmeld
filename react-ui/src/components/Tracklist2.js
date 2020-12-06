@@ -192,7 +192,7 @@ const Tracklist2 = (props) => {
 
     }
     
-  }, [currentUser, refreshTrackState, organiseByState])
+  }, [currentUser, refreshTrackState, props.pl2TrackRefreshState, organiseByState])
 // -----------------------------------------------------
 // ---------------Update-Track-Rating--------------------
 function updateTrackRating(e) {
@@ -306,8 +306,8 @@ function toStandardTime(militaryTime) {
   
 
   return(
-    <>
-    <UploadModal refreshTrackState={refreshTrackState} setRefreshTrackState={setRefreshTrackState} uploadModalState={uploadModalState} setUploadModalState={setUploadModalState} trackLocationState={trackLocationState}/>
+    <>{uploadModalState === "upload-modal" ? <UploadModal refreshTrackState={refreshTrackState} setRefreshTrackState={setRefreshTrackState} uploadModalState={uploadModalState} setUploadModalState={setUploadModalState} setTrackLocationState={setTrackLocationState} trackLocationState={trackLocationState}/> : ""}
+  
     <div id={"pl2-playlist-border"}>
       <div id={"pl2-playlist-c"} >
         <div id={"pl2-playlist-c__top-c"}>
@@ -320,6 +320,7 @@ function toStandardTime(militaryTime) {
             <img className={`pl2-tracklist-edit-pen ${props.trackEditState ? "pl2-pen--on":""}`} src={pen} alt={""} onClick={toggleTrackEditState} />
           </div>
           <div id={"pl2-playlist-c__top-c__artist-name"}><h2 onClick={()=>{setOrganiseByState("trackartist")}}>Artist</h2></div>
+          <div id={"pl2-playlist-c__top-c__album-name"}><h2 onClick={()=>{setOrganiseByState("trackartist")}}>Album</h2></div>
           <div id={"pl2-playlist-c__top-c__artist-duration"}><h2 onClick={()=>{setOrganiseByState("tracktime")}}>Time</h2></div>
           <div id={"pl2-playlist-c__top-c__genre-name"}><h2 onClick={()=>{setOrganiseByState("trackgenre")}}>Genre</h2></div>
           <div id={"pl2-playlist-c__top-c__date"}><h2 onClick={()=>{setOrganiseByState("date")}}>Date</h2></div>

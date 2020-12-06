@@ -372,7 +372,8 @@ function nextTrack() {
  
 }
 // --------------------------------
-  const [trackEditState, setTrackEditState] = useState(false);   
+  const [trackEditState, setTrackEditState] = useState(false);  
+  const [pl2TrackRefreshState, setPl2TrackRefreshState] = useState(1) 
 
   return(
     <>
@@ -411,7 +412,7 @@ function nextTrack() {
 
                   {trackEditState ? 
                   <> 
-                    <UploadingNewImage setTrackArtState={setTrackArtState} setPl2TrackLocationState={setPl2TrackLocationState} pl2TrackLocationState={pl2TrackLocationState}/>
+                    <UploadingNewImage pl2TrackRefreshState={pl2TrackRefreshState} setPl2TrackRefreshState={setPl2TrackRefreshState} setTrackArtState={setTrackArtState} setPl2TrackLocationState={setPl2TrackLocationState} pl2TrackLocationState={pl2TrackLocationState}/>
                   </>
                   : ""}
                   <img className={"track-art"} src={`${trackArtState ? trackArtState : formlessMusicIcon}`} alt={""}/>
@@ -435,7 +436,7 @@ function nextTrack() {
             </div>
           </div>
         
-        <Tracklist2 trackEditState={trackEditState} setTrackEditState={setTrackEditState} setTrack={setTrack} setTrackArrayLengthState={setTrackArrayLengthState}/>
+        <Tracklist2 pl2TrackRefreshState={pl2TrackRefreshState} trackEditState={trackEditState} setTrackEditState={setTrackEditState} setTrack={setTrack} setTrackArrayLengthState={setTrackArrayLengthState}/>
         </div>
       </div>
     </>

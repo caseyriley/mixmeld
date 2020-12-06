@@ -8,7 +8,7 @@
   width: 100vw;
 }
 #pl2-left-column {
-  width: 15%;
+  width: 10%;
   height: 100vh;
   /* border: 1px solid green; */
   display: flex;
@@ -52,7 +52,7 @@
   text-shadow: 2px 2px 0 rgb(239, 142, 248), 2px -2px 0 #25ff99, -2px 2px 0 #56caf8, -2px -2px 0 #56caf8, 2px 0px 0 #f7b867, 0px 2px 0 #dd4338, -2px 0px 0 #0c6fe9, 0px -2px 0 #f010e5;
 } */
 #pl2-audio-tracklist-c {
-  width: 85%;
+  width: 90%;
   height: 100%;
   display: flex;
   justify-content: flex-start;
@@ -613,7 +613,7 @@ div.control-2 span.eq-3 span.eq-level
 #pl2-playlist-c__top-c__name {
   position: relative;
   border-right: 1px solid grey;
-  width: 35%;
+  width: 30%;
   height: 30px;
   display: flex;
   justify-content: space-between;
@@ -668,7 +668,12 @@ div.control-2 span.eq-3 span.eq-level
 }
 #pl2-playlist-c__top-c__artist-name {
   border-right: 1px solid grey;
-  width: 25%;
+  width: 15%;
+  height: 30px;
+}
+#pl2-playlist-c__top-c__album-name {
+  border-right: 1px solid grey;
+  width: 15%;
   height: 30px;
 }
 #pl2-playlist-c__top-c__artist-duration {
@@ -688,6 +693,7 @@ div.control-2 span.eq-3 span.eq-level
 #pl2-playlist-c__top-c__rating h2,
 #pl2-playlist-name-c h2,
 #pl2-playlist-c__top-c__artist-name h2,
+#pl2-playlist-c__top-c__album-name h2,
 #pl2-playlist-c__top-c__genre-name h2,
 #pl2-playlist-c__top-c__artist-duration h2,
 #pl2-playlist-c__top-c__date h2 {

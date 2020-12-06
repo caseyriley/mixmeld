@@ -37,6 +37,7 @@ const UploadingNewImage = (props) => {
         location = data.location;
           updateTrackArt(location);
           props.setTrackArtState(location);
+          props.setPl2TrackRefreshState(props.pl2TrackRefreshState + 1)
       })
 
     }
