@@ -9,6 +9,8 @@ import Tracklist2 from './Tracklist2';
 import TimeRemaining from './TimeRemaining';
 import VolumeUiSlider from './VolumeUiSlider';
 import formlessMusicIcon from "../images/formless-music-icon.png"
+import uploadImage from "../images/uploadImage.png"
+import UploadingNewImage from './UploadingNewImage';
 
 
 
@@ -305,6 +307,7 @@ const AudioPlayer2 = (props)=>{
 //---------------Audio-Tracks-------------------
  
   const [trackArtState, setTrackArtState] = useState();
+  const [pl2TrackLocationState, setPl2TrackLocationState] = useState();
 
   function setTrack(track, songName, artistName, audioId, trackArt){
 
@@ -322,6 +325,7 @@ const AudioPlayer2 = (props)=>{
     setSongNameState(newSongName);
     setArtistNameState(newArtistName);
     setTrackArtState(trackArt);
+    setPl2TrackLocationState(track);
     
     currentTrack.current = audioId;
     
@@ -367,6 +371,8 @@ function nextTrack() {
 
  
 }
+// --------------------------------
+  const [trackEditState, setTrackEditState] = useState(false);   
 
   return(
     <>
@@ -402,21 +408,26 @@ function nextTrack() {
                 </div>
 
                 <div id={"pl2-track-display"}>
+
+                  {trackEditState ? 
+                  <> 
+                    <UploadingNewImage setTrackArtState={setTrackArtState} setPl2TrackLocationState={setPl2TrackLocationState} pl2TrackLocationState={pl2TrackLocationState}/>
+                  </>
+                  : ""}
                   <img className={"track-art"} src={`${trackArtState ? trackArtState : formlessMusicIcon}`} alt={""}/>
                   <div id={"pl2-audio__bottom"} >
-                  <p id={"pl2-audio__top__song-name"}>{songNameState ? songNameState : `${firstTrack ? firstTrack[0].trackname : ""}`}</p>
-                  <p id={"pl2-audio__top__song-artist"}>{artistNameState ? artistNameState : `${firstTrack ? firstTrack[0].trackartist : ""}`}</p>
-                
-
-                <div className={"pl2-audio__bottom__playhead"} ref={audioBottomPlayhead} >
-                  <input id={"pl2-playhead-input"} ref={playHeadSlider} type={"range"} min={"0"} max={"1"} step={"0.01"} onChange={movePlayheadOnClick} ></input>
-                  <div className={"pl2-audio__bottom__playhead__left"} ref={timerBar} ></div>
-                    <div className="pl2-timer">
-                      <span id={"pl2-audio__bottom__time__start"} >{timeState}</span>
+                    <p id={"pl2-audio__top__song-name"}>{songNameState ? songNameState : `${firstTrack ? firstTrack[0].trackname : ""}`}</p>
+                    <p id={"pl2-audio__top__song-artist"}>{artistNameState ? artistNameState : `${firstTrack ? firstTrack[0].trackartist : ""}`}</p>
+                  
+                    <div className={"pl2-audio__bottom__playhead"} ref={audioBottomPlayhead} >
+                      <input id={"pl2-playhead-input"} ref={playHeadSlider} type={"range"} min={"0"} max={"1"} step={"0.01"} onChange={movePlayheadOnClick} ></input>
+                      <div className={"pl2-audio__bottom__playhead__left"} ref={timerBar} ></div>
+                      <div className="pl2-timer">
+                        <span id={"pl2-audio__bottom__time__start"} >{timeState}</span>
+                      </div>
+                      <TimeRemaining media={media}/>
                     </div>
-                    <TimeRemaining media={media}/>
                   </div>
-                </div>
                 </div>
 
                 <VolumeUiSlider volumeLevel={volumeLevel} volumeFader={volumeFader} volumeSlider={volumeSlider} changeVolume={changeVolume}/>
@@ -424,7 +435,7 @@ function nextTrack() {
             </div>
           </div>
         
-        <Tracklist2 setTrack={setTrack} setTrackArrayLengthState={setTrackArrayLengthState}/>
+        <Tracklist2 trackEditState={trackEditState} setTrackEditState={setTrackEditState} setTrack={setTrack} setTrackArrayLengthState={setTrackArrayLengthState}/>
         </div>
       </div>
     </>
