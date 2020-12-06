@@ -49,6 +49,7 @@ class Track(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     trackname = db.Column(db.String(100), nullable=False)
     trackartist = db.Column(db.String(100), nullable=True)
+    trackalbum = db.Column(db.String(100), nullable=True)
     tracklocation = db.Column(db.String(200), nullable=False)
     tracktime = db.Column(db.String(7), nullable=True)
     trackrating = db.Column(db.String(10), nullable=True)
@@ -62,6 +63,7 @@ class Track(db.Model):
           "user_id": self.user_id,
           "trackname": self.trackname,
           "trackartist": self.trackartist,
+          "trackalbum": self.trackalbum,
           "tracklocation": self.tracklocation,
           "tracktime": self.tracktime,
           "trackrating": self.trackrating,

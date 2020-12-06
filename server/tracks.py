@@ -22,6 +22,7 @@ def post_track():
         tracklocation=data["tracklocation"],
         tracktime=data["tracktime"],
         trackartist="",
+        trackalbum="",
         trackgenre="",
         trackrating="",
         trackart="",
@@ -69,6 +70,7 @@ def update_track_info():
     track_artist = data["trackartist"]
     track_name = data["trackname"]
     track_genre = data["trackgenre"]
+    # track_album = data["trackalbum"]
     track_location = data["tracklocation"]
 
     track = Track.query.filter(Track.tracklocation == track_location).first()

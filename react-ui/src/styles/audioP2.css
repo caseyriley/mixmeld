@@ -791,7 +791,7 @@ li {
 
 .pl2-track-ul__li__name {
   height: 30px;
-  width: 35%;
+  width: 30%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -803,7 +803,19 @@ li {
 }
 .pl2-track-ul__li__artist {
   height: 30px;
-  width: 25%;
+  width: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  overflow: hidden;
+  white-space: nowrap;
+  overflow-x: scroll;
+  border-right: 1px solid rgb(161, 161, 161);
+}
+.pl2-track-ul__li__album {
+  height: 30px;
+  width: 15%;
   display: flex;
   align-items: center;
   justify-content: flex-start;

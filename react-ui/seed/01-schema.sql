@@ -17,6 +17,7 @@ CREATE TABLE tracks (
   user_id INTEGER NOT NULL,
   trackname VARCHAR(100) NOT NULL,
   trackartist VARCHAR(100),
+  trackalbum VARCHAR(100),
   tracklocation VARCHAR(200) NOT NULL,
   tracktime VARCHAR(7),
   trackrating VARCHAR(10),

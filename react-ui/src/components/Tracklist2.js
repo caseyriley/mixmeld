@@ -383,6 +383,21 @@ function toStandardTime(militaryTime) {
                 }
                 </div>
 
+                <div className={`pl2-track-ul__li__album ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`} >
+                {props.trackEditState ? 
+                  <form name={audio.id} onSubmit={e=> {e.preventDefault(); updateTrackArtistName(e)}}> 
+                    <input 
+                      type={"text"}
+                      className={"pl2-track-artist-name-input"} 
+                      maxLength={100} 
+                      placeholder={audio.trackartist ? audio.trackartist : ""} 
+                    />
+                    <input className={"pl2-track-artist-name-submit"} type={"submit"} />
+                  </form> :
+                  <span className={"pl2-track-artist-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.trackartist, audio.id, audio.trackart)}} >{audio.trackartist ? audio.trackartist : ""} </span>
+                }
+                </div>
+
                 <div className={`pl2-track-ul__li__duration ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`}><span>{audio.tracktime ? audio.tracktime : ""}</span></div>
 
                 <div className={`pl2-track-ul__li__genre ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`}>
