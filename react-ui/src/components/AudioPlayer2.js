@@ -154,7 +154,7 @@ const AudioPlayer2 = (props)=>{
     }
     const newTrackLi = document.getElementById(`nti${trackLiIdNumber - 1}`) //get Li element of previous track regardless of sort choice
     const newTrackObj = JSON.parse(newTrackLi.innerHTML); //get key values of next track info
-    setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId); // start the next track
+    setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId, newTrackObj.trackart); // start the next track
     }
 
   }
@@ -344,7 +344,7 @@ function nextTrack() {
     const newTrackLi = document.getElementById(`nti${randomNum}`) //get Li element of next track regardless of sort choice
     const newTrackObj = JSON.parse(newTrackLi.innerHTML); //get key values of next track info
     // console.log("nnneeeeewwTrackObj====>", newTrackObj)
-    setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId); // start the next track
+    setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId, newTrackObj.trackart); // start the next track
   } else {
 
     if (loopState && trackLiIdNumber >= trackArrayLengthState -1){
@@ -355,13 +355,13 @@ function nextTrack() {
       trackLiIdNumber = -1;
       const newTrackLi = document.getElementById(`nti${trackLiIdNumber + 1}`) //get Li element of next track regardless of sort choice
       const newTrackObj = JSON.parse(newTrackLi.innerHTML); //get key values of next track info
-      setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId); // start the next track
+      setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId, newTrackObj.trackart); // start the next track
       stopMedia()
     } else {
       const newTrackLi = document.getElementById(`nti${trackLiIdNumber + 1}`) //get Li element of next track regardless of sort choice
       const newTrackObj = JSON.parse(newTrackLi.innerHTML); //get key values of next track info
       // console.log("nnneeeeewwTrackObj====>", newTrackObj)
-      setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId); // start the next track
+      setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId, newTrackObj.trackart); // start the next track
     }
   }
 

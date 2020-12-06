@@ -207,6 +207,7 @@
   height: 50px;
   background-color: rgba(136, 136, 136);
   margin: 0px 5px 0px 0px;
+  object-fit: cover;
   /* border: 1px solid rgb(202, 202, 202); */
   /* background-image: url("../images/formless-music-icon.png"); */
   /* background-image: image("../images/formless-music-icon.png"); */
