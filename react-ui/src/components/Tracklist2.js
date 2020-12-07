@@ -2,11 +2,11 @@ import React, {useEffect, useState} from 'react';
 
 import { API_URL } from '../config';
 
-import UploadingTrack from './UploadingTrack';
 import pen from '../images/pen.png';
 import deleteX from '../images/deleteX.png';
 import UploadModal from './UploadModal';
 import UploadingTrackPl2 from './UploadingTrackPl2';
+
 
 
 const Tracklist2 = (props) => {
@@ -64,149 +64,78 @@ const Tracklist2 = (props) => {
 
   },[])
   // -----------------------------------------------
+
+
+
 // ---------------------Get-User-Tracks-pl2----------
+const getUserTracks = async (path) => {
+  const token = window.localStorage.getItem('auth_token');
+  const response = await fetch(`${API_URL}/tracks/user/${path}/${currentUser.id}`, {
+    method: "GET",
+    mode: "cors",
+    headers: { "Authorizaion": `Bearer ${token}` }
+  })
+  if (!response.ok) { console.log("error iiiiiin getUserTracks") }
+  else {
+    const json = await response.json();
+    setTrackArrayState(json);
+    props.setTrackArrayLengthState(json.length);
+  }
+}
+
+
+
+
   const [trackArrayState, setTrackArrayState] = useState([])
   const [refreshTrackState, setRefreshTrackState] = useState(1)
   const [organiseByState, setOrganiseByState] = useState("id")
 
   useEffect(() => {
-    const token = window.localStorage.getItem('auth_token');
 
     if (organiseByState === "id") {
 
-    const getUserTracks = async () => {
-      const response = await fetch(`${API_URL}/tracks/user/${currentUser.id}`, {
-        method: "GET",
-        mode: "cors",
-        headers: { "Authorizaion": `Bearer ${token}` }
-      })
-      if (!response.ok) { console.log("error in getUserTracks") }
-      else {
-        const json = await response.json();
-        setTrackArrayState(json.reverse());
-        props.setTrackArrayLengthState(json.length)
-      }
-    }
-    getUserTracks();
+    // const getUserTracks = async () => {
+    //   const response = await fetch(`${API_URL}/tracks/user/${currentUser.id}`, {
+    //     method: "GET",
+    //     mode: "cors",
+    //     headers: { "Authorizaion": `Bearer ${token}` }
+    //   })
+    //   if (!response.ok) { console.log("error in getUserTracks") }
+    //   else {
+    //     const json = await response.json();
+    //     setTrackArrayState(json.reverse());
+    //     props.setTrackArrayLengthState(json.length)
+    //   }
+    // }
+      getUserTracks("id");
 
     } else if (organiseByState === "trackartist") {
 
-      const getUserTracks = async () => {
-        const response = await fetch(`${API_URL}/tracks/user/trackartist/${currentUser.id}`, {
-          method: "GET",
-          mode: "cors",
-          headers: { "Authorizaion": `Bearer ${token}` }
-        })
-        if (!response.ok) { console.log("error in getUserTracks") }
-        else {
-          const json = await response.json();
-          setTrackArrayState(json);
-          props.setTrackArrayLengthState(json.length);
-        }
-      }
-      getUserTracks();
+      getUserTracks("trackartist");
 
     } else if (organiseByState === "trackrating") {
 
-      const getUserTracks = async () => {
-        const response = await fetch(`${API_URL}/tracks/user/trackrating/${currentUser.id}`, {
-          method: "GET",
-          mode: "cors",
-          headers: { "Authorizaion": `Bearer ${token}` }
-        })
-        if (!response.ok) { console.log("error in getUserTracks") }
-        else {
-          const json = await response.json();
-          setTrackArrayState(json);
-          props.setTrackArrayLengthState(json.length);
-        }
-      }
-      getUserTracks();
+      getUserTracks("trackrating");
 
     } else if (organiseByState === "trackname") {
 
-      const getUserTracks = async () => {
-        const response = await fetch(`${API_URL}/tracks/user/trackname/${currentUser.id}`, {
-          method: "GET",
-          mode: "cors",
-          headers: { "Authorizaion": `Bearer ${token}` }
-        })
-        if (!response.ok) { console.log("error in getUserTracks") }
-        else {
-          const json = await response.json();
-          setTrackArrayState(json);
-          props.setTrackArrayLengthState(json.length);
-        }
-      }
-      getUserTracks();
+      getUserTracks("trackname");
 
     } else if (organiseByState === "trackgenre") {
 
-      const getUserTracks = async () => {
-        const response = await fetch(`${API_URL}/tracks/user/trackgenre/${currentUser.id}`, {
-          method: "GET",
-          mode: "cors",
-          headers: { "Authorizaion": `Bearer ${token}` }
-        })
-        if (!response.ok) { console.log("error in getUserTracks") }
-        else {
-          const json = await response.json();
-          setTrackArrayState(json);
-          props.setTrackArrayLengthState(json.length);
-        }
-      }
-      getUserTracks();
+      getUserTracks("trackgenre");
 
     } else if (organiseByState === "tracktime") {
 
-      const getUserTracks = async () => {
-        const response = await fetch(`${API_URL}/tracks/user/tracktime/${currentUser.id}`, {
-          method: "GET",
-          mode: "cors",
-          headers: { "Authorizaion": `Bearer ${token}` }
-        })
-        if (!response.ok) { console.log("error in getUserTracks") }
-        else {
-          const json = await response.json();
-          setTrackArrayState(json);
-          props.setTrackArrayLengthState(json.length);
-        }
-      }
-      getUserTracks();
+      getUserTracks("tracktime");
 
     } else if (organiseByState === "date") {
 
-      const getUserTracks = async () => {
-        const response = await fetch(`${API_URL}/tracks/user/date/${currentUser.id}`, {
-          method: "GET",
-          mode: "cors",
-          headers: { "Authorizaion": `Bearer ${token}` }
-        })
-        if (!response.ok) { console.log("error in getUserTracks") }
-        else {
-          const json = await response.json();
-          setTrackArrayState(json);
-          props.setTrackArrayLengthState(json.length);
-        }
-      }
-      getUserTracks();
+      getUserTracks("date");
 
     } else if (organiseByState === "trackalbum") {
 
-      const getUserTracks = async () => {
-        const response = await fetch(`${API_URL}/tracks/user/trackalbum/${currentUser.id}`, {
-          method: "GET",
-          mode: "cors",
-          headers: { "Authorizaion": `Bearer ${token}` }
-        })
-        if (!response.ok) { console.log("error in getUserTracks") }
-        else {
-          const json = await response.json();
-          setTrackArrayState(json);
-          props.setTrackArrayLengthState(json.length);
-        }
-      }
-      getUserTracks();
+      getUserTracks("trackalbum");
 
     }
     

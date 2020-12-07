@@ -236,7 +236,7 @@ def get_user_tracks_sort_by_date(id):
 
 
 
-@tracks.route("/user/<id>", methods=["GET"])
+@tracks.route("/user/id/<id>", methods=["GET"])
 def get_user_tracks(id):
 
     model_tracks = Track.query.filter(Track.user_id == id).all()
