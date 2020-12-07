@@ -75,10 +75,25 @@ const getUserTracks = async (path) => {
     mode: "cors",
     headers: { "Authorizaion": `Bearer ${token}` }
   })
-  if (!response.ok) { console.log("error iiiiiin getUserTracks") }
+  if (!response.ok) { console.log("error in getUserTracks") }
   else {
     const json = await response.json();
     setTrackArrayState(json);
+    props.setTrackArrayLengthState(json.length);
+  }
+}
+
+const getUserTracksReverse = async (path) => {
+  const token = window.localStorage.getItem('auth_token');
+  const response = await fetch(`${API_URL}/tracks/user/${path}/${currentUser.id}`, {
+    method: "GET",
+    mode: "cors",
+    headers: { "Authorizaion": `Bearer ${token}` }
+  })
+  if (!response.ok) { console.log("error iiiiiin getUserTracks") }
+  else {
+    const json = await response.json();
+    setTrackArrayState(json.reverse());
     props.setTrackArrayLengthState(json.length);
   }
 }
@@ -88,26 +103,29 @@ const getUserTracks = async (path) => {
 
   const [trackArrayState, setTrackArrayState] = useState([])
   const [refreshTrackState, setRefreshTrackState] = useState(1)
-  const [organiseByState, setOrganiseByState] = useState("id")
+  // const [organiseByState, setOrganiseByState] = useState("date")
+  const [organiseByState, setOrganiseByState] = useState({1:"date", 2:"", 3:false})
+
+  function organise(string){
+    const prev = organiseByState[1];
+    if (organiseByState[3] === true) {
+      setOrganiseByState({1:string, 2:"", 3:false});
+    } else {
+      if (prev === string) {
+        setOrganiseByState({1:string, 2:prev, 3:true})
+      } else if (prev !== string){
+        setOrganiseByState({1:string, 2:prev, 3:false})
+      }
+    }
+
+    
+    console.log("organiseByState", organiseByState)
+  }
 
   useEffect(() => {
 
-    if (organiseByState === "id") {
-
-    // const getUserTracks = async () => {
-    //   const response = await fetch(`${API_URL}/tracks/user/${currentUser.id}`, {
-    //     method: "GET",
-    //     mode: "cors",
-    //     headers: { "Authorizaion": `Bearer ${token}` }
-    //   })
-    //   if (!response.ok) { console.log("error in getUserTracks") }
-    //   else {
-    //     const json = await response.json();
-    //     setTrackArrayState(json.reverse());
-    //     props.setTrackArrayLengthState(json.length)
-    //   }
-    // }
-      getUserTracks("id");
+    if (organiseByState[1] === "id") {
+      getUserTracks("date");
 
     } else if (organiseByState === "trackartist") {
 
@@ -129,9 +147,12 @@ const getUserTracks = async (path) => {
 
       getUserTracks("tracktime");
 
-    } else if (organiseByState === "date") {
-
-      getUserTracks("date");
+    } else if (organiseByState[1] === "date") {
+        if (organiseByState[1] === organiseByState[2]){
+          getUserTracksReverse("date")
+        } else {
+          getUserTracks("date");
+        }
 
     } else if (organiseByState === "trackalbum") {
 
@@ -291,7 +312,7 @@ function toStandardTime(militaryTime) {
           <div id={"pl2-playlist-c__top-c__album-name"}><h2 onClick={()=>{setOrganiseByState("trackalbum")}}>Album</h2></div>
           <div id={"pl2-playlist-c__top-c__artist-duration"}><h2 onClick={()=>{setOrganiseByState("tracktime")}}>Time</h2></div>
           <div id={"pl2-playlist-c__top-c__genre-name"}><h2 onClick={()=>{setOrganiseByState("trackgenre")}}>Genre</h2></div>
-          <div id={"pl2-playlist-c__top-c__date"}><h2 onClick={()=>{setOrganiseByState("date")}}>Date</h2></div>
+          <div id={"pl2-playlist-c__top-c__date"}><h2 onClick={()=>{organise("date")}}>Date</h2></div>
         </div>
         <ul id={"pl2-track-ul"}>
         {trackArrayState ? trackArrayState.map((audio, index) => {
