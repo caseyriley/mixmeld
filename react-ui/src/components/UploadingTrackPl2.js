@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import S3FileUpload from 'react-s3';
 import { API_URL } from '../config';
-const jsmediatags = require('jsmediatags');
 
-const UploadingTrack = (props) => {
+
+const UploadingTrackPl2 = (props) => {
 
 // ---------------get-mp3-meta-data---------------
 // function getMp3MetaData(){
@@ -109,12 +109,12 @@ const UploadingTrack = (props) => {
 
   return (
     <>
-      <div id={"s-uploading-track-c"}>
-        <span id={"s-uploading-track-c__span"}>Upload Track</span>
-        <input id={"s-uploading-track"} type="file" onChange={upload} />
+      <div id={"pl2-uploading-track-c"}>
+        <span id={"pl2-uploading-track-c__span"}>Upload Track</span>
+        <input id={"pl2-uploading-track"} type="file" onChange={upload} />
       </div>
     </>
 
   )
 }
-export default UploadingTrack;
+export default UploadingTrackPl2;

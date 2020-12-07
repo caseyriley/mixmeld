@@ -70,13 +70,14 @@ def update_track_info():
     track_artist = data["trackartist"]
     track_name = data["trackname"]
     track_genre = data["trackgenre"]
-    # track_album = data["trackalbum"]
+    track_album = data["trackalbum"]
     track_location = data["tracklocation"]
 
     track = Track.query.filter(Track.tracklocation == track_location).first()
     track.trackartist = track_artist
     track.trackname = track_name
     track.trackgenre = track_genre
+    track.trackalbum = track_album
     db.session.commit()
     return jsonify(Good='you changed the track info')
 

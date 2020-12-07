@@ -6,6 +6,7 @@ import UploadingTrack from './UploadingTrack';
 import pen from '../images/pen.png';
 import deleteX from '../images/deleteX.png';
 import UploadModal from './UploadModal';
+import UploadingTrackPl2 from './UploadingTrackPl2';
 
 
 const Tracklist2 = (props) => {
@@ -313,7 +314,7 @@ function toStandardTime(militaryTime) {
         <div id={"pl2-playlist-c__top-c"}>
           <div id={"pl2-playlist-c__top-c__rating"}><h2 onClick={()=>{setOrganiseByState("trackrating")}}>Rating</h2></div>
           <div id={"pl2-playlist-c__top-c__name"}  >
-            <UploadingTrack refreshTrackState={refreshTrackState} setRefreshTrackState={setRefreshTrackState} setUploadModalState={setUploadModalState} setTrackLocationState={setTrackLocationState}/>
+            <UploadingTrackPl2 refreshTrackState={refreshTrackState} setRefreshTrackState={setRefreshTrackState} setUploadModalState={setUploadModalState} setTrackLocationState={setTrackLocationState}/>
             <div id={"pl2-playlist-name-c"} >
               <h2 onClick={()=>{setOrganiseByState("trackname")}}>Name</h2>
             </div> 
@@ -390,11 +391,11 @@ function toStandardTime(militaryTime) {
                       type={"text"}
                       className={"pl2-track-artist-name-input"} 
                       maxLength={100} 
-                      placeholder={audio.trackartist ? audio.trackartist : ""} 
+                      placeholder={audio.trackalbum ? audio.trackalbum : ""} 
                     />
                     <input className={"pl2-track-artist-name-submit"} type={"submit"} />
                   </form> :
-                  <span className={"pl2-track-artist-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.trackartist, audio.id, audio.trackart)}} >{audio.trackartist ? audio.trackartist : ""} </span>
+                  <span className={"pl2-track-artist-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.trackartist, audio.id, audio.trackart)}} >{audio.trackalbum ? audio.trackalbum : ""} </span>
                 }
                 </div>
 

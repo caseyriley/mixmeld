@@ -19,18 +19,25 @@
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
+  overflow-y: scroll;
+}
+label{
+  font-size: 16px;
+  font-family: 'Electrolize', sans-serif;
+  color: rgb(55, 55, 55);
 }
 #upload-modal-title {
   margin: 20px 0px 10px 0px;
   font-size: 20px;
   font-family: 'Electrolize', sans-serif;
-  color: rgb(71, 71, 71);
+  color: rgb(55, 55, 55);
 }
 #upload-modal-instructions {
   margin: 0px 20px 10px 20px;
+  max-width: 250px;
   font-size: 15px;
   font-family: 'Electrolize', sans-serif;
-  color: rgb(116, 116, 116);
+  color: rgb(92, 92, 92);
 }
 
 #uploaded-image-c {
@@ -84,7 +91,8 @@
 }
 #upload-modal__form__track-artist,
 #upload-modal__form__track-name,
-#upload-modal__form__genre-name{
+#upload-modal__form__genre-name,
+#upload-modal__form__track-album{
   height: 30px;
   min-width: 80%;
   outline: none;
