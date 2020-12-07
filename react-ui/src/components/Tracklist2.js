@@ -127,36 +127,54 @@ const getUserTracksReverse = async (path) => {
     if (organiseByState[1] === "id") {
       getUserTracks("date");
 
-    } else if (organiseByState === "trackartist") {
+    } else if (organiseByState[1] === "trackartist") {
+      if (organiseByState[1] === organiseByState[2]){
+        getUserTracksReverse("trackartist")
+      } else {
+        getUserTracks("trackartist");
+      }
 
-      getUserTracks("trackartist");
+    } else if (organiseByState[1] === "trackrating") {
+      if (organiseByState[1] === organiseByState[2]){
+        getUserTracksReverse("trackrating")
+      } else {
+        getUserTracks("trackrating");
+      }
 
-    } else if (organiseByState === "trackrating") {
+    } else if (organiseByState[1] === "trackname") {
+      if (organiseByState[1] === organiseByState[2]){
+        getUserTracksReverse("trackname")
+      } else {
+        getUserTracks("trackname");
+      }
 
-      getUserTracks("trackrating");
+    } else if (organiseByState[1] === "trackgenre") {
+      if (organiseByState[1] === organiseByState[2]){
+        getUserTracksReverse("trackgenre")
+      } else {
+        getUserTracks("trackgenre");
+      }
 
-    } else if (organiseByState === "trackname") {
-
-      getUserTracks("trackname");
-
-    } else if (organiseByState === "trackgenre") {
-
-      getUserTracks("trackgenre");
-
-    } else if (organiseByState === "tracktime") {
-
-      getUserTracks("tracktime");
+    } else if (organiseByState[1] === "tracktime") {
+      if (organiseByState[1] === organiseByState[2]){
+        getUserTracksReverse("tracktime")
+      } else {
+        getUserTracks("tracktime");
+      }
 
     } else if (organiseByState[1] === "date") {
-        if (organiseByState[1] === organiseByState[2]){
-          getUserTracksReverse("date")
-        } else {
-          getUserTracks("date");
-        }
+      if (organiseByState[1] === organiseByState[2]){
+        getUserTracksReverse("date")
+      } else {
+        getUserTracks("date");
+      }
 
-    } else if (organiseByState === "trackalbum") {
-
-      getUserTracks("trackalbum");
+    } else if (organiseByState[1] === "trackalbum") {
+      if (organiseByState[1] === organiseByState[2]){
+        getUserTracksReverse("trackalbum")
+      } else {
+        getUserTracks("trackalbum");
+      }
 
     }
     
@@ -300,18 +318,18 @@ function toStandardTime(militaryTime) {
     <div id={"pl2-playlist-border"}>
       <div id={"pl2-playlist-c"} >
         <div id={"pl2-playlist-c__top-c"}>
-          <div id={"pl2-playlist-c__top-c__rating"}><h2 onClick={()=>{setOrganiseByState("trackrating")}}>Rating</h2></div>
+          <div id={"pl2-playlist-c__top-c__rating"}><h2 onClick={()=>{organise("trackrating")}}>Rating</h2></div>
           <div id={"pl2-playlist-c__top-c__name"}  >
             <UploadingTrackPl2 refreshTrackState={refreshTrackState} setRefreshTrackState={setRefreshTrackState} setUploadModalState={setUploadModalState} setTrackLocationState={setTrackLocationState}/>
             <div id={"pl2-playlist-name-c"} >
-              <h2 onClick={()=>{setOrganiseByState("trackname")}}>Name</h2>
+              <h2 onClick={()=>{organise("trackname")}}>Name</h2>
             </div> 
             <img className={`pl2-tracklist-edit-pen ${props.trackEditState ? "pl2-pen--on":""}`} src={pen} alt={""} onClick={toggleTrackEditState} />
           </div>
-          <div id={"pl2-playlist-c__top-c__artist-name"}><h2 onClick={()=>{setOrganiseByState("trackartist")}}>Artist</h2></div>
-          <div id={"pl2-playlist-c__top-c__album-name"}><h2 onClick={()=>{setOrganiseByState("trackalbum")}}>Album</h2></div>
-          <div id={"pl2-playlist-c__top-c__artist-duration"}><h2 onClick={()=>{setOrganiseByState("tracktime")}}>Time</h2></div>
-          <div id={"pl2-playlist-c__top-c__genre-name"}><h2 onClick={()=>{setOrganiseByState("trackgenre")}}>Genre</h2></div>
+          <div id={"pl2-playlist-c__top-c__artist-name"}><h2 onClick={()=>{organise("trackartist")}}>Artist</h2></div>
+          <div id={"pl2-playlist-c__top-c__album-name"}><h2 onClick={()=>{organise("trackalbum")}}>Album</h2></div>
+          <div id={"pl2-playlist-c__top-c__artist-duration"}><h2 onClick={()=>{organise("tracktime")}}>Time</h2></div>
+          <div id={"pl2-playlist-c__top-c__genre-name"}><h2 onClick={()=>{organise("trackgenre")}}>Genre</h2></div>
           <div id={"pl2-playlist-c__top-c__date"}><h2 onClick={()=>{organise("date")}}>Date</h2></div>
         </div>
         <ul id={"pl2-track-ul"}>
