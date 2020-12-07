@@ -35,6 +35,7 @@ const AudioPlayer2 = (props)=>{
   const playHeadSlider = useRef();
 
   const currentTrack = useRef([]);
+
  
   const [timeState, setTimeState] = useState(":");
 
@@ -418,7 +419,8 @@ function nextTrack() {
                   <img className={"track-art"} src={`${trackArtState ? trackArtState : formlessMusicIcon}`} alt={""}/>
                   <div id={"pl2-audio__bottom"} >
                     <p id={"pl2-audio__top__song-name"}>{songNameState ? songNameState : `${firstTrack ? firstTrack[0].trackname : ""}`}</p>
-                    <p id={"pl2-audio__top__song-artist"}>{artistNameState ? artistNameState : `${firstTrack ? firstTrack[0].trackartist : ""}`}</p>
+                    {/* <p id={"pl2-audio__top__song-artist"}>{artistNameState ? artistNameState : `${firstTrack ? firstTrack[0].trackartist : ""}`}</p> */}
+                    <p id={"pl2-audio__top__song-artist"}>{artistNameState ? artistNameState : ``}</p>
                   
                     <div className={"pl2-audio__bottom__playhead"} ref={audioBottomPlayhead} >
                       <input id={"pl2-playhead-input"} ref={playHeadSlider} type={"range"} min={"0"} max={"1"} step={"0.01"} onChange={movePlayheadOnClick} ></input>

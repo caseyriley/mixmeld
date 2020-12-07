@@ -122,6 +122,20 @@ def update_track_artist_name():
     return jsonify(Good='you changed the track name')
 
 
+@tracks.route('/album_name', methods=["POST"])
+def update_track_album_name():
+
+    data = json.loads(request.data)
+    
+    track_id = data["id"]
+    new_album_name = data["albumname"]
+  
+    track = Track.query.filter(Track.id == track_id).first()
+    track.trackalbum = new_album_name
+    db.session.commit()
+    return jsonify(Good='you changed the album name')
+
+
 @tracks.route('/genre', methods=["POST"])
 def update_track_genre():
 
@@ -170,6 +184,18 @@ def get_user_tracks_sort_by_trackname(id):
         track["user"] = model_track.user.to_safe_object()
         tracks.append(track)
     return jsonify(sorted(tracks, key=lambda i: i["trackname"].lower()))
+
+
+@tracks.route("/user/trackalbum/<id>", methods=["GET"])
+def get_user_tracks_sort_by_trackalbum(id):
+
+    model_tracks = Track.query.filter(Track.user_id == id).all()
+    tracks = []
+    for model_track in model_tracks:
+        track = model_track.to_dict()
+        track["user"] = model_track.user.to_safe_object()
+        tracks.append(track)
+    return jsonify(sorted(tracks, key=lambda i: i["trackalbum"].lower()))
 
 
 @tracks.route("/user/trackgenre/<id>", methods=["GET"])

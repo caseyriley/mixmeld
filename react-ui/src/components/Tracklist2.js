@@ -191,6 +191,23 @@ const Tracklist2 = (props) => {
       }
       getUserTracks();
 
+    } else if (organiseByState === "trackalbum") {
+
+      const getUserTracks = async () => {
+        const response = await fetch(`${API_URL}/tracks/user/trackalbum/${currentUser.id}`, {
+          method: "GET",
+          mode: "cors",
+          headers: { "Authorizaion": `Bearer ${token}` }
+        })
+        if (!response.ok) { console.log("error in getUserTracks") }
+        else {
+          const json = await response.json();
+          setTrackArrayState(json);
+          props.setTrackArrayLengthState(json.length);
+        }
+      }
+      getUserTracks();
+
     }
     
   }, [currentUser, refreshTrackState, props.pl2TrackRefreshState, organiseByState])
@@ -252,6 +269,27 @@ function updateTrackName(e) {
     }
     newTrack();
   }
+// ------------------------------------------------------
+// ---------------Update-Artist-Name--------------------
+
+function updateTrackAlbumName(e) {
+
+  const newName = e.target.firstChild.value;
+  const key = e.target.name
+  const newTrack = async () => {
+    const trackData = { id: key, albumname: newName}
+    console.log("trackData======>",trackData)
+    const options = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(trackData),
+    }
+    fetch(`${API_URL}/tracks/album_name`, options)
+    setRefreshTrackState(refreshTrackState + 1)
+    props.setTrackEditState(false)
+  }
+  newTrack();
+}
 // ------------------------------------------------------
 // ---------------Update-Track-Genre--------------------
 
@@ -321,7 +359,7 @@ function toStandardTime(militaryTime) {
             <img className={`pl2-tracklist-edit-pen ${props.trackEditState ? "pl2-pen--on":""}`} src={pen} alt={""} onClick={toggleTrackEditState} />
           </div>
           <div id={"pl2-playlist-c__top-c__artist-name"}><h2 onClick={()=>{setOrganiseByState("trackartist")}}>Artist</h2></div>
-          <div id={"pl2-playlist-c__top-c__album-name"}><h2 onClick={()=>{setOrganiseByState("trackartist")}}>Album</h2></div>
+          <div id={"pl2-playlist-c__top-c__album-name"}><h2 onClick={()=>{setOrganiseByState("trackalbum")}}>Album</h2></div>
           <div id={"pl2-playlist-c__top-c__artist-duration"}><h2 onClick={()=>{setOrganiseByState("tracktime")}}>Time</h2></div>
           <div id={"pl2-playlist-c__top-c__genre-name"}><h2 onClick={()=>{setOrganiseByState("trackgenre")}}>Genre</h2></div>
           <div id={"pl2-playlist-c__top-c__date"}><h2 onClick={()=>{setOrganiseByState("date")}}>Date</h2></div>
@@ -337,7 +375,7 @@ function toStandardTime(militaryTime) {
                     <form name={audio.id} onSubmit={e=> {e.preventDefault(); updateTrackRating(e)}}> 
                       <input 
                         type={"text"}
-                        className={"pl2-track-genre-input"} 
+                        id={"pl2-track-genre-input"} 
                         maxLength={100} 
                         placeholder={audio.trackrating ? audio.trackrating : ""} 
                       />
@@ -355,7 +393,7 @@ function toStandardTime(militaryTime) {
                     <form className={"pl2-tracklist-form"} name={audio.id} onSubmit={e=> {e.preventDefault(); updateTrackName(e)}}> 
                       <input 
                         type={"text"}
-                        className={"pl2-track-artist-name-input"} 
+                        className={"pl2-track-input"} 
                         maxLength={100} 
                         placeholder={audio.trackname ? audio.trackname : ""} 
                         // value={audio.trackname ? audio.trackname : ""} 
@@ -374,7 +412,7 @@ function toStandardTime(militaryTime) {
                   <form name={audio.id} onSubmit={e=> {e.preventDefault(); updateTrackArtistName(e)}}> 
                     <input 
                       type={"text"}
-                      className={"pl2-track-artist-name-input"} 
+                      className={"pl2-track-input"} 
                       maxLength={100} 
                       placeholder={audio.trackartist ? audio.trackartist : ""} 
                     />
@@ -386,10 +424,10 @@ function toStandardTime(militaryTime) {
 
                 <div className={`pl2-track-ul__li__album ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`} >
                 {props.trackEditState ? 
-                  <form name={audio.id} onSubmit={e=> {e.preventDefault(); updateTrackArtistName(e)}}> 
+                  <form name={audio.id} onSubmit={e=> {e.preventDefault(); updateTrackAlbumName(e)}}> 
                     <input 
                       type={"text"}
-                      className={"pl2-track-artist-name-input"} 
+                      className={"pl2-track-input"} 
                       maxLength={100} 
                       placeholder={audio.trackalbum ? audio.trackalbum : ""} 
                     />
@@ -406,7 +444,7 @@ function toStandardTime(militaryTime) {
                   <form name={audio.id} onSubmit={e=> {e.preventDefault(); updateTrackGenre(e)}}> 
                     <input 
                       type={"text"}
-                      className={"pl2-track-artist-name-input"} 
+                      className={"pl2-track-input"} 
                       maxLength={100} 
                       placeholder={audio.trackgenre ? audio.trackgenre: ""} 
                     />
