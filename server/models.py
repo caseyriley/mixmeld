@@ -59,18 +59,33 @@ class Track(db.Model):
 
     def to_dict(self):
         return {
-          "id": self.id,
-          "user_id": self.user_id,
-          "trackname": self.trackname,
-          "trackartist": self.trackartist,
-          "trackalbum": self.trackalbum,
-          "tracklocation": self.tracklocation,
-          "tracktime": self.tracktime,
-          "trackrating": self.trackrating,
-          "trackgenre": self.trackgenre,
-          "trackart": self.trackart,
-          "created_date": self.created_date,
+            "id": self.id,
+            "user_id": self.user_id,
+            "trackname": self.trackname,
+            "trackartist": self.trackartist,
+            "trackalbum": self.trackalbum,
+            "tracklocation": self.tracklocation,
+            "tracktime": self.tracktime,
+            "trackrating": self.trackrating,
+            "trackgenre": self.trackgenre,
+            "trackart": self.trackart,
+            "created_date": self.created_date,
         }
 
 
+class Playlist(db.Model):
+    __tablename__ = 'playlists'
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    playlist_name = db.Column(db.String(100), nullable=False)
+    playlist_que = db.Column(db.String, nullable=True)
+
+def to_dict(self):
+    return {
+        "id": self.id,
+        "user_id": self.user_id,
+        "playlist_name": self.playlist_name,
+        "playlist_queue": self.playlist_queue,
+    }
 
