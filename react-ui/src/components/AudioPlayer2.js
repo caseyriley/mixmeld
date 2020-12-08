@@ -9,7 +9,11 @@ import Tracklist2 from './Tracklist2';
 import TimeRemaining from './TimeRemaining';
 import VolumeUiSlider from './VolumeUiSlider';
 import formlessMusicIcon from "../images/formless-music-icon.png"
-import uploadImage from "../images/uploadImage.png"
+import vinylNote from "../images/vinylNote.png"
+import vintageMic from "../images/vintageMic.png"
+import noteFloat from "../images/noteFloat.png"
+import vinylRecord from "../images/vinylRecord.png"
+import band from "../images/band.png"
 import UploadingNewImage from './UploadingNewImage';
 
 
@@ -374,6 +378,8 @@ function nextTrack() {
 // --------------------------------
   const [trackEditState, setTrackEditState] = useState(false);  
   const [pl2TrackRefreshState, setPl2TrackRefreshState] = useState(1) 
+  const [artistAlbumSongState, setArtistAlbumSongState] = useState("selected-song")
+  // ----------------------------------------------------
 
   return(
     <>
@@ -381,6 +387,21 @@ function nextTrack() {
         <div id={"pl2-left-column"}>
           <div id={"pl2-search"}>
             <input id={"pl2-search__input"} type={"text"} placeholder={"search"} ></input>
+          </div>
+          <div className={`${artistAlbumSongState === "selected-artist" ? "selected-artist" : ""} select-artist`} onClick={(()=>{setArtistAlbumSongState("selected-artist")})}>
+            <img className={"selectIcon"} src={vintageMic} alt={""} />
+            <span>Artist</span>
+          </div>
+          <div className={`${artistAlbumSongState === "selected-album" ? "selected-album" : ""} select-album`} onClick={(()=>{setArtistAlbumSongState("selected-album")})}>
+            <img className={"selectIcon"} src={vinylRecord} alt={""} />
+            <span>Album</span>
+          </div>
+          <div className={`${artistAlbumSongState === "selected-song" ? "selected-song" : ""} select-song`} onClick={(()=>{setArtistAlbumSongState("selected-song")})}>
+            <img className={"selectIcon"} src={noteFloat} alt={""} />
+            <span>Song</span>
+          </div>
+          <div id={"left-playlist"}>
+            <span>Playlist</span>
           </div>
         </div>
         {/* <h1 id={"pl2-main-page__title"} >Formless Audio Player</h1> */}
