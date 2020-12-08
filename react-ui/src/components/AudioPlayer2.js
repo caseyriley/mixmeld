@@ -13,8 +13,9 @@ import vinylNote from "../images/vinylNote.png"
 import vintageMic from "../images/vintageMic.png"
 import noteFloat from "../images/noteFloat.png"
 import vinylRecord from "../images/vinylRecord.png"
-import band from "../images/band.png"
+import circlePlusHollow from "../images/circlePlusHollow.png"
 import UploadingNewImage from './UploadingNewImage';
+import NewPlaylistModal from './NewPlaylistModal';
 
 
 
@@ -380,10 +381,16 @@ function nextTrack() {
   const [pl2TrackRefreshState, setPl2TrackRefreshState] = useState(1) 
   const [artistAlbumSongState, setArtistAlbumSongState] = useState("selected-song")
   // ----------------------------------------------------
-
+  // -----------------Playlist-Modal----------------------
+  const [playlistModalState, setPlaylistModalState] = useState(false);
+  function toggleModal(){
+    setPlaylistModalState(!playlistModalState)
+  }
+  // -----------------------------------------------------
   return(
     <>
       <div id={"pl2-main-page"}>
+        {playlistModalState ? <NewPlaylistModal toggleModal={toggleModal} /> : null}
         <div id={"pl2-left-column"}>
           <div id={"pl2-search"}>
             <input id={"pl2-search__input"} type={"text"} placeholder={"search"} ></input>
@@ -401,7 +408,10 @@ function nextTrack() {
             <span>Song</span>
           </div>
           <div id={"left-playlist"}>
-            <span>Playlist</span>
+            <span>Playlist</span> 
+            <div id={"left-playlist-add"} onClick={toggleModal} >
+              <img src={circlePlusHollow} alt={""} />
+            </div>
           </div>
         </div>
         {/* <h1 id={"pl2-main-page__title"} >Formless Audio Player</h1> */}

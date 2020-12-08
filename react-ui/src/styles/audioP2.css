@@ -64,12 +64,14 @@
   font-size: 18px;
   color: rgb(192, 192, 192);
   margin: 0px 0px 0px 10px;
+  cursor: pointer;
 }
 
 .selected-artist,
 .selected-album,
 .selected-song {
   background-color: rgb(210, 210, 210);
+  
 }
 .selected-artist span,
 .selected-album span,
@@ -94,6 +96,19 @@
 #left-playlist span {
   font-size: 15px;
   color: rgb(192, 192, 192);
+}
+#left-playlist-add {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+#left-playlist-add img {
+  width: 15px;
+  height: 15px;
+  opacity: .8;
 }
 /* #pl2-main-page__title {
   color: rgb(218, 163, 255);
