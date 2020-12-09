@@ -5,5 +5,71 @@
   top: 0px;
   left: 0px;
   background-color: rgb(255, 255, 255, .7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   
+}
+#new-playlist-modal-c {
+  width: 70vw;
+  height: 80vh;
+  background-color: rgb(0, 0, 0, .7);
+  border-radius: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  position: fixed;
+  top: 10vh;
+  left: 15vw;
+
+}
+#new-playlist-modal-title {
+  color: whitesmoke;
+  /* font-family: 'Source Code Pro', monospace; */
+  /* font-family: 'Goldman', cursive; */
+  /* font-family: 'Audiowide', cursive; */
+  /* font-family: 'Syncopate', sans-serif; */
+  font-family: 'Electrolize', sans-serif;
+  font-size: 30px;
+  margin: 20px 0px 0px 0px;
+}
+#new-playlist-form {
+  flex-direction: column;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: auto;
+}
+#new-playlist-form label{
+  font-size: 16px;
+  font-family: 'Electrolize', sans-serif;
+  color: whitesmoke;
+  margin: 10px 0px 0px 0px;
+}
+#new-playlist-form__name{
+  height: 30px;
+  width: 80%;
+  max-width: 300px;
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  font-size: 12px;
+  color: rgb(131, 131, 131);
+  font-family: 'Electrolize', sans-serif;
+  margin: 0px 0px 20px 0px;
+
+}
+#new-playlist-submit{
+  height: 30px;
+  width: 80%;
+  max-width: 300px;
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  font-size: 12px;
+  color: rgb(131, 131, 131);
+  font-family: 'Electrolize', sans-serif;
+  margin: 0px 0px 10px 0px;
 }

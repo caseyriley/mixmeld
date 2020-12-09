@@ -43,42 +43,42 @@ function updateTrackInfo(e) {
                     <span id={"upload-modal-instructions"}>Enter your tracks info here and upload a image. You can always edit your tracks info later.</span>
                     <UploadingImage trackLocationState={props.trackLocationState}/>
                     <form id={"upload-modal__form"} onSubmit={e => {e.preventDefault(); updateTrackInfo(e)}}>
-                    <label for={"upload-modal__form__track-artist"}>Artist</label>
-                    <input 
-                        name={"trackartist"}
-                        type={"text"}
-                        id={"upload-modal__form__track-artist"} 
-                        maxLength={100} 
-                        placeholder={""} 
+                      <label for={"upload-modal__form__track-artist"}>Artist</label>
+                      <input 
+                          name={"trackartist"}
+                          type={"text"}
+                          id={"upload-modal__form__track-artist"} 
+                          maxLength={100} 
+                          placeholder={""} 
+                        />
+                      <label for={"upload-modal__form__track-name"}>Track Name</label>
+                      <input 
+                          name={"trackname"}
+                          type={"text"}
+                          id={"upload-modal__form__track-name"} 
+                          maxLength={100} 
+                          placeholder={""} 
+                        />
+                      <label for={"upload-modal__form__track-album"}>Album Name</label>
+                      <input 
+                          name={"trackalbum"}
+                          type={"text"}
+                          id={"upload-modal__form__track-album"} 
+                          maxLength={100} 
+                          placeholder={""} 
+                        />
+                      <label for={"upload-modal__form__genre-name"}>Genre Name</label>
+                      <input 
+                          name={"trackgenre"}
+                          type={"text"}
+                          id={"upload-modal__form__genre-name"} 
+                          maxLength={200} 
+                          placeholder={""} 
                       />
-                    <label for={"upload-modal__form__track-name"}>Track Name</label>
-                    <input 
-                        name={"trackname"}
-                        type={"text"}
-                        id={"upload-modal__form__track-name"} 
-                        maxLength={100} 
-                        placeholder={""} 
-                      />
-                    <label for={"upload-modal__form__track-album"}>Album Name</label>
-                    <input 
-                        name={"trackalbum"}
-                        type={"text"}
-                        id={"upload-modal__form__track-album"} 
-                        maxLength={100} 
-                        placeholder={""} 
-                      />
-                    <label for={"upload-modal__form__genre-name"}>Genre Name</label>
-                    <input 
-                        name={"trackgenre"}
-                        type={"text"}
-                        id={"upload-modal__form__genre-name"} 
-                        maxLength={200} 
-                        placeholder={""} 
-                    />
-                    { props.trackLocationState ?
-                      <input id={"upload-modal__submit"} type={"submit"} />
-                      : ""
-                    }
+                      { props.trackLocationState ?
+                        <input id={"upload-modal__submit"} type={"submit"} />
+                        : ""
+                      }
                     </form>
                   </div>
                 </div>

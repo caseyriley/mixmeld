@@ -390,7 +390,7 @@ function nextTrack() {
   return(
     <>
       <div id={"pl2-main-page"}>
-        {playlistModalState ? <NewPlaylistModal toggleModal={toggleModal} /> : null}
+        {playlistModalState ? <NewPlaylistModal toggleModal={toggleModal} currentUser={currentUser} /> : null}
         <div id={"pl2-left-column"}>
           <div id={"pl2-search"}>
             <input id={"pl2-search__input"} type={"text"} placeholder={"search"} ></input>

@@ -79,13 +79,25 @@ class Playlist(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     playlist_name = db.Column(db.String(100), nullable=False)
-    playlist_que = db.Column(db.String, nullable=True)
 
-def to_dict(self):
-    return {
-        "id": self.id,
-        "user_id": self.user_id,
-        "playlist_name": self.playlist_name,
-        "playlist_queue": self.playlist_queue,
-    }
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "playlist_name": self.playlist_name,
+        }
 
+
+class Playlists_Tracks(db.Model):
+    __tablename__ = 'playlists_tracks'
+
+    id = db.Column(db.Integer, primary_key=True)
+    playlist_id = db.Column(db.Integer, db.ForeignKey("playlists.id"), nullable=False)
+    track_id = db.Column(db.Integer, db.ForeignKey("tracks.id"), nullable=False)
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "playlist_id": self.playlist_id,
+            "playlist_name": self.playlist_name,
+        }

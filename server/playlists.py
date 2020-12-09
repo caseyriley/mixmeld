@@ -19,8 +19,7 @@ def post_playlist():
     data = json.loads(request.data)
     playlist = Playlist(
         user_id=data["user_id"],
-        playlist_name=data["playlist_name"],
-        playlist_queue=data["playlist_queue"]
+        playlist_name=data["playlist_name"]
     )
     db.session.add(playlist)
     db.session.commit()

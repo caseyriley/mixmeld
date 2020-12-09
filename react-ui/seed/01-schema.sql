@@ -31,10 +31,17 @@ CREATE TABLE playlists (
   id SERIAL PRIMARY KEY,
   user_id INTEGER NOT NULL,
   playlist_name VARCHAR(100) NOT NULL,
-  playlist_que TEXT, 
   created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
   FOREIGN KEY (user_id) REFERENCES users(id) 
 );
+
+CREATE TABLE playlists_tracks (
+  id SERIAL PRIMARY KEY,
+  playlist_id INTEGER NOT NULL,
+  track_id INTEGER NOT NULL,
+  FOREIGN KEY (playlist_id) REFERENCES playlists(id),
+  FOREIGN KEY (track_id) REFERENCES tracks(id)
+)
 
 -- CREATE TABLE tweets (
 --   id SERIAL PRIMARY KEY,
