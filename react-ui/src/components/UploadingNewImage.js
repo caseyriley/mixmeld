@@ -21,7 +21,7 @@ const UploadingNewImage = (props) => {
       
       const updateTrackArt = async (artLocation) => {
         console.log("trackLocationState==================>", props.pl2TrackLocationState)
-        const trackData = { trackart: artLocation, tracklocation: props.pl2TrackLocationState}
+        const trackData = { trackart: artLocation, tracklocation: props.pl2TrackLocationState , user_id: props.currentUser.id}
         const options = {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

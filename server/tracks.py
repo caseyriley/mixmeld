@@ -55,8 +55,9 @@ def update_track_art():
     
     track_location = data["tracklocation"]
     track_art = data["trackart"]
+    user_id = data["user_id"]
 
-    track = Track.query.filter(Track.tracklocation == track_location).first()
+    track = Track.query.filter(Track.tracklocation == track_location, Track.user_id == user_id).first()
     track.trackart = track_art
     db.session.commit()
     return jsonify(Good='you changed the track art')

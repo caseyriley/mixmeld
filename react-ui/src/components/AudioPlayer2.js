@@ -10,13 +10,13 @@ import TimeRemaining from './TimeRemaining';
 import VolumeUiSlider from './VolumeUiSlider';
 import formlessMusicIcon from "../images/formless-music-icon.png"
 import vinylNote from "../images/vinylNote.png"
+import Ritual from "../media/Ritual.mp3"
 import vintageMic from "../images/vintageMic.png"
 import noteFloat from "../images/noteFloat.png"
 import vinylRecord from "../images/vinylRecord.png"
 import circlePlusHollow from "../images/circlePlusHollow.png"
 import UploadingNewImage from './UploadingNewImage';
 import NewPlaylistModal from './NewPlaylistModal';
-
 
 
 
@@ -95,6 +95,10 @@ const AudioPlayer2 = (props)=>{
       if (!response.ok) { console.log("error in getUserTracks") }
       else {
         const json = await response.json();
+        console.log('jsoooon==========>', json)
+        if (json === []){
+
+        }
         setFirstTrack(json);
         currentTrack.current = json[0].id;
       }
@@ -413,6 +417,7 @@ function nextTrack() {
               <img src={circlePlusHollow} alt={""} />
             </div>
           </div>
+          
         </div>
         {/* <h1 id={"pl2-main-page__title"} >Formless Audio Player</h1> */}
         <div id={"pl2-audio-tracklist-c"}>
@@ -443,7 +448,7 @@ function nextTrack() {
 
                   {trackEditState ? 
                   <> 
-                    <UploadingNewImage pl2TrackRefreshState={pl2TrackRefreshState} setPl2TrackRefreshState={setPl2TrackRefreshState} setTrackArtState={setTrackArtState} setPl2TrackLocationState={setPl2TrackLocationState} pl2TrackLocationState={pl2TrackLocationState}/>
+                    <UploadingNewImage currentUser={currentUser} pl2TrackRefreshState={pl2TrackRefreshState} setPl2TrackRefreshState={setPl2TrackRefreshState} setTrackArtState={setTrackArtState} setPl2TrackLocationState={setPl2TrackLocationState} pl2TrackLocationState={pl2TrackLocationState}/>
                   </>
                   : ""}
                   <img className={"track-art"} src={`${trackArtState ? trackArtState : formlessMusicIcon}`} alt={""}/>
