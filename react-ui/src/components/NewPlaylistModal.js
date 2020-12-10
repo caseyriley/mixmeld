@@ -20,6 +20,8 @@ const NewPlaylistModal = (props) => {
         body: JSON.stringify(trackData),
       }
       fetch(`${API_URL}/playlists/post`, options)
+      props.toggleModal();
+      props.setRefresPlaylist(props.refreshPlaylist + 1);
       
     }
     newPlaylist();
