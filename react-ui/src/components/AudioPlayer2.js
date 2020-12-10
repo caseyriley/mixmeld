@@ -9,8 +9,6 @@ import Tracklist2 from './Tracklist2';
 import TimeRemaining from './TimeRemaining';
 import VolumeUiSlider from './VolumeUiSlider';
 import formlessMusicIcon from "../images/formless-music-icon.png"
-import vinylNote from "../images/vinylNote.png"
-import Ritual from "../media/Ritual.mp3"
 import vintageMic from "../images/vintageMic.png"
 import noteFloat from "../images/noteFloat.png"
 import vinylRecord from "../images/vinylRecord.png"
@@ -390,6 +388,30 @@ function nextTrack() {
   function toggleModal(){
     setPlaylistModalState(!playlistModalState)
   }
+  // -----------------------------------------------------
+  // ----------------Get-Playlists------------------------
+  const [playlistState, setPlaylistState] = useState();
+
+  useEffect(() => {
+  
+    const getCurrentUserPlaylists = async () => {
+      const token = window.localStorage.getItem('auth_token')
+      const response = await fetch(`${API_URL}/playlists/${currentUser.id}`, {
+        method: "GET",
+        mode: "cors",
+        headers: { "Authorization": `Bearer ${token}` },
+      })
+      if (!response.ok) {
+        console.log("getCurrentUserPlaylists failed in AudioPlayer2.js");
+      } else {
+        const json = await response.json();
+        setPlaylistState(json);
+        console.log("getCurrentUserPlaylists json", json)
+       
+      }
+    }
+    getCurrentUserPlaylists();
+  },[currentUser])
   // -----------------------------------------------------
   return(
     <>
