@@ -8,6 +8,7 @@ import './styles/audioP1.css';
 import './styles/audioP2.css';
 import './styles/uploadModal.css';
 import './styles/newPlaylistModal.css';
+import './styles/pl2LeftColumn.css';
 import './styles/mScreenW850.css';
 import './styles/mScreenW650.css';
 import './styles/mScreenW515.css';

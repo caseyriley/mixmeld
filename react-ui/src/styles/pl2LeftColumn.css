@@ -1,0 +1,146 @@
+#pl2-main-page {
+  display: flex;
+  justify-content: center;
+  /* align-items: flex-end; */
+  /* flex-direction: column; */
+  background-color: black;
+  height: 100vh;
+  width: 100vw;
+}
+#pl2-left-column {
+  width: 10%;
+  height: 100vh;
+  background-color: rgb(109, 109, 109);
+  /* border: 1px solid green; */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+
+}
+#pl2-left-column__scroll-outer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  overflow-y: scroll;
+  scrollbar-color: transparent;
+  scrollbar-darkshadow-color: transparent;
+  scrollbar-track-color: transparent;
+  scrollbar-width: 0px;
+  
+  
+}
+#pl2-search{
+  height: 30px;
+  background-color: transparent;
+  font-size: 20px;
+  color: rgb(192, 192, 192);
+  border: 1px solid rgb(196, 196, 196);
+  border-radius: 5px;
+  margin: 0px 5% 10px 5%;
+  text-align: center;
+}
+#pl2-left-column__scroll-inner {
+  width: 100%;
+
+}
+
+#pl2-search__input{
+  width: 100%;
+  margin: 0px;
+  height: 30px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  font-size: 18px;
+  color: rgb(192, 192, 192);
+  
+}
+#pl2-search__input::placeholder {
+  font-size: 18px;
+  color: rgb(192, 192, 192);
+  position: relative;
+  top: -1px;
+}
+
+.select-artist,
+.select-album,
+.select-song {
+  width: 90%;
+  height: 30px;
+  border-radius: 5px;
+  background-color: transparent;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0px 0px 0px 5%;
+}
+.select-artist span,
+.select-album span,
+.select-song span {
+  font-size: 18px;
+  color: rgb(192, 192, 192);
+  margin: 0px 0px 0px 10px;
+  cursor: pointer;
+}
+
+.selected-artist,
+.selected-album,
+.selected-song {
+  background-color: rgb(210, 210, 210);
+  
+}
+.selected-artist span,
+.selected-album span,
+.selected-song  span{
+  color: rgb(70, 70, 70);
+  background-color: rgb(210, 210, 210);
+}
+.selectIcon {
+  height: 20px;
+  width: 20px;
+  margin: 0px 0px 0px 10px;
+  opacity: .7;
+}
+#left-playlist {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0px 10px 0px;
+}
+#left-playlist span {
+  font-size: 15px;
+  color: rgb(192, 192, 192);
+}
+#left-playlist-add {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+#left-playlist-add img {
+  width: 15px;
+  height: 15px;
+  opacity: .8;
+}
+.left-playlist-name {
+  height: 30px;
+  width: 100%;
+  font-size: 18px;
+    color: rgb(192, 192, 192);
+    margin: 0px 0px 0px 10px;
+    cursor: pointer;
+
+}
+#left-playlist-bottom-space {
+  height: 40px;
+  width: 100%;
+  /* border: 1px solid white; */
+}

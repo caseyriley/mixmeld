@@ -9,12 +9,10 @@ import Tracklist2 from './Tracklist2';
 import TimeRemaining from './TimeRemaining';
 import VolumeUiSlider from './VolumeUiSlider';
 import formlessMusicIcon from "../images/formless-music-icon.png"
-import vintageMic from "../images/vintageMic.png"
-import noteFloat from "../images/noteFloat.png"
-import vinylRecord from "../images/vinylRecord.png"
-import circlePlusHollow from "../images/circlePlusHollow.png"
+
 import UploadingNewImage from './UploadingNewImage';
 import NewPlaylistModal from './NewPlaylistModal';
+import Pl2LeftColumn from './Pl2LeftColumn';
 
 
 
@@ -381,82 +379,14 @@ function nextTrack() {
 // --------------------------------
   const [trackEditState, setTrackEditState] = useState(false);  
   const [pl2TrackRefreshState, setPl2TrackRefreshState] = useState(1) 
-  const [artistAlbumSongState, setArtistAlbumSongState] = useState("selected-song")
-  // ----------------------------------------------------
-  // -----------------Playlist-Modal----------------------
-  const [playlistModalState, setPlaylistModalState] = useState(false);
-  function toggleModal(){
-    setPlaylistModalState(!playlistModalState)
-  }
-  // -----------------------------------------------------
-  // ----------------Get-Playlists------------------------
-  const [playlistState, setPlaylistState] = useState();
-  const [refreshPlaylist, setRefresPlaylist] = useState(1);
 
-  useEffect(() => {
-  
-    const getCurrentUserPlaylists = async () => {
-      const token = window.localStorage.getItem('auth_token')
-      const response = await fetch(`${API_URL}/playlists/${currentUser.id}`, {
-        method: "GET",
-        mode: "cors",
-        headers: { "Authorization": `Bearer ${token}` },
-      })
-      if (!response.ok) {
-        console.log("getCurrentUserPlaylists failed in AudioPlayer2.js");
-      } else {
-        const json = await response.json();
-        setPlaylistState(json);
-        console.log("getCurrentUserPlaylists json", json)
-       
-      }
-    }
-    getCurrentUserPlaylists();
-  },[currentUser, refreshPlaylist])
-  // -----------------------------------------------------
+  // ----------------------------------------------------
+
+ 
   return(
     <>
       <div id={"pl2-main-page"}>
-        {playlistModalState ? <NewPlaylistModal toggleModal={toggleModal} currentUser={currentUser} setRefresPlaylist={setRefresPlaylist} refreshPlaylist={refreshPlaylist} /> : null}
-        <div id={"pl2-left-column"}>
-          <div id={"pl2-search"}>
-            <input id={"pl2-search__input"} type={"text"} placeholder={"search"} ></input>
-          </div>
-            <div id={"pl2-left-column__scroll-outer"}>
-
-            
-              <div id={"pl2-left-column__scroll-inner"} >
-              <div className={`${artistAlbumSongState === "selected-artist" ? "selected-artist" : ""} select-artist`} onClick={(()=>{setArtistAlbumSongState("selected-artist")})}>
-                <img className={"selectIcon"} src={vintageMic} alt={""} />
-                <span>Artist</span>
-              </div>
-              <div className={`${artistAlbumSongState === "selected-album" ? "selected-album" : ""} select-album`} onClick={(()=>{setArtistAlbumSongState("selected-album")})}>
-                <img className={"selectIcon"} src={vinylRecord} alt={""} />
-                <span>Album</span>
-              </div>
-              <div className={`${artistAlbumSongState === "selected-song" ? "selected-song" : ""} select-song`} onClick={(()=>{setArtistAlbumSongState("selected-song")})}>
-                <img className={"selectIcon"} src={noteFloat} alt={""} />
-                <span>Song</span>
-              </div>
-              <div id={"left-playlist"}>
-                <span>Playlist</span> 
-                <div id={"left-playlist-add"} onClick={toggleModal} >
-                  <img src={circlePlusHollow} alt={""} />
-                </div>
-              </div>
-              {playlistState ? 
-              playlistState.map(playlist => {
-                return (
-                  <div className={"left-playlist-name"} >
-                    <span>{playlist.playlist_name}</span>
-                  </div>
-                )
-              })
-              : null}
-              <div id={"left-playlist-bottom-space"}></div>
-            </div>
-          </div>
-        </div>
+        <Pl2LeftColumn currentUser={currentUser} />
         {/* <h1 id={"pl2-main-page__title"} >Formless Audio Player</h1> */}
         <div id={"pl2-audio-tracklist-c"}>
           <div id={"pl2-audio"} >
