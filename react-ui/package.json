@@ -9,12 +9,14 @@
     "lottie": "0.0.1",
     "mini-create-react-context": "^0.4.1",
     "react": "^16.14.0",
+    "react-beautiful-dnd": "^13.0.0",
     "react-dom": "^16.14.0",
     "react-dropzone": "^11.2.4",
     "react-hook-form": "^6.11.5",
     "react-native-fs": "^2.16.6",
     "react-s3-uploader": "^5.0.0",
-    "react-scripts": "^2.1.8"
+    "react-scripts": "^2.1.8",
+    "uuid": "^8.3.2"
   },
   "scripts": {
     "start": "react-scripts start",
