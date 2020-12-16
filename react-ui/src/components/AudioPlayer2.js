@@ -13,6 +13,7 @@ import formlessMusicIcon from "../images/formless-music-icon.png"
 import UploadingNewImage from './UploadingNewImage';
 import NewPlaylistModal from './NewPlaylistModal';
 import Pl2LeftColumn from './Pl2LeftColumn';
+import PlaylistSwitch from './PlaylistSwitch';
 
 
 
@@ -380,13 +381,15 @@ function nextTrack() {
   const [trackEditState, setTrackEditState] = useState(false);  
   const [pl2TrackRefreshState, setPl2TrackRefreshState] = useState(1) 
 
+  const [playlistSwitchState, setPlaylistSwitchState] = useState("Tracklist2")
+
   // ----------------------------------------------------
 
  
   return(
     <>
       <div id={"pl2-main-page"}>
-        <Pl2LeftColumn currentUser={currentUser} />
+        <Pl2LeftColumn setPlaylistSwitchState={setPlaylistSwitchState} currentUser={currentUser} />
         {/* <h1 id={"pl2-main-page__title"} >Formless Audio Player</h1> */}
         <div id={"pl2-audio-tracklist-c"}>
           <div id={"pl2-audio"} >
@@ -440,8 +443,8 @@ function nextTrack() {
               </div>
             </div>
           </div>
-        
-        <Tracklist2 pl2TrackRefreshState={pl2TrackRefreshState} trackEditState={trackEditState} setTrackEditState={setTrackEditState} setTrack={setTrack} setTrackArrayLengthState={setTrackArrayLengthState}/>
+        <PlaylistSwitch playlistSwitchState={playlistSwitchState} pl2TrackRefreshState={pl2TrackRefreshState} trackEditState={trackEditState} setTrackEditState={setTrackEditState} setTrack={setTrack} setTrackArrayLengthState={setTrackArrayLengthState}/>
+        {/* <Tracklist2 pl2TrackRefreshState={pl2TrackRefreshState} trackEditState={trackEditState} setTrackEditState={setTrackEditState} setTrack={setTrack} setTrackArrayLengthState={setTrackArrayLengthState}/> */}
         </div>
       </div>
     </>

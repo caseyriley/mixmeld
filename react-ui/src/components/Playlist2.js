@@ -7,6 +7,7 @@ const itemsFromBackend = [
   {id: uuidv4(), content: 'Second task'}
 ];
 
+
 const columnsFromBackend = 
   { [uuidv4()]: {
     name: 'Requested',

@@ -39,6 +39,10 @@ const Pl2LeftColumn = (props) => {
      getCurrentUserPlaylists();
    },[props.currentUser, refreshPlaylist])
    // -----------------------------------------------------
+ 
+  function showPlaylist(){
+    props.setPlaylistSwitchState("Playlist2")
+  }
 
   return (
     <>
@@ -70,7 +74,7 @@ const Pl2LeftColumn = (props) => {
               {playlistState ? 
               playlistState.map(playlist => {
                 return (
-                  <div className={"left-playlist-name"} >
+                  <div className={"left-playlist-name"} onClick={showPlaylist} >
                     <span>{playlist.playlist_name}</span>
                   </div>
                 )
