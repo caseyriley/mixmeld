@@ -381,15 +381,29 @@ function nextTrack() {
   const [trackEditState, setTrackEditState] = useState(false);  
   const [pl2TrackRefreshState, setPl2TrackRefreshState] = useState(1) 
 
+// -----------PlaylistSwitch--functions-------------------
   const [playlistSwitchState, setPlaylistSwitchState] = useState("Tracklist2")
 
+  function showPlaylist(playlistName){
+    setPlaylistSwitchState("Playlist2")
+  }
+  function showTracklist(string){
+    setPlaylistSwitchState("Tracklist2")
+  }
+
+  // ----------------------------------------------------
+  // ----------Add-To-Playlist---------------------------
+  const [addToPlaylistState, setAddToPlaylistState] = useState(false);
+  function toggleAddToPlaylist(){
+    setAddToPlaylistState(!addToPlaylistState)
+  }
   // ----------------------------------------------------
 
  
   return(
     <>
       <div id={"pl2-main-page"}>
-        <Pl2LeftColumn setPlaylistSwitchState={setPlaylistSwitchState} currentUser={currentUser} />
+        <Pl2LeftColumn addToPlaylistState={addToPlaylistState} toggleAddToPlaylist={toggleAddToPlaylist} showTracklist={showTracklist} showPlaylist={showPlaylist} currentUser={currentUser} />
         {/* <h1 id={"pl2-main-page__title"} >Formless Audio Player</h1> */}
         <div id={"pl2-audio-tracklist-c"}>
           <div id={"pl2-audio"} >

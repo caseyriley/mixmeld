@@ -30,7 +30,7 @@ CREATE TABLE tracks (
 CREATE TABLE playlists (
   id SERIAL PRIMARY KEY,
   user_id INTEGER NOT NULL,
-  playlist_name VARCHAR(100) NOT NULL,
+  playlist_name VARCHAR(100) NOT NULL UNIQUE,
   created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
   FOREIGN KEY (user_id) REFERENCES users(id) 
 );

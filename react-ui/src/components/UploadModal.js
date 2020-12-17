@@ -41,7 +41,7 @@ function updateTrackInfo(e) {
                   <div className={"upload-modal"}>
                     <span id={"upload-modal-title"}>Track Info</span>
                     <span id={"upload-modal-instructions"}>Enter your tracks info here and upload a image. You can always edit your tracks info later.</span>
-                    <UploadingImage trackLocationState={props.trackLocationState}/>
+                    <UploadingImage currentUser={props.currentUser} trackLocationState={props.trackLocationState}/>
                     <form id={"upload-modal__form"} onSubmit={e => {e.preventDefault(); updateTrackInfo(e)}}>
                       <label for={"upload-modal__form__track-artist"}>Artist</label>
                       <input 

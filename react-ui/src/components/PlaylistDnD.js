@@ -27,8 +27,6 @@ const columnsFromBackend =
     // }
   };
 
-  
-
   const onDragEnd = (result, columns, setColumns) => {
     if (!result.destination) return;
     const {source, destination} = result;
@@ -67,7 +65,7 @@ const columnsFromBackend =
   };
 
 
-const Playlist2 = () => {
+const PlaylistDnD = () => {
   const [columns, setColumns] = useState(columnsFromBackend);
   return (
     <>
@@ -130,4 +128,4 @@ const Playlist2 = () => {
     </>
   )
 }
-export default Playlist2;
+export default PlaylistDnD;

@@ -16,7 +16,7 @@ const Pl2LeftColumn = (props) => {
   // -----------------------------------------------------
    // ----------------Get-Playlists------------------------
    const [playlistState, setPlaylistState] = useState();
-   const [refreshPlaylist, setRefresPlaylist] = useState(1);
+   const [refreshPlaylistState, setRefreshPlaylistState] = useState(1);
  
    useEffect(() => {
    
@@ -37,16 +37,13 @@ const Pl2LeftColumn = (props) => {
        }
      }
      getCurrentUserPlaylists();
-   },[props.currentUser, refreshPlaylist])
+   },[props.currentUser, refreshPlaylistState])
    // -----------------------------------------------------
- 
-  function showPlaylist(){
-    props.setPlaylistSwitchState("Playlist2")
-  }
+
 
   return (
     <>
-      {playlistModalState ? <NewPlaylistModal toggleModal={toggleModal} currentUser={props.currentUser} setRefresPlaylist={setRefresPlaylist} refreshPlaylist={refreshPlaylist} /> : null}
+      {playlistModalState ? <NewPlaylistModal toggleModal={toggleModal} currentUser={props.currentUser} setRefreshPlaylistState={setRefreshPlaylistState} refreshPlaylistState={refreshPlaylistState} /> : null}
         <div id={"pl2-left-column"}>
           <div id={"pl2-search"}>
             <input id={"pl2-search__input"} type={"text"} placeholder={"search"} ></input>
@@ -61,25 +58,47 @@ const Pl2LeftColumn = (props) => {
                 <img className={"selectIcon"} src={vinylRecord} alt={""} />
                 <span>Album</span>
               </div>
-              <div className={`${artistAlbumSongState === "selected-song" ? "selected-song" : ""} select-song`} onClick={(()=>{setArtistAlbumSongState("selected-song")})}>
-                <img className={"selectIcon"} src={noteFloat} alt={""} />
+              <div className={`${artistAlbumSongState === "selected-song" ? "selected-song" : ""} select-song`} onClick={(()=>{setArtistAlbumSongState("selected-song"); props.showTracklist() })}>
+                <img className={"selectIcon"} src={noteFloat} alt={""}  />
                 <span>Song</span>
               </div>
-              <div id={"left-playlist"}>
+              <div className={`add-to-playlist ${props.addToPlaylistState ? "add-to-playlist--on" : ""}`} onClick={props.toggleAddToPlaylist}>
+                <span>Add Track To</span> 
                 <span>Playlist</span> 
-                <div id={"left-playlist-add"} onClick={toggleModal} >
+                <div className={"left-playlist-add"} >
+                  {/* <img src={circlePlusHollow} alt={""} /> */}
+                </div>
+              </div>
+              <div className={`left-playlist ${props.addToPlaylistState ? "hidden" : "visible"}`}>
+                <span>Playlist</span> 
+                <div className={"left-playlist-add"} onClick={toggleModal} >
                   <img src={circlePlusHollow} alt={""} />
                 </div>
               </div>
-              {playlistState ? 
-              playlistState.map(playlist => {
-                return (
-                  <div className={"left-playlist-name"} onClick={showPlaylist} >
-                    <span>{playlist.playlist_name}</span>
-                  </div>
-                )
-              })
-              : null}
+              <div className={`${props.addToPlaylistState ? "visible" : "hidden"}`}>
+                {playlistState ? 
+                  playlistState.map((playlist, index) => {
+                    return (
+                      <div className={"playlist-radio-c"}>
+                        <input type="radio" className={"playlist-radio"}  id={playlist.playlist_name} name="playlist-radio" value={playlist.playlist_name} checked />
+                        <label className={"playlist-radio-label"} for={playlist.playlist_name}>{playlist.playlist_name}</label>
+                      </div>
+                      
+                    )
+                  })
+                : null}
+              </div>
+              <div className={`${props.addToPlaylistState ? "hidden" : "visible"}`}>
+                {playlistState ? 
+                playlistState.map((playlist, index) => {
+                  return (
+                    <div key={index} className={"left-playlist-name"} onClick={()=>{props.showPlaylist(playlist.playlist_name)}} >
+                      <span>{playlist.playlist_name}</span>
+                    </div>
+                  )
+                })
+                : null}
+              </div>
               <div id={"left-playlist-bottom-space"}></div>
             </div>
           </div>

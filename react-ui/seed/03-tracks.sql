@@ -1,0 +1,3 @@
+INSERT INTO tracks (user_id, trackname, trackartist, trackalbum, tracklocation, tracktime, trackrating, trackgenre, trackart, created_date)
+VALUES
+('1', 'Green Tea Ice Cream', 'Linda Diaz', 'Magic', 'https://formless.s3-us-west-2.amazonaws.com/01+Green+Tea+Ice+Cream.mp3', '3:52', '😸😸😺😸😸', 'Neo Soul', 'https://formless.s3-us-west-2.amazonaws.com/Green+Tea+Ice+Cream+prod.+ThankYouFatMatt+in+Magic.html', '2020-09-07 12:54:06.542315');

@@ -313,7 +313,7 @@ function toStandardTime(militaryTime) {
   
 
   return(
-    <>{uploadModalState === "upload-modal" ? <UploadModal refreshTrackState={refreshTrackState} setRefreshTrackState={setRefreshTrackState} uploadModalState={uploadModalState} setUploadModalState={setUploadModalState} setTrackLocationState={setTrackLocationState} trackLocationState={trackLocationState}/> : ""}
+    <>{uploadModalState === "upload-modal" ? <UploadModal currentUser={currentUser} refreshTrackState={refreshTrackState} setRefreshTrackState={setRefreshTrackState} uploadModalState={uploadModalState} setUploadModalState={setUploadModalState} setTrackLocationState={setTrackLocationState} trackLocationState={trackLocationState}/> : ""}
   
     <div id={"pl2-playlist-border"}>
       <div id={"pl2-playlist-c"} >

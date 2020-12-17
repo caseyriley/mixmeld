@@ -26,6 +26,7 @@
   align-items: center;
   flex-direction: column;
   overflow-y: scroll;
+  overflow-x: hidden;
   scrollbar-color: transparent;
   scrollbar-darkshadow-color: transparent;
   scrollbar-track-color: transparent;
@@ -105,7 +106,37 @@
   margin: 0px 0px 0px 10px;
   opacity: .7;
 }
-#left-playlist {
+.add-to-playlist {
+  width: 90%;
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0px 10px 5%;
+  border: 1px double lightgray;
+  border-radius: 5px;
+
+}
+.add-to-playlist span{
+  font-size: 12px;
+  color: rgb(192, 192, 192);
+  text-align: center;
+  margin: 0px 0px 0px 0px;
+}
+.add-to-playlist:hover {
+  background-color: grey;
+  cursor: pointer;
+}
+.add-to-playlist--on {
+  border: 1px double  rgb(237, 149, 237);
+}
+.add-to-playlist--on  span{
+  color:  rgb(237, 149, 237);
+  font-family: 'Electrolize', sans-serif;
+ 
+}
+.left-playlist {
   width: 100%;
   height: 30px;
   display: flex;
@@ -113,11 +144,11 @@
   align-items: center;
   margin: 10px 0px 10px 0px;
 }
-#left-playlist span {
+.left-playlist span {
   font-size: 15px;
   color: rgb(192, 192, 192);
 }
-#left-playlist-add {
+.left-playlist-add {
   width: 30px;
   height: 30px;
   display: flex;
@@ -125,7 +156,7 @@
   align-items: center;
   cursor: pointer;
 }
-#left-playlist-add img {
+.left-playlist-add img {
   width: 15px;
   height: 15px;
   opacity: .8;
@@ -134,13 +165,60 @@
   height: 30px;
   width: 100%;
   font-size: 18px;
-    color: rgb(192, 192, 192);
-    margin: 0px 0px 0px 10px;
-    cursor: pointer;
-
+  color: rgb(192, 192, 192);
+  margin: 0px 0px 0px 10px;
+  cursor: pointer;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
 }
 #left-playlist-bottom-space {
   height: 40px;
   width: 100%;
-  /* border: 1px solid white; */
+}
+.hidden {
+  display: none;
+}
+.playlist-radio-c {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+.playlist-radio {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  border-radius: 100%;
+  min-width: 14px;
+  min-height: 14px;
+
+  border: 2px solid #999;
+  transition: 0.2s all linear;
+  margin-right: 5px;
+
+  position: relative;
+  top: 4px;
+  outline: none;
+  cursor: pointer;
+
+
+}
+.playlist-radio:checked {
+  border: 4px solid rgb(237, 149, 237);
+
+}
+.playlist-radio-label {
+  position: relative;
+  top: 13px;
+  height: 30px;
+  width: 100%;
+  font-size: 15px;
+  color: rgb(192, 192, 192);
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  cursor: pointer;
 }

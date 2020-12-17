@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import S3FileUpload from 'react-s3';
 import { API_URL } from '../config';
-import lottie from 'lottie-web';
 import deleteX from '../images/deleteX.png'
 import LoadingRipples from '../images/LoadingRipples';
 
@@ -21,7 +20,7 @@ const UploadingImage = (props) => {
       
       const updateTrackArt = async (artLocation) => {
         console.log("trackLocationState==================>", props.trackLocationState)
-        const trackData = { trackart: artLocation, tracklocation: props.trackLocationState}
+        const trackData = { trackart: artLocation, tracklocation: props.trackLocationState, user_id: props.currentUser.id}
         const options = {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
