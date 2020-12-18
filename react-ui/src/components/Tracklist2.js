@@ -345,7 +345,9 @@ function toStandardTime(militaryTime) {
                     <form name={audio.id} onSubmit={e=> {e.preventDefault(); updateTrackRating(e)}}> 
                       <input 
                         type={"text"}
-                        id={"pl2-track-genre-input"} 
+                        // id={"pl2-track-genre-input"} 
+                        id={`genre-${index}`} 
+                        className={"pl2-track-genre-input"}
                         maxLength={100} 
                         placeholder={audio.trackrating ? audio.trackrating : ""} 
                       />

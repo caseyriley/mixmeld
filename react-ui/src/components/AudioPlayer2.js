@@ -15,6 +15,7 @@ import UploadingNewImage from './UploadingNewImage';
 import NewPlaylistModal from './NewPlaylistModal';
 import Pl2LeftColumn from './Pl2LeftColumn';
 import PlaylistSwitch from './PlaylistSwitch';
+import TrackDisplay from './TrackDisplay';
 
 
 
@@ -28,7 +29,7 @@ const AudioPlayer2 = (props)=>{
   const fwd = useRef();
 
   const audioBottomPlayhead = useRef();
-  // const timerBar = useRef();
+  const timerBar = useRef();
 
 
   const volumeLevel =useRef();
@@ -130,7 +131,7 @@ const AudioPlayer2 = (props)=>{
     if(media.current.paused) {
       play.current.src = pauseButton;
       media.current.play();
-      start();
+      // start();
     } else {
       play.current.src = playButton;
       media.current.pause();
@@ -233,7 +234,7 @@ const AudioPlayer2 = (props)=>{
   // }
 // -------------------------------------------------
 
-  const {start, timeState, timerBar} = UseTime(media, audioBottomPlayhead);
+  // const {start, timeState, timerBar} = UseTime(media, audioBottomPlayhead);
 
 // -------Update-Time--------------------------------
   // useEffect(()=>{
@@ -435,9 +436,10 @@ function nextTrack() {
                   <img className={"pl2-fast-forward"} onClick={nextTrack} ref={fwd} src={fastForward} alt={""}  ></img>
                   <img  className={`pl2-loop ${loopState ? "pl2-looping" : "not-looping"}`} src={loop} alt={""} onClick={toggleLoop}></img>
                 </div>
-
-                <div id={"pl2-track-display"}>
-
+                <TrackDisplay media={media} trackEditState={trackEditState}/>
+                {/* <div id={"pl2-track-display"}>
+                  <div>{media.current ? `${Math.floor(media.current.currentTime / 60)}:${Math.floor(media.current.currentTime - Math.floor(media.current.currentTime / 60) * 60)}` : ""}</div>
+                  
                   {trackEditState ? 
                   <> 
                     <UploadingNewImage currentUser={currentUser} pl2TrackRefreshState={pl2TrackRefreshState} setPl2TrackRefreshState={setPl2TrackRefreshState} setTrackArtState={setTrackArtState} setPl2TrackLocationState={setPl2TrackLocationState} pl2TrackLocationState={pl2TrackLocationState}/>
@@ -446,19 +448,19 @@ function nextTrack() {
                   <img className={"track-art"} src={`${trackArtState ? trackArtState : formlessMusicIcon}`} alt={""}/>
                   <div id={"pl2-audio__bottom"} >
                     <p id={"pl2-audio__top__song-name"}>{songNameState ? songNameState : `${firstTrack ? firstTrack[0].trackname : ""}`}</p>
-                    {/* <p id={"pl2-audio__top__song-artist"}>{artistNameState ? artistNameState : `${firstTrack ? firstTrack[0].trackartist : ""}`}</p> */}
+                    
                     <p id={"pl2-audio__top__song-artist"}>{artistNameState ? artistNameState : ``}</p>
                   
                     <div className={"pl2-audio__bottom__playhead"} ref={audioBottomPlayhead} >
                       <input id={"pl2-playhead-input"} ref={playHeadSlider} type={"range"} min={"0"} max={"1"} step={"0.01"} onChange={movePlayheadOnClick} ></input>
                       <div className={"pl2-audio__bottom__playhead__left"} ref={timerBar} ></div>
                       <div className="pl2-timer">
-                        <span id={"pl2-audio__bottom__time__start"} >{timeState}</span>
+                        <span id={"pl2-audio__bottom__time__start"} >{"timeState"}</span>
                       </div>
                       <TimeRemaining media={media}/>
                     </div>
                   </div>
-                </div>
+                </div> */}
 
                 <VolumeUiSlider volumeLevel={volumeLevel} volumeFader={volumeFader} volumeSlider={volumeSlider} changeVolume={changeVolume}/>
               </div>

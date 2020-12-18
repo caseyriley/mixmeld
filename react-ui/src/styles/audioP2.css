@@ -729,7 +729,7 @@ li {
   align-items: center;
   position: relative;
 }
-#pl2-track-genre-input {
+.pl2-track-genre-input {
   background-color: transparent;
   width: 100%;
   height: 100%;
