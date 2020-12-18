@@ -15,6 +15,15 @@ const UseTime = (media, audioBottomPlayhead) => {
     }
     
     intervalRef.current = setInterval(() => {
+      if (media.current.paused){
+        clearInterval(intervalRef.current)
+        intervalRef.current = null
+      }
+      if (media.current.ended){
+        clearInterval(intervalRef.current)
+        intervalRef.current = null
+      }
+
       if (media){
         let minutes = Math.floor(media.current.currentTime / 60);
         let seconds = Math.floor(media.current.currentTime - minutes * 60);
@@ -38,6 +47,7 @@ const UseTime = (media, audioBottomPlayhead) => {
         setTimeState(mediaTime)
         let barLength = audioBottomPlayhead.current.clientWidth * (media.current.currentTime/media.current.duration);
         timerBar.current.style.width = barLength + 'px';
+        console.log("interval$$$$$$$$$$$$$$$$$$$")
       }
     }, 500);
     
@@ -45,7 +55,7 @@ const UseTime = (media, audioBottomPlayhead) => {
   },[])
 
 
-  return {start, timeState, timerBar}
+  return {start, timeState, timerBar, intervalRef}
 
 }
 

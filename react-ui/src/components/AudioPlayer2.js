@@ -28,7 +28,7 @@ const AudioPlayer2 = (props)=>{
   const rwd = useRef();
   const fwd = useRef();
 
-  const audioBottomPlayhead = useRef();
+  // const audioBottomPlayhead = useRef();
   const timerBar = useRef();
 
 
@@ -112,6 +112,7 @@ const AudioPlayer2 = (props)=>{
 // ---------------Play/Pause-Button---------------
   // const [firstTrack, setFirstTrack] = useState();
   // const firstTrack = useRef()
+  const [isPlayingState, setIsPlayingState] = useState(1)
 
   function playPauseMedia() {
 
@@ -131,13 +132,16 @@ const AudioPlayer2 = (props)=>{
     if(media.current.paused) {
       play.current.src = pauseButton;
       media.current.play();
-      // start();
+      setIsPlayingState(isPlayingState + 1)
     } else {
       play.current.src = playButton;
       media.current.pause();
     }
   }
 // --------------------------------------------------
+    // function startTimer(func){
+    //   func()
+    // }
 // ---------------Stop-Button---------------------------
   function stopMedia() {
     media.current.pause();
@@ -350,7 +354,6 @@ const AudioPlayer2 = (props)=>{
 function nextTrack() {
   const trackLi = document.getElementsByClassName(`audioId${currentTrack.current}`) //get Li element of current track regarless of sort choice
   let trackLiIdNumber = Number(trackLi[0].id.slice(3)) //get index of current track
-  console.log(randomState)
 
   if (randomState === "pl2-random-play"){
 
@@ -428,15 +431,23 @@ function nextTrack() {
             </audio>
             <div  id={"pl2-audio__top"}>
               <div className={"pl2-audio__top__inner"}>
-                <div id={"pl2-controls"}>
+                {/* <div id={"pl2-controls"}>
                   <img className={`pl2-random ${randomState}`} src={random} alt={""} onClick={toggleRandom}></img>
                   <img  className={"pl2-rewind"} ref={rwd} src={fastForward} alt={""} onClick={skipBack} ></img>
                   <img className={"pl2-play"} ref={play} src={playButton} alt={""} onClick={playPauseMedia} ></img>
-                  {/* <div className={"pl2-stop"} onClick={stopMedia} ></div> */}
                   <img className={"pl2-fast-forward"} onClick={nextTrack} ref={fwd} src={fastForward} alt={""}  ></img>
                   <img  className={`pl2-loop ${loopState ? "pl2-looping" : "not-looping"}`} src={loop} alt={""} onClick={toggleLoop}></img>
-                </div>
-                <TrackDisplay media={media} trackEditState={trackEditState}/>
+                </div> */}
+                <TrackDisplay media={media} trackEditState={trackEditState} 
+                currentUser={currentUser} pl2TrackRefreshState={pl2TrackRefreshState} 
+                setPl2TrackRefreshState={setPl2TrackRefreshState} setTrackArtState={setTrackArtState} 
+                setPl2TrackLocationState={setPl2TrackLocationState} pl2TrackLocationState={pl2TrackLocationState} 
+                trackArtState={trackArtState} songNameState={songNameState} firstTrack={firstTrack} 
+                artistNameState={artistNameState} playHeadSlider={playHeadSlider} 
+                movePlayheadOnClick={movePlayheadOnClick} randomState={randomState}
+                toggleRandom={toggleRandom} rwd={rwd} skipBack={skipBack} play={play} playPauseMedia={playPauseMedia}
+                nextTrack={nextTrack} fwd={fwd} loopState={loopState} toggleLoop={toggleLoop}
+                isPlayingState={isPlayingState}/>
                 {/* <div id={"pl2-track-display"}>
                   <div>{media.current ? `${Math.floor(media.current.currentTime / 60)}:${Math.floor(media.current.currentTime - Math.floor(media.current.currentTime / 60) * 60)}` : ""}</div>
                   
