@@ -1,5 +1,6 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect, useRef, useMemo} from 'react';
 import { API_URL } from '../config';
+import UseTime from './UseTime';
 import playButton from '../images/playButton.svg';
 import pauseButton from '../images/pauseButton.png';
 import fastForward from '../images/fastForward.png';
@@ -27,7 +28,7 @@ const AudioPlayer2 = (props)=>{
   const fwd = useRef();
 
   const audioBottomPlayhead = useRef();
-  const timerBar = useRef();
+  // const timerBar = useRef();
 
 
   const volumeLevel =useRef();
@@ -39,7 +40,8 @@ const AudioPlayer2 = (props)=>{
   const currentTrack = useRef([]);
 
  
-  const [timeState, setTimeState] = useState(":");
+  // const [timeState, setTimeState] = useState(":");
+  // const timeRef = useRef(":");
 
   // const [intervalFwdState, setIntervalFwdState] = useState();
   // const [intervalRwdState, setIntervalRwdState] = useState();
@@ -51,7 +53,7 @@ const AudioPlayer2 = (props)=>{
 
   // let intervalFwd;
   // let intervalRwd;
-
+  console.log('AudioPlayer2 rendered')
   //---------Get-Current_User--------------
   const [currentUser, setCurrentUser] = useState({});
 
@@ -128,6 +130,7 @@ const AudioPlayer2 = (props)=>{
     if(media.current.paused) {
       play.current.src = pauseButton;
       media.current.play();
+      start();
     } else {
       play.current.src = playButton;
       media.current.pause();
@@ -150,7 +153,7 @@ const AudioPlayer2 = (props)=>{
 // --------------Skip-Back------------------------
   function skipBack(){
 
-    console.log("timeState",media.current.currentTime);
+    // console.log("timeState", media.current.currentTime);
     if (media.current.currentTime > 5) {
       if (media){
         media.current.currentTime = 0;
@@ -228,36 +231,41 @@ const AudioPlayer2 = (props)=>{
   //     media.current.currentTime += 3;
   //   }
   // }
+// -------------------------------------------------
 
-  useEffect(()=>{
-    setInterval(() => {
-      if (media){
-        let minutes = Math.floor(media.current.currentTime / 60);
-        let seconds = Math.floor(media.current.currentTime - minutes * 60);
+  const {start, timeState, timerBar} = UseTime(media, audioBottomPlayhead);
+
+// -------Update-Time--------------------------------
+  // useEffect(()=>{
+  //   setInterval(() => {
+  //     if (media){
+  //       let minutes = Math.floor(media.current.currentTime / 60);
+  //       let seconds = Math.floor(media.current.currentTime - minutes * 60);
     
-        let minuteValue;
-        let secondValue;
+  //       let minuteValue;
+  //       let secondValue;
       
-        if (minutes < 10) {
-          minuteValue = '0' + minutes;
-        } else {
-          minuteValue = minutes;
-        }
+  //       if (minutes < 10) {
+  //         minuteValue = '0' + minutes;
+  //       } else {
+  //         minuteValue = minutes;
+  //       }
       
-        if (seconds < 10) {
-          secondValue = '0' + seconds;
-        } else {
-          secondValue = seconds;
-        }
+  //       if (seconds < 10) {
+  //         secondValue = '0' + seconds;
+  //       } else {
+  //         secondValue = seconds;
+  //       }
       
-        let mediaTime = minuteValue + ':' + secondValue;
-        setTimeState(mediaTime)
-
-        let barLength = audioBottomPlayhead.current.clientWidth * (media.current.currentTime/media.current.duration);
-        timerBar.current.style.width = barLength + 'px';
-      }
-    }, 500);
-  }, [timeState])
+  //       let mediaTime = minuteValue + ':' + secondValue;
+  //       // setTimeState(mediaTime)
+  //       // timeRef.current = mediaTime
+  //       let barLength = audioBottomPlayhead.current.clientWidth * (media.current.currentTime/media.current.duration);
+  //       timerBar.current.style.width = barLength + 'px';
+  //       // console.log(timeRef.current)
+  //     }
+  //   }, 500);
+  // }, [])
 // -------------------------------------------------
 // -------------Move-Playhead-onClick---------------
   function movePlayheadOnClick(e){
@@ -403,8 +411,7 @@ function nextTrack() {
   return(
     <>
       <div id={"pl2-main-page"}>
-        <Pl2LeftColumn addToPlaylistState={addToPlaylistState} toggleAddToPlaylist={toggleAddToPlaylist} showTracklist={showTracklist} showPlaylist={showPlaylist} currentUser={currentUser} />
-        {/* <h1 id={"pl2-main-page__title"} >Formless Audio Player</h1> */}
+        <Pl2LeftColumn addToPlaylistState={addToPlaylistState} toggleAddToPlaylist={toggleAddToPlaylist} showTracklist={showTracklist} showPlaylist={showPlaylist} />
         <div id={"pl2-audio-tracklist-c"}>
           <div id={"pl2-audio"} >
             <audio
@@ -457,7 +464,7 @@ function nextTrack() {
               </div>
             </div>
           </div>
-        <PlaylistSwitch playlistSwitchState={playlistSwitchState} pl2TrackRefreshState={pl2TrackRefreshState} trackEditState={trackEditState} setTrackEditState={setTrackEditState} setTrack={setTrack} setTrackArrayLengthState={setTrackArrayLengthState}/>
+        <PlaylistSwitch addToPlaylistState={addToPlaylistState} playlistSwitchState={playlistSwitchState} pl2TrackRefreshState={pl2TrackRefreshState} trackEditState={trackEditState} setTrackEditState={setTrackEditState} setTrack={setTrack} setTrackArrayLengthState={setTrackArrayLengthState}/>
         {/* <Tracklist2 pl2TrackRefreshState={pl2TrackRefreshState} trackEditState={trackEditState} setTrackEditState={setTrackEditState} setTrack={setTrack} setTrackArrayLengthState={setTrackArrayLengthState}/> */}
         </div>
       </div>

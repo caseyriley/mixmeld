@@ -10,7 +10,7 @@ import UploadingTrackPl2 from './UploadingTrackPl2';
 
 
 const Tracklist2 = (props) => {
-
+  console.log("Tracklist2 rendered")
   // ----------Toggle-Track-Edit-----------
   // const [trackEditState, setTrackEditState] = useState(false);
 
@@ -320,11 +320,13 @@ function toStandardTime(militaryTime) {
         <div id={"pl2-playlist-c__top-c"}>
           <div id={"pl2-playlist-c__top-c__rating"}><h2 onClick={()=>{organise("trackrating")}}>Rating</h2></div>
           <div id={"pl2-playlist-c__top-c__name"}  >
-            <UploadingTrackPl2 refreshTrackState={refreshTrackState} setRefreshTrackState={setRefreshTrackState} setUploadModalState={setUploadModalState} setTrackLocationState={setTrackLocationState}/>
+            <div id={"pl2-uploading-track-visibility"} className={`${props.addToPlaylistState ? "hidden" : "visible"}`} >
+              <UploadingTrackPl2  refreshTrackState={refreshTrackState} setRefreshTrackState={setRefreshTrackState} setUploadModalState={setUploadModalState} setTrackLocationState={setTrackLocationState}/>
+            </div>
             <div id={"pl2-playlist-name-c"} >
               <h2 onClick={()=>{organise("trackname")}}>Name</h2>
             </div> 
-            <img className={`pl2-tracklist-edit-pen ${props.trackEditState ? "pl2-pen--on":""}`} src={pen} alt={""} onClick={toggleTrackEditState} />
+            <img className={`pl2-tracklist-edit-pen ${props.trackEditState ? "pl2-pen--on":""} ${props.addToPlaylistState ? "hidden" : "visible"}`} src={pen} alt={""} onClick={toggleTrackEditState} />
           </div>
           <div id={"pl2-playlist-c__top-c__artist-name"}><h2 onClick={()=>{organise("trackartist")}}>Artist</h2></div>
           <div id={"pl2-playlist-c__top-c__album-name"}><h2 onClick={()=>{organise("trackalbum")}}>Album</h2></div>

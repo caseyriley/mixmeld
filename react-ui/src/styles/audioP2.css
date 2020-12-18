@@ -894,6 +894,9 @@ li {
   pointer-events: none;
 }
 /* --------UploadTrackPl2--------------------- */
+#pl2-uploading-track-visibility {
+  position: absolute;
+}
 #Pl2-uploading-track-c {
   width: 30%;
   border: 1px dashed lightgray;
@@ -915,3 +918,6 @@ li {
   cursor: pointer;
 }
 /* --------------------------------- */
+.hidden {
+  display: none;
+}

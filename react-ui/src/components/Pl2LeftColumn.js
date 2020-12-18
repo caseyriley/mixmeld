@@ -14,6 +14,31 @@ const Pl2LeftColumn = (props) => {
     setPlaylistModalState(!playlistModalState)
   }
   // -----------------------------------------------------
+  console.log("pl2LeftColumn Rendered")
+  //---------Get-Current_User--------------
+  const [currentUser, setCurrentUser] = useState({});
+
+  useEffect(() => {
+
+    const getCurrentUser = async () => {
+      const token = window.localStorage.getItem('auth_token')
+      const response = await fetch(`${API_URL}/users/token`, {
+        method: "GET",
+        mode: "cors",
+        headers: { "Authorization": `Bearer ${token}` },
+      })
+      if (!response.ok) {
+        console.log("getCurrent user response failed in Uploading.js");
+      } else {
+        const json = await response.json();
+        setCurrentUser(json);
+        
+      }
+    }
+    getCurrentUser();
+    console.log("user==Pl2LeftColumn=====>", currentUser.id)
+  }, [])
+// ----------------------------------------------
    // ----------------Get-Playlists------------------------
    const [playlistState, setPlaylistState] = useState();
    const [refreshPlaylistState, setRefreshPlaylistState] = useState(1);
@@ -22,7 +47,7 @@ const Pl2LeftColumn = (props) => {
    
      const getCurrentUserPlaylists = async () => {
        const token = window.localStorage.getItem('auth_token')
-       const response = await fetch(`${API_URL}/playlists/${props.currentUser.id}`, {
+       const response = await fetch(`${API_URL}/playlists/${currentUser.id}`, {
          method: "GET",
          mode: "cors",
          headers: { "Authorization": `Bearer ${token}` },
@@ -37,13 +62,13 @@ const Pl2LeftColumn = (props) => {
        }
      }
      getCurrentUserPlaylists();
-   },[props.currentUser, refreshPlaylistState])
+   },[currentUser, refreshPlaylistState])
    // -----------------------------------------------------
 
 
   return (
     <>
-      {playlistModalState ? <NewPlaylistModal toggleModal={toggleModal} currentUser={props.currentUser} setRefreshPlaylistState={setRefreshPlaylistState} refreshPlaylistState={refreshPlaylistState} /> : null}
+      {playlistModalState ? <NewPlaylistModal toggleModal={toggleModal} currentUser={currentUser} setRefreshPlaylistState={setRefreshPlaylistState} refreshPlaylistState={refreshPlaylistState} /> : null}
         <div id={"pl2-left-column"}>
           <div id={"pl2-search"}>
             <input id={"pl2-search__input"} type={"text"} placeholder={"search"} ></input>
