@@ -410,12 +410,12 @@ function nextTrack() {
     setAddToPlaylistState(!addToPlaylistState)
   }
   // ----------------------------------------------------
-
+  const playlistIdRef = useRef();
  
   return(
     <>
       <div id={"pl2-main-page"}>
-        <Pl2LeftColumn addToPlaylistState={addToPlaylistState} toggleAddToPlaylist={toggleAddToPlaylist} showTracklist={showTracklist} showPlaylist={showPlaylist} />
+        <Pl2LeftColumn playlistIdRef={playlistIdRef} addToPlaylistState={addToPlaylistState} toggleAddToPlaylist={toggleAddToPlaylist} showTracklist={showTracklist} showPlaylist={showPlaylist} />
         <div id={"pl2-audio-tracklist-c"}>
           <div id={"pl2-audio"} >
             <audio
@@ -431,22 +431,20 @@ function nextTrack() {
             </audio>
             <div  id={"pl2-audio__top"}>
               <div className={"pl2-audio__top__inner"}>
-                {/* <div id={"pl2-controls"}>
+                <div id={"pl2-controls"}>
                   <img className={`pl2-random ${randomState}`} src={random} alt={""} onClick={toggleRandom}></img>
                   <img  className={"pl2-rewind"} ref={rwd} src={fastForward} alt={""} onClick={skipBack} ></img>
                   <img className={"pl2-play"} ref={play} src={playButton} alt={""} onClick={playPauseMedia} ></img>
                   <img className={"pl2-fast-forward"} onClick={nextTrack} ref={fwd} src={fastForward} alt={""}  ></img>
                   <img  className={`pl2-loop ${loopState ? "pl2-looping" : "not-looping"}`} src={loop} alt={""} onClick={toggleLoop}></img>
-                </div> */}
+                </div>
                 <TrackDisplay media={media} trackEditState={trackEditState} 
                 currentUser={currentUser} pl2TrackRefreshState={pl2TrackRefreshState} 
                 setPl2TrackRefreshState={setPl2TrackRefreshState} setTrackArtState={setTrackArtState} 
                 setPl2TrackLocationState={setPl2TrackLocationState} pl2TrackLocationState={pl2TrackLocationState} 
                 trackArtState={trackArtState} songNameState={songNameState} firstTrack={firstTrack} 
                 artistNameState={artistNameState} playHeadSlider={playHeadSlider} 
-                movePlayheadOnClick={movePlayheadOnClick} randomState={randomState}
-                toggleRandom={toggleRandom} rwd={rwd} skipBack={skipBack} play={play} playPauseMedia={playPauseMedia}
-                nextTrack={nextTrack} fwd={fwd} loopState={loopState} toggleLoop={toggleLoop}
+                movePlayheadOnClick={movePlayheadOnClick} 
                 isPlayingState={isPlayingState}/>
                 {/* <div id={"pl2-track-display"}>
                   <div>{media.current ? `${Math.floor(media.current.currentTime / 60)}:${Math.floor(media.current.currentTime - Math.floor(media.current.currentTime / 60) * 60)}` : ""}</div>
@@ -477,7 +475,7 @@ function nextTrack() {
               </div>
             </div>
           </div>
-        <PlaylistSwitch addToPlaylistState={addToPlaylistState} playlistSwitchState={playlistSwitchState} pl2TrackRefreshState={pl2TrackRefreshState} trackEditState={trackEditState} setTrackEditState={setTrackEditState} setTrack={setTrack} setTrackArrayLengthState={setTrackArrayLengthState}/>
+        <PlaylistSwitch playlistIdRef={playlistIdRef} addToPlaylistState={addToPlaylistState} playlistSwitchState={playlistSwitchState} pl2TrackRefreshState={pl2TrackRefreshState} trackEditState={trackEditState} setTrackEditState={setTrackEditState} setTrack={setTrack} setTrackArrayLengthState={setTrackArrayLengthState}/>
         {/* <Tracklist2 pl2TrackRefreshState={pl2TrackRefreshState} trackEditState={trackEditState} setTrackEditState={setTrackEditState} setTrack={setTrack} setTrackArrayLengthState={setTrackArrayLengthState}/> */}
         </div>
       </div>

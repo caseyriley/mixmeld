@@ -10,7 +10,7 @@ const PlaylistSwitch = (props)=>{
         switch(props.playlistSwitchState ? props.playlistSwitchState : "Tracklist2") {
           case "Tracklist2":
             return (
-              <Tracklist2 addToPlaylistState={props.addToPlaylistState}  pl2TrackRefreshState={props.pl2TrackRefreshState} trackEditState={props.trackEditState} setTrackEditState={props.setTrackEditState} setTrack={props.setTrack} setTrackArrayLengthState={props.setTrackArrayLengthState}/>
+              <Tracklist2 playlistIdRef={props.playlistIdRef} addToPlaylistState={props.addToPlaylistState}  pl2TrackRefreshState={props.pl2TrackRefreshState} trackEditState={props.trackEditState} setTrackEditState={props.setTrackEditState} setTrack={props.setTrack} setTrackArrayLengthState={props.setTrackArrayLengthState}/>
             )
           case "Playlist2":
             return (

@@ -3,15 +3,12 @@ import UseTime from './UseTime';
 import TimeRemaining from './TimeRemaining';
 import UploadingNewImage from './UploadingNewImage';
 import formlessMusicIcon from '../images/formless-music-icon.png'
-import random from '../images/random.png';
-import fastForward from '../images/fastForward.png';
-import playButton from '../images/playButton.svg';
-import loop from '../images/loop.png';
+
 
 const TrackDisplay = (props) => {
   const audioBottomPlayhead = useRef()
 
-  const {start, timeState, timerBar, intervalRef} = UseTime(props.media, audioBottomPlayhead);
+  const {start, timeState, timerBar} = UseTime(props.media, audioBottomPlayhead);
 
  
     useEffect(()=> {
@@ -34,13 +31,6 @@ const TrackDisplay = (props) => {
 
   return (
     <>
-      <div id={"pl2-controls"}>
-        <img className={`pl2-random ${props.randomState}`} src={random} alt={""} onClick={props.toggleRandom}></img>
-        <img  className={"pl2-rewind"} ref={props.rwd} src={fastForward} alt={""} onClick={props.skipBack} ></img>
-        <img className={"pl2-play"} ref={props.play} src={playButton} alt={""} onClick={()=>{props.playPauseMedia()}} ></img>
-        <img className={"pl2-fast-forward"} onClick={props.nextTrack} ref={props.fwd} src={fastForward} alt={""}  ></img>
-        <img  className={`pl2-loop ${props.loopState ? "pl2-looping" : "not-looping"}`} src={loop} alt={""} onClick={props.toggleLoop}></img>
-      </div>
       <div id={"pl2-track-display"}>
         {/* <div>{media.current ? `${Math.floor(media.current.currentTime / 60)}:${Math.floor(media.current.currentTime - Math.floor(media.current.currentTime / 60) * 60)}` : ""}</div> */}
                   

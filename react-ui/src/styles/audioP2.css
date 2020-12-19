@@ -921,3 +921,14 @@ li {
 .hidden {
   display: none;
 }
+.plus-sign {
+  position: absolute;
+  height: 14px;
+  width: 14px;
+  border: 1px solid rgb(146, 146, 146);
+  padding: 2px;
+  border-radius: 100%;
+  left: calc(100% - 24px);
+  filter: sepia(55%) hue-rotate(255deg) brightness(85%) saturate(450%) ;
+
+}

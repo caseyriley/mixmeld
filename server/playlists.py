@@ -30,11 +30,8 @@ def post_playlist():
 def get_user_playlists_sort_by_playlist_name(id):
 
     model_playlists = Playlist.query.filter(Playlist.user_id == id).all()
-    print("model_playlists+++++++++++++++++++++++++++++++", model_playlists)
     playlists = []
     for model_playlist in model_playlists:
         playlist = model_playlist.to_dict()
-        print("model_playlists.to_dict()&&&&&&&&&&&&&&&&&&&&&&&&&&&&&", playlist)
         playlists.append(playlist)
-    print("playlists+++++++++++++++++++++++++++++++", playlists)
     return jsonify(sorted(playlists, key=lambda i: i["playlist_name"].lower()))

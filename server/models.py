@@ -88,7 +88,7 @@ class Playlist(db.Model):
         }
 
 
-class Playlists_Tracks(db.Model):
+class Playlist_Track(db.Model):
     __tablename__ = 'playlists_tracks'
 
     id = db.Column(db.Integer, primary_key=True)

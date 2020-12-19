@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import { API_URL } from '../config';
 import NewPlaylistModal from './NewPlaylistModal';
 import vintageMic from "../images/vintageMic.png"
@@ -9,8 +9,8 @@ import circlePlusHollow from "../images/circlePlusHollow.png"
 const Pl2LeftColumn = (props) => {
    const [artistAlbumSongState, setArtistAlbumSongState] = useState("selected-song")
   // -----------------Playlist-Modal----------------------
-   const [playlistModalState, setPlaylistModalState] = useState(false);
-   function toggleModal(){
+  const [playlistModalState, setPlaylistModalState] = useState(false);
+  function toggleModal(){
     setPlaylistModalState(!playlistModalState)
   }
   // -----------------------------------------------------
@@ -53,7 +53,7 @@ const Pl2LeftColumn = (props) => {
          headers: { "Authorization": `Bearer ${token}` },
        })
        if (!response.ok) {
-         console.log("getCurrentUserPlaylists failed in AudioPlayer2.js");
+         console.log("getCurrentUserPlaylists failed in Pl2LeftColumn.js");
        } else {
          const json = await response.json();
          setPlaylistState(json);
@@ -64,6 +64,25 @@ const Pl2LeftColumn = (props) => {
      getCurrentUserPlaylists();
    },[currentUser, refreshPlaylistState])
    // -----------------------------------------------------
+   function setPlaylistIdRef(id) {
+    props.playlistIdRef.current = id;
+  }
+  //  --------Memoize-Playlist-Radio-Buttons----------------------
+  const playlistRadios = useMemo(()=>{
+    return (
+      playlistState ?
+      playlistState.map((playlist, index)=> {
+        return(
+          <div className={"playlist-radio-c"} onClick={()=>{setPlaylistIdRef(playlist.id)}}>
+            <input type="radio" className={"playlist-radio"}  id={playlist.playlist_name} name="playlist-radio" value={playlist.playlist_name} checked />
+            <label className={"playlist-radio-label"} for={playlist.playlist_name}>{playlist.playlist_name}</label>
+          </div>
+        )
+    }): null
+    )
+  }, [playlistState, refreshPlaylistState])
+
+//  -------------------------------------------------------
 
 
   return (
@@ -91,7 +110,6 @@ const Pl2LeftColumn = (props) => {
                 <span>Add Track To</span> 
                 <span>Playlist</span> 
                 <div className={"left-playlist-add"} >
-                  {/* <img src={circlePlusHollow} alt={""} /> */}
                 </div>
               </div>
               <div className={`left-playlist ${props.addToPlaylistState ? "hidden" : "visible"}`}>
@@ -101,30 +119,21 @@ const Pl2LeftColumn = (props) => {
                 </div>
               </div>
               <div className={`${props.addToPlaylistState ? "visible" : "hidden"}`}>
+                {playlistRadios ?
+                  playlistRadios: null}
+              </div>
+              <div className={`${props.addToPlaylistState ? "hidden" : "visible"}`}>
                 {playlistState ? 
                   playlistState.map((playlist, index) => {
                     return (
-                      <div className={"playlist-radio-c"}>
-                        <input type="radio" className={"playlist-radio"}  id={playlist.playlist_name} name="playlist-radio" value={playlist.playlist_name} checked />
-                        <label className={"playlist-radio-label"} for={playlist.playlist_name}>{playlist.playlist_name}</label>
+                      <div key={index} className={"left-playlist-name"} onClick={()=>{props.showPlaylist(playlist.playlist_name)}} >
+                        <span>{playlist.playlist_name}</span>
                       </div>
-                      
                     )
                   })
                 : null}
               </div>
-              <div className={`${props.addToPlaylistState ? "hidden" : "visible"}`}>
-                {playlistState ? 
-                playlistState.map((playlist, index) => {
-                  return (
-                    <div key={index} className={"left-playlist-name"} onClick={()=>{props.showPlaylist(playlist.playlist_name)}} >
-                      <span>{playlist.playlist_name}</span>
-                    </div>
-                  )
-                })
-                : null}
-              </div>
-              <div id={"left-playlist-bottom-space"}></div>
+              <div id={"left-playlist-bottom-space"} ></div>
             </div>
           </div>
         </div>
