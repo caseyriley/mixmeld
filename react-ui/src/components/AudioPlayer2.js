@@ -40,6 +40,8 @@ const AudioPlayer2 = (props)=>{
 
   const currentTrack = useRef([]);
 
+  const playlistIdRef = useRef();
+
  
   // const [timeState, setTimeState] = useState(":");
   // const timeRef = useRef(":");
@@ -392,12 +394,14 @@ function nextTrack() {
 // --------------------------------
   const [trackEditState, setTrackEditState] = useState(false);  
   const [pl2TrackRefreshState, setPl2TrackRefreshState] = useState(1) 
+  
 
 // -----------PlaylistSwitch--functions-------------------
   const [playlistSwitchState, setPlaylistSwitchState] = useState("Tracklist2")
 
-  function showPlaylist(playlistName){
+  function showPlaylist(playlistName, playlistId){
     setPlaylistSwitchState("Playlist2")
+    playlistIdRef.current = playlistId;
   }
   function showTracklist(string){
     setPlaylistSwitchState("Tracklist2")
@@ -410,7 +414,7 @@ function nextTrack() {
     setAddToPlaylistState(!addToPlaylistState)
   }
   // ----------------------------------------------------
-  const playlistIdRef = useRef();
+
  
   return(
     <>
@@ -475,7 +479,7 @@ function nextTrack() {
               </div>
             </div>
           </div>
-        <PlaylistSwitch playlistIdRef={playlistIdRef} addToPlaylistState={addToPlaylistState} playlistSwitchState={playlistSwitchState} pl2TrackRefreshState={pl2TrackRefreshState} trackEditState={trackEditState} setTrackEditState={setTrackEditState} setTrack={setTrack} setTrackArrayLengthState={setTrackArrayLengthState}/>
+        <PlaylistSwitch playlistIdRef={playlistIdRef} currentUser={currentUser} playlistIdRef={playlistIdRef} addToPlaylistState={addToPlaylistState} playlistSwitchState={playlistSwitchState} pl2TrackRefreshState={pl2TrackRefreshState} trackEditState={trackEditState} setTrackEditState={setTrackEditState} setTrack={setTrack} setTrackArrayLengthState={setTrackArrayLengthState}/>
         {/* <Tracklist2 pl2TrackRefreshState={pl2TrackRefreshState} trackEditState={trackEditState} setTrackEditState={setTrackEditState} setTrack={setTrack} setTrackArrayLengthState={setTrackArrayLengthState}/> */}
         </div>
       </div>

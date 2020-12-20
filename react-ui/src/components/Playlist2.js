@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import { API_URL } from '../config';
 import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -29,45 +30,73 @@ const columnsFromBackend =
 
   
 
-  const onDragEnd = (result, columns, setColumns) => {
-    if (!result.destination) return;
-    const {source, destination} = result;
-    if (source.droppableId !== destination.droppableId) {
-      const sourceColumn = columns[source.droppableId];
-      const destColumn = columns[destination.droppableId];
-      const sourceItems = [...sourceColumn.items];
-      const destItems = [...destColumn.items];
-      const [removed] = sourceItems.splice(source.index, 1);
-      destItems.splice(destination.index, 0, removed);
-      setColumns({
-        ...columns,
-        [source.droppableId]: {
-          ...sourceColumn,
-          items: sourceItems
-        },
-        [destination.droppableId]: {
-          ...destColumn,
-          items: destItems
-        }
-      })
-    } else {
-      const column = columns[source.droppableId];
-      const copiedItems = [...column.items];
-      const [removed] = copiedItems.splice(source.index, 1);
-      copiedItems.splice(destination.index, 0, removed);
-      setColumns({
+const onDragEnd = (result, columns, setColumns) => {
+  if (!result.destination) return;
+  const {source, destination} = result;
+  if (source.droppableId !== destination.droppableId) {
+    const sourceColumn = columns[source.droppableId];
+    const destColumn = columns[destination.droppableId];
+    const sourceItems = [...sourceColumn.items];
+    const destItems = [...destColumn.items];
+    const [removed] = sourceItems.splice(source.index, 1);
+    destItems.splice(destination.index, 0, removed);
+    setColumns({
       ...columns,
       [source.droppableId]: {
-        ...column,
-        items: copiedItems
+        ...sourceColumn,
+        items: sourceItems
+      },
+      [destination.droppableId]: {
+        ...destColumn,
+        items: destItems
       }
     })
+  } else {
+    const column = columns[source.droppableId];
+    const copiedItems = [...column.items];
+    const [removed] = copiedItems.splice(source.index, 1);
+    copiedItems.splice(destination.index, 0, removed);
+    setColumns({
+    ...columns,
+    [source.droppableId]: {
+      ...column,
+      items: copiedItems
     }
-    
-  };
+  })
+  }
+  
+};
 
 
-const Playlist2 = () => {
+const Playlist2 = (props) => {
+
+  // ----------------Get-Playlists------------------------
+  const [playlistState, setPlaylistState] = useState();
+  const [refreshPlaylistState, setRefreshPlaylistState] = useState(1);
+
+  useEffect(() => {
+  
+    const getSelectedPlaylist = async () => {
+      const token = window.localStorage.getItem('auth_token')
+      const response = await fetch(`${API_URL}/playlists_tracks/${props.playlistIdRef.current}`, {
+        method: "GET",
+        mode: "cors",
+        headers: { "Authorization": `Bearer ${token}` },
+      })
+      if (!response.ok) {
+        console.log("getSelectedPlaylist failed in Playlist2.js");
+      } else {
+        const json = await response.json();
+        setPlaylistState(json);
+        console.log("getSelectedPlaylist", json)
+      
+      }
+    }
+    getSelectedPlaylist();
+  },[props.playlistIdRef, refreshPlaylistState])
+  // -----------------------------------------------------
+
+
   const [columns, setColumns] = useState(columnsFromBackend);
   return (
     <>

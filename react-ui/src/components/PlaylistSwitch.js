@@ -14,7 +14,7 @@ const PlaylistSwitch = (props)=>{
             )
           case "Playlist2":
             return (
-              <Playlist2/>
+              <Playlist2 playlistIdRef={props.playlistIdRef} currentUser={props.currentUser} />
             )
           default: 
             return (

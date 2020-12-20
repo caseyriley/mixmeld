@@ -99,5 +99,5 @@ class Playlist_Track(db.Model):
         return {
             "id": self.id,
             "playlist_id": self.playlist_id,
-            "playlist_name": self.playlist_name,
+            "track_id": self.track_id,
         }

@@ -13,24 +13,19 @@ from flask_cors import CORS
 playlists_tracks = Blueprint('playlists_tracks', __name__)
 
 
-# @playlists_tracks.route('/post', methods=["POST"])
-# def post_playlist_track():
-#     print("ppppppoooooosssst_playlist")
-#     data = json.loads(request.data)
-#     print("daaaaattttttaaaaa", data)
-#     playlists_track = Playlists_Track(
-#         track_id=data["track_id"],
-#         playlist_id=data["playlist_id"]
-#     )
-#     db.session.add(playlists_track)
-#     db.session.commit()
-#     return jsonify(Goodjob='you posted a playlist track to the db')
+@playlists_tracks.route('/<id>', methods=["GET"])
+def get_playlists_tracks(id):
+    playlists_tracks = Playlist_Track.query.filter(Playlist_Track.playlist_id == id)
+    playlist = []
+    for playlist_track in playlists_tracks:
+        track = playlist_track.to_dict()
+        playlist.append(track)
+    return jsonify(playlist)
+
 
 @playlists_tracks.route('/post', methods=["POST"])
 def post_playlists_tracks():
-    print("ppppppoooooosssst_playlist")
     data = json.loads(request.data)
-    print("daaaaattttttaaaaa", data)
     playlists_track = Playlist_Track(
         track_id=data["track_id"],
         playlist_id=data["playlist_id"]

@@ -126,7 +126,7 @@ const Pl2LeftColumn = (props) => {
                 {playlistState ? 
                   playlistState.map((playlist, index) => {
                     return (
-                      <div key={index} className={"left-playlist-name"} onClick={()=>{props.showPlaylist(playlist.playlist_name)}} >
+                      <div key={index} className={"left-playlist-name"} onClick={()=>{props.showPlaylist(playlist.playlist_name, playlist.id)}} >
                         <span>{playlist.playlist_name}</span>
                       </div>
                     )
