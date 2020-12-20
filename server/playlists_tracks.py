@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from sqlalchemy.orm import subqueryload, joinedload
 from sqlalchemy import func
-from .models import db, Playlist_Track
+from .models import db, Playlist_Track, Track
 import requests
 import json
 from flask_jwt_extended  import jwt_required
@@ -15,11 +15,13 @@ playlists_tracks = Blueprint('playlists_tracks', __name__)
 
 @playlists_tracks.route('/<id>', methods=["GET"])
 def get_playlists_tracks(id):
-    playlists_tracks = Playlist_Track.query.filter(Playlist_Track.playlist_id == id)
+    playlists_tracks = Playlist_Track.query.filter(Playlist_Track.playlist_id == id).all()
+    
     playlist = []
     for playlist_track in playlists_tracks:
-        track = playlist_track.to_dict()
-        playlist.append(track)
+        track = Track.query.filter(Track.id == playlist_track.track_id).first()
+        track_dict = track.to_dict()
+        playlist.append(track_dict)
     return jsonify(playlist)
 
 
