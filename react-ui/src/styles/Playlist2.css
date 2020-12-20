@@ -1,0 +1,29 @@
+#dnd {
+  display: flex; 
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+.dnd-column {
+  display: flex; 
+  flex-direction: column; 
+  align-items: center;
+  width: 100%;
+  border: 1px solid blue;
+}
+.dnd-column h2 {
+  color: white;
+}
+.dnd-column__content {
+  width: 100%;
+  
+}
+
+
+
+#dop-c {
+  min-width: 100%;
+}
+.drag-c {
+  width: 100%;
+}

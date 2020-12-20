@@ -128,24 +128,24 @@ const Playlist2 = (props) => {
   const [columnsState, setColumnsState] = useState(columnsStateFromBackend);
   return (
     <>
-      <div style={{display: 'flex', justifyContent: 'center', height: '100%'}}>
+      <div id={"dnd"} >
         <DragDropContext onDragEnd={result => onDragEnd(result, columnsState, setColumnsState)}>
           {columnsState ? Object.entries(columnsState).map(([id, column]) => {
             return (
-              <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}} >
-                <h2>{column.name}</h2>
-                <div style={{margin: 8}} >
+              <div className={"dnd-column"} >
+                <h2  >{column.name}</h2>
+                <div className={"dnd-column__content"} >
                   <Droppable droppableId={id} key={id} >
                     {(provided, snapshot) => {
                       return (
-                        <div
+                        <div id={"dop-c"}
                           {...provided.droppableProps}
                           ref={provided.innerRef}
                           style={{
                             background: snapshot.isDraggingOver ? 'lightblue' : 'lightgrey',
-                            padding: 4,
-                            width: 250,
-                            minHeight: 500
+                            // padding: 4,
+                            // width: 250,
+                            // minHeight: 500
                           }}
                         >
                           {column.items ? column.items.map((item, index) => {
@@ -153,13 +153,14 @@ const Playlist2 = (props) => {
                               <Draggable key={item.id} draggableId={`${item.id}`} index={index} >
                                 {(provided, snapshot) => {
                                   return (
-                                    <div
+                                    <>
+                                    <div class={"drag-c"}
                                       ref={provided.innerRef}
                                       {...provided.draggableProps}
                                       {...provided.dragHandleProps}
                                       style={{
                                         userSelect: 'none',
-                                        padding: 16,
+                                        // padding: 16,
                                         margin: '0 0 8px 0',
                                         minHeight: '50px',
                                         backgroundColor: snapshot.isDragging ? '#263B4A' : '#456C86',
@@ -168,6 +169,7 @@ const Playlist2 = (props) => {
                                     >
                                       {item.trackname}
                                     </div>
+                                    </>
                                   )
                                 }}
                               </Draggable>
