@@ -3,17 +3,17 @@ import { API_URL } from '../config';
 import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
 import { v4 as uuidv4 } from 'uuid';
 
-const itemsFromBackend = [
-  {id: uuidv4(), content: 'First task'},
-  {id: uuidv4(), content: 'Second task'}
-];
+// const itemsFromBackend = [
+//   {id: uuidv4(), content: 'First task'},
+//   {id: uuidv4(), content: 'Second task'}
+// ];
 
 
-const columnsFromBackend = 
-  { [uuidv4()]: {
-    name: 'Requested',
-    items: itemsFromBackend
-    },
+// const columnsStateFromBackend = 
+//   { [uuidv4()]: {
+//     name: 'Requested',
+//     items: itemsFromBackend
+//     },
     // [uuidv4()]: {
     //   name: 'To do',
     //   items: []
@@ -26,22 +26,22 @@ const columnsFromBackend =
     //   name: 'Done',
     //   items: []
     // }
-  };
+  // };
 
   
 
-const onDragEnd = (result, columns, setColumns) => {
+const onDragEnd = (result, columnsState, setColumnsState) => {
   if (!result.destination) return;
   const {source, destination} = result;
   if (source.droppableId !== destination.droppableId) {
-    const sourceColumn = columns[source.droppableId];
-    const destColumn = columns[destination.droppableId];
+    const sourceColumn = columnsState[source.droppableId];
+    const destColumn = columnsState[destination.droppableId];
     const sourceItems = [...sourceColumn.items];
     const destItems = [...destColumn.items];
     const [removed] = sourceItems.splice(source.index, 1);
     destItems.splice(destination.index, 0, removed);
-    setColumns({
-      ...columns,
+    setColumnsState({
+      ...columnsState,
       [source.droppableId]: {
         ...sourceColumn,
         items: sourceItems
@@ -52,12 +52,12 @@ const onDragEnd = (result, columns, setColumns) => {
       }
     })
   } else {
-    const column = columns[source.droppableId];
+    const column = columnsState[source.droppableId];
     const copiedItems = [...column.items];
     const [removed] = copiedItems.splice(source.index, 1);
     copiedItems.splice(destination.index, 0, removed);
-    setColumns({
-    ...columns,
+    setColumnsState({
+    ...columnsState,
     [source.droppableId]: {
       ...column,
       items: copiedItems
@@ -95,14 +95,42 @@ const Playlist2 = (props) => {
     getSelectedPlaylist();
   },[props.playlistIdRef, refreshPlaylistState])
   // -----------------------------------------------------
+  // -------------------------------------
+  
+  // const itemsFromBackend = [
+  //   {id: uuidv4(), content: 'First task'},
+  //   {id: uuidv4(), content: 'Second task'}
+  // ];
 
+  const columnsStateFromBackend = 
+  playlistState ?
+  { [uuidv4()]: {
+    name: 'Requested',
+    items: playlistState
+    },
+    // [uuidv4()]: {
+    //   name: 'To do',
+    //   items: []
+    // },
+    // [uuidv4()]: {
+    //   name: 'In progress',
+    //   items: []
+    // },
+    // [uuidv4()]: {
+    //   name: 'Done',
+    //   items: []
+    // }
+  } : null;
+  useEffect(() => {
+    setColumnsState(columnsStateFromBackend);
+  }, [playlistState])
 
-  const [columns, setColumns] = useState(columnsFromBackend);
+  const [columnsState, setColumnsState] = useState(columnsStateFromBackend);
   return (
     <>
       <div style={{display: 'flex', justifyContent: 'center', height: '100%'}}>
-        <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumns)}>
-          {Object.entries(columns).map(([id, column]) => {
+        <DragDropContext onDragEnd={result => onDragEnd(result, columnsState, setColumnsState)}>
+          {columnsState ? Object.entries(columnsState).map(([id, column]) => {
             return (
               <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}} >
                 <h2>{column.name}</h2>
@@ -120,9 +148,9 @@ const Playlist2 = (props) => {
                             minHeight: 500
                           }}
                         >
-                          {column.items.map((item, index) => {
+                          {column.items ? column.items.map((item, index) => {
                             return (
-                              <Draggable key={item.id} draggableId={item.id} index={index} >
+                              <Draggable key={item.id} draggableId={`${item.id}`} index={index} >
                                 {(provided, snapshot) => {
                                   return (
                                     <div
@@ -138,13 +166,13 @@ const Playlist2 = (props) => {
                                         ...provided.draggableProps.style
                                       }}
                                     >
-                                      {item.content}
+                                      {item.trackname}
                                     </div>
                                   )
                                 }}
                               </Draggable>
                             )
-                          })}
+                          }): null}
                           {provided.placeholder}
                         </div>
                       )
@@ -153,7 +181,7 @@ const Playlist2 = (props) => {
                 </div>
               </div>
             )
-          })}
+          }): null}
         </DragDropContext>
       </div>
     </>
