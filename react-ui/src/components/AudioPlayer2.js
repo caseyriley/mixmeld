@@ -401,7 +401,7 @@ function nextTrack() {
 
   function showPlaylist(playlistName, playlistId){
     setPlaylistSwitchState("Playlist2")
-    playlistIdRef.current = playlistId;
+    playlistIdRef.current = {playlistId: playlistId, playlistName: playlistName};
   }
   function showTracklist(string){
     setPlaylistSwitchState("Tracklist2")

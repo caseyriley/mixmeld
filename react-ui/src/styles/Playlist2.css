@@ -1,6 +1,7 @@
 ul{
   padding: 0;
-  outline: none
+  outline: none;
+  /* width: auto !important; */
 }
 
 #dnd {
@@ -14,10 +15,25 @@ ul{
   flex-direction: column; 
   align-items: center;
   width: 100%;
-  border: 1px solid blue;
+  background-color: rgb(52, 52, 52);
 }
 .dnd-column h2 {
   color: white;
+  font-family: 'Source Code Pro', monospace;
+  /* font-family: 'Goldman', cursive; */
+  font-family: 'Audiowide', cursive;
+  /* font-family: 'Syncopate', sans-serif; */
+  /* font-family: 'Electrolize', sans-serif; */
+  font-weight: 900;
+  color: #d9d9d9;
+  background: rgb(232, 232, 232,.1);
+  padding: 5px 15px 5px 15px;
+
+  border-radius: 999px;
+  text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+  -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 10px 15px 5px rgba(0,0,0,0); 
+box-shadow: 0px 10px 13px -7px #000000, 5px 10px 15px 5px rgba(0,0,0,0);
+
 }
 .dnd-column__content {
   width: 100%;
@@ -31,28 +47,48 @@ ul{
 }
 .drag-c {
   width: 100%;
+  margin: 0px 0px 12px 0px,
  
 }
 
 .pl2-playlist-ul__li {
   min-height: 60px;
-  min-width: 100%;
-  margin: 0px 0px 0px 0px;
+
+  /* min-width: 100%; */
+  margin: 0px 0px 15px 0px;
   color: rgb(192, 192, 192);
   list-style: none;
   text-align: center;
   display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: 'Electrolize', sans-serif; 
+  outline: none;
+  /* overflow: hidden; */
+  position: relative;
+  
+ 
+}
+
+#pl2-playlist2-box-shadow {
+  margin: 0px 0px 0px calc(50% - 402px);
+  height: 60px;
+  width: 75%;
+  display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Electrolize', sans-serif;  
+  -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
+  box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+ 
 }
 .pl2-playlist-ul__li__track-art {
   height: 60px;
   width: 60px;
+  
 }
 .pl2-playlist-ul__li__rating {
   height: 60px;
-  width: calc(10% - 1px);
+  min-width: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -66,9 +102,23 @@ ul{
   align-items: center;
   position: relative;
 }
+.pl2-track-rating-input {
+  background-color: transparent;
+  width: 100px;
+  height: 100%;
+  font-family: 'Electrolize', sans-serif;
+  font-size: 15px;
+  color: rgb(192, 192, 192);
+  border: none;
+  outline: none;
+  margin: 0px 0px 0px 0px;
+  text-align: center;
+  padding: 0px;
+  pointer-events: all;
+}
 .pl2-playlist-ul__li__name {
   height: 60px;
-  width: calc(32% - 1px);
+  min-width: 250px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -82,11 +132,13 @@ ul{
 .pl2-playlist-artist-name-span,
 .pl2-playlist-artist-span,
 .pl2-playlist-genre-span,
-.pl2-playlist-ul__li__duration span{
+.pl2-playlist-album-span,
+.pl2-playlist-date-span,
+.pl2-playlist-duration-span{
   width: calc(100% -7px); 
   height: 100%;
   font-family: 'Electrolize', sans-serif;
-  font-size: 15px;
+  font-size: 18px;
   color: rgb(192, 192, 192);
   text-align: left;
   display: flex;
@@ -94,9 +146,23 @@ ul{
   position: relative;
   left: 15px;
 }
+.pl2-playlist-artist-name-span {
+  font-size: 18px
+}
+.pl2-playlist-artist-span {
+  font-size: 13px;
+  color: rgb(167, 167, 167);
+}
+.pl2-playlist-date-span {
+  font-size: 15px;
+  position: absolute;
+}
+.pl2-playlist-duration-span {
+  font-size: 15px;
+}
 .pl2-playlist-ul__li__album {
   height: 60px;
-  width: calc(15% - 1px);
+  min-width: 150px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -108,7 +174,7 @@ ul{
 }
 .pl2-playlist-ul__li__duration {
   height: 60px;
-  width: calc(8% - 1px);
+  min-width: 75px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -120,7 +186,7 @@ ul{
 }
 .pl2-playlist-ul__li__genre {
   height: 60px;
-  width: 10%;
+  min-width: 120px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -133,7 +199,7 @@ ul{
 }
 .pl2-playlist-ul__li__date {
   height: 60px;
-  width: 10.5%;
+  min-width: 110px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -142,4 +208,6 @@ ul{
   white-space: nowrap;
   overflow-x: scroll;
   position: relative;
+  color:rgba(193, 175, 255, 0.1);
+  color:rgba(226, 175, 255, 0.1)
 }

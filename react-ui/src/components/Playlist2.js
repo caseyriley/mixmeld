@@ -82,7 +82,7 @@ const Playlist2 = (props) => {
   
     const getSelectedPlaylist = async () => {
       const token = window.localStorage.getItem('auth_token')
-      const response = await fetch(`${API_URL}/playlists_tracks/${props.playlistIdRef.current}`, {
+      const response = await fetch(`${API_URL}/playlists_tracks/${props.playlistIdRef.current.playlistId}`, {
         method: "GET",
         mode: "cors",
         headers: { "Authorization": `Bearer ${token}` },
@@ -150,24 +150,6 @@ function updateTrackRating(e) {
 
 }
 // -----------------------------------------------------
-// ---------------Update-Track-Name--------------------
-function updateTrackName(e) {
-  const inputName = e.target.firstChild.value;
-  const trackId = e.target.name
-  const newTrackName = async () => {
-    const trackData = { id: trackId, rating: inputName}
-    const options = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(trackData),
-    }
-    fetch(`${API_URL}/tracks/track_name`, options)
-    setRefreshPlaylistState(refreshPlaylistState + 1)
-    setTrackEditState(false)
-  }
-  newTrackName();
-}
-// -----------------------------------------------------
 // ---------------Delete-Track-------------------------
 function deleteTrack(trackId){
   const trackData = {id: trackId}
@@ -181,48 +163,6 @@ function deleteTrack(trackId){
   setTrackEditState(false)
 }
 // ----------------------------------------------------
-// ---------------Update-Artist-Name--------------------
-
-function updateTrackArtistName(e) {
-
-  const newName = e.target.firstChild.value;
-  const key = e.target.name
-  const newTrack = async () => {
-    const trackData = { id: key, name: newName}
-    console.log("trackData======>",trackData)
-    const options = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(trackData),
-    }
-    fetch(`${API_URL}/tracks/artist_name`, options)
-    setRefreshPlaylistState(refreshPlaylistState + 1)
-    setTrackEditState(false)
-  }
-  newTrack();
-}
-// ------------------------------------------------------
-// ---------------Update-Artist-Name--------------------
-
-function updateTrackAlbumName(e) {
-
-const newName = e.target.firstChild.value;
-const key = e.target.name
-const newTrack = async () => {
-  const trackData = { id: key, albumname: newName}
-  console.log("trackData======>",trackData)
-  const options = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(trackData),
-  }
-  fetch(`${API_URL}/tracks/album_name`, options)
-  setRefreshPlaylistState(refreshPlaylistState + 1)
-  setTrackEditState(false)
-}
-newTrack();
-}
-// ------------------------------------------------------
 // ---------------Update-Track-Genre--------------------
 
 function updateTrackGenre(e) {
@@ -264,16 +204,16 @@ function toStandardTime(militaryTime) {
           {columnsState ? Object.entries(columnsState).map(([id, column]) => {
             return (
               <div className={"dnd-column"} >
-                <h2  >{column.name}</h2>
+                <h2  >{props.playlistIdRef.current.playlistName}</h2>
                 <div className={"dnd-column__content"} >
                   <Droppable droppableId={id} key={id} >
                     {(provided, snapshot) => {
                       return (
-                        <div id={"dop-c"}
+                        <ul id={"dop-c"}
                           {...provided.droppableProps}
                           ref={provided.innerRef}
                           style={{
-                            background: snapshot.isDraggingOver ? 'lightblue' : 'transparent',
+                            background: snapshot.isDraggingOver ? 'rgba(147, 114, 255, 0.1)' : 'transparent',
                             // padding: 4,
                             // width: 250,
                             // minHeight: 500
@@ -285,69 +225,71 @@ function toStandardTime(militaryTime) {
                                 {(provided, snapshot) => {
                                   return (
                                     <>
-                                    <ul class={"drag-c"}
+                                    <li name={index} class={"pl2-playlist-ul__li"} key={index}
                                       ref={provided.innerRef}
                                       {...provided.draggableProps}
                                       {...provided.dragHandleProps}
                                       style={{
                                         userSelect: 'none',
                                         // padding: 16,
-                                        margin: '0 0 8px 0',
+                                        
                                         // minHeight: '50px',
-                                        backgroundColor: snapshot.isDragging ? '#263B4A' : 'transparent',
+                                        backgroundColor: snapshot.isDragging ? 'rgba(226, 175, 255, 0.1)' : 'transparent',
                                         ...provided.draggableProps.style
                                       }}
                                     >
-                                      <li name={index} className={"pl2-playlist-ul__li"} key={index} >
-                                        <div id={`nti${index}`} className={`next-track-info audioId${audio.id}`}>{`{"tracklocation":"${audio.tracklocation}","trackname":"${audio.trackname}","audioId":"${audio.id}", "trackartist":"${audio.trackartist}", "trackart":"${audio.trackart}"}`}</div> 
+                                      {/* <li name={index} className={"pl2-playlist-ul__li"} key={index} > */}
+                                      {/* <li name={index} className={"pl2-playlist-ul__li"} key={index} > */}
+                                        <div id={"pl2-playlist2-box-shadow"}>
+                                          <div id={`nti${index}`} className={`next-track-info audioId${audio.id}`}>{`{"tracklocation":"${audio.tracklocation}","trackname":"${audio.trackname}","audioId":"${audio.id}", "trackartist":"${audio.trackartist}", "trackart":"${audio.trackart}"}`}</div> 
 
-                                        <img className={`pl2-playlist-ul__li__track-art ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`} src={audio.trackart} alt={""}>
+                                          <img className={`pl2-playlist-ul__li__track-art ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`} src={audio.trackart} alt={""}>
 
-                                        </img>
+                                          </img>
 
-                                        <div className={`pl2-playlist-ul__li__name ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`} >                                 
-                                          <span className={"pl2-playlist-artist-name-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.trackartist, audio.id, audio.trackart)}} >{audio.trackname ? audio.trackname : ""} </span>                                                               
-                                          <span className={"pl2-playlist-artist-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.trackartist, audio.id, audio.trackart)}} >{audio.trackartist ? audio.trackartist : ""} </span>                                       
+                                          <div className={`pl2-playlist-ul__li__name ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`} >                                 
+                                            <span className={"pl2-playlist-artist-name-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.trackartist, audio.id, audio.trackart)}} >{audio.trackname ? audio.trackname : ""} </span>                                                               
+                                            <span className={"pl2-playlist-artist-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.trackartist, audio.id, audio.trackart)}} >{audio.trackartist ? audio.trackartist : ""} </span>                                       
+                                          </div>
+
+                                          <div className={`pl2-playlist-ul__li__album ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`} >                                       
+                                            <span className={"pl2-playlist-album-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.trackartist, audio.id, audio.trackart)}} >{audio.trackalbum ? audio.trackalbum : ""} </span>                                     
+                                          </div>
+
+                                          <div className={`pl2-playlist-ul__li__duration ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`}>
+                                            <span className={`pl2-playlist-duration-span`}>{audio.tracktime ? audio.tracktime : ""}</span>
+                                          </div>
+
+                                          <div className={`pl2-playlist-ul__li__genre ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`}>                                        
+                                            <span className={"pl2-playlist-genre-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.trackartist, audio.id, audio.trackart)}} >{audio.trackgenre ? audio.trackgenre: ""} </span>                                       
+                                          </div>
+
+                                          <div className={`pl2-playlist-ul__li__date ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`}>
+                                            <span className={"pl2-playlist-date-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.trackartist, audio.id, audio.trackart)}} >{audio.created_date ? audio.created_date.slice(5, 16)+ " " + toStandardTime(audio.created_date.slice(16, 22)) : ""} </span>
+                                          </div>
+
+                                          <div className={`pl2-playlist-ul__li__rating ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`}>                                         
+                                            {trackEditState ? 
+                                              <>
+                                                <form name={audio.id} onSubmit={e=> {e.preventDefault(); updateTrackRating(e)}}> 
+                                                  <input 
+                                                    type={"text"}
+                                                    // id={"pl2-track-genre-input"} 
+                                                    id={`genre-${index}`} 
+                                                    className={"pl2-track-rating-input"}
+                                                    maxLength={100} 
+                                                    placeholder={audio.trackrating ? audio.trackrating : ""} 
+                                                  />
+                                                  <input className={"pl2-track-artist-name-submit"} type={"submit"} />
+                                                </form> 
+                                              </> :
+                                              <span className={"pl2-track-artist-rating-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.trackartist, audio.id, audio.trackart)}}>{audio.trackrating ? audio.trackrating : ""} </span>
+                                              
+                                            }     
+                                          </div>
                                         </div>
-
-                                        <div className={`pl2-playlist-ul__li__album ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`} >                                       
-                                          <span className={"pl2-playlist-artist-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.trackartist, audio.id, audio.trackart)}} >{audio.trackalbum ? audio.trackalbum : ""} </span>                                     
-                                        </div>
-
-                                        <div className={`pl2-playlist-ul__li__duration ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`}>
-                                          <span>{audio.tracktime ? audio.tracktime : ""}</span>
-                                        </div>
-
-                                        <div className={`pl2-playlist-ul__li__genre ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`}>                                        
-                                          <span className={"pl2-playlist-genre-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.trackartist, audio.id, audio.trackart)}} >{audio.trackgenre ? audio.trackgenre: ""} </span>                                       
-                                        </div>
-
-                                        <div className={`pl2-playlist-ul__li__date ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`}>
-                                          <span className={"pl2-playlist-genre-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.trackartist, audio.id, audio.trackart)}} >{audio.created_date ? audio.created_date.slice(5, 16)+ " " + toStandardTime(audio.created_date.slice(16, 22)) : ""} </span>
-                                        </div>
-
-                                        <div className={`pl2-playlist-ul__li__rating ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`}>                                         
-                                          {trackEditState ? 
-                                            <>
-                                              <form name={audio.id} onSubmit={e=> {e.preventDefault(); updateTrackRating(e)}}> 
-                                                <input 
-                                                  type={"text"}
-                                                  // id={"pl2-track-genre-input"} 
-                                                  id={`genre-${index}`} 
-                                                  className={"pl2-track-genre-input"}
-                                                  maxLength={100} 
-                                                  placeholder={audio.trackrating ? audio.trackrating : ""} 
-                                                />
-                                                <input className={"pl2-track-artist-name-submit"} type={"submit"} />
-                                              </form> 
-                                            </> :
-                                            <span className={"pl2-track-artist-rating-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.trackartist, audio.id, audio.trackart)}}>{audio.trackrating ? audio.trackrating : ""} </span>
-                                            
-                                          }     
-                                        </div>
-
                                       </li>
-                                    </ul>
+                                    {/* </ul> */}
                                     </>
                                   )
                                 }}
@@ -355,7 +297,7 @@ function toStandardTime(militaryTime) {
                             )
                           }): null}
                           {provided.placeholder}
-                        </div>
+                        </ul>
                       )
                     }}
                   </Droppable>
