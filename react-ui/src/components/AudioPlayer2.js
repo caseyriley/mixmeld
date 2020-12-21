@@ -479,7 +479,7 @@ function nextTrack() {
               </div>
             </div>
           </div>
-        <PlaylistSwitch playlistIdRef={playlistIdRef} currentUser={currentUser} playlistIdRef={playlistIdRef} addToPlaylistState={addToPlaylistState} playlistSwitchState={playlistSwitchState} pl2TrackRefreshState={pl2TrackRefreshState} trackEditState={trackEditState} setTrackEditState={setTrackEditState} setTrack={setTrack} setTrackArrayLengthState={setTrackArrayLengthState}/>
+        <PlaylistSwitch setTrack={setTrack} playlistIdRef={playlistIdRef} currentUser={currentUser} playlistIdRef={playlistIdRef} addToPlaylistState={addToPlaylistState} playlistSwitchState={playlistSwitchState} pl2TrackRefreshState={pl2TrackRefreshState} trackEditState={trackEditState} setTrackEditState={setTrackEditState} setTrack={setTrack} setTrackArrayLengthState={setTrackArrayLengthState}/>
         {/* <Tracklist2 pl2TrackRefreshState={pl2TrackRefreshState} trackEditState={trackEditState} setTrackEditState={setTrackEditState} setTrack={setTrack} setTrackArrayLengthState={setTrackArrayLengthState}/> */}
         </div>
       </div>
