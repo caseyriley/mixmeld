@@ -1,3 +1,8 @@
+ul{
+  padding: 0;
+  outline: none
+}
+
 #dnd {
   display: flex; 
   justify-content: center;
@@ -26,4 +31,110 @@
 }
 .drag-c {
   width: 100%;
+ 
+}
+
+.pl2-playlist-ul__li {
+  min-height: 60px;
+  min-width: 100%;
+  margin: 0px 0px 0px 0px;
+  color: rgb(192, 192, 192);
+  list-style: none;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Electrolize', sans-serif;  
+}
+.pl2-playlist-ul__li__rating {
+  height: 60px;
+  width: calc(10% - 1px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+  white-space: nowrap;
+  overflow-x: scroll;
+  border-right: 1px solid rgb(161, 161, 161);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.pl2-playlist-ul__li__name {
+  height: 60px;
+  width: calc(32% - 1px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  /* overflow: hidden; */
+  white-space: nowrap;
+  overflow-x: scroll;
+  border-right: 1px solid rgb(161, 161, 161);
+}
+.pl2-playlist-artist-name-span,
+.pl2-playlist-artist-span,
+.pl2-playlist-genre-span{
+  width: calc(100% -7px); 
+  height: 100%;
+  font-family: 'Electrolize', sans-serif;
+  font-size: 15px;
+  color: rgb(192, 192, 192);
+  text-align: left;
+  display: flex;
+  align-items: center;
+  position: relative;
+  left: 2px;
+}
+.pl2-playlist-ul__li__album {
+  height: 60px;
+  width: calc(15% - 1px);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  overflow-x: scroll;
+  border-right: 1px solid rgb(161, 161, 161);
+}
+.pl2-playlist-ul__li__duration {
+  height: 60px;
+  width: calc(8% - 1px);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  overflow: hidden;
+  white-space: nowrap;
+  overflow-x: scroll;
+  border-right: 1px solid rgb(161, 161, 161);
+}
+.pl2-playlist-ul__li__genre {
+  height: 60px;
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  overflow: hidden;
+  white-space: nowrap;
+  overflow-x: scroll;
+  border-right: 1px solid rgb(161, 161, 161);
+  position: relative;
+}
+.pl2-playlist-ul__li__date {
+  height: 60px;
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  overflow: hidden;
+  white-space: nowrap;
+  overflow-x: scroll;
+  position: relative;
 }

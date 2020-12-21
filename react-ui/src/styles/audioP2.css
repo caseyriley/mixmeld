@@ -810,7 +810,7 @@ li {
 }
 .pl2-track-artist-name-span,
 .pl2-track-artist-span,
- .pl2-track-genre-span{
+.pl2-track-genre-span{
   width: calc(100% -7px); 
   height: 100%;
   font-family: 'Electrolize', sans-serif;
