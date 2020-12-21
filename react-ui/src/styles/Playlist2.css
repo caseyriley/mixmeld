@@ -4,11 +4,32 @@ ul{
   /* width: auto !important; */
 }
 
+#playlist2-top {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#playlist2-top img {
+  height: 200px;
+  width: 200px;
+}
+#playlist2-top__info {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 0px 0px 0px 50px;
+}
+
 #dnd {
   display: flex; 
   justify-content: center;
   height: 100%;
   width: 100%;
+
 }
 .dnd-column {
   display: flex; 
@@ -16,6 +37,7 @@ ul{
   align-items: center;
   width: 100%;
   background-color: rgb(52, 52, 52);
+  
 }
 .dnd-column h2 {
   color: white;
@@ -37,6 +59,8 @@ box-shadow: 0px 10px 13px -7px #000000, 5px 10px 15px 5px rgba(0,0,0,0);
 }
 .dnd-column__content {
   width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
   
 }
 

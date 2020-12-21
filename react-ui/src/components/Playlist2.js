@@ -199,12 +199,20 @@ function toStandardTime(militaryTime) {
 
   return (
     <>
+      
       <div id={"dnd"} >
         <DragDropContext onDragEnd={result => onDragEnd(result, columnsState, setColumnsState)}>
           {columnsState ? Object.entries(columnsState).map(([id, column]) => {
             return (
               <div className={"dnd-column"} >
-                <h2  >{props.playlistIdRef.current.playlistName}</h2>
+                
+                <div id={"playlist2-top"}>
+                  <img  src={props.trackArtState ? props.trackArtState : column.items[0].trackart} alt={""}/>
+                  <div id={"playlist2-top__info"}>
+                    <h2  >{props.playlistIdRef.current.playlistName}</h2>
+                  </div>
+                  
+                </div>
                 <div className={"dnd-column__content"} >
                   <Droppable droppableId={id} key={id} >
                     {(provided, snapshot) => {
