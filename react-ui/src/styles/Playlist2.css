@@ -46,6 +46,10 @@ ul{
   align-items: center;
   font-family: 'Electrolize', sans-serif;  
 }
+.pl2-playlist-ul__li__track-art {
+  height: 60px;
+  width: 60px;
+}
 .pl2-playlist-ul__li__rating {
   height: 60px;
   width: calc(10% - 1px);
@@ -56,7 +60,7 @@ ul{
   overflow: hidden;
   white-space: nowrap;
   overflow-x: scroll;
-  border-right: 1px solid rgb(161, 161, 161);
+  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -77,7 +81,8 @@ ul{
 }
 .pl2-playlist-artist-name-span,
 .pl2-playlist-artist-span,
-.pl2-playlist-genre-span{
+.pl2-playlist-genre-span,
+.pl2-playlist-ul__li__duration span{
   width: calc(100% -7px); 
   height: 100%;
   font-family: 'Electrolize', sans-serif;
@@ -87,7 +92,7 @@ ul{
   display: flex;
   align-items: center;
   position: relative;
-  left: 2px;
+  left: 15px;
 }
 .pl2-playlist-ul__li__album {
   height: 60px;
@@ -128,11 +133,11 @@ ul{
 }
 .pl2-playlist-ul__li__date {
   height: 60px;
-  width: 10%;
+  width: 10.5%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-
+  border-right: 1px solid rgb(161, 161, 161);
   overflow: hidden;
   white-space: nowrap;
   overflow-x: scroll;
