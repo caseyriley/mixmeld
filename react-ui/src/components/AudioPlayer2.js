@@ -404,6 +404,8 @@ function nextTrack() {
     setPlaylistSwitchState("Playlist2")
     playlistIdRef.current = {playlistId: playlistId, playlistName: playlistName};
     setRefreshPlaylistState( refreshPlaylistState + 3);
+    setTrackArtState(null);
+
   }
 
   function showTracklist(string){
