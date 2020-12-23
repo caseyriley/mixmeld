@@ -34,14 +34,20 @@ import { v4 as uuidv4 } from 'uuid';
 const Playlist2 = (props) => {
 
 // -------------Update-Playlist-Order-----------------------
-function updatePlaylistOrder() {
+async function updatePlaylistOrder() {
   const liList = document.getElementsByClassName('next-track-info');
   const array = [];
-  for (let i = 0; i < liList.length; i ++) {
-    let track_id = JSON.parse(liList[i].innerHTML).audioId
-    array.push(Number(track_id))
-    console.log("array=============>",array)
+
+  const inner =  async () => {
+    for (let i = 0; i < liList.length; i ++) {
+      let track_id = JSON.parse(liList[i].innerHTML).audioId
+      array.push(Number(track_id))
+      console.log("array=============>",array)
+    }
   }
+
+  await inner();
+  
 
   const updatePlaylist = async () => {
     const trackData = {id: props.playlistIdRef.current.playlistId, playlist_list: array}
@@ -79,6 +85,7 @@ function updatePlaylistOrder() {
           items: destItems
         }
       })
+      updatePlaylistOrder();
     } else {
       const column = columnsState[source.droppableId];
       const copiedItems = [...column.items];
