@@ -33,8 +33,13 @@ import { v4 as uuidv4 } from 'uuid';
 
 const Playlist2 = (props) => {
 
+  const [refreshPlaylistState, setRefreshPlaylistState] = useState(1);
+
 // -------------Update-Playlist-Order-----------------------
 async function updatePlaylistOrder() {
+  await new Promise(resolve => {
+    setTimeout(resolve, 100)
+  })
   const liList = document.getElementsByClassName('next-track-info');
   const array = [];
 
@@ -59,7 +64,10 @@ async function updatePlaylistOrder() {
     fetch(`${API_URL}/playlists/update`, options)
     
   }
-  updatePlaylist();
+  await updatePlaylist();
+  // setTimeout(() => {
+  //   setRefreshPlaylistState(refreshPlaylistState + 7);
+  // }, 2000);
 }
 // ---------------------------------------------------------
   // ------------On-Drag-End----------------------------------
@@ -108,7 +116,7 @@ async function updatePlaylistOrder() {
 
   // ----------------Get-Playlists------------------------
   const [playlistState, setPlaylistState] = useState();
-  const [refreshPlaylistState, setRefreshPlaylistState] = useState(1);
+  
 
   useEffect(() => {
   
@@ -177,7 +185,7 @@ function updateTrackRating(e) {
       body: JSON.stringify(trackData),
     }
     fetch(`${API_URL}/tracks/track_rating`, options)
-    setRefreshPlaylistState(refreshPlaylistState + 1)
+    setRefreshPlaylistState(refreshPlaylistState + 5)
     setTrackEditState(false)
   }
   newRating();
