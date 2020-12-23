@@ -31,6 +31,7 @@ CREATE TABLE playlists (
   id SERIAL PRIMARY KEY,
   user_id INTEGER NOT NULL,
   playlist_name VARCHAR(100) NOT NULL UNIQUE,
+  playlist_list TEXT,
   created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
   FOREIGN KEY (user_id) REFERENCES users(id) 
 );

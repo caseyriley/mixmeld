@@ -294,6 +294,19 @@ function updateTrackGenre(e) {
     props.setTrackEditState(false)
   }
 // ----------------------------------------------------
+// // --------------Add-To-Playlist-Function--------------
+  
+//   function addToPlaylistFunc(trackId){
+//     console.log("props.playlistIdRef", props.playlistIdRef.current, "trackId", trackId)
+//     const playlistAndTrackData = {track_id: `${trackId}`, playlist_id: `${props.playlistIdRef.current}`}
+//     const options = {
+//       method: 'POST',
+//       headers: { 'Content-Type': 'application/json' },
+//       body: JSON.stringify(playlistAndTrackData),
+//     }
+//     fetch(`${API_URL}/playlists_tracks/post`, options)
+//   }
+// // ----------------------------------------------------
 // --------------Add-To-Playlist-Function--------------
   
   function addToPlaylistFunc(trackId){
@@ -304,7 +317,7 @@ function updateTrackGenre(e) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(playlistAndTrackData),
     }
-    fetch(`${API_URL}/playlists_tracks/post`, options)
+    fetch(`${API_URL}/playlists/list/post`, options)
   }
 // ----------------------------------------------------
 // ---------Convert-to-standard-time---------

@@ -25,13 +25,13 @@ def get_playlists_tracks(id):
     return jsonify(playlist)
 
 
-@playlists_tracks.route('/post', methods=["POST"])
-def post_playlists_tracks():
-    data = json.loads(request.data)
-    playlists_track = Playlist_Track(
-        track_id=data["track_id"],
-        playlist_id=data["playlist_id"]
-    )
-    db.session.add(playlists_track)
-    db.session.commit()
-    return jsonify(Goodjob='you posted a playlist track to the db')
+# @playlists_tracks.route('/post', methods=["POST"])
+# def post_playlists_tracks():
+#     data = json.loads(request.data)
+#     playlists_track = Playlist_Track(
+#         track_id=data["track_id"],
+#         playlist_id=data["playlist_id"]
+#     )
+#     db.session.add(playlists_track)
+#     db.session.commit()
+#     return jsonify(Goodjob='you posted a playlist track to the db')

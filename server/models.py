@@ -79,12 +79,14 @@ class Playlist(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     playlist_name = db.Column(db.String(100), nullable=False, unique=True)
+    playlist_list = db.Column(db.String)
 
     def to_dict(self):
         return {
             "id": self.id,
             "user_id": self.user_id,
             "playlist_name": self.playlist_name,
+            "playlist_list": self.playlist_list
         }
 
 
