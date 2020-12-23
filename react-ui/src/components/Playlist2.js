@@ -120,7 +120,7 @@ async function updatePlaylistOrder() {
   
 
   useEffect(() => {
-  
+    setPlaylistState(null)
     const getSelectedPlaylist = async () => {
       const token = window.localStorage.getItem('auth_token')
       console.log("props.playlistIdRef.current.playlistId", props.playlistIdRef.current.playlistId)
@@ -247,9 +247,9 @@ function toStandardTime(militaryTime) {
         <DragDropContext onDragEnd={result => onDragEnd(result, columnsState, setColumnsState)}>
           {columnsState ? Object.entries(columnsState).map(([id, column]) => {
             return (
-              <div className={"dnd-column"} key={"187687"} >
+              <div className={"dnd-column fade-in"} key={"187687"} >
                 
-                <div id={"playlist2-top"}>
+                <div id={"playlist2-top"}> 
                   <img  src={props.trackArtState ? props.trackArtState : column.items[0] ? column.items[0].trackart : formlessMusicIcon} alt={""}/>
                   <div id={"playlist2-top__info"}>
                     <h2  >{props.playlistIdRef.current.playlistName}</h2>
@@ -260,7 +260,7 @@ function toStandardTime(militaryTime) {
                   <Droppable droppableId={id} key={id} >
                     {(provided, snapshot) => {
                       return (
-                        <ul id={"dop-c"}
+                        <ul id={"dop-c"} 
                           {...provided.droppableProps}
                           ref={provided.innerRef}
                           style={{

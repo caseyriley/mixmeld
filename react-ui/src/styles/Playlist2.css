@@ -4,6 +4,24 @@ ul{
   /* width: auto !important; */
 }
 
+.fade-in{
+  animation: fade-in ease .4s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 #playlist2-top {
   width: 100%;
   height: 220px;
