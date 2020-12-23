@@ -15,7 +15,7 @@ from .users import user
 from .auth import auth
 from .tracks import tracks
 from .playlists import playlists
-from .playlists_tracks import playlists_tracks
+
 
 app = Flask(__name__, static_url_path='')
 app.config.from_object(Config)
@@ -25,7 +25,7 @@ app.register_blueprint(user, url_prefix='/users')
 app.register_blueprint(auth, url_prefix='/auth')
 app.register_blueprint(tracks, url_prefix='/tracks')
 app.register_blueprint(playlists, url_prefix='/playlists')
-app.register_blueprint(playlists_tracks, url_prefix='/playlists_tracks')
+
 
 db.init_app(app)
 jwt = JWTManager(app)

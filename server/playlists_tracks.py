@@ -1,28 +1,28 @@
-from flask import Blueprint, jsonify, request
-from sqlalchemy.orm import subqueryload, joinedload
-from sqlalchemy import func
-from .models import db, Playlist_Track, Track
-import requests
-import json
-from flask_jwt_extended  import jwt_required
+# from flask import Blueprint, jsonify, request
+# from sqlalchemy.orm import subqueryload, joinedload
+# from sqlalchemy import func
+# from .models import db, Playlist_Track, Track
+# import requests
+# import json
+# from flask_jwt_extended  import jwt_required
 
-from flask_cors import CORS
+# from flask_cors import CORS
 
-# from server.models import db, Playlist
+# # from server.models import db, Playlist
 
-playlists_tracks = Blueprint('playlists_tracks', __name__)
+# playlists_tracks = Blueprint('playlists_tracks', __name__)
 
 
-@playlists_tracks.route('/<id>', methods=["GET"])
-def get_playlists_tracks(id):
-    playlists_tracks = Playlist_Track.query.filter(Playlist_Track.playlist_id == id).all()
+# @playlists_tracks.route('/<id>', methods=["GET"])
+# def get_playlists_tracks(id):
+#     playlists_tracks = Playlist_Track.query.filter(Playlist_Track.playlist_id == id).all()
     
-    playlist = []
-    for playlist_track in playlists_tracks:
-        track = Track.query.filter(Track.id == playlist_track.track_id).first()
-        track_dict = track.to_dict()
-        playlist.append(track_dict)
-    return jsonify(playlist)
+#     playlist = []
+#     for playlist_track in playlists_tracks:
+#         track = Track.query.filter(Track.id == playlist_track.track_id).first()
+#         track_dict = track.to_dict()
+#         playlist.append(track_dict)
+#     return jsonify(playlist)
 
 
 # @playlists_tracks.route('/post', methods=["POST"])

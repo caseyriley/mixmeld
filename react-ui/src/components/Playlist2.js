@@ -2,8 +2,6 @@ import React, {useState, useEffect} from 'react';
 import { API_URL } from '../config';
 import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
 import { v4 as uuidv4 } from 'uuid';
-import plusSign from '../images/plusSign.png';
-import deleteX from '../images/deleteX.png';
 
 // const itemsFromBackend = [
 //   {id: uuidv4(), content: 'First task'},
@@ -30,47 +28,74 @@ import deleteX from '../images/deleteX.png';
     // }
   // };
 
-  
 
-const onDragEnd = (result, columnsState, setColumnsState) => {
-  if (!result.destination) return;
-  const {source, destination} = result;
-  if (source.droppableId !== destination.droppableId) {
-    const sourceColumn = columnsState[source.droppableId];
-    const destColumn = columnsState[destination.droppableId];
-    const sourceItems = [...sourceColumn.items];
-    const destItems = [...destColumn.items];
-    const [removed] = sourceItems.splice(source.index, 1);
-    destItems.splice(destination.index, 0, removed);
-    setColumnsState({
-      ...columnsState,
-      [source.droppableId]: {
-        ...sourceColumn,
-        items: sourceItems
-      },
-      [destination.droppableId]: {
-        ...destColumn,
-        items: destItems
-      }
-    })
-  } else {
-    const column = columnsState[source.droppableId];
-    const copiedItems = [...column.items];
-    const [removed] = copiedItems.splice(source.index, 1);
-    copiedItems.splice(destination.index, 0, removed);
-    setColumnsState({
-    ...columnsState,
-    [source.droppableId]: {
-      ...column,
-      items: copiedItems
-    }
-  })
-  }
-  
-};
 
 
 const Playlist2 = (props) => {
+
+// -------------Update-Playlist-Order-----------------------
+function updatePlaylistOrder() {
+  const liList = document.getElementsByClassName('next-track-info');
+  const array = [];
+  for (let i = 0; i < liList.length; i ++) {
+    let track_id = JSON.parse(liList[i].innerHTML).audioId
+    array.push(Number(track_id))
+    console.log("array=============>",array)
+  }
+
+  const updatePlaylist = async () => {
+    const trackData = {id: props.playlistIdRef.current.playlistId, playlist_list: array}
+    const options = {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(trackData),
+    }
+    fetch(`${API_URL}/playlists/update`, options)
+    
+  }
+  updatePlaylist();
+}
+// ---------------------------------------------------------
+  // ------------On-Drag-End----------------------------------
+  
+  const onDragEnd = (result, columnsState, setColumnsState) => {
+    if (!result.destination) return;
+    const {source, destination} = result;
+    if (source.droppableId !== destination.droppableId) {
+      const sourceColumn = columnsState[source.droppableId];
+      const destColumn = columnsState[destination.droppableId];
+      const sourceItems = [...sourceColumn.items];
+      const destItems = [...destColumn.items];
+      const [removed] = sourceItems.splice(source.index, 1);
+      destItems.splice(destination.index, 0, removed);
+      setColumnsState({
+        ...columnsState,
+        [source.droppableId]: {
+          ...sourceColumn,
+          items: sourceItems
+        },
+        [destination.droppableId]: {
+          ...destColumn,
+          items: destItems
+        }
+      })
+    } else {
+      const column = columnsState[source.droppableId];
+      const copiedItems = [...column.items];
+      const [removed] = copiedItems.splice(source.index, 1);
+      copiedItems.splice(destination.index, 0, removed);
+      setColumnsState({
+      ...columnsState,
+      [source.droppableId]: {
+        ...column,
+        items: copiedItems  
+      }
+    })
+    updatePlaylistOrder();
+    }
+    
+  };
+  // ----------------------------------------------------------
 
   const [trackEditState, setTrackEditState] = useState(true);
 
@@ -82,9 +107,11 @@ const Playlist2 = (props) => {
   
     const getSelectedPlaylist = async () => {
       const token = window.localStorage.getItem('auth_token')
+      console.log("props.playlistIdRef.current.playlistId", props.playlistIdRef.current.playlistId)
       const response = await fetch(`${API_URL}/playlists/list/${props.playlistIdRef.current.playlistId}`, {
         method: "GET",
         mode: "cors",
+
         headers: { "Authorization": `Bearer ${token}` },
       })
       if (!response.ok) {
@@ -204,7 +231,7 @@ function toStandardTime(militaryTime) {
         <DragDropContext onDragEnd={result => onDragEnd(result, columnsState, setColumnsState)}>
           {columnsState ? Object.entries(columnsState).map(([id, column]) => {
             return (
-              <div className={"dnd-column"} >
+              <div className={"dnd-column"} key={"187687"} >
                 
                 <div id={"playlist2-top"}>
                   <img  src={props.trackArtState ? props.trackArtState : column.items[0].trackart} alt={""}/>

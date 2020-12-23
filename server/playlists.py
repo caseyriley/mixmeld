@@ -31,18 +31,32 @@ def post_playlists_tracks():
     return jsonify(Goodjob='you posted to a playlist')
 
 
-@playlists.route('/list/<id>', methods=['GET'])
+@playlists.route("/list/<id>", methods=["GET"])
 def get_playlist_list(id):
     playlist = Playlist.query.filter(Playlist.id == id).first()
     
     playlist_l = json.loads(playlist.playlist_list)
-    print("PLAYLIST%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",playlist_l)
     playlist = []
     for track_id in playlist_l:
+        print("TRACK_ID@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",track_id)
         track = Track.query.filter(Track.id == track_id).first()
         track_dict = track.to_dict()
         playlist.append(track_dict)
+        print("playlist=======================================>",playlist)
     return jsonify(playlist)
+
+
+@playlists.route('/update', methods=['POST'])
+def update_playlist():
+    data = json.loads(request.data)
+    id=data["id"],
+    playlist_l=data["playlist_list"]
+    print("playlist_list ooooooooooooooooooooooooooooooooooooo", playlist_l)
+    playlist = Playlist.query.filter(Playlist.id == id).first()
+
+    playlist.playlist_list = f"{playlist_l}"
+    db.session.commit()
+    return jsonify(Goodjob="you updated a playlist")
 
 
 @playlists.route('/post', methods=["POST"])
