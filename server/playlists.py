@@ -23,14 +23,26 @@ def post_playlists_tracks():
     model_track = Track.query.filter(Track.id == track_id).first()
 
     playlist_list = json.loads(model_playlist.playlist_list)
-    print("playlist_list00000000000000000000000000",playlist_list)
     playlist_list.append(model_track.id)
     playlist_list_string = json.dumps(playlist_list)
-    print("playlist_list11111111111111111111111111",playlist_list_string)
     model_playlist.playlist_list = playlist_list_string
  
     db.session.commit()
     return jsonify(Goodjob='you posted to a playlist')
+
+
+@playlists.route('/list/<id>', methods=['GET'])
+def get_playlist_list(id):
+    playlist = Playlist.query.filter(Playlist.id == id).first()
+    
+    playlist_l = json.loads(playlist.playlist_list)
+    print("PLAYLIST%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",playlist_l)
+    playlist = []
+    for track_id in playlist_l:
+        track = Track.query.filter(Track.id == track_id).first()
+        track_dict = track.to_dict()
+        playlist.append(track_dict)
+    return jsonify(playlist)
 
 
 @playlists.route('/post', methods=["POST"])

@@ -82,7 +82,7 @@ const Playlist2 = (props) => {
   
     const getSelectedPlaylist = async () => {
       const token = window.localStorage.getItem('auth_token')
-      const response = await fetch(`${API_URL}/playlists_tracks/${props.playlistIdRef.current.playlistId}`, {
+      const response = await fetch(`${API_URL}/playlists/list/${props.playlistIdRef.current.playlistId}`, {
         method: "GET",
         mode: "cors",
         headers: { "Authorization": `Bearer ${token}` },
