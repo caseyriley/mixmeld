@@ -52,6 +52,7 @@ const AudioPlayer2 = (props)=>{
   const [songNameState, setSongNameState] = useState("")
   const [artistNameState, setArtistNameState] = useState("")
   const [trackArrayLengthState, setTrackArrayLengthState] = useState()
+  const [refreshPlaylistState, setRefreshPlaylistState] = useState(1);
 
 
   // let intervalFwd;
@@ -402,7 +403,9 @@ function nextTrack() {
   function showPlaylist(playlistName, playlistId){
     setPlaylistSwitchState("Playlist2")
     playlistIdRef.current = {playlistId: playlistId, playlistName: playlistName};
+    setRefreshPlaylistState( refreshPlaylistState + 3);
   }
+
   function showTracklist(string){
     setPlaylistSwitchState("Tracklist2")
   }
@@ -479,7 +482,7 @@ function nextTrack() {
               </div>
             </div>
           </div>
-        <PlaylistSwitch trackArtState={trackArtState} setTrack={setTrack} playlistIdRef={playlistIdRef} currentUser={currentUser} playlistIdRef={playlistIdRef} addToPlaylistState={addToPlaylistState} playlistSwitchState={playlistSwitchState} pl2TrackRefreshState={pl2TrackRefreshState} trackEditState={trackEditState} setTrackEditState={setTrackEditState} setTrack={setTrack} setTrackArrayLengthState={setTrackArrayLengthState}/>
+        <PlaylistSwitch refreshPlaylistState={refreshPlaylistState} setRefreshPlaylistState={setRefreshPlaylistState} trackArtState={trackArtState} setTrack={setTrack} playlistIdRef={playlistIdRef} currentUser={currentUser} playlistIdRef={playlistIdRef} addToPlaylistState={addToPlaylistState} playlistSwitchState={playlistSwitchState} pl2TrackRefreshState={pl2TrackRefreshState} trackEditState={trackEditState} setTrackEditState={setTrackEditState} setTrack={setTrack} setTrackArrayLengthState={setTrackArrayLengthState}/>
         {/* <Tracklist2 pl2TrackRefreshState={pl2TrackRefreshState} trackEditState={trackEditState} setTrackEditState={setTrackEditState} setTrack={setTrack} setTrackArrayLengthState={setTrackArrayLengthState}/> */}
         </div>
       </div>

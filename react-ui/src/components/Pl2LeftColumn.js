@@ -41,7 +41,7 @@ const Pl2LeftColumn = (props) => {
 // ----------------------------------------------
    // ----------------Get-Playlists------------------------
    const [playlistState, setPlaylistState] = useState();
-   const [refreshPlaylistState, setRefreshPlaylistState] = useState(1);
+   
  
    useEffect(() => {
    
@@ -62,7 +62,7 @@ const Pl2LeftColumn = (props) => {
        }
      }
      getCurrentUserPlaylists();
-   },[currentUser, refreshPlaylistState])
+   },[currentUser, props.refreshPlaylistState])
    // -----------------------------------------------------
    function setPlaylistIdRef(id) {
     props.playlistIdRef.current = id;
@@ -80,14 +80,14 @@ const Pl2LeftColumn = (props) => {
         )
     }): null
     )
-  }, [playlistState, refreshPlaylistState])
+  }, [playlistState, props.refreshPlaylistState])
 
 //  -------------------------------------------------------
 
 
   return (
     <>
-      {playlistModalState ? <NewPlaylistModal toggleModal={toggleModal} currentUser={currentUser} setRefreshPlaylistState={setRefreshPlaylistState} refreshPlaylistState={refreshPlaylistState} /> : null}
+      {playlistModalState ? <NewPlaylistModal toggleModal={toggleModal} currentUser={currentUser} setRefreshPlaylistState={props.setRefreshPlaylistState} refreshPlaylistState={props.refreshPlaylistState} /> : null}
         <div id={"pl2-left-column"}>
           <div id={"pl2-search"}>
             <input id={"pl2-search__input"} type={"text"} placeholder={"search"} ></input>

@@ -14,7 +14,7 @@ const PlaylistSwitch = (props)=>{
             )
           case "Playlist2":
             return (
-              <Playlist2 trackArtState={props.trackArtState} setTrack={props.setTrack} playlistIdRef={props.playlistIdRef} currentUser={props.currentUser} />
+              <Playlist2 refreshPlaylistState={props.refreshPlaylistState} setRefreshPlaylistState={props.setRefreshPlaylistState} trackArtState={props.trackArtState} setTrack={props.setTrack} playlistIdRef={props.playlistIdRef} currentUser={props.currentUser} />
             )
           default: 
             return (

@@ -34,7 +34,7 @@ import formlessMusicIcon from "../images/formless-music-icon.png"
 
 const Playlist2 = (props) => {
 
-  const [refreshPlaylistState, setRefreshPlaylistState] = useState(1);
+  
 
 // -------------Update-Playlist-Order-----------------------
 async function updatePlaylistOrder() {
@@ -140,7 +140,7 @@ async function updatePlaylistOrder() {
       }
     }
     getSelectedPlaylist();
-  },[props.playlistIdRef, refreshPlaylistState])
+  },[props.playlistIdRef, props.refreshPlaylistState])
   // -----------------------------------------------------
   // -------------------------------------
   
@@ -186,7 +186,7 @@ function updateTrackRating(e) {
       body: JSON.stringify(trackData),
     }
     fetch(`${API_URL}/tracks/track_rating`, options)
-    setRefreshPlaylistState(refreshPlaylistState + 5)
+    props.setRefreshPlaylistState(props.refreshPlaylistState + 5)
     setTrackEditState(false)
   }
   newRating();
@@ -202,7 +202,7 @@ function deleteTrack(trackId){
     body: JSON.stringify(trackData)
   }
   fetch(`${API_URL}/tracks/delete`, options)
-  setRefreshPlaylistState(refreshPlaylistState + 1)
+  props.setRefreshPlaylistState(props.refreshPlaylistState + 1)
   setTrackEditState(false)
 }
 // ----------------------------------------------------
@@ -221,7 +221,7 @@ const newTrack = async () => {
     body: JSON.stringify(trackData),
   }
   fetch(`${API_URL}/tracks/genre`, options)
-  setRefreshPlaylistState(refreshPlaylistState + 1)
+  props.setRefreshPlaylistState(props.refreshPlaylistState + 1)
   setTrackEditState(false)
 }
 newTrack();
