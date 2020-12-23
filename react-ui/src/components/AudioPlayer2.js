@@ -9,7 +9,7 @@ import random from '../images/random.png';
 import Tracklist2 from './Tracklist2';
 import TimeRemaining from './TimeRemaining';
 import VolumeUiSlider from './VolumeUiSlider';
-import formlessMusicIcon from "../images/formless-music-icon.png"
+
 
 import UploadingNewImage from './UploadingNewImage';
 import NewPlaylistModal from './NewPlaylistModal';

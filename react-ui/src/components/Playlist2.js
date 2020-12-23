@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { API_URL } from '../config';
 import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
 import { v4 as uuidv4 } from 'uuid';
+import formlessMusicIcon from "../images/formless-music-icon.png"
 
 // const itemsFromBackend = [
 //   {id: uuidv4(), content: 'First task'},
@@ -249,7 +250,7 @@ function toStandardTime(militaryTime) {
               <div className={"dnd-column"} key={"187687"} >
                 
                 <div id={"playlist2-top"}>
-                  <img  src={props.trackArtState ? props.trackArtState : column.items[0].trackart} alt={""}/>
+                  <img  src={props.trackArtState ? props.trackArtState : column.items[0] ? column.items[0].trackart : formlessMusicIcon} alt={""}/>
                   <div id={"playlist2-top__info"}>
                     <h2  >{props.playlistIdRef.current.playlistName}</h2>
                   </div>
