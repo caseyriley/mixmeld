@@ -416,7 +416,11 @@ function nextTrack() {
   // ----------Add-To-Playlist---------------------------
   const [addToPlaylistState, setAddToPlaylistState] = useState(false);
   function toggleAddToPlaylist(){
-    setAddToPlaylistState(!addToPlaylistState)
+    setAddToPlaylistState(!addToPlaylistState);
+    if (addToPlaylistState === false){
+      setPlaylistSwitchState("Tracklist2");
+    }
+    
   }
   // ----------------------------------------------------
 
