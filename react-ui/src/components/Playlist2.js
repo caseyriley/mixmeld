@@ -34,7 +34,12 @@ import formlessMusicIcon from "../images/formless-music-icon.png"
 
 const Playlist2 = (props) => {
 
-  
+  const [trackEditModalState, setTrackEditModalState] = useState({boolean: false, index: ""})
+
+  function toggleTrackEditModal(index){
+    const nextState = !trackEditModalState.boolean
+    setTrackEditModalState({boolean: nextState, index: index});
+  };
 
 // -------------Update-Playlist-Order-----------------------
 async function updatePlaylistOrder() {
@@ -247,15 +252,16 @@ function toStandardTime(militaryTime) {
         <DragDropContext onDragEnd={result => onDragEnd(result, columnsState, setColumnsState)}>
           {columnsState ? Object.entries(columnsState).map(([id, column]) => {
             return (
+
               <div className={"dnd-column fade-in"} key={"187687"} >
                 
-                <div id={"playlist2-top"}> 
-                  <img  src={props.trackArtState ? props.trackArtState : column.items[0] ? column.items[0].trackart : formlessMusicIcon} alt={""}/>
+                <div id={"playlist2-top"} className={"fade-in"}> 
+                  <img src={props.trackArtState ? props.trackArtState : column.items[0] ? column.items[0].trackart : formlessMusicIcon} alt={""}/>
                   <div id={"playlist2-top__info"}>
                     <h2  >{props.playlistIdRef.current.playlistName}</h2>
-                  </div>
-                  
+                  </div>   
                 </div>
+      
                 <div className={"dnd-column__content"} >
                   <Droppable droppableId={id} key={id} >
                     {(provided, snapshot) => {
@@ -335,6 +341,16 @@ function toStandardTime(militaryTime) {
                                               <span className={"pl2-track-artist-rating-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.trackartist, audio.id, audio.trackart)}}>{audio.trackrating ? audio.trackrating : ""} </span>
                                               
                                             }     
+                                          </div>
+                                          <div className={"three-dots"} onClick={() => {toggleTrackEditModal(index)}} >
+                                            { trackEditModalState.boolean === true && trackEditModalState.index === index  ?
+                                              <div className={"track-edit-modal"}>
+                                              <div className={"track-edit-modal__option"} >
+                                                <span>delete</span>
+                                              </div>
+                                            </div>
+                                            : null}
+                                            <div className={"dot"}></div><div className={"dot"}></div><div className={"dot"}></div>
                                           </div>
                                         </div>
                                       </li>
