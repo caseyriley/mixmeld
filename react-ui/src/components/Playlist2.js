@@ -233,15 +233,27 @@ newTrack();
 }
 // ------------------------------------------------------
 // ---------Convert-to-standard-time---------
-function toStandardTime(militaryTime) {
-  let first = militaryTime.slice(0,3);
-  let last = militaryTime.slice(3);
-  let amPm = " am"
-  if (Number.parseInt(first) > 12){
-    first = Number.parseInt(first) - 12;
-    amPm = " pm";
+  function toStandardTime(militaryTime) {
+    let first = militaryTime.slice(0,3);
+    let last = militaryTime.slice(3);
+    let amPm = " am"
+    if (Number.parseInt(first) > 12){
+      first = Number.parseInt(first) - 12;
+      amPm = " pm";
+    }
+    return `${first}:` + last + amPm;
   }
-  return `${first}:` + last + amPm;
+// -------------------------------------------
+// -------------Delete-From-Playlist----------
+function deleteFromPlaylist(trackId){
+  const trackData = {track_id: trackId, playlist_id: props.playlistIdRef.current.playlistId}
+  const options = {
+    method: 'DELETE',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(trackData)
+  }
+  fetch(`${API_URL}/playlists/delete`, options)
+  props.setRefreshPlaylistState(props.refreshPlaylistState + 1)
 }
 // -------------------------------------------
 
@@ -351,7 +363,7 @@ function toStandardTime(militaryTime) {
                                                         <span>x</span>
                                                       </div>
                                                     </div>
-                                                    <div className={"track-edit-modal__option"} >
+                                                    <div className={"track-edit-modal__option"} onClick={()=>{deleteFromPlaylist(audio.id)}} >
                                                       <span>delete</span>
                                                     </div>
                                                   </div>

@@ -75,7 +75,7 @@ const Pl2LeftColumn = (props) => {
         return(
           <div className={"playlist-radio-c"} onClick={()=>{setPlaylistIdRef(playlist.id)}}>
             <input type="radio" className={"playlist-radio"}  id={playlist.playlist_name} name="playlist-radio" value={playlist.playlist_name} checked />
-            <label className={"playlist-radio-label"} for={playlist.playlist_name}>{playlist.playlist_name}</label>
+            <label className={"playlist-radio-label"} htmlFor={playlist.playlist_name}>{playlist.playlist_name}</label>
           </div>
         )
     }): null

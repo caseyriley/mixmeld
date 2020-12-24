@@ -51,13 +51,32 @@ def update_playlist():
     data = json.loads(request.data)
     id=data["id"],
     playlist_l=data["playlist_list"]
-    print("playlist_list ooooooooooooooooooooooooooooooooooooo", playlist_l)
     playlist = Playlist.query.filter(Playlist.id == id).first()
 
     playlist.playlist_list = f"{playlist_l}"
     db.session.commit()
     return jsonify(Goodjob="you updated a playlist")
 
+
+@playlists.route('/delete', methods=['DELETE'])
+def delete_playlist():
+    data = json.loads(request.data)
+    track_id = data["track_id"]
+    playlist_id = data["playlist_id"]
+
+    playlist = Playlist.query.filter(Playlist.id == playlist_id).first()
+    # track = Track.query.filter(Track.id == track_id).first()
+    # playlist_track = Playlist.query.filter(Playlist.id == playlist_id, Track.id == track_id).first
+    new_list = json.loads(playlist.playlist_list)
+    new_list.remove(track_id)
+    print("new_list#######################################", new_list)
+    # db.session.delele(playlist.playlist_list)
+
+    playlist.playlist_list = f'{new_list}'
+
+
+    db.session.commit()
+    return jsonify(Good_job="You deleted a track from a playlist")
 
 @playlists.route('/post', methods=["POST"])
 def post_playlist():
