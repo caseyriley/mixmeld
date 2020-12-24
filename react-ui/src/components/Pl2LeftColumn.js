@@ -39,48 +39,68 @@ const Pl2LeftColumn = (props) => {
     console.log("user==Pl2LeftColumn=====>", currentUser.id)
   }, [])
 // ----------------------------------------------
-   // ----------------Get-Playlists------------------------
-   const [playlistState, setPlaylistState] = useState();
+  //  // ----------------Get-Playlists------------------------
+  //  const [playlistState, setPlaylistState] = useState();
    
  
-   useEffect(() => {
+  //  useEffect(() => {
    
-     const getCurrentUserPlaylists = async () => {
-       const token = window.localStorage.getItem('auth_token')
-       const response = await fetch(`${API_URL}/playlists/${currentUser.id}`, {
-         method: "GET",
-         mode: "cors",
-         headers: { "Authorization": `Bearer ${token}` },
-       })
-       if (!response.ok) {
-         console.log("getCurrentUserPlaylists failed in Pl2LeftColumn.js");
-       } else {
-         const json = await response.json();
-         setPlaylistState(json);
-         console.log("getCurrentUserPlaylists json", json)
+  //    const getCurrentUserPlaylists = async () => {
+  //      const token = window.localStorage.getItem('auth_token')
+  //      const response = await fetch(`${API_URL}/playlists/${currentUser.id}`, {
+  //        method: "GET",
+  //        mode: "cors",
+  //        headers: { "Authorization": `Bearer ${token}` },
+  //      })
+  //      if (!response.ok) {
+  //        console.log("getCurrentUserPlaylists failed in Pl2LeftColumn.js");
+  //      } else {
+  //        const json = await response.json();
+  //        setPlaylistState(json);
+  //        console.log("getCurrentUserPlaylists json", json)
         
-       }
-     }
-     getCurrentUserPlaylists();
-   },[currentUser, props.refreshPlaylistState])
-   // -----------------------------------------------------
-   function setPlaylistIdRef(id) {
-    props.playlistIdRef.current = id;
+  //      }
+  //    }
+  //    getCurrentUserPlaylists();
+  //  },[currentUser, props.refreshPlaylistState])
+  //  // -----------------------------------------------------
+   function incrementRefreshTrackState(){
+    props.setRefreshTrackState(props.refreshTrackState + 7)
+   }
+   async function setPlaylistIdRef(id) {
+    let name = "";
+    if (props.playlistState.length > 0){
+      async function inner(){
+        for (let i = 0; i < props.playlistState.length; i ++ ) {
+          let el = props.playlistState[i];
+          if (el.id === id){
+            name = el.playlist_name
+          }
+        }
+        
+    }
+    inner();
+    }
+    
+    props.playlistIdRef.current = {playlistId: id, playlistName: name};
+
+    incrementRefreshTrackState()
+    
   }
   //  --------Memoize-Playlist-Radio-Buttons----------------------
-  const playlistRadios = useMemo(()=>{
-    return (
-      playlistState ?
-      playlistState.map((playlist, index)=> {
-        return(
-          <div className={"playlist-radio-c"} onClick={()=>{setPlaylistIdRef(playlist.id)}}>
-            <input type="radio" className={"playlist-radio"}  id={playlist.playlist_name} name="playlist-radio" value={playlist.playlist_name} checked />
-            <label className={"playlist-radio-label"} htmlFor={playlist.playlist_name}>{playlist.playlist_name}</label>
-          </div>
-        )
-    }): null
-    )
-  }, [playlistState, props.refreshPlaylistState])
+  // const playlistRadios = useMemo(()=>{
+  //   return (
+  //     props.playlistState ?
+  //     props.playlistState.map((playlist, index)=> {
+  //       return(
+  //         <div className={"playlist-radio-c"} onClick={()=>{setPlaylistIdRef(playlist.id)}}>
+  //           <input type="radio" className={"playlist-radio"}  id={playlist.playlist_name} name="playlist-radio" value={playlist.playlist_name} checked />
+  //           <label className={"playlist-radio-label"} htmlFor={playlist.playlist_name}>{playlist.playlist_name}</label>
+  //         </div>
+  //       )
+  //   }): null
+  //   )
+  // }, [props.playlistState, props.refreshPlaylistState, props.playlistIdRef])
 
 //  -------------------------------------------------------
 
@@ -119,12 +139,19 @@ const Pl2LeftColumn = (props) => {
                 </div>
               </div>
               <div className={`${props.addToPlaylistState ? "visible" : "hidden"}`}>
-                {playlistRadios ?
-                  playlistRadios: null}
+                { props.playlistState ?
+                  props.playlistState.map((playlist, index)=> {
+                    return(
+                      <div className={`${props.playlistIdRef.current.playlistId === playlist.id ? "playlist-highlight" : "" } playlist-button-c`} onClick={()=>{setPlaylistIdRef(playlist.id)}}>
+                        {/* <input type="button" className={"playlist-radio"}  id={playlist.playlist_name} name="playlist-radio" value={playlist.playlist_name} checked /> */}
+                        <span >{playlist.playlist_name}</span>
+                      </div>
+                    )
+                }): null}
               </div>
               <div className={`${props.addToPlaylistState ? "hidden" : "visible"}`}>
-                {playlistState ? 
-                  playlistState.map((playlist, index) => {
+                {props.playlistState ? 
+                  props.playlistState.map((playlist, index) => {
                     return (
                       <div key={index} className={"left-playlist-name"} onClick={()=>{props.showPlaylist(playlist.playlist_name, playlist.id)}} >
                         <span>{playlist.playlist_name}</span>

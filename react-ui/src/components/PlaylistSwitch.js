@@ -10,11 +10,15 @@ const PlaylistSwitch = (props)=>{
         switch(props.playlistSwitchState ? props.playlistSwitchState : "Tracklist2") {
           case "Tracklist2":
             return (
-              <Tracklist2 playlistIdRef={props.playlistIdRef} addToPlaylistState={props.addToPlaylistState}  pl2TrackRefreshState={props.pl2TrackRefreshState} trackEditState={props.trackEditState} setTrackEditState={props.setTrackEditState} setTrack={props.setTrack} setTrackArrayLengthState={props.setTrackArrayLengthState}/>
+              <Tracklist2 refreshTrackState={props.refreshTrackState} setRefreshTrackState={props.setRefreshTrackState} 
+              selectedPlaylistState={props.selectedPlaylistState} playlistState={props.playlistState} 
+              playlistIdRef={props.playlistIdRef} addToPlaylistState={props.addToPlaylistState} 
+              trackEditState={props.trackEditState} setTrackEditState={props.setTrackEditState} 
+              setTrack={props.setTrack} setTrackArrayLengthState={props.setTrackArrayLengthState}/>
             )
           case "Playlist2":
             return (
-              <Playlist2 refreshPlaylistState={props.refreshPlaylistState} setRefreshPlaylistState={props.setRefreshPlaylistState} trackArtState={props.trackArtState} setTrack={props.setTrack} playlistIdRef={props.playlistIdRef} currentUser={props.currentUser} />
+              <Playlist2 selectedPlaylistState={props.selectedPlaylistState} playlistState={props.playlistState} refreshPlaylistState={props.refreshPlaylistState} setRefreshPlaylistState={props.setRefreshPlaylistState} trackArtState={props.trackArtState} setTrack={props.setTrack} playlistIdRef={props.playlistIdRef} currentUser={props.currentUser} />
             )
           default: 
             return (

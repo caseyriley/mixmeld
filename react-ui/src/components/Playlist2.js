@@ -120,33 +120,33 @@ async function updatePlaylistOrder() {
 
   const [trackEditState, setTrackEditState] = useState(true);
 
-  // ----------------Get-Playlists------------------------
-  const [playlistState, setPlaylistState] = useState();
+  // // ----------------Get-Selected-Playlists------------------------
+  // const [playlistState, setPlaylistState] = useState();
   
 
-  useEffect(() => {
-    setPlaylistState(null)
-    const getSelectedPlaylist = async () => {
-      const token = window.localStorage.getItem('auth_token')
-      console.log("props.playlistIdRef.current.playlistId", props.playlistIdRef.current.playlistId)
-      const response = await fetch(`${API_URL}/playlists/list/${props.playlistIdRef.current.playlistId}`, {
-        method: "GET",
-        mode: "cors",
+  // useEffect(() => {
+  //   setPlaylistState(null)
+  //   const getSelectedPlaylist = async () => {
+  //     const token = window.localStorage.getItem('auth_token')
+  //     console.log("props.playlistIdRef.current.playlistId", props.playlistIdRef.current.playlistId)
+  //     const response = await fetch(`${API_URL}/playlists/list/${props.playlistIdRef.current.playlistId}`, {
+  //       method: "GET",
+  //       mode: "cors",
 
-        headers: { "Authorization": `Bearer ${token}` },
-      })
-      if (!response.ok) {
-        console.log("getSelectedPlaylist failed in Playlist2.js");
-      } else {
-        const json = await response.json();
-        setPlaylistState(json);
-        console.log("getSelectedPlaylist", json)
+  //       headers: { "Authorization": `Bearer ${token}` },
+  //     })
+  //     if (!response.ok) {
+  //       console.log("getSelectedPlaylist failed in Playlist2.js");
+  //     } else {
+  //       const json = await response.json();
+  //       setPlaylistState(json);
+  //       console.log("getSelectedPlaylist", json)
       
-      }
-    }
-    getSelectedPlaylist();
-  },[props.playlistIdRef, props.refreshPlaylistState])
-  // -----------------------------------------------------
+  //     }
+  //   }
+  //   getSelectedPlaylist();
+  // },[props.playlistIdRef, props.refreshPlaylistState])
+  // // -----------------------------------------------------
   // -------------------------------------
   
   // const itemsFromBackend = [
@@ -155,10 +155,10 @@ async function updatePlaylistOrder() {
   // ];
 
   const columnsStateFromBackend = 
-  playlistState ?
+  props.selectedPlaylistState ?
   { [uuidv4()]: {
     name: 'Requested',
-    items: playlistState
+    items: props.selectedPlaylistState
     },
     // [uuidv4()]: {
     //   name: 'To do',
@@ -175,7 +175,7 @@ async function updatePlaylistOrder() {
   } : null;
   useEffect(() => {
     setColumnsState(columnsStateFromBackend);
-  }, [playlistState])
+  }, [props.selectedPlaylistState])
 
   const [columnsState, setColumnsState] = useState(columnsStateFromBackend);
 

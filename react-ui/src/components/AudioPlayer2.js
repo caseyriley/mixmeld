@@ -40,7 +40,7 @@ const AudioPlayer2 = (props)=>{
 
   const currentTrack = useRef([]);
 
-  const playlistIdRef = useRef();
+  const playlistIdRef = useRef({playlistId: "", playlistName: ""});
 
  
   // const [timeState, setTimeState] = useState(":");
@@ -53,6 +53,7 @@ const AudioPlayer2 = (props)=>{
   const [artistNameState, setArtistNameState] = useState("")
   const [trackArrayLengthState, setTrackArrayLengthState] = useState()
   const [refreshPlaylistState, setRefreshPlaylistState] = useState(1);
+  const [refreshTrackState, setRefreshTrackState] = useState(1)
 
 
   // let intervalFwd;
@@ -394,7 +395,7 @@ function nextTrack() {
 }
 // --------------------------------
   const [trackEditState, setTrackEditState] = useState(false);  
-  const [pl2TrackRefreshState, setPl2TrackRefreshState] = useState(1) 
+  
   
 
 // -----------PlaylistSwitch--functions-------------------
@@ -423,12 +424,68 @@ function nextTrack() {
     
   }
   // ----------------------------------------------------
+     // ----------------Get-Playlists------------------------
+     const [playlistState, setPlaylistState] = useState();
+   
+ 
+     useEffect(() => {
+     
+       const getCurrentUserPlaylists = async () => {
+         const token = window.localStorage.getItem('auth_token')
+         const response = await fetch(`${API_URL}/playlists/${currentUser.id}`, {
+           method: "GET",
+           mode: "cors",
+           headers: { "Authorization": `Bearer ${token}` },
+         })
+         if (!response.ok) {
+           console.log("getCurrentUserPlaylists failed in Pl2LeftColumn.js");
+         } else {
+           const json = await response.json();
+           setPlaylistState(json);
+           console.log("getCurrentUserPlaylists json", json)
+          
+         }
+       }
+       getCurrentUserPlaylists();
+     },[currentUser, refreshPlaylistState])
+     // -----------------------------------------------------
+       // ----------------Get-Selected-Playlists------------------------
+  const [selectedPlaylistState, setSelectedPlaylistState] = useState();
+  
+
+  useEffect(() => {
+    setSelectedPlaylistState(null)
+    const getSelectedPlaylist = async () => {
+      const token = window.localStorage.getItem('auth_token')
+      // console.log("props.playlistIdRef.current.playlistId", playlistIdRef.current.playlistId)
+      const response = await fetch(`${API_URL}/playlists/list/${playlistIdRef.current.playlistId}`, {
+        method: "GET",
+        mode: "cors",
+
+        headers: { "Authorization": `Bearer ${token}` },
+      })
+      if (!response.ok) {
+        console.log("getSelectedPlaylist failed in Playlist2.js");
+      } else {
+        const json = await response.json();
+        setSelectedPlaylistState(json);
+        console.log("getSelectedPlaylist", json)
+      
+      }
+    }
+    getSelectedPlaylist();
+  },[playlistIdRef, refreshPlaylistState, refreshTrackState])
+  // -----------------------------------------------------
 
  
   return(
     <>
       <div id={"pl2-main-page"}>
-        <Pl2LeftColumn playlistIdRef={playlistIdRef} addToPlaylistState={addToPlaylistState} toggleAddToPlaylist={toggleAddToPlaylist} showTracklist={showTracklist} showPlaylist={showPlaylist} />
+
+        <Pl2LeftColumn refreshTrackState={refreshTrackState} setRefreshTrackState={setRefreshTrackState} playlistState={playlistState} playlistIdRef={playlistIdRef} 
+        addToPlaylistState={addToPlaylistState} toggleAddToPlaylist={toggleAddToPlaylist} 
+        showTracklist={showTracklist} showPlaylist={showPlaylist} />
+
         <div id={"pl2-audio-tracklist-c"}>
           <div id={"pl2-audio"} >
             <audio
@@ -452,8 +509,8 @@ function nextTrack() {
                   <img  className={`pl2-loop ${loopState ? "pl2-looping" : "not-looping"}`} src={loop} alt={""} onClick={toggleLoop}></img>
                 </div>
                 <TrackDisplay media={media} trackEditState={trackEditState} 
-                currentUser={currentUser} pl2TrackRefreshState={pl2TrackRefreshState} 
-                setPl2TrackRefreshState={setPl2TrackRefreshState} setTrackArtState={setTrackArtState} 
+                currentUser={currentUser} refreshTrackState={refreshTrackState}
+                setRefreshTrackState={setRefreshTrackState} setTrackArtState={setTrackArtState} 
                 setPl2TrackLocationState={setPl2TrackLocationState} pl2TrackLocationState={pl2TrackLocationState} 
                 trackArtState={trackArtState} songNameState={songNameState} firstTrack={firstTrack} 
                 artistNameState={artistNameState} playHeadSlider={playHeadSlider} 
@@ -464,7 +521,7 @@ function nextTrack() {
                   
                   {trackEditState ? 
                   <> 
-                    <UploadingNewImage currentUser={currentUser} pl2TrackRefreshState={pl2TrackRefreshState} setPl2TrackRefreshState={setPl2TrackRefreshState} setTrackArtState={setTrackArtState} setPl2TrackLocationState={setPl2TrackLocationState} pl2TrackLocationState={pl2TrackLocationState}/>
+                    <UploadingNewImage currentUser={currentUser} refreshTrackState={refreshTrackState} setRefreshTrackState={setRefreshTrackState} setTrackArtState={setTrackArtState} setPl2TrackLocationState={setPl2TrackLocationState} pl2TrackLocationState={pl2TrackLocationState}/>
                   </>
                   : ""}
                   <img className={"track-art"} src={`${trackArtState ? trackArtState : formlessMusicIcon}`} alt={""}/>
@@ -484,12 +541,18 @@ function nextTrack() {
                   </div>
                 </div> */}
 
-                <VolumeUiSlider volumeLevel={volumeLevel} volumeFader={volumeFader} volumeSlider={volumeSlider} changeVolume={changeVolume}/>
+                <VolumeUiSlider volumeLevel={volumeLevel} volumeFader={volumeFader} 
+                volumeSlider={volumeSlider} changeVolume={changeVolume}/>
               </div>
             </div>
           </div>
-        <PlaylistSwitch refreshPlaylistState={refreshPlaylistState} setRefreshPlaylistState={setRefreshPlaylistState} trackArtState={trackArtState} setTrack={setTrack} playlistIdRef={playlistIdRef} currentUser={currentUser} playlistIdRef={playlistIdRef} addToPlaylistState={addToPlaylistState} playlistSwitchState={playlistSwitchState} pl2TrackRefreshState={pl2TrackRefreshState} trackEditState={trackEditState} setTrackEditState={setTrackEditState} setTrack={setTrack} setTrackArrayLengthState={setTrackArrayLengthState}/>
-        {/* <Tracklist2 pl2TrackRefreshState={pl2TrackRefreshState} trackEditState={trackEditState} setTrackEditState={setTrackEditState} setTrack={setTrack} setTrackArrayLengthState={setTrackArrayLengthState}/> */}
+        <PlaylistSwitch refreshTrackState={refreshTrackState} setRefreshTrackState={setRefreshTrackState} selectedPlaylistState={selectedPlaylistState} playlistState={playlistState} 
+        refreshPlaylistState={refreshPlaylistState} setRefreshPlaylistState={setRefreshPlaylistState} 
+        trackArtState={trackArtState} setTrack={setTrack} playlistIdRef={playlistIdRef} 
+        currentUser={currentUser} addToPlaylistState={addToPlaylistState} playlistSwitchState={playlistSwitchState} 
+        trackEditState={trackEditState} 
+        setTrackEditState={setTrackEditState} setTrackArrayLengthState={setTrackArrayLengthState}/>
+        {/* <Tracklist2 refreshTrackState={refreshTrackState} trackEditState={trackEditState} setTrackEditState={setTrackEditState} setTrack={setTrack} setTrackArrayLengthState={setTrackArrayLengthState}/> */}
         </div>
       </div>
     </>

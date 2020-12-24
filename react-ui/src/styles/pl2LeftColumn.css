@@ -179,14 +179,33 @@
 .hidden {
   display: none;
 }
-.playlist-radio-c {
+.playlist-button-c {
+  width: 90%;
+  height: 30px;
+  border-radius: 5px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   overflow-x: scroll;
   overflow-y: hidden;
+  margin: 0px 0px 0px 5%;
 }
-.playlist-radio {
+.playlist-button-c span{
+  font-size: 18px;
+  color: rgb(192, 192, 192);
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  margin: 0px 0px 0px 10px;
+}
+.playlist-highlight {
+  background-color: lightgrey;
+}
+.playlist-highlight span{
+  color: rgb(70, 70, 70);
+}
+/* .playlist-radio {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -221,4 +240,4 @@
   overflow-y: hidden;
   white-space: nowrap;
   cursor: pointer;
-}
+} */

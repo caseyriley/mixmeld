@@ -103,8 +103,7 @@ const getUserTracksReverse = async (path) => {
 
 
   const [trackArrayState, setTrackArrayState] = useState([])
-  const [refreshTrackState, setRefreshTrackState] = useState(1)
-  // const [organiseByState, setOrganiseByState] = useState("date")
+  // const [refreshTrackState, setRefreshTrackState] = useState(1)
   const [organiseByState, setOrganiseByState] = useState({1:"date", 2:"", 3:false})
 
   function organise(string){
@@ -179,8 +178,8 @@ const getUserTracksReverse = async (path) => {
 
     }
     
-  }, [currentUser, refreshTrackState, props.pl2TrackRefreshState, organiseByState])
-// -----------------------------------------------------
+  }, [currentUser, props.refreshTrackState, organiseByState])
+// ------------------------------------------------------
 // ---------------Update-Track-Rating--------------------
 function updateTrackRating(e) {
   const inputRating = e.target.firstChild.value;
@@ -193,7 +192,7 @@ function updateTrackRating(e) {
       body: JSON.stringify(trackData),
     }
     fetch(`${API_URL}/tracks/track_rating`, options)
-    setRefreshTrackState(refreshTrackState + 1)
+    props.setRefreshTrackState(props.refreshTrackState + 1)
     props.setTrackEditState(false)
   }
   newRating();
@@ -212,7 +211,7 @@ function updateTrackName(e) {
       body: JSON.stringify(trackData),
     }
     fetch(`${API_URL}/tracks/track_name`, options)
-    setRefreshTrackState(refreshTrackState + 1)
+    props.setRefreshTrackState(props.refreshTrackState + 1)
     props.setTrackEditState(false)
   }
   newTrackName();
@@ -233,7 +232,7 @@ function updateTrackName(e) {
         body: JSON.stringify(trackData),
       }
       fetch(`${API_URL}/tracks/artist_name`, options)
-      setRefreshTrackState(refreshTrackState + 1)
+      props.setRefreshTrackState(props.refreshTrackState + 1)
       props.setTrackEditState(false)
     }
     newTrack();
@@ -254,7 +253,7 @@ function updateTrackAlbumName(e) {
       body: JSON.stringify(trackData),
     }
     fetch(`${API_URL}/tracks/album_name`, options)
-    setRefreshTrackState(refreshTrackState + 1)
+    props.setRefreshTrackState(props.refreshTrackState + 1)
     props.setTrackEditState(false)
   }
   newTrack();
@@ -275,7 +274,7 @@ function updateTrackGenre(e) {
       body: JSON.stringify(trackData),
     }
     fetch(`${API_URL}/tracks/genre`, options)
-    setRefreshTrackState(refreshTrackState + 1)
+    props.setRefreshTrackState(props.refreshTrackState + 1)
     props.setTrackEditState(false)
   }
   newTrack();
@@ -290,7 +289,7 @@ function updateTrackGenre(e) {
       body: JSON.stringify(trackData)
     }
     fetch(`${API_URL}/tracks/delete`, options)
-    setRefreshTrackState(refreshTrackState + 1)
+    props.setRefreshTrackState(props.refreshTrackState + 1)
     props.setTrackEditState(false)
   }
 // ----------------------------------------------------
@@ -311,7 +310,7 @@ function updateTrackGenre(e) {
   
   function addToPlaylistFunc(trackId){
     console.log("props.playlistIdRef", props.playlistIdRef.current, "trackId", trackId)
-    const playlistAndTrackData = {track_id: `${trackId}`, playlist_id: `${props.playlistIdRef.current}`}
+    const playlistAndTrackData = {track_id: `${trackId}`, playlist_id: `${props.playlistIdRef.current.playlistId}`}
     const options = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -337,9 +336,25 @@ function toStandardTime(militaryTime) {
   // const [uploadModalState, setUploadModalState] = useState("upload-modal"); 
   const [trackLocationState, setTrackLocationState] = useState();
 //  ---------------------------------------------
+// -----------set-Playlist-Id-Array--------------
+  const [playlistIdState, setPlaylistIdState] = useState([]);
+
+  useEffect(() => {
+    const playlistIdArray = [];
+
+    if (props.selectedPlaylistState) {
+      props.selectedPlaylistState.forEach(track => {
+        playlistIdArray.push(track.id)
+      })
+      setPlaylistIdState(playlistIdArray);
+      console.log("playlistIdArray========================>", playlistIdArray)
+    }
+    
+  }, [props.selectedPlaylistState])
+// ----------------------------------------------
 
   return(
-    <>{uploadModalState === "upload-modal" ? <UploadModal currentUser={currentUser} refreshTrackState={refreshTrackState} setRefreshTrackState={setRefreshTrackState} uploadModalState={uploadModalState} setUploadModalState={setUploadModalState} setTrackLocationState={setTrackLocationState} trackLocationState={trackLocationState}/> : ""}
+    <>{uploadModalState === "upload-modal" ? <UploadModal currentUser={currentUser} refreshTrackState={props.refreshTrackState} setRefreshTrackState={props.setRefreshTrackState} uploadModalState={uploadModalState} setUploadModalState={setUploadModalState} setTrackLocationState={setTrackLocationState} trackLocationState={trackLocationState}/> : ""}
   
     <div id={"pl2-playlist-border"}>
       <div id={"pl2-playlist-c"} >
@@ -347,7 +362,7 @@ function toStandardTime(militaryTime) {
           <div id={"pl2-playlist-c__top-c__rating"}><h2 onClick={()=>{organise("trackrating")}}>Rating</h2></div>
           <div id={"pl2-playlist-c__top-c__name"}  >
             <div id={"pl2-uploading-track-visibility"} className={`${props.addToPlaylistState ? "hidden" : "visible"}`} >
-              <UploadingTrackPl2  refreshTrackState={refreshTrackState} setRefreshTrackState={setRefreshTrackState} setUploadModalState={setUploadModalState} setTrackLocationState={setTrackLocationState}/>
+              <UploadingTrackPl2  refreshTrackState={props.refreshTrackState} setRefreshTrackState={props.setRefreshTrackState} setUploadModalState={setUploadModalState} setTrackLocationState={setTrackLocationState}/>
             </div>
             <div id={"pl2-playlist-name-c"} >
               <h2 onClick={()=>{organise("trackname")}}>Name</h2>
@@ -386,7 +401,9 @@ function toStandardTime(militaryTime) {
                 </div>
 
                 <div className={`pl2-track-ul__li__name ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`} >
-                {props.addToPlaylistState ? 
+                {props.addToPlaylistState 
+                && !playlistIdState.includes(audio.id) 
+                ? 
                     <img name={audio.id} className={"plus-sign"} src={plusSign} alt={""} onClick={e=>{addToPlaylistFunc(e.target.name)}} />
                   : null}
                   {props.trackEditState ? 
