@@ -342,15 +342,24 @@ function toStandardTime(militaryTime) {
                                               
                                             }     
                                           </div>
-                                          <div className={"three-dots"} onClick={() => {toggleTrackEditModal(index)}} >
+                                            
+                                          <div className={"track-edit-c"} >
                                             { trackEditModalState.boolean === true && trackEditModalState.index === index  ?
-                                              <div className={"track-edit-modal"}>
-                                              <div className={"track-edit-modal__option"} >
-                                                <span>delete</span>
-                                              </div>
-                                            </div>
+                                                  <div className={"track-edit-modal"}>
+                                                    <div className={"track-edit-modal__close"} > 
+                                                      <div className={"track-edit-modal__close__button"} onClick={() => {toggleTrackEditModal(index)}}  >
+                                                        <span>x</span>
+                                                      </div>
+                                                    </div>
+                                                    <div className={"track-edit-modal__option"} >
+                                                      <span>delete</span>
+                                                    </div>
+                                                  </div>
                                             : null}
-                                            <div className={"dot"}></div><div className={"dot"}></div><div className={"dot"}></div>
+                                            <div className={"three-dots"} onClick={() => {toggleTrackEditModal(index)}} >
+                                              
+                                              <div className={"dot"}></div><div className={"dot"}></div><div className={"dot"}></div>
+                                            </div>
                                           </div>
                                         </div>
                                       </li>
