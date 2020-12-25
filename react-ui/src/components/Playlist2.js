@@ -256,6 +256,42 @@ function deleteFromPlaylist(trackId){
   props.setRefreshPlaylistState(props.refreshPlaylistState + 1)
 }
 // -------------------------------------------
+  const [totallPlaylistTime, setTotallPlaylistTime] = useState();
+  useEffect(()=>{
+
+    async function formatTime(time){
+      let start = 12;
+      let end = 8;
+      if (time < 3600){
+        start = 14;
+        end = 5;
+      } 
+      const formattedTime = `${new Date(time * 1000).toISOString().substr(start, end)}`
+      return formattedTime;
+    }
+
+    let playlistTime = 0;
+    if (props.selectedPlaylistState) {
+      async function addTrackTime(){
+        for (let i = 0; i < props.selectedPlaylistState.length; i ++){
+          const trackTime = props.selectedPlaylistState[i].tracktime.split(":");
+          console.log("trackTime",trackTime)
+          if (trackTime.length < 3){
+            const minToSec = Number(trackTime[0]) * 60;
+            const seconds = Number(trackTime[1]);
+            const totallMilliseconds = (minToSec + seconds) 
+            playlistTime += totallMilliseconds;
+            
+          }
+          const formattedTime = await formatTime(playlistTime)
+          setTotallPlaylistTime(formattedTime);
+        }
+      }
+      addTrackTime();
+    }
+    
+  }, [props.selectedPlaylistState])
+  
 
   return (
     <>
@@ -271,6 +307,8 @@ function deleteFromPlaylist(trackId){
                   <img src={props.trackArtState ? props.trackArtState : column.items[0] ? column.items[0].trackart : formlessMusicIcon} alt={""}/>
                   <div id={"playlist2-top__info"}>
                     <h2  >{props.playlistIdRef.current.playlistName}</h2>
+                    <h3  >{props.selectedPlaylistState.length} Tracks</h3>
+                    <h3  >{totallPlaylistTime}</h3>
                   </div>   
                 </div>
       
