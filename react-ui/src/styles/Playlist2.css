@@ -83,7 +83,7 @@ box-shadow: 0px 10px 13px -7px #000000, 5px 10px 15px 5px rgba(0,0,0,0);
   /* font-family: 'Syncopate', sans-serif; */
   /* font-family: 'Electrolize', sans-serif; */
   font-weight: 900;
-  color: lightgray;
+  color: rgb(171, 170, 170);
   background: rgb(14, 14, 14, .0);
   padding: 5px 15px 5px 15px;
 
@@ -325,4 +325,14 @@ box-shadow: 0px 10px 13px -7px #000000, 5px 10px 15px 5px rgba(0,0,0,0);
 .track-edit-modal__close__button:hover {
   color: rgb(255, 0, 255);
 }
+.searching {
+  position: fixed;
+  top: 300px;
+  left: 100px;
+  width: 700px;
+  border: 1px solid blue;
+  background-color: lightsteelblue;
+  z-index: 10;
+  color: black;
 
+}

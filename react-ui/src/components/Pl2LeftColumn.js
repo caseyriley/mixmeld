@@ -101,14 +101,36 @@ const Pl2LeftColumn = (props) => {
   // }, [props.playlistState, props.refreshPlaylistState, props.playlistIdRef])
 
 //  -------------------------------------------------------
-
+  const [queryState, setQueryState] = useState();
+  async function setQ(val) {
+    const token = window.localStorage.getItem('auth_token')
+    const params = JSON.stringify({id: currentUser.id, val: val})
+    const response = await fetch(`${API_URL}/tracks/search/${params}`, {
+      method: "GET",
+      mode: "cors",
+      headers: {"Authorization": `Bearer ${token}`},
+    })
+    if (!response.ok) {
+      console.log("setQ failed in Pl2LeftColumn.js");
+    } else {
+      const json = await response.json();
+      setQueryState(json);
+    }
+  }
+  
 
   return (
     <>
       {playlistModalState ? <NewPlaylistModal toggleModal={toggleModal} currentUser={currentUser} setRefreshPlaylistState={props.setRefreshPlaylistState} refreshPlaylistState={props.refreshPlaylistState} /> : null}
         <div id={"pl2-left-column"}>
           <div id={"pl2-search"}>
-            <input id={"pl2-search__input"} type={"text"} placeholder={"search"} ></input>
+            <input id={"pl2-search__input"} type={"text"} placeholder={"search"}
+            onChange={(e) => setQ(e.target.value)}
+            ></input>
+
+            < div className={"searching"}>{queryState ? queryState.map((str)=> {
+              return (<span>{`${str} `}</span>)
+            }) : "nothing"}</div>
           </div>
             <div id={"pl2-left-column__scroll-outer"}>
               <div id={"pl2-left-column__scroll-inner"} >

@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from sqlalchemy.orm import subqueryload, joinedload
 from sqlalchemy import func
-from .models import db, Track
+from .models import db, Track, User
 import requests
 import json
 from flask_jwt_extended  import jwt_required
@@ -32,6 +32,9 @@ def post_track():
     db.session.add(track)
     db.session.commit()
     return jsonify(Goodjob='you posted to db')
+
+
+
 
 
 @tracks.route('/track_rating', methods=["POST"])
@@ -162,6 +165,26 @@ def get_user_tracks_sort_by_trackartist(id):
         tracks.append(track)
     return jsonify(sorted(tracks, key=lambda i: i["trackartist"].lower()))
 
+
+@tracks.route("/search/<params>", methods=["GET"])
+def search_tracks(params):
+    parameters = json.loads(params)
+    print("parameters**************************",parameters)
+    id = parameters["id"]
+    val = parameters["val"]
+    # id = params.id
+    # val = params.val
+
+    tracks = Track.query.filter(Track.trackname.contains(val), User.id == id)
+
+    search_list = []
+    # tracks = Track.trackname.contains(val)
+    for track in tracks:
+       track_name = track.trackname
+       search_list.append(track_name)
+ 
+    # print("yyyyyyyyyyyyyyyyyyyyyyyyyyy",jsonify(model_track))
+    return jsonify(search_list)
 
 @tracks.route("/user/trackrating/<id>", methods=["GET"])
 def get_user_tracks_sort_by_trackrating(id):

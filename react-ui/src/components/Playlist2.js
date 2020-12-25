@@ -307,7 +307,7 @@ function deleteFromPlaylist(trackId){
                   <img src={props.trackArtState ? props.trackArtState : column.items[0] ? column.items[0].trackart : formlessMusicIcon} alt={""}/>
                   <div id={"playlist2-top__info"}>
                     <h2  >{props.playlistIdRef.current.playlistName}</h2>
-                    <h3  >{props.selectedPlaylistState.length} Tracks</h3>
+                    <h3  >{props.selectedPlaylistState ? `${props.selectedPlaylistState.length} Tracks`: ""}</h3>
                     <h3  >{totallPlaylistTime}</h3>
                   </div>   
                 </div>
