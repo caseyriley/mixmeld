@@ -75,6 +75,25 @@ ul{
 box-shadow: 0px 10px 13px -7px #000000, 5px 10px 15px 5px rgba(0,0,0,0);
 
 }
+.dnd-column h3 {
+  color: white;
+  font-family: 'Source Code Pro', monospace;
+  /* font-family: 'Goldman', cursive; */
+  font-family: 'Audiowide', cursive;
+  /* font-family: 'Syncopate', sans-serif; */
+  /* font-family: 'Electrolize', sans-serif; */
+  font-weight: 900;
+  color: lightgray;
+  background: rgb(14, 14, 14, .0);
+  padding: 5px 15px 5px 15px;
+
+  border-radius: 999px;
+  text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+  /* -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 10px 15px 5px rgba(0,0,0,0);  */
+/* box-shadow: 0px 10px 13px -7px #000000, 5px 10px 15px 5px rgba(0,0,0,0); */
+  margin: 0px 0px 0px 0px;
+
+}
 .dnd-column__content {
   width: 100%;
   overflow-y: scroll;
