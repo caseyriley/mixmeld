@@ -482,7 +482,9 @@ function nextTrack() {
     <>
       <div id={"pl2-main-page"}>
 
-        <Pl2LeftColumn refreshTrackState={refreshTrackState} setRefreshTrackState={setRefreshTrackState} playlistState={playlistState} playlistIdRef={playlistIdRef} 
+        <Pl2LeftColumn refreshTrackState={refreshTrackState} setRefreshTrackState={setRefreshTrackState} 
+        setRefreshPlaylistState={setRefreshPlaylistState} refreshPlaylistState={refreshPlaylistState}
+        playlistState={playlistState} playlistIdRef={playlistIdRef} 
         addToPlaylistState={addToPlaylistState} toggleAddToPlaylist={toggleAddToPlaylist} 
         showTracklist={showTracklist} showPlaylist={showPlaylist} />
 

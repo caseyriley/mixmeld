@@ -317,6 +317,7 @@ function updateTrackGenre(e) {
       body: JSON.stringify(playlistAndTrackData),
     }
     fetch(`${API_URL}/playlists/list/post`, options)
+    props.setRefreshTrackState(props.refreshTrackState + 7);
   }
 // ----------------------------------------------------
 // ---------Convert-to-standard-time---------
