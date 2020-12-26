@@ -487,7 +487,7 @@ function nextTrack() {
         playlistState={playlistState} playlistIdRef={playlistIdRef} 
         addToPlaylistState={addToPlaylistState} toggleAddToPlaylist={toggleAddToPlaylist} 
         showTracklist={showTracklist} showPlaylist={showPlaylist} setQueryState={setQueryState} 
-        setPlaylistSwitchState={setPlaylistSwitchState}/>
+        setPlaylistSwitchState={setPlaylistSwitchState} currentUser={currentUser}/>
 
         <div id={"pl2-audio-tracklist-c"}>
           <div id={"pl2-audio"} >

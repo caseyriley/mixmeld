@@ -16,28 +16,28 @@ const Pl2LeftColumn = (props) => {
   // -----------------------------------------------------
   console.log("pl2LeftColumn Rendered")
   //---------Get-Current_User--------------
-  const [currentUser, setCurrentUser] = useState({});
+  // const [currentUser, setCurrentUser] = useState({});
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    const getCurrentUser = async () => {
-      const token = window.localStorage.getItem('auth_token')
-      const response = await fetch(`${API_URL}/users/token`, {
-        method: "GET",
-        mode: "cors",
-        headers: { "Authorization": `Bearer ${token}` },
-      })
-      if (!response.ok) {
-        console.log("getCurrent user response failed in Uploading.js");
-      } else {
-        const json = await response.json();
-        setCurrentUser(json);
+  //   const getCurrentUser = async () => {
+  //     const token = window.localStorage.getItem('auth_token')
+  //     const response = await fetch(`${API_URL}/users/token`, {
+  //       method: "GET",
+  //       mode: "cors",
+  //       headers: { "Authorization": `Bearer ${token}` },
+  //     })
+  //     if (!response.ok) {
+  //       console.log("getCurrent user response failed in Uploading.js");
+  //     } else {
+  //       const json = await response.json();
+  //       setCurrentUser(json);
         
-      }
-    }
-    getCurrentUser();
-    console.log("user==Pl2LeftColumn=====>", currentUser.id)
-  }, [])
+  //     }
+  //   }
+  //   getCurrentUser();
+  //   console.log("user==Pl2LeftColumn=====>", currentUser.id)
+  // }, [])
 // ----------------------------------------------
   //  // ----------------Get-Playlists------------------------
   //  const [playlistState, setPlaylistState] = useState();
@@ -105,7 +105,7 @@ const Pl2LeftColumn = (props) => {
   async function setQ(val) {
     if (val.length > 0) {
       const token = window.localStorage.getItem('auth_token')
-      const params = JSON.stringify({id: currentUser.id, val: val})
+      const params = JSON.stringify({id: props.currentUser.id, val: val})
       const response = await fetch(`${API_URL}/tracks/search/${params}`, {
         method: "GET",
         mode: "cors",
@@ -128,7 +128,7 @@ const Pl2LeftColumn = (props) => {
 
   return (
     <>
-      {playlistModalState ? <NewPlaylistModal toggleModal={toggleModal} currentUser={currentUser} setRefreshPlaylistState={props.setRefreshPlaylistState} refreshPlaylistState={props.refreshPlaylistState} /> : null}
+      {playlistModalState ? <NewPlaylistModal toggleModal={toggleModal} currentUser={props.currentUser} setRefreshPlaylistState={props.setRefreshPlaylistState} refreshPlaylistState={props.refreshPlaylistState} /> : null}
         <div id={"pl2-left-column"}>
           <div id={"pl2-search"}>
             <input id={"pl2-search__input"} type={"text"} placeholder={"search"}

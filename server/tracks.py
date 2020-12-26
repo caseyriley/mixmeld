@@ -3,7 +3,7 @@ from sqlalchemy.orm import subqueryload, joinedload
 from sqlalchemy import func
 from .models import db, Track, User
 import requests
-import json
+import json, difflib
 from flask_jwt_extended  import jwt_required
 
 from flask_cors import CORS
@@ -173,14 +173,40 @@ def search_tracks(params):
     id = parameters["id"]
     val = parameters["val"]
 
-    tracks = Track.query.filter(func.lower(Track.trackname).contains(val.lower()), User.id == id)
+    tracks_trackname = Track.query.filter(func.lower(Track.trackname).contains(val.lower()), User.id == id)
+    tracks_trackartist = Track.query.filter(func.lower(Track.trackartist).contains(val.lower()), User.id == id)
+    tracks_trackalbum = Track.query.filter(func.lower(Track.trackalbum).contains(val.lower()), User.id == id)
 
     search_list = []
-  
-    for track in tracks:
-       track_name = track.trackname
-       search_list.append(track_name)
- 
+    track_name_list = []
+    artist_name_list = []
+    album_name_list = []
+
+    def closeMatch(x):
+        difflib.get_close_matches(val, x, 100, 0)
+
+    for track in tracks_trackname:
+        track_name = track.trackname
+        track_name_list.append(track_name)
+
+    for track in tracks_trackartist:
+        artist_name = track.trackartist
+        artist_name_list.append(artist_name)
+
+    for track in tracks_trackalbum:
+        album_name = track.trackalbum 
+        album_name_list.append(album_name)
+    
+    if len(val) > 2:
+        search_list.append(sorted(track_name_list, key = closeMatch))
+        search_list.append(sorted(artist_name_list, key = closeMatch))
+        search_list.append(sorted(album_name_list, key = closeMatch))
+
+    else:
+        search_list.append(track_name_list)
+        search_list.append(artist_name_list)
+        search_list.append(album_name_list)
+
     # print("yyyyyyyyyyyyyyyyyyyyyyyyyyy",jsonify(model_track))
     return jsonify(search_list)
 
