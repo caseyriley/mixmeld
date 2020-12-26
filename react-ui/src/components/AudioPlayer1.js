@@ -207,7 +207,7 @@ const AudioPlayer2 = (props)=>{
     
   },[volumeState])
 // ---------------------------------------------
-//---------------Audio-Tracks-------------------
+//---------------Set-Track-Onclick------------------
 
   function setTrack(track, songName){
 
@@ -220,7 +220,7 @@ const AudioPlayer2 = (props)=>{
     } 
     setSongNameState(newSongName);
   }
-//----------------------------------------------
+//-------------------------------------------------
 
 
   return(

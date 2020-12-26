@@ -327,12 +327,38 @@ const AudioPlayer2 = (props)=>{
     
   },[volumeState])
 // ---------------------------------------------
-//---------------Audio-Tracks-------------------
+//---------------Set-Track-Onclick--------------
  
   const [trackArtState, setTrackArtState] = useState();
   const [pl2TrackLocationState, setPl2TrackLocationState] = useState();
 
   function setTrack(track, songName, artistName, audioId, trackArt){
+
+    media.current.setAttribute("src", track);
+    playPauseMedia();
+
+    let newSongName = songName.slice(0,)
+    if (newSongName.length > 20){
+      newSongName = newSongName.slice(0, 20) + "..."
+    } 
+    let newArtistName = artistName.slice(0,)
+    if (newArtistName.length > 20){
+      newArtistName = newArtistName.slice(0, 20) + "..."
+    } 
+    setSongNameState(newSongName);
+    setArtistNameState(newArtistName);
+    setTrackArtState(trackArt);
+    setPl2TrackLocationState(track);
+    
+    currentTrack.current = audioId;
+    
+  }
+//----------------------------------------------
+//---------------Set-Track-Onclick-Via-Search------
+ 
+
+
+  function setTrackViaSearch(track, songName, artistName, audioId, trackArt){
 
     media.current.setAttribute("src", track);
     playPauseMedia();
@@ -412,6 +438,9 @@ function nextTrack() {
   function showTracklist(){
     setPlaylistSwitchState("Tracklist2")
   }
+  function showPl2AlbumPage(){
+    setPlaylistSwitchState("Pl2AlbumPage")
+  }
 
   // ----------------------------------------------------
   // ----------Add-To-Playlist---------------------------
@@ -487,7 +516,8 @@ function nextTrack() {
         playlistState={playlistState} playlistIdRef={playlistIdRef} 
         addToPlaylistState={addToPlaylistState} toggleAddToPlaylist={toggleAddToPlaylist} 
         showTracklist={showTracklist} showPlaylist={showPlaylist} setQueryState={setQueryState} 
-        setPlaylistSwitchState={setPlaylistSwitchState} currentUser={currentUser}/>
+        setPlaylistSwitchState={setPlaylistSwitchState} currentUser={currentUser}
+        showPl2AlbumPage={showPl2AlbumPage}/>
 
         <div id={"pl2-audio-tracklist-c"}>
           <div id={"pl2-audio"} >

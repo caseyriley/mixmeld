@@ -1,4 +1,5 @@
 import React from 'react';
+import Pl2AlbumPage from './Pl2AlbumPage';
 import Playlist2 from './Playlist2';
 import SearchTracklist2 from './SearchTracklist2';
 import Tracklist2 from './Tracklist2';
@@ -26,6 +27,10 @@ const PlaylistSwitch = (props)=>{
           case "SearchTracklist2":
             return (
               <SearchTracklist2 queryState={props.queryState}/>
+            )
+          case "Pl2AlbumPage":
+            return (
+              <Pl2AlbumPage />
             )
           default: 
             return (
