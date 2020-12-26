@@ -169,16 +169,14 @@ def get_user_tracks_sort_by_trackartist(id):
 @tracks.route("/search/<params>", methods=["GET"])
 def search_tracks(params):
     parameters = json.loads(params)
-    print("parameters**************************",parameters)
+    # print("parameters**************************",parameters)
     id = parameters["id"]
     val = parameters["val"]
-    # id = params.id
-    # val = params.val
 
-    tracks = Track.query.filter(Track.trackname.contains(val), User.id == id)
+    tracks = Track.query.filter(func.lower(Track.trackname).contains(val.lower()), User.id == id)
 
     search_list = []
-    # tracks = Track.trackname.contains(val)
+  
     for track in tracks:
        track_name = track.trackname
        search_list.append(track_name)
