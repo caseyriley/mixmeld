@@ -25,7 +25,7 @@ const PlaylistSwitch = (props)=>{
             )
           case "SearchTracklist2":
             return (
-              <SearchTracklist2 />
+              <SearchTracklist2 queryState={props.queryState}/>
             )
           default: 
             return (

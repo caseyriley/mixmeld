@@ -554,8 +554,8 @@ function nextTrack() {
         trackArtState={trackArtState} setTrack={setTrack} playlistIdRef={playlistIdRef} 
         currentUser={currentUser} addToPlaylistState={addToPlaylistState} playlistSwitchState={playlistSwitchState} 
         trackEditState={trackEditState} 
-        setTrackEditState={setTrackEditState} setTrackArrayLengthState={setTrackArrayLengthState}/>
-        {/* <Tracklist2 refreshTrackState={refreshTrackState} trackEditState={trackEditState} setTrackEditState={setTrackEditState} setTrack={setTrack} setTrackArrayLengthState={setTrackArrayLengthState}/> */}
+        setTrackEditState={setTrackEditState} setTrackArrayLengthState={setTrackArrayLengthState}
+        queryState={queryState}/>
         </div>
       </div>
     </>
