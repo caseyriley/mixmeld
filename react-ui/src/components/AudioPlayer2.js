@@ -409,7 +409,7 @@ function nextTrack() {
 
   }
 
-  function showTracklist(string){
+  function showTracklist(){
     setPlaylistSwitchState("Tracklist2")
   }
 
@@ -476,7 +476,7 @@ function nextTrack() {
     getSelectedPlaylist();
   },[playlistIdRef, refreshPlaylistState, refreshTrackState])
   // -----------------------------------------------------
-
+  const [queryState, setQueryState] = useState();
  
   return(
     <>
@@ -486,7 +486,8 @@ function nextTrack() {
         setRefreshPlaylistState={setRefreshPlaylistState} refreshPlaylistState={refreshPlaylistState}
         playlistState={playlistState} playlistIdRef={playlistIdRef} 
         addToPlaylistState={addToPlaylistState} toggleAddToPlaylist={toggleAddToPlaylist} 
-        showTracklist={showTracklist} showPlaylist={showPlaylist} />
+        showTracklist={showTracklist} showPlaylist={showPlaylist} setQueryState={setQueryState} 
+        setPlaylistSwitchState={setPlaylistSwitchState}/>
 
         <div id={"pl2-audio-tracklist-c"}>
           <div id={"pl2-audio"} >

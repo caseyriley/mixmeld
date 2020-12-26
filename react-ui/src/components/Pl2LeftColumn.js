@@ -101,7 +101,7 @@ const Pl2LeftColumn = (props) => {
   // }, [props.playlistState, props.refreshPlaylistState, props.playlistIdRef])
 
 //  -------------------------------------------------------
-  const [queryState, setQueryState] = useState();
+
   async function setQ(val) {
     if (val.length > 0) {
       const token = window.localStorage.getItem('auth_token')
@@ -115,10 +115,12 @@ const Pl2LeftColumn = (props) => {
         console.log("setQ failed in Pl2LeftColumn.js");
       } else {
         const json = await response.json();
-        setQueryState(json);
+        props.setQueryState(json);
+        props.setPlaylistSwitchState("SearchTracklist2")
       }
     } else {
-      setQueryState("");
+      props.setQueryState("");
+      props.setPlaylistSwitchState("Tracklist2")
     }
    
   }
@@ -133,9 +135,6 @@ const Pl2LeftColumn = (props) => {
             onChange={(e) => setQ(e.target.value)}
             ></input>
 
-            < div className={"searching"}>{queryState ? queryState.map((str)=> {
-              return (<span>{`${str} `}</span>)
-            }) : "nothing"}</div>
           </div>
             <div id={"pl2-left-column__scroll-outer"}>
               <div id={"pl2-left-column__scroll-inner"} >

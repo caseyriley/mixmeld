@@ -1,5 +1,6 @@
 import React from 'react';
 import Playlist2 from './Playlist2';
+import SearchTracklist2 from './SearchTracklist2';
 import Tracklist2 from './Tracklist2';
 
 const PlaylistSwitch = (props)=>{
@@ -21,6 +22,10 @@ const PlaylistSwitch = (props)=>{
               <Playlist2 selectedPlaylistState={props.selectedPlaylistState} 
               playlistState={props.playlistState} refreshPlaylistState={props.refreshPlaylistState} 
               setRefreshPlaylistState={props.setRefreshPlaylistState} trackArtState={props.trackArtState} setTrack={props.setTrack} playlistIdRef={props.playlistIdRef} currentUser={props.currentUser} />
+            )
+          case "SearchTracklist2":
+            return (
+              <SearchTracklist2 />
             )
           default: 
             return (
