@@ -103,19 +103,24 @@ const Pl2LeftColumn = (props) => {
 //  -------------------------------------------------------
   const [queryState, setQueryState] = useState();
   async function setQ(val) {
-    const token = window.localStorage.getItem('auth_token')
-    const params = JSON.stringify({id: currentUser.id, val: val})
-    const response = await fetch(`${API_URL}/tracks/search/${params}`, {
-      method: "GET",
-      mode: "cors",
-      headers: {"Authorization": `Bearer ${token}`},
-    })
-    if (!response.ok) {
-      console.log("setQ failed in Pl2LeftColumn.js");
+    if (val.length > 0) {
+      const token = window.localStorage.getItem('auth_token')
+      const params = JSON.stringify({id: currentUser.id, val: val})
+      const response = await fetch(`${API_URL}/tracks/search/${params}`, {
+        method: "GET",
+        mode: "cors",
+        headers: {"Authorization": `Bearer ${token}`},
+      })
+      if (!response.ok) {
+        console.log("setQ failed in Pl2LeftColumn.js");
+      } else {
+        const json = await response.json();
+        setQueryState(json);
+      }
     } else {
-      const json = await response.json();
-      setQueryState(json);
+      setQueryState("");
     }
+   
   }
   
 
