@@ -246,6 +246,41 @@ def get_user_tracks_sort_by_trackalbum(id):
     return jsonify(sorted(tracks, key=lambda i: i["trackalbum"].lower()))
 
 
+@tracks.route("/user/albums/<id>", methods=["GET"])
+def get_user_albums(id):
+
+    model_tracks = Track.query.filter(Track.user_id == id).all()
+    tracks = []
+    for model_track in model_tracks:
+        track = model_track.to_dict()
+        track["user"] = model_track.user.to_safe_object()
+        tracks.append(track)
+    tracks_by_album = sorted(tracks, key=lambda i: i["trackalbum"].lower())
+
+    albums = []
+    prev_album = None
+    for track_obj in tracks_by_album:
+        print("traaaaaaaaaaaaaaaaaaaaaack", hasattr(track_obj, "id"))
+        if hasattr(track_obj, "trackalbum"):
+
+            if prev_album == None:
+            
+                album = track_obj.trackalbum
+                albums.append([track])
+                prev_album = album
+            elif prev_album == track_obj.trackalbum:
+                albums[-1].append(track)
+            elif prev_album != track_obj.trackalbum:
+                album = track_obj.trackalbum
+                albums.append([track_obj])
+                prev_album = album
+        else:
+            print("nnnnooooooooooo traaackalbummmmmm")
+    return jsonify(albums)
+        
+
+
+
 @tracks.route("/user/trackgenre/<id>", methods=["GET"])
 def get_user_tracks_sort_by_trackgenre(id):
 

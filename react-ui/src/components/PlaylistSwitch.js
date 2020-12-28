@@ -30,7 +30,7 @@ const PlaylistSwitch = (props)=>{
             )
           case "Pl2AlbumPage":
             return (
-              <Pl2AlbumPage />
+              <Pl2AlbumPage currentUser={props.currentUser}/>
             )
           default: 
             return (

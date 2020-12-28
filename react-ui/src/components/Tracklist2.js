@@ -238,7 +238,7 @@ function updateTrackName(e) {
     newTrack();
   }
 // ------------------------------------------------------
-// ---------------Update-Artist-Name--------------------
+// ---------------Update-Album-Name--------------------
 
 function updateTrackAlbumName(e) {
 

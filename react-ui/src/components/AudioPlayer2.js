@@ -1,18 +1,11 @@
 import React, {useState, useEffect, useRef, useMemo} from 'react';
 import { API_URL } from '../config';
-import UseTime from './UseTime';
 import playButton from '../images/playButton.svg';
 import pauseButton from '../images/pauseButton.png';
 import fastForward from '../images/fastForward.png';
 import loop from '../images/loop.png';
 import random from '../images/random.png';
-import Tracklist2 from './Tracklist2';
-import TimeRemaining from './TimeRemaining';
 import VolumeUiSlider from './VolumeUiSlider';
-
-
-import UploadingNewImage from './UploadingNewImage';
-import NewPlaylistModal from './NewPlaylistModal';
 import Pl2LeftColumn from './Pl2LeftColumn';
 import PlaylistSwitch from './PlaylistSwitch';
 import TrackDisplay from './TrackDisplay';

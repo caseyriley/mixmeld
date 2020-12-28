@@ -140,11 +140,11 @@ const Pl2LeftColumn = (props) => {
               <div id={"pl2-left-column__scroll-inner"} >
               <div className={`${artistAlbumSongState === "selected-artist" ? "selected-artist" : ""} select-artist`} onClick={(()=>{setArtistAlbumSongState("selected-artist")})}>
                 <img className={"selectIcon"} src={vintageMic} alt={""} />
-                <span>Artist</span>
+                <span>Artists</span>
               </div>
               <div className={`${artistAlbumSongState === "selected-album" ? "selected-album" : ""} select-album`} onClick={()=>{setArtistAlbumSongState("selected-album"); props.showPl2AlbumPage()}}>
                 <img className={"selectIcon"} src={vinylRecord} alt={""} />
-                <span>Album</span>
+                <span>Albums</span>
               </div>
               <div className={`${artistAlbumSongState === "selected-song" ? "selected-song" : ""} select-song`} onClick={()=>{setArtistAlbumSongState("selected-song"); props.showTracklist() }}>
                 <img className={"selectIcon"} src={noteFloat} alt={""}  />
