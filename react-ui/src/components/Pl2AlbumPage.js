@@ -77,11 +77,12 @@ return (
           <img src={album[0].trackart} alt="" ></img>
           <div className={"pl2-album-info-c"}>
             <h2>{album[0].trackalbum}</h2>
+            <h3 class={"pl2-album-artist"}>By {album[0].trackartist}</h3>
             { album.map(track => {
                 return (
                   <>
                     
-                    <h3>{track.trackname}</h3>
+                    <h3 class={"pl2-album-track"}>{track.trackname}</h3>
                   </>
                 )
             })}
