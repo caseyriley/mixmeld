@@ -1,5 +1,6 @@
 import React from 'react';
 import Pl2AlbumPage from './Pl2AlbumPage';
+import Pl2ArtistsPage from './Pl2ArtistsPage';
 import Playlist2 from './Playlist2';
 import SearchTracklist2 from './SearchTracklist2';
 import Tracklist2 from './Tracklist2';
@@ -31,6 +32,10 @@ const PlaylistSwitch = (props)=>{
           case "Pl2AlbumPage":
             return (
               <Pl2AlbumPage currentUser={props.currentUser}/>
+            )
+          case "Pl2ArtistPage":
+            return (
+              <Pl2ArtistsPage currentUser={props.currentUser}/>
             )
           default: 
             return (

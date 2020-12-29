@@ -138,7 +138,7 @@ const Pl2LeftColumn = (props) => {
           </div>
             <div id={"pl2-left-column__scroll-outer"}>
               <div id={"pl2-left-column__scroll-inner"} >
-              <div className={`${artistAlbumSongState === "selected-artist" ? "selected-artist" : ""} select-artist`} onClick={(()=>{setArtistAlbumSongState("selected-artist")})}>
+              <div className={`${artistAlbumSongState === "selected-artist" ? "selected-artist" : ""} select-artist`} onClick={(()=>{setArtistAlbumSongState("selected-artist"); props.showPl2ArtistPage()})}>
                 <img className={"selectIcon"} src={vintageMic} alt={""} />
                 <span>Artists</span>
               </div>

@@ -434,6 +434,9 @@ function nextTrack() {
   function showPl2AlbumPage(){
     setPlaylistSwitchState("Pl2AlbumPage")
   }
+  function showPl2ArtistPage(){
+    setPlaylistSwitchState("Pl2ArtistPage")
+  }
 
   // ----------------------------------------------------
   // ----------Add-To-Playlist---------------------------
@@ -510,7 +513,7 @@ function nextTrack() {
         addToPlaylistState={addToPlaylistState} toggleAddToPlaylist={toggleAddToPlaylist} 
         showTracklist={showTracklist} showPlaylist={showPlaylist} setQueryState={setQueryState} 
         setPlaylistSwitchState={setPlaylistSwitchState} currentUser={currentUser}
-        showPl2AlbumPage={showPl2AlbumPage}/>
+        showPl2AlbumPage={showPl2AlbumPage} showPl2ArtistPage={showPl2ArtistPage}/>
 
         <div id={"pl2-audio-tracklist-c"}>
           <div id={"pl2-audio"} >
@@ -578,7 +581,7 @@ function nextTrack() {
         currentUser={currentUser} addToPlaylistState={addToPlaylistState} playlistSwitchState={playlistSwitchState} 
         trackEditState={trackEditState} 
         setTrackEditState={setTrackEditState} setTrackArrayLengthState={setTrackArrayLengthState}
-        queryState={queryState}/>
+        queryState={queryState} />
         </div>
       </div>
     </>

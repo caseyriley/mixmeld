@@ -81,10 +81,7 @@ const UploadingTrackPl2 = (props) => {
     S3FileUpload.uploadFile(e.target.files[0], config)
       .then((data) => {
 
-// ---------------Get-TracK-Length-Variable---------------------
         location = data.location;
-
-        
 
         let au = document.createElement('audio');
         au.src = location;
@@ -100,7 +97,7 @@ const UploadingTrackPl2 = (props) => {
           inner()
           
         },false);
-// -------------------------------------------------------------
+
       })
        
     }
