@@ -161,7 +161,7 @@ def get_user_tracks_sort_by_trackartist(id):
     tracks = []
     for model_track in model_tracks:
         track = model_track.to_dict()
-        track["user"] = model_track.user.to_safe_object()
+        # track["user"] = model_track.user.to_safe_object()
         tracks.append(track)
     return jsonify(sorted(tracks, key=lambda i: i["trackartist"].lower()))
 
@@ -217,7 +217,7 @@ def get_user_tracks_sort_by_trackrating(id):
     tracks = []
     for model_track in model_tracks:
         track = model_track.to_dict()
-        track["user"] = model_track.user.to_safe_object()
+        # track["user"] = model_track.user.to_safe_object()
         tracks.append(track)
     return jsonify(sorted(tracks, reverse=True, key=lambda i: i["trackrating"].lower()))
 
@@ -229,7 +229,7 @@ def get_user_tracks_sort_by_trackname(id):
     tracks = []
     for model_track in model_tracks:
         track = model_track.to_dict()
-        track["user"] = model_track.user.to_safe_object()
+        # track["user"] = model_track.user.to_safe_object()
         tracks.append(track)
     return jsonify(sorted(tracks, key=lambda i: i["trackname"].lower()))
 
@@ -241,7 +241,7 @@ def get_user_tracks_sort_by_trackalbum(id):
     tracks = []
     for model_track in model_tracks:
         track = model_track.to_dict()
-        track["user"] = model_track.user.to_safe_object()
+        # track["user"] = model_track.user.to_safe_object()
         tracks.append(track)
     return jsonify(sorted(tracks, key=lambda i: i["trackalbum"].lower()))
 
@@ -253,7 +253,7 @@ def get_user_albums(id):
     tracks = []
     for model_track in model_tracks:
         track = model_track.to_dict()
-        track["user"] = model_track.user.to_safe_object()
+        # track["user"] = model_track.user.to_safe_object()
         tracks.append(track)
     tracks_by_album = sorted(tracks, key=lambda i: i["trackalbum"].lower())
 
@@ -277,42 +277,88 @@ def get_user_albums(id):
     return jsonify(albums)
 
 
-
 @tracks.route("/user/artists/<id>", methods=["GET"])
 def get_user_artists(id):
 
+    # artist_names_query = db.session.query(Track.trackartist).filter(Track.user_id == id).all()
+    # artist_names = ["".join(name) for name in artist_names_query]
+
+    # album_names_query = db.session.query(Track.trackalbum).filter(Track.user_id == id).all()
+    # album_names = ["".join(name) for name in album_names_query]
+
     model_tracks = Track.query.filter(Track.user_id == id).all()
+
+    artist_dict = {}
+    album_dict = {}
+
     tracks = []
     for model_track in model_tracks:
         track = model_track.to_dict()
-        track["user"] = model_track.user.to_safe_object()
+        if track["trackartist"] in artist_dict:
+            if artist_dict[track["trackartist"]] == track["trackalbum"]: 
+                return
+            else:
+                artist_dict[track["trackartist"]].append(track["trackalbum"])
+        else:
+            artist_dict[track["trackartist"]] = track["trackalbum"]
+
         tracks.append(track)
     tracks_by_album = sorted(tracks, key=lambda i: i["trackartist"].lower())
 
-    artists = []
-    prev_artist = None
-    for track_obj in tracks_by_album:
-        # print("traaaaaaaaaaaaaaaaaaaaaack", hasattr(track_obj, "trackalbum"))
-        if track_obj["trackartist"]:
-            print("yesssssssss traaaaackartiiiiiist")
-            if prev_artist == None:
-                artists.append([track_obj])
-                prev_artist = track_obj["trackartist"]
-            elif prev_artist == track_obj["trackartist"]:
-                artists[-1].append(track_obj)
-            elif prev_artist != track_obj["trackartist"]:
-                artists.append([track_obj])
-                prev_artist = track_obj["trackartist"] 
-        else:
-            print("nnnnooooooooooo traaackartiiiiist")
+    # artist_albums = []
+    # for artist in artist_names:
+        
+    #     artist_albums_query = db.session.query(Track.trackalbum).filter(Track.user_id == id, Track.trackartist == artist).all()
+    #     artist_album_names = ["".join(name) for name in artist_albums_query]
+    #     artist_albums.append({f'{artist}': artist_album_names})
 
     
-    new_artists = []
-    for artist in artists:
-        new_artists.append(sorted(artist, key=lambda i: i["trackalbum"].lower()))
+
+
+    print("artist_name00000000000000000000000000", artist_dict)
+    return '{}'
+
+
+# @tracks.route("/user/artists/<id>", methods=["GET"])
+# def get_user_artists(id):
+
+    # model_tracks = Track.query.filter(Track.user_id == id).all()
+    # tracks = []
+    # for model_track in model_tracks:
+    #     track = model_track.to_dict()
+    #     track["user"] = model_track.user.to_safe_object()
+    #     tracks.append(track)
+    # tracks_by_album = sorted(tracks, key=lambda i: i["trackartist"].lower())
+    # ------All-Tracks-Should-Be-Organised-By-Album-----
+
+    # artists = []    
+
+    # prev_artist = None
+    # for track_obj in tracks_by_album:
+        # print("traaaaaaaaaaaaaaaaaaaaaack", hasattr(track_obj, "trackalbum"))
+        # if track_obj["trackartist"]:
+        #     print("yesssssssss traaaaackartiiiiiist")
+        #     if prev_artist == None:
+        #         artists.append([[[track_obj]]])  #artists[ artist [ albums[[],[]]]artist]artists
+        #         prev_artist = track_obj["trackartist"]
+        #     elif prev_artist == track_obj["trackartist"]:
+        #         for album in artists[-1]:
+
+        #         artists[-1].append([track_obj])
+        #     elif prev_artist != track_obj["trackartist"]:
+        #         artists.append([track_obj])
+        #         prev_artist = track_obj["trackartist"] 
+        # else:
+        #     print("nnnnooooooooooo traaackartiiiiist")
+
+# --------tracks-should-be-Artists=>[Aritist=>[]]------------
     
-    print("nnnnneeeeeeeew_arrrrrrrtistttttttts", new_artists)
-    return jsonify(new_artists)
+    # new_artists = []
+    # for artist in artists:
+    #     new_artists.append(sorted(artist, key=lambda i: i["trackalbum"].lower()))
+    
+    # print("nnnnneeeeeeeew_arrrrrrrtistttttttts", artists)
+    # return jsonify(artists)
         
 
 
@@ -324,7 +370,7 @@ def get_user_tracks_sort_by_trackgenre(id):
     tracks = []
     for model_track in model_tracks:
         track = model_track.to_dict()
-        track["user"] = model_track.user.to_safe_object()
+        # track["user"] = model_track.user.to_safe_object()
         tracks.append(track)
     return jsonify(sorted(tracks, key=lambda i: i["trackgenre"].lower()))
 
@@ -337,7 +383,7 @@ def get_user_tracks_sort_by_tracktime(id):
     tracks = []
     for model_track in model_tracks:
         track = model_track.to_dict()
-        track["user"] = model_track.user.to_safe_object()
+        # track["user"] = model_track.user.to_safe_object()
         tracks.append(track)
     return jsonify(sorted(tracks, key=lambda i: i["tracktime"].lower()))
 
@@ -349,7 +395,7 @@ def get_user_tracks_sort_by_date(id):
     tracks = []
     for model_track in model_tracks:
         track = model_track.to_dict()
-        track["user"] = model_track.user.to_safe_object()
+        # track["user"] = model_track.user.to_safe_object()
         tracks.append(track)
     return jsonify(sorted(tracks, reverse=True, key=lambda i: i["created_date"]))
 
@@ -375,6 +421,6 @@ def get_first_track(id):
     tracks = []
     for model_track in model_tracks:
         track = model_track.to_dict()
-        track["user"] = model_track.user.to_safe_object()
+        # track["user"] = model_track.user.to_safe_object()
         tracks.append(track)
     return jsonify(sorted(tracks, reverse=True, key=lambda i: i["id"]))
