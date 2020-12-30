@@ -326,7 +326,7 @@ const AudioPlayer2 = (props)=>{
   const [pl2TrackLocationState, setPl2TrackLocationState] = useState();
 
   function setTrack(track, songName, artistName, audioId, trackArt){
-
+    console.log("audioId%%%%%%%%%%%%%%%%%%%%", audioId)
     media.current.setAttribute("src", track);
     playPauseMedia();
 
