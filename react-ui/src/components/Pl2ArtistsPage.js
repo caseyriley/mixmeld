@@ -42,6 +42,12 @@ const Pl2ArtistsPage = (props) => {
                   <img src={artistArrayState[1][album][0]["trackart"]} alt="" ></img>
                   <div className={"pl2-album-info-c"}>
                     <h2>{album}</h2>
+                    {/* <h3 class={"pl2-album-artist"}>By {k}</h3> */}
+                    {artistArrayState[1][album].map(track => {
+                      return (
+                        <h3 class={"pl2-album-track"}>{track.trackname}</h3>
+                      )
+                    })}
                   </div>
                 </div>
               )
