@@ -183,7 +183,7 @@ def search_tracks(params):
     album_name_list = []
 
     def closeMatch(x):
-        difflib.get_close_matches(val, x, 100, 0)
+        difflib.get_close_matches(val, x, 100, .3)
 
     for track in tracks_trackname:
         track_name = track.trackname
