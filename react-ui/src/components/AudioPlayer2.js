@@ -375,8 +375,11 @@ const AudioPlayer2 = (props)=>{
 //----------------------------------------------
 
 function nextTrack() {
+  console.log("currentTrack.current", currentTrack.current)
   const trackLi = document.getElementsByClassName(`audioId${currentTrack.current}`) //get Li element of current track regarless of sort choice
+  console.log("AudioPlayer2===trackLi",trackLi)
   let trackLiIdNumber = Number(trackLi[0].id.slice(3)) //get index of current track
+  console.log("trackLiIdNumber", trackLiIdNumber)
 
   if (randomState === "pl2-random-play"){
 
@@ -397,6 +400,7 @@ function nextTrack() {
     }
   
     if (!loopState && trackLiIdNumber >= trackArrayLengthState -1){
+      console.log("trackArrayLengthState", trackArrayLengthState)
       trackLiIdNumber = -1;
       const newTrackLi = document.getElementById(`nti${trackLiIdNumber + 1}`) //get Li element of next track regardless of sort choice
       const newTrackObj = JSON.parse(newTrackLi.innerHTML); //get key values of next track info
@@ -404,6 +408,8 @@ function nextTrack() {
       stopMedia()
     } else {
       const newTrackLi = document.getElementById(`nti${trackLiIdNumber + 1}`) //get Li element of next track regardless of sort choice
+      console.log("trackLiIdNumber in else", trackLiIdNumber)
+      console.log("newTrackLi", newTrackLi)
       const newTrackObj = JSON.parse(newTrackLi.innerHTML); //get key values of next track info
       // console.log("nnneeeeewwTrackObj====>", newTrackObj)
       setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId, newTrackObj.trackart); // start the next track
