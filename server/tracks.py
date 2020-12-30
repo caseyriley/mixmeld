@@ -71,10 +71,10 @@ def update_track_info():
 
     data = json.loads(request.data)
     
-    track_artist = data["trackartist"]
-    track_name = data["trackname"]
-    track_genre = data["trackgenre"]
-    track_album = data["trackalbum"]
+    track_artist = data["trackartist"].rstrip()
+    track_name = data["trackname"].rstrip()
+    track_genre = data["trackgenre"].rstrip()
+    track_album = data["trackalbum"].rstrip()
     track_location = data["tracklocation"]
 
     track = Track.query.filter(Track.tracklocation == track_location).first()
@@ -293,17 +293,32 @@ def get_user_artists(id):
 
     tracks = []
     for model_track in model_tracks:
+
         track = model_track.to_dict()
+
         if track["trackartist"] in artist_dict:
-            if artist_dict[track["trackartist"]] == track["trackalbum"]: 
-                return
+            if artist_dict[track["trackartist"]][0] == track["trackalbum"]: 
+                pass
             else:
                 artist_dict[track["trackartist"]].append(track["trackalbum"])
         else:
-            artist_dict[track["trackartist"]] = track["trackalbum"]
+            if track["trackalbum"] != "":
+                artist_dict[track["trackartist"]] = [track["trackalbum"]]
+            else:
+                pass
 
-        tracks.append(track)
-    tracks_by_album = sorted(tracks, key=lambda i: i["trackartist"].lower())
+    for model_track in model_tracks:
+
+        track = model_track.to_dict()
+
+        if track["trackalbum"] in album_dict:
+            album_dict[track["trackalbum"]].append(track)
+        else:
+            album_dict[track["trackalbum"]] = [track]
+
+        # tracks.append(track)
+
+    # tracks_by_album = sorted(tracks, key=lambda i: i["trackartist"].lower())
 
     # artist_albums = []
     # for artist in artist_names:
@@ -312,11 +327,8 @@ def get_user_artists(id):
     #     artist_album_names = ["".join(name) for name in artist_albums_query]
     #     artist_albums.append({f'{artist}': artist_album_names})
 
-    
-
-
-    print("artist_name00000000000000000000000000", artist_dict)
-    return '{}'
+    print("artist_name00000000000000000000000000", album_dict)
+    return jsonify([artist_dict, album_dict])
 
 
 # @tracks.route("/user/artists/<id>", methods=["GET"])

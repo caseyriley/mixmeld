@@ -18,43 +18,9 @@ const Pl2ArtistsPage = (props) => {
       if (!response.ok) { console.log("error in getUserTracks") }
       else {
         const json = await response.json();
-        // const artists = [];
-        // async function sortByArtist(){
-        //   let prevAlbum = "";
-        //   let artist = [];
-        //   for (let i = 0; i < json.length; i ++){
-        //     const track = json[i];
-        //     if (track["trackartist"]){
-        //       if (prevAlbum === "") {
-        //         artist.push(track);
-        //         prevAlbum = track["trackartist"];
-        //         console.log("hit 1");
-        //         if (i === json.length -1){
-        //           artists.push(artist)
-        //         }
-        //       } else if (prevAlbum === track["trackartist"]) {
-        //         artist.push(track);
-        //         console.log("hit 2");
-        //         if (i === json.length -1){
-        //           artists.push(artist)
-        //         }
-        //       } else if (prevAlbum !== track["trackalbum"]) {
-        //         artists.push(artist);
-        //         artist = [];
-        //         artist.push(track);
-        //         prevAlbum = track["trackartist"];
-        //         console.log("hit 3");
-        //         if (i === json.length -1){
-        //           artists.push(artist)
-        //         }
-        //       }
-        //     } else {
-        //       console.log("nooooo track artist", track);
-        //     }
-        //   }
+  
           setArtistArrayState(json); 
-        // }
-        // await sortByArtist()
+
         console.log("artists=====>",json)
       }
     }
@@ -64,9 +30,30 @@ const Pl2ArtistsPage = (props) => {
 
   return (
     <div id={"pl2-album-page-c"}>
-     
+     {artistArrayState[0] ? Object.keys(artistArrayState[0]).map((k)=> {
+       return(
+          <>
+            <div id={"pl2-album-page-top"}>
+              <h1>{k}</h1>
+            </div>
+            {artistArrayState[0][k].map(album => {
+              return (
+                <div className={"pl2-album-c"}>
+                  <img src={artistArrayState[1][album][0]["trackart"]} alt="" ></img>
+                  <div className={"pl2-album-info-c"}>
+                    <h2>{album}</h2>
+                  </div>
+                </div>
+              )
+            })}
+          </>
+       )
+      
+     }):null}
+    </div>
 
-      {artistArrayState ? artistArrayState.map(artist => {
+
+      /* {artistArrayState ? artistArrayState.map(artist => {
         return (
           <>
             <div id={"pl2-album-page-top"}>
@@ -91,9 +78,9 @@ const Pl2ArtistsPage = (props) => {
           
         )
       })
-      : ""}
+      : ""} */
 
-    </div>
+  
   )
 }
 export default Pl2ArtistsPage;
