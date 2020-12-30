@@ -20,6 +20,7 @@
   align-items: center;
   flex-direction: column;
   overflow-y: scroll;
+  border-radius: 20px;
 }
 #upload-modal__form label{
   font-size: 16px;

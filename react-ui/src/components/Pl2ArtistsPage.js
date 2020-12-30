@@ -41,14 +41,14 @@ const Pl2ArtistsPage = (props) => {
             </div>
             {artistArrayState[0][k].map((album, kii) => {
               return (
-                <div className={"pl2-album-c"} key={kii + 10000}>
+                <div className={"pl2-album-c"} key={10000 + kii}>
                   <img src={artistArrayState[1][album][0]["trackart"]} alt="" ></img>
                   <div className={"pl2-album-info-c"}>
                     <h2>{album}</h2>
                     {/* <h3 class={"pl2-album-artist"}>By {k}</h3> */}
                     {artistArrayState[1][album].map((track, index) => {
                       return (
-                        <div key={index + 100000}>
+                        <div key={100000 + index}>
                           <div id={`nti${idCount.current += 1 }`} className={`next-track-info audioId${track.id}`}>{`{"tracklocation":"${track.tracklocation}","trackname":"${track.trackname}","audioId":"${track.id}", "trackartist":"${track.trackartist}", "trackart":"${track.trackart}"}`}</div> 
                           {console.log("nnnnnttttttiiii ", idCount.current)}
                           <h3 class={"pl2-album-track"} onClick={()=>{props.setTrack(track.tracklocation, track.trackname, track.trackartist, track.id, track.trackart)}}>{track.trackname}</h3>

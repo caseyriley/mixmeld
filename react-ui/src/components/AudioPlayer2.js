@@ -112,7 +112,7 @@ const AudioPlayer2 = (props)=>{
   const [isPlayingState, setIsPlayingState] = useState(1)
 
   function playPauseMedia() {
-
+    console.log("playPauseMedia^^^^^^^^^^^^")
     if (!media.current.src){
       media.current.setAttribute("src", firstTrack[0].tracklocation)
     }
@@ -128,7 +128,9 @@ const AudioPlayer2 = (props)=>{
     
     if(media.current.paused) {
       play.current.src = pauseButton;
+      console.log("playPauseMedia^ALMOST PLAYED")
       media.current.play();
+      console.log("playPauseMedia^PLAYED")
       setIsPlayingState(isPlayingState + 1)
     } else {
       play.current.src = playButton;
@@ -162,12 +164,13 @@ const AudioPlayer2 = (props)=>{
       }
     } else {
       const trackLi = document.getElementsByClassName(`audioId${currentTrack.current}`) //get Li element of current track regarless of sort choice
-    let trackLiIdNumber = Number(trackLi[0].id.slice(3)) //get index of current track
-    if (trackLiIdNumber === 0){
-      trackLiIdNumber = 1
+      let trackLiIdNumber = Number(trackLi[0].id.slice(3)) //get index of current track
+      if (trackLiIdNumber === 0){
+        trackLiIdNumber = 1
     }
     const newTrackLi = document.getElementById(`nti${trackLiIdNumber - 1}`) //get Li element of previous track regardless of sort choice
     const newTrackObj = JSON.parse(newTrackLi.innerHTML); //get key values of next track info
+    console.log("skib back set track newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId, newTrackObj.trackart", newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId, newTrackObj.trackart)
     setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId, newTrackObj.trackart); // start the next track
     }
 
@@ -326,6 +329,7 @@ const AudioPlayer2 = (props)=>{
   const [pl2TrackLocationState, setPl2TrackLocationState] = useState();
 
   function setTrack(track, songName, artistName, audioId, trackArt){
+    console.log("setTrack newTrackObj.tracklocation", track)
     console.log("audioId%%%%%%%%%%%%%%%%%%%%", audioId)
     media.current.setAttribute("src", track);
     playPauseMedia();
@@ -412,6 +416,7 @@ function nextTrack() {
       console.log("newTrackLi", newTrackLi)
       const newTrackObj = JSON.parse(newTrackLi.innerHTML); //get key values of next track info
       // console.log("nnneeeeewwTrackObj====>", newTrackObj)
+      console.log("newTrackObj.tracklocation", newTrackObj.tracklocation)
       setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId, newTrackObj.trackart); // start the next track
     }
   }
