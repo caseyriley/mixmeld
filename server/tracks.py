@@ -183,29 +183,37 @@ def search_tracks(params):
     album_name_list = []
 
     def closeMatch(x):
-        difflib.get_close_matches(val, x, 100, .3)
+        difflib.get_close_matches(val, x, n=100, cutoff=0.8)
 
     for track in tracks_trackname:
-        track_name = track.trackname
-        track_name_list.append(track_name)
+        if track.trackname != "":
+            track_name = track.trackname
+            track_name_list.append(track_name)
+        else:
+            pass
 
     for track in tracks_trackartist:
-        artist_name = track.trackartist
-        artist_name_list.append(artist_name)
+        if track.trackartist != "":
+            artist_name = track.trackartist
+            artist_name_list.append(artist_name)
+        else:
+            pass
 
     for track in tracks_trackalbum:
-        album_name = track.trackalbum 
-        album_name_list.append(album_name)
+        if track.trackalbum != "":
+            album_name = track.trackalbum 
+            album_name_list.append(album_name)
+        else:
+            pass
     
-    if len(val) > 2:
-        search_list.append(sorted(track_name_list, key = closeMatch))
-        search_list.append(sorted(artist_name_list, key = closeMatch))
-        search_list.append(sorted(album_name_list, key = closeMatch))
-
-    else:
-        search_list.append(track_name_list)
-        search_list.append(artist_name_list)
-        search_list.append(album_name_list)
+    # if len(val) > 2:
+    #     search_list.append(sorted(track_name_list, key = closeMatch))
+    #     search_list.append(sorted(artist_name_list, key = closeMatch))
+    #     search_list.append(sorted(album_name_list, key = closeMatch))
+    # else:
+    search_list.append(track_name_list)
+    search_list.append(artist_name_list)
+    search_list.append(album_name_list)
 
     # print("yyyyyyyyyyyyyyyyyyyyyyyyyyy",jsonify(model_track))
     return jsonify(search_list)
