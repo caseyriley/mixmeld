@@ -106,6 +106,7 @@ const AudioPlayer2 = (props)=>{
   },[currentUser])
   // -----------------------------------------------
 
+
 // ---------------Play/Pause-Button---------------
   // const [firstTrack, setFirstTrack] = useState();
   // const firstTrack = useRef()
@@ -275,7 +276,10 @@ const AudioPlayer2 = (props)=>{
 // -------------Move-Playhead-onClick---------------
   function movePlayheadOnClick(e){
     if (media){
-      media.current.currentTime = parseFloat(media.current.duration * playHeadSlider.current.value);
+      if (media.current.currentTime > 0) {
+        media.current.currentTime = parseFloat(media.current.duration * playHeadSlider.current.value);
+      }
+      
     }
   }
 // -------------------------------------------------

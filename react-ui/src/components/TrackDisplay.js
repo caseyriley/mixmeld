@@ -36,7 +36,9 @@ const TrackDisplay = (props) => {
                   
         {props.trackEditState ? 
         <> 
-          <UploadingNewImage currentUser={props.currentUser} refreshTrackState={props.refreshTrackState} setRefreshTrackState={props.setRefreshTrackState} setTrackArtState={props.setTrackArtState} setPl2TrackLocationState={props.setPl2TrackLocationState} pl2TrackLocationState={props.pl2TrackLocationState}/>
+          <UploadingNewImage currentUser={props.currentUser} refreshTrackState={props.refreshTrackState} 
+          setRefreshTrackState={props.setRefreshTrackState} setTrackArtState={props.setTrackArtState} 
+          setPl2TrackLocationState={props.setPl2TrackLocationState} pl2TrackLocationState={props.pl2TrackLocationState}/>
         </>
         : ""}
         <img className={"track-art"} src={`${props.trackArtState ? props.trackArtState : formlessMusicIcon}`} alt={""}/>
