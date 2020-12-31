@@ -276,8 +276,24 @@ const AudioPlayer2 = (props)=>{
 // -------------Move-Playhead-onClick---------------
   function movePlayheadOnClick(e){
     if (media){
-      if (media.current.currentTime > 0) {
+      if (media.current.currentTime > 0 && media.current.paused === false && media.current.ended === false) {
         media.current.currentTime = parseFloat(media.current.duration * playHeadSlider.current.value);
+      } else {
+        if (!media.current.src){
+          media.current.setAttribute("src", firstTrack[0].tracklocation)
+          playPauseMedia();
+          if (media.current.currentTime > 0){
+            media.current.currentTime = parseFloat(media.current.duration * playHeadSlider.current.value);
+          }
+          
+        } else {
+          playPauseMedia();
+          if (media.current.currentTime > 0){
+            media.current.currentTime = parseFloat(media.current.duration * playHeadSlider.current.value);
+          }
+        }
+     
+       
       }
       
     }
