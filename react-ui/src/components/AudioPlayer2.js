@@ -384,6 +384,7 @@ function nextTrack() {
   console.log("AudioPlayer2===trackLi",trackLi)
   let trackLiIdNumber = Number(trackLi[0].id.slice(3)) //get index of current track
   console.log("trackLiIdNumber", trackLiIdNumber)
+  console.log("trackArrayLengthState", trackArrayLengthState)
 
   if (randomState === "pl2-random-play"){
 

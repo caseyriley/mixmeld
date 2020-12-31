@@ -4,7 +4,7 @@ import { API_URL } from '../config';
 const Pl2ArtistsPage = (props) => {
 
   const [artistArrayState, setArtistArrayState] = useState([])
-  const idCount = useRef(0);
+  const idCount = useRef(-1);
 
 
   useEffect(()=>{
@@ -22,6 +22,9 @@ const Pl2ArtistsPage = (props) => {
         const json = await response.json();
   
           setArtistArrayState(json); 
+
+          const trackArraylength = document.getElementsByClassName('next-track-info').length
+          props.setTrackArrayLengthState(trackArraylength);
 
         console.log("artists=====>",json)
       }
