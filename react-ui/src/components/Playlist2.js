@@ -292,6 +292,12 @@ function deleteFromPlaylist(trackId){
     
   }, [props.selectedPlaylistState])
   
+  // ------set-trackArraylength------
+  useEffect(()=>{
+    const trackArraylength = document.getElementsByClassName('next-track-info').length 
+    props.setTrackArrayLengthState(trackArraylength);
+  })
+  // --------------------------------
 
   return (
     <>
