@@ -36,8 +36,8 @@ const Pl2ArtistsPage = (props) => {
   const artistPage = useMemo(()=>{
     return (
       <>
-     {artistArrayState[0] ? Object.keys(artistArrayState[0]).map((k, ki)=> {
-       return(
+      {artistArrayState[0] ? Object.keys(artistArrayState[0]).map((k, ki)=> {
+        return(
           <div key={ki}>
             <div id={"pl2-album-page-top"}>
               <h1>{k}</h1>
@@ -63,9 +63,9 @@ const Pl2ArtistsPage = (props) => {
               )
             })}
           </div>
-       )
+        )
       
-     }):null}
+      }):null}
     </>
     )
   },[artistArrayState])

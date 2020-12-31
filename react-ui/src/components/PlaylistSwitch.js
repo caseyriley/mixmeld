@@ -33,7 +33,8 @@ const PlaylistSwitch = (props)=>{
             )
           case "Pl2AlbumPage":
             return (
-              <Pl2AlbumPage currentUser={props.currentUser} setTrackArrayLengthState={props.setTrackArrayLengthState}/>
+              <Pl2AlbumPage currentUser={props.currentUser} setTrackArrayLengthState={props.setTrackArrayLengthState}
+              setTrack={props.setTrack}/>
             )
           case "Pl2ArtistPage":
             return (

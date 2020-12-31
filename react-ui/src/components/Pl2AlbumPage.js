@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef, useMemo } from 'react';
 import { API_URL } from '../config';
 
 const Pl2AlbumPage = (props) => {
 
   const [albumArrayState, setAlbumArrayState] = useState([])
+  const idCount = useRef(-1);
 
   useEffect(()=>{
 
@@ -18,43 +19,9 @@ const Pl2AlbumPage = (props) => {
       if (!response.ok) { console.log("error in getUserTracks") }
       else {
         const json = await response.json();
-        // const albums = [];
-        // async function sortByAlbum(){
-        //   let prevAlbum = "";
-        //   let album = [];
-        //   for (let i = 0; i < json.length; i ++){
-        //     const track = json[i];
-        //     if (track["trackalbum"]){
-        //       if (prevAlbum === "") {
-        //         album.push(track);
-        //         prevAlbum = track["trackalbum"];
-        //         console.log("hit 1");
-        //         if (i === json.length -1){
-        //           albums.push(album)
-        //         }
-        //       } else if (prevAlbum === track["trackalbum"]) {
-        //         album.push(track);
-        //         console.log("hit 2");
-        //         if (i === json.length -1){
-        //           albums.push(album)
-        //         }
-        //       } else if (prevAlbum !== track["trackalbum"]) {
-        //         albums.push(album);
-        //         album = [];
-        //         album.push(track);
-        //         prevAlbum = track["trackalbum"];
-        //         console.log("hit 3");
-        //         if (i === json.length -1){
-        //           albums.push(album)
-        //         }
-        //       }
-        //     } else {
-        //       console.log("nooooo track album", track);
-        //     }
-        //   }
           setAlbumArrayState(json); 
-        // }
-        // await sortByAlbum()
+          const trackArraylength = document.getElementsByClassName('next-track-info').length
+          props.setTrackArrayLengthState(trackArraylength);
         console.log("albums=====>",json)
       }
     }
@@ -62,25 +29,25 @@ const Pl2AlbumPage = (props) => {
 
   },[props.currentUser])
 
-return (
-  <div id={"pl2-album-page-c"}>
-    <div id={"pl2-album-page-top"}>
-      <h1>Albums</h1>
-    </div>
-
-    {albumArrayState ? albumArrayState.map(album => {
+  const albumPage = useMemo(()=> {
+    return (
+      <>
+        {albumArrayState ? albumArrayState.map((album, kii) => {
       return (
-        <div className={"pl2-album-c"}>
+        <div ke={1000 + kii} className={"pl2-album-c"}>
           <img src={album[0].trackart} alt="" ></img>
           <div className={"pl2-album-info-c"}>
             <h2>{album[0].trackalbum}</h2>
             <h3 class={"pl2-album-artist"}>By {album[0].trackartist}</h3>
-            { album.map(track => {
+            { album.map((track, index) => {
                 return (
-                  <>
-                    
-                    <h3 class={"pl2-album-track"}>{track.trackname}</h3>
-                  </>
+                
+                  <div key={100000 + index}>
+                    <div id={`nti${idCount.current += 1 }`} className={`next-track-info audioId${track.id}`}>{`{"tracklocation":"${track.tracklocation}","trackname":"${track.trackname}","audioId":"${track.id}", "trackartist":"${track.trackartist}", "trackart":"${track.trackart}"}`}</div> 
+                    {console.log("nnnnnttttttiiii ", idCount.current)}
+                    <h3 class={"pl2-album-track"} onClick={()=>{props.setTrack(track.tracklocation, track.trackname, track.trackartist, track.id, track.trackart)}}>{track.trackname}</h3>
+                  </div>
+                
                 )
             })}
           </div>
@@ -90,7 +57,17 @@ return (
       )
     })
     : ""}
+      </>
+    )
 
+  }, [albumArrayState])
+
+return (
+  <div id={"pl2-album-page-c"}>
+    <div id={"pl2-album-page-top"}>
+      <h1>Albums</h1>
+    </div>
+    {albumPage}
   </div>
 )
 
