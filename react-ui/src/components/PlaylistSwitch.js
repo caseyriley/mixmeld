@@ -29,7 +29,14 @@ const PlaylistSwitch = (props)=>{
             )
           case "SearchTracklist2":
             return (
-              <SearchTracklist2 queryState={props.queryState}/>
+              <div id={"pl2-search-position"}>
+                <SearchTracklist2 queryState={props.queryState}/>
+                <Tracklist2 refreshTrackState={props.refreshTrackState} setRefreshTrackState={props.setRefreshTrackState} 
+                selectedPlaylistState={props.selectedPlaylistState} playlistState={props.playlistState} 
+                playlistIdRef={props.playlistIdRef} addToPlaylistState={props.addToPlaylistState} 
+                trackEditState={props.trackEditState} setTrackEditState={props.setTrackEditState} 
+                setTrack={props.setTrack} setTrackArrayLengthState={props.setTrackArrayLengthState}/>
+              </div>
             )
           case "Pl2AlbumPage":
             return (
