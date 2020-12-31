@@ -4,6 +4,7 @@ import { API_URL } from '../config';
 
 
 const UploadingTrackPl2 = (props) => {
+  
 
 // ---------------get-mp3-meta-data---------------
 // function getMp3MetaData(){
@@ -57,10 +58,28 @@ const UploadingTrackPl2 = (props) => {
     const formattedTime = `${new Date(time * 1000).toISOString().substr(start, end)}`
     return formattedTime;
   }
+  
 
-
+function removeSpecialChars(str) {
+  return str.replace(/[^\w\s\\.\\*\\_\\(\\)!\\'-]/gi, '');           
+}
 
   const upload = (e) => {
+    console.log("e.target.value", e.target.value)
+    console.log("e.target.files[0]", e.target.files[0])
+    const prevName = e.target.files[0]["name"]
+    let newFile = e.target.files[0]
+
+    Object.defineProperties(newFile, {
+      name: {
+        value: `${removeSpecialChars(prevName)}`,
+        writable: true,
+        configurable: true
+      },
+    });
+
+    console.log("newFile ===>", newFile)
+
     props.setUploadModalState("upload-modal");
     
     let formattedTime;
@@ -102,8 +121,8 @@ const UploadingTrackPl2 = (props) => {
        
     }
 
-
-
+//https://formless.s3.amazonaws.com/You%2520are%2520the%2520sunshine%2520of%2520my%2520life.mp3
+//https://formless.s3.amazonaws.com/You%20are%20the%20sunshine%20of%20my%20life.mp3
   return (
     <>
       <div id={"pl2-uploading-track-c"}>
