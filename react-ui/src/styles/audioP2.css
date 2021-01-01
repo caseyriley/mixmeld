@@ -892,6 +892,7 @@ li {
   width: 0px;
   height: 0px;
   pointer-events: none;
+  position: absolute;
 }
 /* --------UploadTrackPl2--------------------- */
 #pl2-uploading-track-visibility {

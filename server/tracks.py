@@ -169,7 +169,6 @@ def get_user_tracks_sort_by_trackartist(id):
 @tracks.route("/search/<params>", methods=["GET"])
 def search_tracks(params):
     parameters = json.loads(params)
-    # print("parameters**************************",parameters)
     id = parameters["id"]
     val = parameters["val"]
 
@@ -183,39 +182,39 @@ def search_tracks(params):
     album_name_list = []
 
     def closeMatch(x):
-        difflib.get_close_matches(val, x, n=100, cutoff=0.8)
+        difflib.get_close_matches(val, x, n=100, cutoff=0.0)
 
     for track in tracks_trackname:
         if track.trackname != "":
-            track_name = track.trackname
-            track_name_list.append(track_name)
+            track_dict = track.to_dict()
+            track_name_list.append(track_dict)
         else:
             pass
 
     for track in tracks_trackartist:
         if track.trackartist != "":
-            artist_name = track.trackartist
-            artist_name_list.append(artist_name)
+            isIn = False
+            for track_obj in artist_name_list:
+                if track_obj["trackartist"] == track.trackartist:
+                    isIn = True
+            if isIn == False:
+                track_dict = track.to_dict()
+                artist_name_list.append(track_dict)
+            isIn = False
         else:
             pass
 
     for track in tracks_trackalbum:
         if track.trackalbum != "":
-            album_name = track.trackalbum 
-            album_name_list.append(album_name)
+            track_dict = track.to_dict()
+            album_name_list.append(track_dict)
         else:
             pass
     
-    # if len(val) > 2:
-    #     search_list.append(sorted(track_name_list, key = closeMatch))
-    #     search_list.append(sorted(artist_name_list, key = closeMatch))
-    #     search_list.append(sorted(album_name_list, key = closeMatch))
-    # else:
     search_list.append(track_name_list)
     search_list.append(artist_name_list)
     search_list.append(album_name_list)
 
-    # print("yyyyyyyyyyyyyyyyyyyyyyyyyyy",jsonify(model_track))
     return jsonify(search_list)
 
 @tracks.route("/user/trackrating/<id>", methods=["GET"])

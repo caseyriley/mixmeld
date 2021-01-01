@@ -371,12 +371,12 @@ const AudioPlayer2 = (props)=>{
     
   }
 //----------------------------------------------
+
 //---------------Set-Track-Onclick-Via-Search------
  
 
 
-  function setTrackViaSearch(track, songName, artistName, audioId, trackArt){
-
+  function setTrackViaSearch(track, songName, artistName, audioId, trackArt, page){
     media.current.setAttribute("src", track);
     playPauseMedia();
 
@@ -394,7 +394,18 @@ const AudioPlayer2 = (props)=>{
     setPl2TrackLocationState(track);
     
     currentTrack.current = audioId;
-    
+    setPlaylistSwitchState(page);
+    let selected = "Tracklist2";
+    if (page === "Tracklist2"){
+      selected = "selected-song"
+    }
+    if (page === "Pl2AlbumPage"){
+      selected = "selected-album"
+    }
+    if (page === "Pl2ArtistPage"){
+      selected = "selected-artist"
+    }
+    setArtistAlbumSongState(selected);
   }
 //----------------------------------------------
 
@@ -446,6 +457,7 @@ function nextTrack() {
 }
 // --------------------------------
   const [trackEditState, setTrackEditState] = useState(false);  
+  const [artistAlbumSongState, setArtistAlbumSongState] = useState("selected-song")
   
   
 
@@ -507,7 +519,7 @@ function nextTrack() {
      },[currentUser, refreshPlaylistState])
      // -----------------------------------------------------
        // ----------------Get-Selected-Playlists------------------------
-  const [selectedPlaylistState, setSelectedPlaylistState] = useState();
+       const [selectedPlaylistState, setSelectedPlaylistState] = useState();
   
 
   useEffect(() => {
@@ -545,7 +557,8 @@ function nextTrack() {
         addToPlaylistState={addToPlaylistState} toggleAddToPlaylist={toggleAddToPlaylist} 
         showTracklist={showTracklist} showPlaylist={showPlaylist} setQueryState={setQueryState} 
         setPlaylistSwitchState={setPlaylistSwitchState} currentUser={currentUser}
-        showPl2AlbumPage={showPl2AlbumPage} showPl2ArtistPage={showPl2ArtistPage}/>
+        showPl2AlbumPage={showPl2AlbumPage} showPl2ArtistPage={showPl2ArtistPage}
+        setArtistAlbumSongState={setArtistAlbumSongState} artistAlbumSongState={artistAlbumSongState}/>
 
         <div id={"pl2-audio-tracklist-c"}>
           <div id={"pl2-audio"} >
@@ -613,7 +626,8 @@ function nextTrack() {
         currentUser={currentUser} addToPlaylistState={addToPlaylistState} playlistSwitchState={playlistSwitchState} 
         trackEditState={trackEditState} 
         setTrackEditState={setTrackEditState} setTrackArrayLengthState={setTrackArrayLengthState}
-        queryState={queryState} />
+        queryState={queryState} setTrackViaSearch={setTrackViaSearch}
+        />
         </div>
       </div>
     </>

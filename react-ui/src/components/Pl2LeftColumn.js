@@ -7,7 +7,7 @@ import vinylRecord from "../images/vinylRecord.png"
 import circlePlusHollow from "../images/circlePlusHollow.png"
 
 const Pl2LeftColumn = (props) => {
-   const [artistAlbumSongState, setArtistAlbumSongState] = useState("selected-song")
+  //  const [artistAlbumSongState, setArtistAlbumSongState] = useState("selected-song")
   // -----------------Playlist-Modal----------------------
   const [playlistModalState, setPlaylistModalState] = useState(false);
   function toggleModal(){
@@ -138,15 +138,15 @@ const Pl2LeftColumn = (props) => {
           </div>
             <div id={"pl2-left-column__scroll-outer"}>
               <div id={"pl2-left-column__scroll-inner"} >
-              <div className={`${artistAlbumSongState === "selected-artist" ? "selected-artist" : ""} select-artist`} onClick={(()=>{setArtistAlbumSongState("selected-artist"); props.showPl2ArtistPage()})}>
+              <div className={`${props.artistAlbumSongState === "selected-artist" ? "selected-artist" : ""} select-artist`} onClick={(()=>{props.setArtistAlbumSongState("selected-artist"); props.showPl2ArtistPage()})}>
                 <img className={"selectIcon"} src={vintageMic} alt={""} />
                 <span>Artists</span>
               </div>
-              <div className={`${artistAlbumSongState === "selected-album" ? "selected-album" : ""} select-album`} onClick={()=>{setArtistAlbumSongState("selected-album"); props.showPl2AlbumPage()}}>
+              <div className={`${props.artistAlbumSongState === "selected-album" ? "selected-album" : ""} select-album`} onClick={()=>{props.setArtistAlbumSongState("selected-album"); props.showPl2AlbumPage()}}>
                 <img className={"selectIcon"} src={vinylRecord} alt={""} />
                 <span>Albums</span>
               </div>
-              <div className={`${artistAlbumSongState === "selected-song" ? "selected-song" : ""} select-song`} onClick={()=>{setArtistAlbumSongState("selected-song"); props.showTracklist() }}>
+              <div className={`${props.artistAlbumSongState === "selected-song" ? "selected-song" : ""} select-song`} onClick={()=>{props.setArtistAlbumSongState("selected-song"); props.showTracklist() }}>
                 <img className={"selectIcon"} src={noteFloat} alt={""}  />
                 <span>Tracks</span>
               </div>
