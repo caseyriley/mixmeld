@@ -31,7 +31,7 @@ const PlaylistSwitch = (props)=>{
             return (
               <div id={"pl2-search-position"}>
                 <SearchTracklist2 queryState={props.queryState} setTrackViaSearch={props.setTrackViaSearch}
-                />
+                scrollToThis={props.scrollToThis} scrollToTargetAdjusted={props.scrollToTargetAdjusted}/>
                 <Tracklist2 refreshTrackState={props.refreshTrackState} setRefreshTrackState={props.setRefreshTrackState} 
                 selectedPlaylistState={props.selectedPlaylistState} playlistState={props.playlistState} 
                 playlistIdRef={props.playlistIdRef} addToPlaylistState={props.addToPlaylistState} 

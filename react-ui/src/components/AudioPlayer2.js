@@ -546,6 +546,28 @@ function nextTrack() {
   },[playlistIdRef, refreshPlaylistState, refreshTrackState])
   // -----------------------------------------------------
   const [queryState, setQueryState] = useState();
+
+  function scrollToThis(className){
+    setTimeout(() => {
+      const newTrackInfo = document.getElementsByClassName(className);
+      newTrackInfo[0].nextSibling.scrollIntoView({ behavior: 'smooth', alignToTop:false }) 
+    }, 500);
+    
+  }
+
+  function scrollToTargetAdjusted(className){
+    setTimeout(() => {
+      const element = document.getElementsByClassName(className);
+      var headerOffset = 45;
+      var elementPosition = element[0].getBoundingClientRect().top;
+      var offsetPosition = elementPosition - headerOffset;
+
+      window.scrollTo({
+          top: -500,
+          behavior: "smooth"
+      });
+    }, 500);
+}
  
   return(
     <>
@@ -627,6 +649,7 @@ function nextTrack() {
         trackEditState={trackEditState} 
         setTrackEditState={setTrackEditState} setTrackArrayLengthState={setTrackArrayLengthState}
         queryState={queryState} setTrackViaSearch={setTrackViaSearch}
+        scrollToThis={scrollToThis} scrollToTargetAdjusted={scrollToTargetAdjusted}
         />
         </div>
       </div>

@@ -521,8 +521,8 @@ div.control-2 span.eq-3 span.eq-level
 /* ------------Track-List------------ */
 #pl2-playlist-border {
   width: 100%;
-  height: 100%;
-  position: relative;
+  /* height: 100%; */
+  /* position: relative; */
   /* border-radius: 10px; */
   display: flex;
   justify-content: center;
@@ -549,7 +549,8 @@ div.control-2 span.eq-3 span.eq-level
   /* border-radius: 10px; */
   /* box-shadow: 1px 1px 5px rgba(237, 45, 255, 0.6), -1px -1px 5px rgba(237, 45, 255, 0.6), 1px 1px 10px rgba(241, 145, 250, 0.5), -1px -1px 10px rgba(241, 145, 250, 0.5);
   box-shadow: 1px 1px 5px rgba(221, 182, 224, 0.6), -1px -1px 5px rgba(221, 182, 224, 0.6), 1px 1px 10px rgba(221, 182, 224, 0.6), -1px -1px 10px rgba(221, 182, 224, 0.6); */
-  position: absolute;
+  /* position: absolute; */
+  /* position: relative; */
   overflow: hidden;
 }
 #pl2-playlist-c__top-c {
@@ -677,19 +678,35 @@ div.control-2 span.eq-3 span.eq-level
 li {
   margin: 0px;
 }
-
-#pl2-track-ul {
+#pl2-track-ul-c {
   width: 100%;
-  max-height: 100%;
+  /* height: 100%; */
   margin: 0px;
   padding: 0px;
-  overflow-y: scroll;
+  /* position: relative; */
+  /* overflow-y: scroll; */
   overflow-x: hidden;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
 }
+#pl2-track-ul {
+  width: 100%;
+  /* height: 300px; */
+  /* max-height: 100%; */
+  margin: 0px;
+  padding: 0px;
+  position: relative;
+  /* overflow-y: scroll; */
+  overflow-x: hidden;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+
 
 .pl2-track-ul__li {
   min-height: 30px;
@@ -893,6 +910,7 @@ li {
   height: 0px;
   pointer-events: none;
   position: absolute;
+  overflow: hidden;
 }
 /* --------UploadTrackPl2--------------------- */
 #pl2-uploading-track-visibility {
@@ -917,6 +935,7 @@ li {
 #Pl2-uploading-track {
   opacity: 0;
   cursor: pointer;
+  
 }
 /* --------------------------------- */
 .hidden {

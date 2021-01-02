@@ -2,6 +2,8 @@ import React from 'react';
 
 const SearchTracklist2 = (props) => {
 
+
+
   return (
     <div id={"pl2-search-c"}>
       <div className={"pl2-search-column"}>
@@ -11,7 +13,7 @@ const SearchTracklist2 = (props) => {
         {props.queryState ? props.queryState[0].map(track => {
           return (
             <div>
-              <span onClick={()=>{props.setTrackViaSearch(track.tracklocation, track.trackname, track.trackartist, track.id, track.trackart, "Tracklist2")}}>{track["trackname"]}</span>
+              <span onClick={()=>{props.setTrackViaSearch(track.tracklocation, track.trackname, track.trackartist, track.id, track.trackart, "Tracklist2"); props.scrollToThis(`audioId${track.id}`)}}>{track["trackname"]}</span>
             </div> 
           )     
         })
