@@ -392,8 +392,8 @@ function toStandardTime(militaryTime) {
                 <li name={index} className={"pl2-track-ul__li"} key={index} >
                   <div id={`nti${index}`} className={`next-track-info audioId${audio.id}`}>{`{"tracklocation":"${audio.tracklocation}","trackname":"${audio.trackname}","audioId":"${audio.id}", "trackartist":"${audio.trackartist}", "trackart":"${audio.trackart}"}`}</div> 
                   <div className={`pl2-track-ul__li__rating ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`}>
-                    {props.trackEditState ? 
-                      <>
+                    {/* {props.trackEditState ? 
+                      <> */}
                        
                         <div className={"pl2-track-artist-rating__div"} onClick={()=>{launchTrackRatingModal(audio)}}>
                           <span className={"pl2-track-artist-rating-span"} >{audio.trackrating ? audio.trackrating : ""}</span>
@@ -411,10 +411,10 @@ function toStandardTime(militaryTime) {
                           />
                           <input className={"pl2-track-artist-name-submit"} type={"submit"} />
                         </form>  */}
-                      </> :
-                      <span className={"pl2-track-artist-rating-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.trackartist, audio.id, audio.trackart)}}>{audio.trackrating ? audio.trackrating : ""} </span>
+                      {/* </> :
+                      <span className={"pl2-track-artist-rating-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.trackartist, audio.id, audio.trackart)}}>{audio.trackrating ? audio.trackrating : ""} </span> */}
                       
-                    }
+                    {/* } */}
                   </div>
 
                   <div className={`pl2-track-ul__li__name ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`} >
