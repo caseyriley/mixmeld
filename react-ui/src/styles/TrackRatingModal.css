@@ -33,6 +33,11 @@
   top: calc(15% + 20px);
   right: calc(15% + 20px);
   filter: invert() brightness(70%);
+  cursor: pointer;
+  transition: filter .3s;
+}
+#track-rating-modal-close-button:hover {
+  filter: invert() brightness(90%);
 }
 #track-rating-name {
   color: lightgray;
@@ -102,6 +107,7 @@
   outline: none;
   border: none;
   background-color: #d9d9d9;
+  cursor: pointer;
 }
 #rating-number-input:in-range {
   text-align: center;
@@ -115,6 +121,7 @@
   border-radius: 8px;
   background-color: #d9d9d9;
   outline: none;
+  cursor: pointer;
 }
 #pl2-track-genre-input-submit {
   position: absolute;
@@ -129,4 +136,9 @@
   color: rgb(36, 36, 36);
   border: none;
   outline: none;
+  cursor: pointer;
+  transition: background-color .3s;
+}
+#pl2-track-genre-input-submit:hover {
+  background-color: #a2a2a2;
 }

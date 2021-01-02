@@ -164,7 +164,7 @@ box-shadow: 0px 10px 13px -7px #000000, 5px 10px 15px 5px rgba(0,0,0,0);
   position: relative;
 }
 .pl2-track-rating-input {
-  background-color: transparent;
+  background-color: transparent !important;
   width: 100px;
   height: 100%;
   font-family: 'Electrolize', sans-serif;
