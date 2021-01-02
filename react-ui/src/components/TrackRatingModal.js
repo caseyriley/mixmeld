@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, {useRef} from 'react';
 import ReactDom from 'react-dom';
+import CloseButton from '../images/CloseButton';
 
 
 
@@ -42,6 +43,9 @@ const TrackRatingModal = (props) => {
     <div>
       <div id={"track-rating-modal-background"} onClick={()=>{props.setTrackRatingModalState(false)}}></div>
         <div id={"track-rating-modal-top"}>
+          <div id={"track-rating-modal-close-button"} onClick={()=>{props.setTrackRatingModalState(false)}}>
+            <CloseButton/>
+          </div>         
           <span id={'track-rating-name'}>{props.ratingAudioState.trackname}</span>
           <span className={'track-rating-text'}>Your Rating</span>
           
@@ -51,7 +55,7 @@ const TrackRatingModal = (props) => {
               type={"text"}
               // id={"pl2-track-genre-input"} 
               // id={`genre-${index}`} 
-              className={"pl2-track-genre-input"}
+              className={"pl2-track-rating-input"}
               maxLength={100} 
               placeholder={props.ratingAudioState.trackrating ? props.ratingAudioState.trackrating : ""} 
             />
