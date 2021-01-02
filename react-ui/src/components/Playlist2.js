@@ -272,22 +272,27 @@ function deleteFromPlaylist(trackId){
 
     let playlistTime = 0;
     if (props.selectedPlaylistState) {
-      async function addTrackTime(){
-        for (let i = 0; i < props.selectedPlaylistState.length; i ++){
-          const trackTime = props.selectedPlaylistState[i].tracktime.split(":");
-          console.log("trackTime",trackTime)
-          if (trackTime.length < 3){
-            const minToSec = Number(trackTime[0]) * 60;
-            const seconds = Number(trackTime[1]);
-            const totallMilliseconds = (minToSec + seconds) 
-            playlistTime += totallMilliseconds;
-            
+      if (props.selectedPlaylistState.length > 0){
+        async function addTrackTime(){
+          for (let i = 0; i < props.selectedPlaylistState.length; i ++){
+            const trackTime = props.selectedPlaylistState[i].tracktime.split(":");
+            console.log("trackTime",trackTime)
+            if (trackTime.length < 3){
+              const minToSec = Number(trackTime[0]) * 60;
+              const seconds = Number(trackTime[1]);
+              const totallMilliseconds = (minToSec + seconds) 
+              playlistTime += totallMilliseconds;
+              
+            }
+            const formattedTime = await formatTime(playlistTime)
+            setTotallPlaylistTime(formattedTime);
           }
-          const formattedTime = await formatTime(playlistTime)
-          setTotallPlaylistTime(formattedTime);
         }
+        addTrackTime();
       }
-      addTrackTime();
+      
+    } else {
+      setTotallPlaylistTime(null);
     }
     
   }, [props.selectedPlaylistState])

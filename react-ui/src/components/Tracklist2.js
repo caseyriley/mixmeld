@@ -7,6 +7,7 @@ import deleteX from '../images/deleteX.png';
 import UploadModal from './UploadModal';
 import UploadingTrackPl2 from './UploadingTrackPl2';
 import plusSign from '../images/plusSign.png';
+import TrackRatingModal from './TrackRatingModal';
 
 
 
@@ -194,6 +195,7 @@ function updateTrackRating(e) {
     fetch(`${API_URL}/tracks/track_rating`, options)
     props.setRefreshTrackState(props.refreshTrackState + 1)
     props.setTrackEditState(false)
+    setTrackRatingModalState(false)
   }
   newRating();
 
@@ -353,10 +355,17 @@ function toStandardTime(militaryTime) {
     
   }, [props.selectedPlaylistState])
 // ----------------------------------------------
+  const [trackRatingModalState, setTrackRatingModalState] = useState(false);
+  const [ratingAudioState, setRatingAudioState] = useState();
+  function launchTrackRatingModal(audio){
+    setTrackRatingModalState(true)
+    setRatingAudioState(audio)
+  }
 
   return(
-    <>{uploadModalState === "upload-modal" ? <UploadModal currentUser={currentUser} refreshTrackState={props.refreshTrackState} setRefreshTrackState={props.setRefreshTrackState} uploadModalState={uploadModalState} setUploadModalState={setUploadModalState} setTrackLocationState={setTrackLocationState} trackLocationState={trackLocationState}/> : ""}
-  
+    <>
+    {uploadModalState === "upload-modal" ? <UploadModal currentUser={currentUser} refreshTrackState={props.refreshTrackState} setRefreshTrackState={props.setRefreshTrackState} uploadModalState={uploadModalState} setUploadModalState={setUploadModalState} setTrackLocationState={setTrackLocationState} trackLocationState={trackLocationState}/> : ""}
+    { trackRatingModalState ? <TrackRatingModal updateTrackRating={updateTrackRating} ratingAudioState={ratingAudioState}  setTrackRatingModalState={setTrackRatingModalState}/> : null}
     <div id={"pl2-playlist-border"}>
       <div id={"pl2-playlist-c"} >
         <div id={"pl2-playlist-c__top-c"}>
@@ -385,7 +394,13 @@ function toStandardTime(militaryTime) {
                   <div className={`pl2-track-ul__li__rating ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`}>
                     {props.trackEditState ? 
                       <>
-                        <form name={audio.id} onSubmit={e=> {e.preventDefault(); updateTrackRating(e)}}> 
+                       
+                        <div className={"pl2-track-artist-rating__div"} onClick={()=>{launchTrackRatingModal(audio)}}>
+                          <span className={"pl2-track-artist-rating-span"} >{audio.trackrating ? audio.trackrating : ""}</span>
+                        </div>
+                       
+                    
+                        {/* <form name={audio.id} onSubmit={e=> {e.preventDefault(); updateTrackRating(e)}}> 
                           <input 
                             type={"text"}
                             // id={"pl2-track-genre-input"} 
@@ -395,7 +410,7 @@ function toStandardTime(militaryTime) {
                             placeholder={audio.trackrating ? audio.trackrating : ""} 
                           />
                           <input className={"pl2-track-artist-name-submit"} type={"submit"} />
-                        </form> 
+                        </form>  */}
                       </> :
                       <span className={"pl2-track-artist-rating-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.trackartist, audio.id, audio.trackart)}}>{audio.trackrating ? audio.trackrating : ""} </span>
                       

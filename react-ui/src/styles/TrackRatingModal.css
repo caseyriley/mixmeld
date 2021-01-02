@@ -1,0 +1,124 @@
+#track-rating-modal-background {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(255, 255, 255, .7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+
+
+}
+#track-rating-modal-top {
+  width: 70vw;
+  height: 70vh;
+  background-color: rgb(68, 68, 68);
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  margin: 15vh 15vw 15vh 15vw;
+  border-radius: 20px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+
+}
+#track-rating-name {
+  color: lightgray;
+  font-weight: 900;
+  color: #d9d9d9;
+  font-family: 'Audiowide', cursive;
+  background: rgb(232, 232, 232,.1);
+  padding: 5px 15px 5px 15px;
+  border-radius: 999px;
+  text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+  box-shadow: 0px 10px 13px -7px #000000, 5px 10px 15px 5px rgba(0,0,0,0);
+  font-size: 1.5em;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+.track-rating-text {
+  font-weight: 900;
+    color: rgb(171, 170, 170);
+    background: rgb(14, 14, 14, .0);
+    padding: 5px 15px 5px 15px;
+    border-radius: 999px;
+    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+    display: block;
+    font-size: 1.17em;
+    /* margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px; */
+}
+#track-rating-form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.pl2-track-genre-input {
+  /* background-color: transparent; */
+  background-color: darkgrey;
+  width: 200px;
+  height: 30px;
+  font-family: 'Electrolize', sans-serif;
+  font-size: 20px;
+  color: rgb(192, 192, 192);
+  border: none;
+  outline: none;
+  margin: 20px 0px 20px 0px;
+  text-align: center;
+  padding: 0px;
+  pointer-events: all;
+  border-radius: 6px;
+  
+}
+#select-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0px 20px 0px;
+}
+#rating-number-input {
+  width: 50px;
+  height: 50px;
+  font-size: 25px;
+  border-radius: 8px;
+  margin: 0px 20px 0px 0px;
+  outline: none;
+  border: none;
+  background-color: #d9d9d9;
+}
+#rating-number-input:in-range {
+  text-align: center;
+  
+
+}
+#emoji-select {
+  height: 54px;
+  width: 52px;
+  font-size: 25px;
+  border-radius: 8px;
+  background-color: #d9d9d9;
+}
+#pl2-track-genre-input-submit {
+  position: absolute;
+  width: 150px;
+  height: 30px;
+  top: 200px;
+  left: calc(50% - 75px);
+  border-radius: 6px;
+  font-family: 'Electrolize', sans-serif;
+  font-size: 15px;
+  background-color: #d9d9d9;
+  color: rgb(36, 36, 36);
+  border: none;
+  outline: none;
+}

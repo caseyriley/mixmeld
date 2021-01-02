@@ -327,7 +327,7 @@ const AudioPlayer2 = (props)=>{
     if (vol > 0.98) {
       vol = 1;
     }
-    if (vol < 0.04) {
+    if (vol < 0.1) {
       vol = 0;
     }
     media.current.volume = vol;
