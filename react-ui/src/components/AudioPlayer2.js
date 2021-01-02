@@ -551,8 +551,20 @@ function nextTrack() {
     setTimeout(() => {
       const newTrackInfo = document.getElementsByClassName(className);
       newTrackInfo[0].nextSibling.scrollIntoView({ behavior: 'smooth', alignToTop:false }) 
+    }, 500); 
+  }
+  function scrollToThis2(className){
+    setTimeout(() => {
+      const newTrackInfo = document.getElementsByClassName(className);
+      newTrackInfo[0].parentNode.parentNode.parentNode.previousSibling.scrollIntoView({ behavior: 'smooth', alignToTop:false })  
     }, 500);
-    
+  }
+
+  function scrollToThis3(className){
+    setTimeout(() => {
+      const newTrackInfo = document.getElementsByClassName(className);
+      newTrackInfo[0].parentNode.parentNode.scrollIntoView({ behavior: 'smooth', alignToTop:false })  
+    }, 500);
   }
 
   function scrollToTargetAdjusted(className){
@@ -649,7 +661,7 @@ function nextTrack() {
         trackEditState={trackEditState} 
         setTrackEditState={setTrackEditState} setTrackArrayLengthState={setTrackArrayLengthState}
         queryState={queryState} setTrackViaSearch={setTrackViaSearch}
-        scrollToThis={scrollToThis} scrollToTargetAdjusted={scrollToTargetAdjusted}
+        scrollToThis={scrollToThis} scrollToThis2={scrollToThis2} scrollToThis3={scrollToThis3} scrollToTargetAdjusted={scrollToTargetAdjusted}
         />
         </div>
       </div>

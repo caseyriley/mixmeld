@@ -113,9 +113,10 @@ box-shadow: 0px 10px 13px -7px #000000, 5px 10px 15px 5px rgba(0,0,0,0);
   justify-content: flex-start;
   align-items: flex-start;
 }
-/* .pl2-album-track-c {
-  border: 1px solid red;
-} */
+.pl2-album-track-c {
+  scroll-margin: 120px;
+
+}
 .pl2-album-track {
   color: white;
 

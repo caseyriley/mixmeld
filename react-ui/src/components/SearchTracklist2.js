@@ -26,7 +26,7 @@ const SearchTracklist2 = (props) => {
         {props.queryState ? props.queryState[1].map(track => {
           return (
             <div>
-              <span onClick={()=>{props.setTrackViaSearch(track.tracklocation, track.trackname, track.trackartist, track.id, track.trackart, "Pl2ArtistPage")}}>{track["trackartist"]}</span>
+              <span onClick={()=>{props.setTrackViaSearch(track.tracklocation, track.trackname, track.trackartist, track.id, track.trackart, "Pl2ArtistPage"); props.scrollToThis2(`audioId${track.id}`)}}>{track["trackartist"]}</span>
             </div> 
           )
          
@@ -41,7 +41,7 @@ const SearchTracklist2 = (props) => {
         {props.queryState ? props.queryState[2].map(track => {
           return (
             <div>
-              <span onClick={()=>{props.setTrackViaSearch(track.tracklocation, track.trackname, track.trackartist, track.id, track.trackart, "Pl2AlbumPage")}}>{track["trackalbum"]}</span>
+              <span onClick={()=>{props.setTrackViaSearch(track.tracklocation, track.trackname, track.trackartist, track.id, track.trackart, "Pl2AlbumPage"); props.scrollToThis3(`audioId${track.id}`)}}>{track["trackalbum"]}</span>
             </div> 
           )
          
