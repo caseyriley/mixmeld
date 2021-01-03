@@ -78,7 +78,9 @@
   justify-content: flex-start;
   align-items: center;
   margin: 0px 0px 0px 5%;
+
 }
+
 .select-artist span,
 .select-album span,
 .select-song span {
@@ -86,13 +88,20 @@
   color: rgb(192, 192, 192);
   margin: 0px 0px 0px 10px;
   cursor: pointer;
+  transition: all .3s;
+
+}
+.select-artist span:hover,
+.select-album span:hover,
+.select-song span:hover {
+  color:  rgb(237, 149, 237);
 }
 
 .selected-artist,
 .selected-album,
 .selected-song {
   background-color: rgb(210, 210, 210);
-  
+  transition: background-color .3s;
 }
 .selected-artist span,
 .selected-album span,
@@ -116,6 +125,7 @@
   margin: 10px 0px 10px 5%;
   border: 1px double lightgray;
   border-radius: 5px;
+  transition: all .3s;
 
 }
 .add-to-playlist span{
@@ -125,14 +135,17 @@
   margin: 0px 0px 0px 0px;
 }
 .add-to-playlist:hover {
-  background-color: grey;
+  background-color: rgb(100, 99, 99);
   cursor: pointer;
+  
+  
 }
 .add-to-playlist--on {
-  border: 1px double  rgb(237, 149, 237);
+  border: 1px double rgb(162, 148, 255);
+  background-color: rgb(97, 97, 97);
 }
 .add-to-playlist--on  span{
-  color:  rgb(237, 149, 237);
+  color:  rgb(162, 148, 255);
   font-family: 'Electrolize', sans-serif;
  
 }
@@ -147,6 +160,7 @@
 .left-playlist span {
   font-size: 15px;
   color: rgb(192, 192, 192);
+  
 }
 .left-playlist-add {
   width: 30px;
@@ -160,6 +174,17 @@
   width: 15px;
   height: 15px;
   opacity: .8;
+  transition: all .3s;
+  border-radius: 100%;
+  border: 1px solid rgb(176, 176, 176);
+  background-color: rgb(176, 176, 176);
+}
+.left-playlist-add img:hover {
+  /* filter: brightness(20%); */
+  /* opacity: .3; */
+  border: 1px solid rgb(211, 211, 211);
+  background-color: rgb(211, 211, 211);
+
 }
 .left-playlist-name {
   height: 30px;
@@ -171,6 +196,10 @@
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
+  transition: all .3s;
+}
+.left-playlist-name:hover {
+  color:  rgb(237, 149, 237);
 }
 #left-playlist-bottom-space {
   height: 40px;
@@ -198,6 +227,11 @@
   white-space: nowrap;
   cursor: pointer;
   margin: 0px 0px 0px 10px;
+  transition: all .3s;
+}
+.playlist-button-c span:hover{
+
+  color:  rgb(162, 148, 255);
 }
 .playlist-highlight {
   background-color: lightgrey;
