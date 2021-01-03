@@ -556,7 +556,7 @@ function nextTrack() {
   function scrollToThis2(className){
     setTimeout(() => {
       const newTrackInfo = document.getElementsByClassName(className);
-      newTrackInfo[0].parentNode.parentNode.parentNode.previousSibling.scrollIntoView({ behavior: 'smooth', alignToTop:false })  
+      newTrackInfo[0].parentNode.parentNode.parentNode.previousSibling.parentElement.parentElement.parentElement.scrollIntoView({ behavior: 'smooth', alignToTop:false })  
     }, 500);
   }
 
@@ -583,7 +583,7 @@ function nextTrack() {
  
   return(
     <>
-      <div id={"pl2-main-page"}>
+      <div id={"pl2-main-page"} >
 
         <Pl2LeftColumn refreshTrackState={refreshTrackState} setRefreshTrackState={setRefreshTrackState} 
         setRefreshPlaylistState={setRefreshPlaylistState} refreshPlaylistState={refreshPlaylistState}
@@ -594,7 +594,7 @@ function nextTrack() {
         showPl2AlbumPage={showPl2AlbumPage} showPl2ArtistPage={showPl2ArtistPage}
         setArtistAlbumSongState={setArtistAlbumSongState} artistAlbumSongState={artistAlbumSongState}/>
 
-        <div id={"pl2-audio-tracklist-c"}>
+        <div id={"pl2-audio-tracklist-c"} className={"fade-in-2"}>
           <div id={"pl2-audio"} >
             <audio
               id={"audio"}

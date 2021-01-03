@@ -64,6 +64,7 @@ const Pl2AlbumPage = (props) => {
 
 return (
   <div id={"pl2-album-page-c"}>
+    
     <div id={"pl2-album-page-top"}>
       <h1>Albums</h1>
     </div>

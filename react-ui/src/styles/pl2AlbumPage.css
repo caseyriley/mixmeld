@@ -21,9 +21,13 @@
 #pl2-album-page-top {
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
+  margin-top: 20px;
+
 }
+
 #pl2-album-page-c h1,
 #pl2-album-page-c h2 {
   margin-block-start: 0px;
@@ -45,6 +49,7 @@
 box-shadow: 0px 10px 13px -7px #000000, 5px 10px 15px 5px rgba(0,0,0,0);
 
 }
+
 #pl2-album-page-c h2 {
     margin-block-end: 0px;
     margin: 0px 0px 0px 20px;

@@ -7,7 +7,7 @@ const AudioPlayerSwitch = (props)=>{
   return (
     <>
       {(()=>{
-        switch(props.audioSwitchState ? props.audioSwitchState : "AudioPlayer1") {
+        switch(props.audioSwitchState ? props.audioSwitchState : "AudioPlayer2") {
           case "AudioPlayer1":
             return (
               <AudioPlayer1/>

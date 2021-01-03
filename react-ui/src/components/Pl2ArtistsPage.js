@@ -76,10 +76,11 @@ const Pl2ArtistsPage = (props) => {
   },[artistArrayState])
 
   return (
+    <>
     <div id={"pl2-album-page-c"}>
       {artistPage}
     </div>
-
+    </>
   )
 }
 export default Pl2ArtistsPage;

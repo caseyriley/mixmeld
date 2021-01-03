@@ -3,6 +3,7 @@ import { API_URL } from '../config';
 import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
 import { v4 as uuidv4 } from 'uuid';
 import formlessMusicIcon from "../images/formless-music-icon.png"
+import TrackRatingModal from './TrackRatingModal';
 
 // const itemsFromBackend = [
 //   {id: uuidv4(), content: 'First task'},
@@ -193,6 +194,7 @@ function updateTrackRating(e) {
     fetch(`${API_URL}/tracks/track_rating`, options)
     props.setRefreshPlaylistState(props.refreshPlaylistState + 5)
     setTrackEditState(false)
+    setTrackRatingModalState(false)
   }
   newRating();
 
@@ -303,10 +305,16 @@ function deleteFromPlaylist(trackId){
     props.setTrackArrayLengthState(trackArraylength);
   })
   // --------------------------------
+  const [trackRatingModalState, setTrackRatingModalState] = useState(false);
+  const [ratingAudioState, setRatingAudioState] = useState();
+  function launchTrackRatingModal(audio){
+    setTrackRatingModalState(true)
+    setRatingAudioState(audio)
+  }
 
   return (
     <>
-      
+      { trackRatingModalState ? <TrackRatingModal updateTrackRating={updateTrackRating} ratingAudioState={ratingAudioState}  setTrackRatingModalState={setTrackRatingModalState}/> : null}
       <div id={"dnd"} >
         <DragDropContext onDragEnd={result => onDragEnd(result, columnsState, setColumnsState)}>
           {columnsState ? Object.entries(columnsState).map(([id, column]) => {
@@ -384,24 +392,10 @@ function deleteFromPlaylist(trackId){
                                             <span className={"pl2-playlist-date-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.trackartist, audio.id, audio.trackart)}} >{audio.created_date ? audio.created_date.slice(5, 16)+ " " + toStandardTime(audio.created_date.slice(16, 22)) : ""} </span>
                                           </div>
 
-                                          <div className={`pl2-playlist-ul__li__rating ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`}>                                         
-                                            {trackEditState ? 
-                                              <>
-                                                <form name={audio.id} onSubmit={e=> {e.preventDefault(); updateTrackRating(e)}}> 
-                                                  <input 
-                                                    type={"text"}
-                                                    // id={"pl2-track-genre-input"} 
-                                                    id={`genre-${index}`} 
-                                                    className={"pl2-track-rating-input"}
-                                                    maxLength={100} 
-                                                    placeholder={audio.trackrating ? audio.trackrating : ""} 
-                                                  />
-                                                  <input className={"pl2-track-artist-name-submit"} type={"submit"} />
-                                                </form> 
-                                              </> :
-                                              <span className={"pl2-track-artist-rating-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.trackartist, audio.id, audio.trackart)}}>{audio.trackrating ? audio.trackrating : ""} </span>
-                                              
-                                            }     
+                                          <div className={`pl2-playlist-ul__li__rating ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`} onClick={()=>{launchTrackRatingModal(audio)}}>                                         
+                                          
+                                              <span className={"pl2-track-artist-rating-span"} >{audio.trackrating}</span>
+                                             
                                           </div>
                                             
                                           <div className={"track-edit-c"} >

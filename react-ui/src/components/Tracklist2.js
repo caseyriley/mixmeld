@@ -193,9 +193,11 @@ function updateTrackRating(e) {
       body: JSON.stringify(trackData),
     }
     fetch(`${API_URL}/tracks/track_rating`, options)
-    props.setRefreshTrackState(props.refreshTrackState + 1)
-    props.setTrackEditState(false)
     setTrackRatingModalState(false)
+    setTimeout(() => {
+      props.setRefreshTrackState(props.refreshTrackState + 1)
+    }, 100);
+    
   }
   newRating();
 
@@ -361,6 +363,7 @@ function toStandardTime(militaryTime) {
     setTrackRatingModalState(true)
     setRatingAudioState(audio)
   }
+  
 
   return(
     <>

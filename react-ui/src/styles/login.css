@@ -6,15 +6,40 @@
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
+  background-image: url("../images/tessalate3.jpg");
+  /* background-repeat: space; */
+  background-size: cover;
+}
+#login-c h1{
+  font-size: 4vw;
+  font-family: 'Source Code Pro', monospace;
+  font-family: 'Goldman', cursive;
+  font-family: 'Audiowide', cursive;
+  font-family: 'Syncopate', sans-serif;
+  letter-spacing: 5px;
+  color: rgb(0, 0, 0);
+  margin: 20px;
+  text-shadow: 2px 2px 0 rgb(239, 142, 248), 2px -2px 0 #25ff99, -2px 2px 0 #56caf8, -2px -2px 0 #56caf8, 2px 0px 0 #f7b867, 0px 2px 0 #dd4338, -2px 0px 0 #0c6fe9, 0px -2px 0 #f010e5;
 }
 #login-c__login-form{
   width: 30vw;
   height: 400px;
-  background-color: grey;
+  /* background-color: grey; */
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
+}
+#login-c__login-form label{
+  color: lightgray;
+  font-size: 20px;
+  font-family: 'Source Code Pro', monospace;
+  /* font-family: 'Goldman', cursive; */
+  /* font-family: 'Audiowide', cursive; */
+  font-family: 'Syncopate', sans-serif;
+  text-shadow: 0 0 10px rgba(0,0,0,1);
+  white-space: nowrap;
+
 }
 .login-input-1 {
   left: 70px;
@@ -42,5 +67,38 @@
   outline: none;
   border-radius: 20px;
   text-align: center;
+  
+}
+.login-button {
+  /* flex-wrap: wrap; */
+  color: lightgray;
+  background-color: grey;
+  font-size: 20px;
+  font-family: 'Source Code Pro', monospace;
+  font-family: 'Goldman', cursive;
+  font-family: 'Audiowide', cursive;
+  /* font-family: 'Syncopate', sans-serif; */
+  /* text-shadow: 0 0 10px rgba(0,0,0,1); */
+  /* width: 100px; */
+  height: 30px;
+  min-width: auto;
+  padding: 0px 15px 0px 15px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all .3s;
+  margin: 20px 0px 0px 0px;
+  box-sizing:border-box;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.login-button span {
+  /* position: absolute; */
+}
+.login-button:hover {
+  color: rgb(162, 148, 255);
+  background-color: rgb(69, 69, 69, .7);
+  border: 1px solid rgb(205, 205, 205);
   
 }

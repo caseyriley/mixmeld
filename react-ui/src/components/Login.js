@@ -83,17 +83,19 @@ const Login = () => {
   return(
     <>
       <div id={"login-c"}>
-        <h1 id={"main-page__title"} >Formless Audio Player</h1>
+        <h1 id={"main-page__title"} >Mixed Media</h1>
         <div id={"login-c__login-form"}>
-          <input className="login-input-1"  placeholder="Email" value={email} type="email" onChange={updateEmail} />
+          <label>Login Email</label>
+            <input className="login-input-1"  placeholder="Email" value={email} type="email" onChange={updateEmail} />
+            <label>Password</label>
           <input className="login-input-2" type="password" placeholder="Password" value={password} onChange={updatePassword} /> 
-          <div className="login-submit-button" onClick={handleSubmit}>
+          <div className="login-button" onClick={handleSubmit}>
             <span>Log in</span>
           </div>
-          <div className="login-block__demo--container" onClick={loginDemoUser}>
+          <div className="login-button" onClick={loginDemoUser}>
             <span>Log in as Demo User</span>
           </div>
-          <div className="login-block__signup--button" onClick={showSignUpModal}>
+          <div className="login-button" onClick={showSignUpModal}>
             <span>Sign up</span>
           </div>
 
