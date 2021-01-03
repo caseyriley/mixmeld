@@ -103,8 +103,9 @@
 }
 .login-footer__creditBox {
   position: fixed;
-  bottom: 40px;
-  right: 70px;
+  /* bottom: 40px; */
+  top: 480px;
+  right: calc(50% - 117px);
   width: 235px;
   height: 40px;
   /* border: 2px solid white; */
