@@ -14,14 +14,14 @@ const MainNav = (props)=>{
   }
   return(
     <div id={"main-nav"}>
-      <div className={"main-nav__option"} onClick={()=>{switchAudioPlayer("AudioPlayer1")}} >
+      {/* <div className={"main-nav__option"} onClick={()=>{switchAudioPlayer("AudioPlayer1")}} >
         <span>Stereo</span>
       </div>
       <div className={"main-nav__option"} onClick={()=>{switchAudioPlayer("AudioPlayer2")}} >
         <span>Track List</span>
-      </div>
+      </div> */}
       <div className={"main-nav__option"}>
-        <span>Playlist</span>
+        <span>Instructions</span>
       </div>
       <div className={"main-nav__option"} onClick={() => { 
       localStorage.removeItem("auth_token"); 
@@ -29,6 +29,7 @@ const MainNav = (props)=>{
       }}>
         <span>Logout</span>
       </div>
+
     </div>
   )
 }

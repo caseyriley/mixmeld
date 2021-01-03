@@ -8,9 +8,16 @@
 }
 .main-nav__option {
   margin: 10px;
-  /* font-family: 'Source Code Pro', monospace; */
-  /* font-family: 'Goldman', cursive; */
-  /* font-family: 'Audiowide', cursive; */
-  /* font-family: 'Syncopate', sans-serif; */
+  color: rgb(20, 20, 20);
   font-family: 'Electrolize', sans-serif;
+  transition: all .3s;
+  cursor: pointer;
+  padding: 1px 5px;
+  border-radius: 6px;
+  border: none;
+}
+.main-nav__option:hover {
+  color: rgb(162, 148, 255);
+  background-color: rgb(69, 69, 69, .7);
+  border: 1px solid rgb(205, 205, 205);
 }

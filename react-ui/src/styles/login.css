@@ -93,9 +93,7 @@
   cursor: pointer;
   white-space: nowrap;
 }
-.login-button span {
-  /* position: absolute; */
-}
+
 .login-button:hover {
   color: rgb(162, 148, 255);
   background-color: rgb(69, 69, 69, .7);
