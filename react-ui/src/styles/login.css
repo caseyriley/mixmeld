@@ -78,6 +78,7 @@
   font-family: 'Goldman', cursive;
   font-family: 'Audiowide', cursive;
   /* font-family: 'Syncopate', sans-serif; */
+  
   /* text-shadow: 0 0 10px rgba(0,0,0,1); */
   /* width: 100px; */
   height: 30px;
@@ -99,4 +100,52 @@
   background-color: rgb(69, 69, 69, .7);
   border: 1px solid rgb(205, 205, 205);
   
+}
+.login-footer__creditBox {
+  position: fixed;
+  bottom: 40px;
+  right: 70px;
+  width: 235px;
+  height: 40px;
+  /* border: 2px solid white; */
+  border-radius: 15px;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-evenly;
+  align-items: center;
+  /* box-shadow: 
+      inset 5px 4px 6px -4px rgba(255, 255, 255, 0.9), 
+      inset -5px -4px 3px -4px rgba(255, 255, 255, 0.9); */
+  cursor: pointer;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.login-footer__creditBox span {
+    font-family: 'Source Code Pro', monospace;
+  /* font-family: 'Goldman', cursive; */
+  /* font-family: 'Audiowide', cursive; */
+  font-family: 'Syncopate', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900;
+  color: rgb(182, 181, 181);
+  position: relative;
+  top: -2px;
+}
+.login-footer__creditBox--links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-footer__creditBox--links svg {
+  width: 20px;
+  height: 20px;
+  margin: 10px;
+  fill: white;
+  cursor: pointer;
+}
+.login-footer__creditBox--links img {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
 }
