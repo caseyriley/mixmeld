@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState} from 'react';
+import Instructions from './Instructions';
 
 const MainNav = (props)=>{
 
@@ -12,15 +13,17 @@ const MainNav = (props)=>{
     clearAllIntervals()
     props.SetAudioSwitchState(player)
   }
+  const [instructionsModalState, setInstructionsModalState] = useState(false);
   return(
     <div id={"main-nav"}>
+      {instructionsModalState ? <Instructions setInstructionsModalState={setInstructionsModalState}/> : null}
       {/* <div className={"main-nav__option"} onClick={()=>{switchAudioPlayer("AudioPlayer1")}} >
         <span>Stereo</span>
       </div>
       <div className={"main-nav__option"} onClick={()=>{switchAudioPlayer("AudioPlayer2")}} >
         <span>Track List</span>
       </div> */}
-      <div className={"main-nav__option"}>
+      <div className={"main-nav__option"} onClick={()=>{setInstructionsModalState(true)}}>
         <span>Instructions</span>
       </div>
       <div className={"main-nav__option"} onClick={() => { 
