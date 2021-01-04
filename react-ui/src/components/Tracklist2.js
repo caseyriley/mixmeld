@@ -336,11 +336,6 @@ function toStandardTime(militaryTime) {
   return `${first}:` + last + amPm;
 }
 // -------------------------------------------
-// --------------Upload-State------------------
-  const [uploadModalState, setUploadModalState] = useState("no-modal");
-  // const [uploadModalState, setUploadModalState] = useState("upload-modal"); 
-  const [trackLocationState, setTrackLocationState] = useState();
-//  ---------------------------------------------
 // -----------set-Playlist-Id-Array--------------
   const [playlistIdState, setPlaylistIdState] = useState([]);
 
@@ -367,7 +362,7 @@ function toStandardTime(militaryTime) {
 
   return(
     <>
-    {uploadModalState === "upload-modal" ? <UploadModal currentUser={currentUser} refreshTrackState={props.refreshTrackState} setRefreshTrackState={props.setRefreshTrackState} uploadModalState={uploadModalState} setUploadModalState={setUploadModalState} setTrackLocationState={setTrackLocationState} trackLocationState={trackLocationState}/> : ""}
+    {props.uploadModalState === "upload-modal" ? <UploadModal currentUser={currentUser} refreshTrackState={props.refreshTrackState} setRefreshTrackState={props.setRefreshTrackState} uploadModalState={props.uploadModalState} setUploadModalState={props.setUploadModalState} setTrackLocationState={props.setTrackLocationState} trackLocationState={props.trackLocationState}/> : ""}
     { trackRatingModalState ? <TrackRatingModal updateTrackRating={updateTrackRating} ratingAudioState={ratingAudioState}  setTrackRatingModalState={setTrackRatingModalState}/> : null}
     <div id={"pl2-playlist-border"}>
       <div id={"pl2-playlist-c"} >
@@ -375,7 +370,7 @@ function toStandardTime(militaryTime) {
           <div id={"pl2-playlist-c__top-c__rating"}><h2 onClick={()=>{organise("trackrating")}}>Rating</h2></div>
           <div id={"pl2-playlist-c__top-c__name"}  >
             <div id={"pl2-uploading-track-visibility"} className={`${props.addToPlaylistState ? "hidden" : "visible"}`} >
-              <UploadingTrackPl2  refreshTrackState={props.refreshTrackState} setRefreshTrackState={props.setRefreshTrackState} setUploadModalState={setUploadModalState} setTrackLocationState={setTrackLocationState}/>
+              <UploadingTrackPl2  refreshTrackState={props.refreshTrackState} setRefreshTrackState={props.setRefreshTrackState} setUploadModalState={props.setUploadModalState} setTrackLocationState={props.setTrackLocationState}/>
             </div>
             <div id={"pl2-playlist-name-c"} >
               <h2 onClick={()=>{organise("trackname")}}>Name</h2>

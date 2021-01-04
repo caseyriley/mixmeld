@@ -1,0 +1,40 @@
+@media screen and (max-width: 950px) {
+  /* -----Tracklist-2---- */
+
+  /* ----------------------- */
+  /* -----Pl2-Left-Column----- */
+  #pl2-search {
+    font-size: 15px;
+  }
+  #pl2-search__input {
+    font-size: 15px;
+  }
+  #pl2-search__input::placeholder {
+    font-size: 15px;
+    top: -2px;
+    left: 5px;
+  }
+  .selectIcon {
+    height: 15px;
+    width: 15px;
+  }
+  .select-artist span, .select-album span, .select-song span {
+    font-size: 15px;
+  }
+  .left-playlist-name {
+      font-size: 16px;
+  }
+  /* ------------------------ */
+  /* -----Tracklist-2----- */
+  #pl2-uploading-track-c{
+    width: 28%;
+  }
+  #pl2-uploading-track-c__span{
+    font-size: 11px;
+  }
+  .pl2-track-artist-rating-span {
+    font-size: 14px;
+    top: 3px;
+  }
+  /* --------------------- */
+}

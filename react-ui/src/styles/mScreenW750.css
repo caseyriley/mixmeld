@@ -1,0 +1,77 @@
+@media screen and (max-width: 750px) {
+  /* ------Audio-Player-2----- */
+  .pl2-audio__top__inner {
+    height: 140px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    /* border: 1px solid pink; */
+  }
+  #volume-slider-c {
+    width: 125px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid blue; */
+  }
+  .control-2
+{
+  position: relative;
+  left: calc(50% - 12px);
+  width: 55px;
+  /* height: 200px; */
+  display: flex;
+  justify-content: center;
+  /* border: 1px solid yellow; */
+  
+
+  /* margin-top: 70px; */
+  /* margin-left: 146px; */
+  transform: rotate(90deg);
+  /* border: 1px solid green; */
+  pointer-events: none;
+  margin: 0px 10px;
+
+}
+#pl2-uploading-track-x {
+  position: absolute;
+  right: -180px;
+  top: 40px;
+  display: block;
+}
+#pl2-uploading-track-visibility {
+  display: none;
+}
+  /* ------------------------- */
+  /* -----Pl2-Left-Column----- */
+  .add-to-playlist span {
+    font-size: 9.5px;
+    font-weight: 600;
+  }
+  .left-playlist span {
+    font-size: 13px;
+    color: rgb(192, 192, 192);
+  }
+  .left-playlist-add img {
+    width: 12px;
+    height: 12px;
+  }
+  .left-playlist-add img {
+    width: 12px;
+    height: 12px;
+  }
+  .left-playlist-name {
+    font-size: 13px;
+    margin: 0px 0px 0px 5px;
+    width: calc(100% -5px);
+  }
+  /* ------------------------- */
+  /* ------Tracklist-2----- */
+  .pl2-track-artist-rating-span {
+    font-size: 12px;
+    top: 6px;
+  }
+  /* ---------------------- */
+}

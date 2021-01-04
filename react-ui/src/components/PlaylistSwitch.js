@@ -17,7 +17,10 @@ const PlaylistSwitch = (props)=>{
               selectedPlaylistState={props.selectedPlaylistState} playlistState={props.playlistState} 
               playlistIdRef={props.playlistIdRef} addToPlaylistState={props.addToPlaylistState} 
               trackEditState={props.trackEditState} setTrackEditState={props.setTrackEditState} 
-              setTrack={props.setTrack} setTrackArrayLengthState={props.setTrackArrayLengthState}/>
+              setTrack={props.setTrack} setTrackArrayLengthState={props.setTrackArrayLengthState}
+              uploadModalState={props.uploadModalState} setUploadModalState={props.setUploadModalState} 
+              trackLocationState={props.trackLocationState} 
+              setTrackLocationState={props.setTrackLocationState}/>
             )
           case "Playlist2":
             return (

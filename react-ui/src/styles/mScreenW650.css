@@ -49,6 +49,33 @@
   margin-top: 6px;
 }
   /* ------------------------------ */
-    
+  /* ------------Pl2-Left-Column----- */
+  #pl2-left-column {
+    width: 65px;
+    height: 100vh;
+    background-color: rgb(109, 109, 109);
+    /* border: 1px solid green; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+  }
+  .select-artist, .select-album, .select-song {
+    width: 55px;
+    height: 30px;
+    border-radius: 5px;
+    margin: 0px 0px 0px 5px;
+}
+  .add-to-playlist {
+    width: 55px;
+    margin: 10px 0px 0px 5px;
+  }
+  /* -------------------------------- */
+    /* ------Tracklist-2----- */
+    .pl2-track-artist-rating-span {
+      font-size: 11px;
+      top: 7px;
+    }
+    /* ---------------------- */
 
 }

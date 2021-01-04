@@ -9,6 +9,8 @@ import VolumeUiSlider from './VolumeUiSlider';
 import Pl2LeftColumn from './Pl2LeftColumn';
 import PlaylistSwitch from './PlaylistSwitch';
 import TrackDisplay from './TrackDisplay';
+import UploadingTrack from './UploadingTrack';
+import UploadingTrackPl2 from './UploadingTrackPl2';
 
 
 
@@ -580,6 +582,11 @@ function nextTrack() {
       });
     }, 500);
 }
+
+// --------------Upload-State------------------
+const [uploadModalState, setUploadModalState] = useState("no-modal");
+const [trackLocationState, setTrackLocationState] = useState();
+//  ---------------------------------------------
  
   return(
     <>
@@ -648,9 +655,13 @@ function nextTrack() {
                     </div>
                   </div>
                 </div> */}
-
-                <VolumeUiSlider volumeLevel={volumeLevel} volumeFader={volumeFader} 
-                volumeSlider={volumeSlider} changeVolume={changeVolume}/>
+                <div id={"volume-slider-c"}>
+                  <VolumeUiSlider volumeLevel={volumeLevel} volumeFader={volumeFader} 
+                  volumeSlider={volumeSlider} changeVolume={changeVolume}/>
+                </div>
+                <div id={"pl2-uploading-track-x"}>
+                  <UploadingTrackPl2  refreshTrackState={refreshTrackState} setRefreshTrackState={setRefreshTrackState} setUploadModalState={setUploadModalState} setTrackLocationState={setTrackLocationState}/>
+                </div>          
               </div>
             </div>
           </div>
@@ -661,7 +672,10 @@ function nextTrack() {
         trackEditState={trackEditState} 
         setTrackEditState={setTrackEditState} setTrackArrayLengthState={setTrackArrayLengthState}
         queryState={queryState} setTrackViaSearch={setTrackViaSearch}
-        scrollToThis={scrollToThis} scrollToThis2={scrollToThis2} scrollToThis3={scrollToThis3} scrollToTargetAdjusted={scrollToTargetAdjusted}
+        scrollToThis={scrollToThis} scrollToThis2={scrollToThis2} scrollToThis3={scrollToThis3} 
+        scrollToTargetAdjusted={scrollToTargetAdjusted} uploadModalState={uploadModalState} 
+        setUploadModalState={setUploadModalState} trackLocationState={trackLocationState} 
+        setTrackLocationState={setTrackLocationState}
         />
         </div>
       </div>

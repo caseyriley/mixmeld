@@ -23,12 +23,34 @@
   #pl2-playlist-c__top-c__date h2,
   #pl2-playlist-c__top-c__artist-duration h2 {
   font-size: 15px;
+  top: 6px;
 }
   .pl2-track-ul__li {
     font-size: 12px;
   }
+  /* -------------------------------- */
+  /* ------------Pl2-Left-Column----- */
+  .selectIcon {
+    display: none;
+  }
+  .add-to-playlist span {
+    font-size: 10px;
+  }
+  .left-playlist-name {
+    font-size: 14px;
+  }
+  
+  /* -------------------------------- */
+  /* -----Tracklist-2----- */
+  #pl2-uploading-track-c{
+    width: 25%;
+  }
   #pl2-uploading-track-c__span{
     font-size: 10px;
   }
-  /* -------------------------------- */
+  .pl2-track-artist-rating-span {
+    font-size: 13px;
+    top: 5px;
+  }
+  /* --------------------- */
 }

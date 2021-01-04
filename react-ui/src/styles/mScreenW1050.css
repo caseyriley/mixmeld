@@ -1,0 +1,12 @@
+@media screen and (max-width: 1050px) {
+  .selectIcon {
+    /* height: 15px;
+    width: 15px; */
+    margin: 0px 0px 0px 5px;
+    opacity: .7;
+  }
+  .select-artist span, .select-album span, .select-song span {
+    /* font-size: 15px; */
+    margin: 0px 0px 0px 5px;
+  }
+}
