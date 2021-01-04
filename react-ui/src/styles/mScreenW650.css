@@ -86,22 +86,15 @@
   /* -----Pl2-Album-Page----- */
   .pl2-album-c {
     height: 350px;
-    width: 100%;
-    display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    margin: 0px 0px 50px 0px;
     border-bottom: 1px solid rgb(157, 157, 157);
   }
   /* .pl2-album-c :nth-child(2){
     order: 1;
   } */
   .pl2-album-info-c {
-    height: 250px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     margin: 0px 0px 20px 0px;
@@ -119,15 +112,6 @@
   #pl2-album-page-c h2 {
     font-size: 18px;
     padding: 4px 15px 4px 15px;
-  }
-  .pl2-album-artist {
-    font-size: 21px;
-    color: #bfbfbf;
-    font-family: 'Goldman', cursive;
-    font-weight: 900;
-    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
-    margin: 10px 0px 0px 20px;
-  
   }
   #pl2-album-page-c h3 {
     font-size: 16px;
@@ -191,47 +175,25 @@
   }
   .pl2-artist-info-c__scroll {
     height: auto;
-    width: 80%;
-  
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
     overflow-y: hidden;
-    overflow-x: hidden;
     margin: 20px 0px 30px 0px;
-    /* border: 1px solid rgb(192, 192, 192); */
     border-radius: 20px;
-    
   }
   .pl2-artist-info-c__scroll__inner {
     height: auto;
-    width: 100%;
-  
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    
   }
   #pl2-artist-page-c h3 {
     font-size: 14px;
     border-bottom: 1px solid rgb(192, 192, 192);
-  }
-  .pl2-artist-track {
-    color: white;
-  
-    font-family: 'Electrolize', sans-serif;
-    font-weight: 900;
-    color: #d9d9d9;
-    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
-    margin: 10px 0px 0px 20px;
   }
   .pl2-artist-track-c {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  #pl2-artist-c-main {
+    margin-bottom: 30px;
   }
   /* ------------------------ */
 }
