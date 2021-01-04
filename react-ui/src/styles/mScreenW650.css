@@ -76,6 +76,11 @@
       font-size: 11px;
       top: 7px;
     }
+    .pl2-track-artist-name-span,
+    .pl2-track-artist-span,
+    .pl2-track-genre-span{
+      font-size: 12px;
+    }
     /* ---------------------- */
 
 }
