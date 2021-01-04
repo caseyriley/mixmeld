@@ -206,8 +206,14 @@ def search_tracks(params):
 
     for track in tracks_trackalbum:
         if track.trackalbum != "":
-            track_dict = track.to_dict()
-            album_name_list.append(track_dict)
+            isIn = False
+            for track_obj in album_name_list:
+                if track_obj["trackalbum"] == track.trackalbum:
+                    isIn = True
+            if isIn == False:
+                track_dict = track.to_dict()
+                album_name_list.append(track_dict)
+            isIn = False
         else:
             pass
     
