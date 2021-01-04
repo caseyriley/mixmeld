@@ -1,0 +1,65 @@
+@media screen and (max-width: 450px){
+  .track-art {
+    display: none;
+  }
+  .track-art-450 {
+    display: block;
+    position: fixed;
+    top: 39px;
+    left: 75px;
+  }
+  #pl2-audio__bottom {
+    width: 250px;
+    position: relative;
+    /* pointer-events: none; */
+  }
+  .pl2-audio__bottom__playhead {
+    width: 250px;
+  }
+  #pl2-playhead-input {
+    width: 250px;
+  }
+  
+  /* ------Tracklist-2----- */
+
+  #pl2-playlist-c__top-c__rating {
+    width: calc(24% - 1px);
+  }
+  #pl2-playlist-c__top-c__name {
+    width: calc(32% - 1px);
+  }
+  #pl2-playlist-c__top-c__artist-name {
+    width: calc(22% - 1px);
+  }
+  #pl2-playlist-c__top-c__album-name {
+    width: calc(22% - 1px);
+  }
+  #pl2-playlist-c__top-c__genre-name {
+    width: calc(16% - 1px);
+    display: none;
+  }
+
+
+
+  .pl2-track-ul__li__rating {
+    width: calc(24% - 1px);
+    /* border-right: 1px solid rgb(161, 161, 161); */
+  }
+  .pl2-track-ul__li__name {
+    width: calc(32% - 1px);
+  }
+  .pl2-track-ul__li__artist {
+    width: calc(22% - 1px);
+    border-right: 1px solid rgb(161, 161, 161);
+
+  }
+  .pl2-track-ul__li__album {
+    width: calc(22% - 1px);
+  }
+  .pl2-track-ul__li__genre {
+    width: calc(16% - 1px);
+    display: none;
+  }
+
+/* ---------------------- */
+}

@@ -6,6 +6,7 @@ import './styles/login.css';
 import './styles/signup.css';
 import './styles/audioP1.css';
 import './styles/audioP2.css';
+import './styles/tracklist2.css';
 import './styles/uploadModal.css';
 import './styles/newPlaylistModal.css';
 import './styles/pl2LeftColumn.css';
@@ -22,6 +23,8 @@ import './styles/mScreenW750.css';
 import './styles/mScreenW650.css';
 import './styles/mScreenW550.css';
 import './styles/mScreenW515.css';
+import './styles/mScreenW450.css';
+import './styles/mScreenW350.css';
 import './styles/MainNav.css';
 
 import App from './App';

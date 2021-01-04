@@ -126,7 +126,7 @@ function removeSpecialChars(str) {
   return (
     <>
       <div id={"pl2-uploading-track-c"}>
-        <span id={"pl2-uploading-track-c__span"}>Upload Track</span>
+        <span id={"pl2-uploading-track-c__span"}>Upload <span id={"pl2-uploading-track-c__span__inner"}>Track</span></span>
         <input id={"pl2-uploading-track"} type="file" onChange={upload} onKeypress={(event)=> ((event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || event.charCode == 8 || event.charCode == 32 || (event.charCode >= 48 && event.charCode <= 57))}/>
       </div>
     </>

@@ -418,6 +418,7 @@ function deleteFromPlaylist(trackId){
                                           </div>
                                         </div>
                                       </li>
+                                   
                                     {/* </ul> */}
                                     </>
                                   )
@@ -426,6 +427,7 @@ function deleteFromPlaylist(trackId){
                             )
                           }): null}
                           {provided.placeholder}
+                          <div class={"playlist-2-bottom-space"}></div>
                         </ul>
                       )
                     }}

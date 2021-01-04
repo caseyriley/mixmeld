@@ -9,8 +9,8 @@ import VolumeUiSlider from './VolumeUiSlider';
 import Pl2LeftColumn from './Pl2LeftColumn';
 import PlaylistSwitch from './PlaylistSwitch';
 import TrackDisplay from './TrackDisplay';
-import UploadingTrack from './UploadingTrack';
 import UploadingTrackPl2 from './UploadingTrackPl2';
+import formlessMusicIcon from '../images/formless-music-icon.png'
 
 
 
@@ -615,6 +615,7 @@ const [trackLocationState, setTrackLocationState] = useState();
               <code>audio</code> element.
             </audio>
             <div  id={"pl2-audio__top"}>
+              <img className={"track-art-450"} src={`${trackArtState ? trackArtState : formlessMusicIcon}`} alt={""}/>
               <div className={"pl2-audio__top__inner"}>
                 <div id={"pl2-controls"}>
                   <img className={`pl2-random ${randomState}`} src={random} alt={""} onClick={toggleRandom}></img>

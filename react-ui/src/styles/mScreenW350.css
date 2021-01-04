@@ -1,0 +1,30 @@
+@media screen and (max-width: 350px) {
+  #pl2-audio__bottom {
+    width: 200px;
+    position: relative;
+    /* pointer-events: none; */
+  }
+  .pl2-audio__bottom__playhead {
+    width: 200px;
+  }
+  #pl2-playhead-input {
+    width: 200px;
+  }
+
+  #pl2-uploading-track-x {
+    width: 145px;
+    position: fixed;
+    right: -100px;
+    top: 40px;
+  }
+  #pl2-uploading-track-c__span__inner {
+    display: none;
+  }
+  #pl2-uploading-track-x span{
+    font-size: 10px;
+
+  }
+  .pl2-track-artist-rating-span {
+    font-size: 9px;
+  }
+}

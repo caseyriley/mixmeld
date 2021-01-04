@@ -14,9 +14,7 @@
     font-size: 12px;
 }
 
-#s-uploading-track-c__span{
-  font-size: 8px;
-}
+
 #s-playlist-c__top-c__rating h2,
 #s-playlist-c__top-c__artist-name h2,
 #s-playlist-c__top-c__artist-duration h2,
@@ -81,6 +79,54 @@
     .pl2-track-genre-span{
       font-size: 12px;
 
+    }
+
+    #pl2-playlist-c__top-c__rating {
+      width: calc(14% - 1px);
+    }
+    #pl2-playlist-c__top-c__name {
+      width: calc(32% - 1px);
+    }
+    #pl2-playlist-c__top-c__artist-name {
+      width: calc(15% - 1px);
+    }
+    #pl2-playlist-c__top-c__album-name {
+      width: calc(15% - 1px);
+    }
+    #pl2-playlist-c__top-c__artist-duration {
+      width: calc(8% - 1px);
+      display: none;
+    }
+    #pl2-playlist-c__top-c__genre-name {
+      width: calc(12% - 1px);
+    }
+    #pl2-playlist-c__top-c__date {
+      width: 12%;
+      height: 30px;
+    }
+
+
+    .pl2-track-ul__li__rating {
+      width: calc(14% - 1px);
+    }
+    .pl2-track-ul__li__name {
+      width: calc(32% - 1px);
+    }
+    .pl2-track-ul__li__artist {
+      width: calc(15% - 1px);
+    }
+    .pl2-track-ul__li__album {
+      width: calc(15% - 1px);
+    }
+    .pl2-track-ul__li__duration {
+      width: calc(8% - 1px);
+      display: none;
+    }
+    .pl2-track-ul__li__genre {
+      width: calc(12% - 1px);
+    }
+    .pl2-track-ul__li__date {
+      width: 12%;
     }
   /* ---------------------- */
   /* -----Pl2-Album-Page----- */

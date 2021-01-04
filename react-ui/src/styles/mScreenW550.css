@@ -18,4 +18,48 @@
     font-size: 16px;
   }
   /* ------------------------- */
+  /* ------Tracklist-2----- */
+
+  #pl2-playlist-c__top-c__rating {
+    width: calc(16% - 1px);
+  }
+  #pl2-playlist-c__top-c__name {
+    width: calc(32% - 1px);
+  }
+  #pl2-playlist-c__top-c__artist-name {
+    width: calc(18% - 1px);
+  }
+  #pl2-playlist-c__top-c__album-name {
+    width: calc(18% - 1px);
+  }
+  #pl2-playlist-c__top-c__genre-name {
+    width: calc(16% - 1px);
+  }
+  #pl2-playlist-c__top-c__date {
+    display: none;
+  }
+
+
+  .pl2-track-ul__li__rating {
+    width: calc(16% - 1px);
+  }
+  .pl2-track-ul__li__name {
+    width: calc(32% - 1px);
+  }
+  .pl2-track-ul__li__artist {
+    width: calc(18% - 1px);
+  }
+  .pl2-track-ul__li__album {
+    width: calc(18% - 1px);
+  }
+  .pl2-track-ul__li__duration {
+    display: none;
+  }
+  .pl2-track-ul__li__genre {
+    width: calc(16% - 1px);
+  }
+  .pl2-track-ul__li__date {
+    display: none;
+  }
+/* ---------------------- */
 }
