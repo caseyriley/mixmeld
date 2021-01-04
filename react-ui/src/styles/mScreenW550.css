@@ -1,0 +1,21 @@
+@media screen and (max-width: 550px) {
+  .pl2-search-column__top h1{
+    font-size: 28px;
+  }
+  .pl2-search-column span {
+    margin: 0px 0px 0px 10px;
+    font-family: 'Source Code Pro', monospace;
+    /* font-family: 'Goldman', cursive; */
+    font-family: 'Audiowide', cursive;
+    /* font-family: 'Syncopate', sans-serif; */
+    font-family: 'Electrolize', sans-serif;
+    font-size: 16px;
+    font-weight: 900;
+    color: #d9d9d9;
+}
+  /* -----pl2-Search-Page----- */
+  .pl2-search-column span {
+    font-size: 16px;
+  }
+  /* ------------------------- */
+}

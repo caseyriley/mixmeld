@@ -103,5 +103,10 @@
     font-size: 14px;
   }
   /* ------------------------ */
+  /* -----pl2-Search-Page----- */
+  .pl2-search-column span {
+    font-size: 17px;
+  }
+  /* ------------------------- */
 
 }

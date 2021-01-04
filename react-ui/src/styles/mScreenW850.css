@@ -67,4 +67,9 @@
     margin: 0px 0px 0px 25px;
   }
   /* ------------------------ */
+  /* -----pl2-Search-Page----- */
+  .pl2-search-column span {
+    font-size: 18px;
+  }
+  /* ------------------------- */
 }

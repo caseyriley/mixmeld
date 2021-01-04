@@ -28,8 +28,8 @@
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
-  overflow-y: scroll;
-  overflow-x: scroll;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 .pl2-search-column__top {
   width: 100%;
@@ -39,7 +39,7 @@
 }
 .pl2-search-column__top h1{
   width: 80%;
-  margin: 10px 0px 0px 10%;
+  margin: 10% 0px 0px 10%;
 
   font-family: 'Source Code Pro', monospace;
   font-family: 'Goldman', cursive;
@@ -49,8 +49,47 @@
   font-weight: 900;
   color: #d9d9d9;
 }
+.pl2-search-scroll {
+  overflow-y: scroll;
+}
+.pl2-search-track-span-c {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: relative;
+  white-space: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+.pl2-search-artist-span-c {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: relative;
+  white-space: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+.pl2-search-album-span-c {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: relative;
+  white-space: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
 .pl2-search-column span {
-  margin: 20px 0px 20px 20px;
+  margin: 0px 0px 0px 10px;
 
   font-family: 'Source Code Pro', monospace;
   /* font-family: 'Goldman', cursive; */
@@ -60,4 +99,8 @@
   font-size: 20px;
   font-weight: 900;
   color: #d9d9d9;
+}
+.pl2-search-scroll-bottom {
+  width: 100%;
+  height: 150px;
 }

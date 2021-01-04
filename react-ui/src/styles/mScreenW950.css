@@ -55,4 +55,9 @@
     padding: 5px 15px 0px 15px;
   }
   /* ------------------------ */
+  /* -----pl2-Search-Page----- */
+  .pl2-search-column span {
+    font-size: 19px;
+  }
+  /* ------------------------- */
 }

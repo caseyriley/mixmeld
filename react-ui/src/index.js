@@ -20,6 +20,7 @@ import './styles/mScreenW950.css';
 import './styles/mScreenW850.css';
 import './styles/mScreenW750.css';
 import './styles/mScreenW650.css';
+import './styles/mScreenW550.css';
 import './styles/mScreenW515.css';
 import './styles/MainNav.css';
 

@@ -196,4 +196,9 @@
     margin-bottom: 30px;
   }
   /* ------------------------ */
+  /* -----pl2-Search-Page----- */
+  .pl2-search-column span {
+    font-size: 16px;
+  }
+  /* ------------------------- */
 }
