@@ -79,4 +79,29 @@
     font-size: 13px;
   }
   /* ---------------------- */
+  /* -----Pl2-Album-Page----- */
+  #pl2-album-page-c h1 {
+    font-size: 26px;
+  }
+  #pl2-album-page-c h2 {
+    font-size: 15px;
+    padding: 4px 15px 4px 15px;
+  }
+  #pl2-album-page-c h3 {
+    font-size: 14px;
+  }
+  /* ------------------------ */
+  /* -----Pl2-Artist-Page----- */
+  #pl2-artist-page-c h1 {
+    font-size: 26px;
+  }
+  #pl2-artist-page-c h2 {
+    font-size: 15px;
+    padding: 4px 15px 4px 15px;
+  }
+  #pl2-artist-page-c h3 {
+    font-size: 14px;
+  }
+  /* ------------------------ */
+
 }

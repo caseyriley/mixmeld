@@ -37,4 +37,22 @@
     top: 3px;
   }
   /* --------------------- */
+  /* -----pl2-album-page----- */
+  #pl2-album-page-c h1 {
+    font-size: 28px;
+  }
+  #pl2-album-page-c h2 {
+    font-size: 18px;
+    padding: 5px 15px 0px 15px;
+  }
+  /* ------------------------ */
+  /* -----pl2-artist-page----- */
+  #pl2-artist-page-c h1 {
+    font-size: 28px;
+  }
+  #pl2-artist-page-c h2 {
+    font-size: 18px;
+    padding: 5px 15px 0px 15px;
+  }
+  /* ------------------------ */
 }

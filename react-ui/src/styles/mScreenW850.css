@@ -53,4 +53,18 @@
     top: 5px;
   }
   /* --------------------- */
+  /* -----Pl2-Album-Page----- */
+  .pl2-album-c img {
+    min-width: 200px;
+    height: 200px;
+    margin: 0px 0px 0px 25px;
+  }
+  /* ------------------------ */
+  /* -----Pl2-Artist-Page----- */
+  .pl2-artist-c img {
+    min-width: 200px;
+    height: 200px;
+    margin: 0px 0px 0px 25px;
+  }
+  /* ------------------------ */
 }

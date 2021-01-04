@@ -12,6 +12,7 @@ import './styles/pl2LeftColumn.css';
 import './styles/Playlist2.css';
 import './styles/pl2Search.css';
 import './styles/pl2AlbumPage.css';
+import './styles/pl2ArtistPage.css';
 import './styles/TrackRatingModal.css';
 import './styles/InstructionsModal.css';
 import './styles/mScreenW1050.css';

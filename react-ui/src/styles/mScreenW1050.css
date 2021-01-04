@@ -1,4 +1,5 @@
 @media screen and (max-width: 1050px) {
+  /* ---Pl2-Left-Column-----  */
   .selectIcon {
     /* height: 15px;
     width: 15px; */
@@ -9,4 +10,9 @@
     /* font-size: 15px; */
     margin: 0px 0px 0px 5px;
   }
+  .pl2-album-c img {
+    margin: 0px 0px 0px 50px;
+  }
+  /* ----------------------- */
+
 }

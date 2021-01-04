@@ -80,7 +80,144 @@
     .pl2-track-artist-span,
     .pl2-track-genre-span{
       font-size: 12px;
-    }
-    /* ---------------------- */
 
+    }
+  /* ---------------------- */
+  /* -----Pl2-Album-Page----- */
+  .pl2-album-c {
+    height: 350px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0px 0px 50px 0px;
+  }
+  /* .pl2-album-c :nth-child(2){
+    order: 1;
+  } */
+  .pl2-album-info-c {
+    height: 250px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: 1px solid rgb(157, 157, 157);
+  }
+  #pl2-album-page-c h1 {
+    width: 104px;
+    font-size: 26px;
+    position: relative;
+    left: 15px;
+  }
+  #pl2-album-page-c h2 {
+    font-size: 15px;
+    padding: 4px 15px 4px 15px;
+  }
+  #pl2-album-page-c h3 {
+    font-size: 14px;
+  }
+  /* ------------------------ */
+  /* -----Pl2-Artist-Page----- */
+  .pl2-artist-c {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0px 0px 0px 0px;
+    /* border: 1px solid blue; */
+  }
+  /* .pl2-artist-c :nth-child(2){
+    order: 1;
+  } */
+  .pl2-artist-c img {
+    min-width: 200px;
+    height: 200px;
+    margin: 0px 0px 30px 25px;
+  }
+  .pl2-artist-info-c {
+    /* height: 250px; */
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: 1px solid rgb(157, 157, 157);
+  }
+  #pl2-artist-page-top {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    min-height: 100px;
+  
+  }
+ 
+  #pl2-artist-page-c h1 {
+    
+    font-size: 26px;
+    position: relative;
+    left: 15px;
+    margin: 0px 0px 0px 0px;
+  }
+  .pl2-artist-info-c__top {
+    height: 40px;
+  }
+
+  #pl2-artist-page-c h2 {
+    font-size: 15px;
+    padding: 9px 15px 0px 15px;
+    /* margin: 0px 0px 25px 0px; */
+    
+  }
+  .pl2-artist-info-c__scroll {
+    height: auto;
+    width: 80%;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    margin: 20px 0px 30px 0px;
+    /* border: 1px solid rgb(192, 192, 192); */
+    border-radius: 20px;
+    
+  }
+  .pl2-artist-info-c__scroll__inner {
+    height: auto;
+    width: 100%;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    
+  }
+  #pl2-artist-page-c h3 {
+    font-size: 14px;
+    border-bottom: 1px solid rgb(192, 192, 192);
+  }
+  .pl2-artist-track {
+    color: white;
+  
+    font-family: 'Electrolize', sans-serif;
+    font-weight: 900;
+    color: #d9d9d9;
+    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+    margin: 10px 0px 0px 20px;
+  }
+  .pl2-artist-track-c {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  /* ------------------------ */
 }
