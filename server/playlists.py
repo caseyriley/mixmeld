@@ -38,11 +38,9 @@ def get_playlist_list(id):
     playlist_l = json.loads(playlist.playlist_list)
     playlist = []
     for track_id in playlist_l:
-        print("TRACK_ID@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",track_id)
         track = Track.query.filter(Track.id == track_id).first()
         track_dict = track.to_dict()
         playlist.append(track_dict)
-        print("playlist=======================================>",playlist)
     return jsonify(playlist)
 
 
@@ -59,24 +57,26 @@ def update_playlist():
 
 
 @playlists.route('/delete', methods=['DELETE'])
-def delete_playlist():
+def delete_from_playlist():
     data = json.loads(request.data)
     track_id = data["track_id"]
     playlist_id = data["playlist_id"]
-
     playlist = Playlist.query.filter(Playlist.id == playlist_id).first()
-    # track = Track.query.filter(Track.id == track_id).first()
-    # playlist_track = Playlist.query.filter(Playlist.id == playlist_id, Track.id == track_id).first
     new_list = json.loads(playlist.playlist_list)
     new_list.remove(track_id)
-    print("new_list#######################################", new_list)
-    # db.session.delele(playlist.playlist_list)
-
     playlist.playlist_list = f'{new_list}'
-
-
     db.session.commit()
     return jsonify(Good_job="You deleted a track from a playlist")
+
+
+@playlists.route('/delete_playlist', methods=['DELETE'])
+def delete_playlist():
+    data = json.loads(request.data)
+    playlist_id = data["playlist_id"]
+    playlist = Playlist.query.filter(Playlist.id == playlist_id).first()
+    db.session.delete(playlist)
+    db.session.commit()
+    return jsonify(Good_job="You deleted a playlist")
 
 @playlists.route('/post', methods=["POST"])
 def post_playlist():

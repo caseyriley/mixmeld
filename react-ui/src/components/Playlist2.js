@@ -313,6 +313,18 @@ function deleteFromPlaylist(trackId){
     setRatingAudioState(audio)
   }
   const [playlistDeleteModal, setPlaylistDeleteModal] = useState(true)
+  // -----Delete-Playlist-----
+  function deletePlaylist(){
+    const trackData = {playlist_id: props.playlistIdRef.current.playlistId}
+    const options = {
+      method: 'DELETE',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(trackData)
+    }
+    fetch(`${API_URL}/playlists/delete_playlist`, options)
+    props.setRefreshPlaylistState(props.refreshPlaylistState + 1)
+  }
+  // -------------------------
 
   return (
     <>
@@ -331,7 +343,7 @@ function deleteFromPlaylist(trackId){
                   </div> 
                   : 
                   <div className={"playlist2-top-three-dots-delete fade-in"} >
-                    <div id={"delete-it"} onClick={()=>{setPlaylistDeleteModal(true)}}>X</div>
+                    <div id={"delete-it"} onClick={()=>{setPlaylistDeleteModal(true); deletePlaylist()}}>X</div>
                     <span >delete</span>
                   </div>
                   }
