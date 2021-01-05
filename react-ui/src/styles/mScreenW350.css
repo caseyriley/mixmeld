@@ -1,4 +1,8 @@
 @media screen and (max-width: 350px) {
+  .track-art-450 {
+    height: 30px;
+    width: 30px;
+  }
   #pl2-audio__bottom {
     width: 200px;
     position: relative;
@@ -26,5 +30,11 @@
   }
   .pl2-track-artist-rating-span {
     font-size: 9px;
+  }
+  .pl2-playlist-ul__li__genre {
+    display: none;
+  }
+  .pl2-playlist-ul__li__name {
+    min-width: 80px;
   }
 }

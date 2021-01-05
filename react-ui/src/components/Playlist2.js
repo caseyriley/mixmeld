@@ -325,9 +325,16 @@ function deleteFromPlaylist(trackId){
                 <div id={"playlist2-top"} className={"fade-in"}> 
                   <img src={props.trackArtState ? props.trackArtState : column.items[0] ? column.items[0].trackart : formlessMusicIcon} alt={""}/>
                   <div id={"playlist2-top__info"}>
-                    <h2  >{props.playlistIdRef.current.playlistName}</h2>
-                    <h3  >{props.selectedPlaylistState ? `${props.selectedPlaylistState.length} Tracks`: ""}</h3>
-                    <h3  >{totallPlaylistTime}</h3>
+                    <div id={"playlist2-top__info__h2-c"} >
+                      <h2  >{props.playlistIdRef.current.playlistName}</h2>
+                    </div>
+                    <div id={"playlist2-top__info__playlist-name-c"}>
+                      <h3  >{props.selectedPlaylistState ? `${props.selectedPlaylistState.length} Tracks`: ""}</h3>
+                    </div>
+                    <div>
+                      <h3 id={"playlist2-top__info__playlist-time-c"} >{totallPlaylistTime}</h3>
+                    </div>
+                    
                   </div>   
                 </div>
       
@@ -340,9 +347,7 @@ function deleteFromPlaylist(trackId){
                           ref={provided.innerRef}
                           style={{
                             background: snapshot.isDraggingOver ? 'rgba(147, 114, 255, 0.1)' : 'transparent',
-                            // padding: 4,
-                            // width: 250,
-                            // minHeight: 500
+
                           }}
                         >
                           {column.items ? column.items.map((audio, index) => {
@@ -357,15 +362,12 @@ function deleteFromPlaylist(trackId){
                                       {...provided.dragHandleProps}
                                       style={{
                                         userSelect: 'none',
-                                        // padding: 16,
-                                        
-                                        // minHeight: '50px',
+                                    
                                         backgroundColor: snapshot.isDragging ? 'rgba(226, 175, 255, 0.1)' : 'transparent',
                                         ...provided.draggableProps.style
                                       }}
                                     >
-                                      {/* <li name={index} className={"pl2-playlist-ul__li"} key={index} > */}
-                                      {/* <li name={index} className={"pl2-playlist-ul__li"} key={index} > */}
+                             
                                         <div id={"pl2-playlist2-box-shadow"}>
                                           <div id={`nti${index}`} className={`next-track-info audioId${audio.id}`}>{`{"tracklocation":"${audio.tracklocation}","trackname":"${audio.trackname}","audioId":"${audio.id}", "trackartist":"${audio.trackartist}", "trackart":"${audio.trackart}"}`}</div> 
 
@@ -394,7 +396,7 @@ function deleteFromPlaylist(trackId){
 
                                           <div className={`pl2-playlist-ul__li__rating ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`} onClick={()=>{launchTrackRatingModal(audio)}}>                                         
                                           
-                                              <span className={"pl2-track-artist-rating-span"} >{audio.trackrating}</span>
+                                              <span className={"pl2-playlist-track-artist-rating-span"} >{audio.trackrating}</span>
                                              
                                           </div>
                                             
@@ -419,7 +421,7 @@ function deleteFromPlaylist(trackId){
                                         </div>
                                       </li>
                                    
-                                    {/* </ul> */}
+                          
                                     </>
                                   )
                                 }}

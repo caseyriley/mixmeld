@@ -62,4 +62,47 @@
   }
 
 /* ---------------------- */
+/* -----Playlist-2----- */
+.pl2-playlist-ul__li__rating {
+  display: none;
+}
+#playlist2-top {
+  width: calc(100% - 20px);
+  height: 100px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0px 0px 0px 20px;
+}
+#playlist2-top img {
+  height: 100px;
+  width: 100px;
+}
+#playlist2-top__info {
+  height: 100px;
+  margin: 0px 0px 0px 20px;
+}
+#playlist2-top__info {
+  margin-left: 5px;
+}
+.dnd-column h2 {
+  font-size: 15px;
+}
+.dnd-column h3 {
+  font-size: 12px;
+}
+.pl2-playlist-artist-name-span, .pl2-playlist-artist-span, .pl2-playlist-genre-span, .pl2-playlist-album-span, .pl2-playlist-date-span, .pl2-playlist-duration-span {
+  font-size: 14px;
+  left: 5px;
+}
+.three-dots {
+  min-width: 6px;
+}
+.dot {
+  width: 2px;
+  height: 2px;
+}
+/* ---
+
+/* -------------------- */
 }

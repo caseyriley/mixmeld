@@ -62,4 +62,21 @@
     display: none;
   }
 /* ---------------------- */
+  /* -----Playlist-2----- */
+  #playlist2-top__info {
+    margin-left: 5px;
+  }
+  .dnd-column h2 {
+    font-size: 20px;
+  }
+  .pl2-playlist-ul__li__name {
+    min-width: 120px;
+  }
+  .pl2-playlist-ul__li__album {
+    min-width: 70px;
+  }
+  .pl2-playlist-ul__li__genre {
+    min-width: 70px;
+  }
+  /* -------------------- */
 }

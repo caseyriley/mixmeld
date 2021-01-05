@@ -1,12 +1,5 @@
 @media screen and (max-width: 850px){
   /* -------Audio-Player-One------ */
-  #s-playlist-c__top-c__rating h2,
-  #s-playlist-c__top-c__name h2,
-  #s-playlist-c__top-c__artist-name h2,
-  #s-playlist-c__top-c__genre-name h2,
-  #s-playlist-c__top-c__artist-duration h2 {
-  font-size: 15px;
-}
   .s-track-ul__li {
     font-size: 12px;
   }
@@ -22,7 +15,7 @@
   #pl2-playlist-c__top-c__genre-name h2,
   #pl2-playlist-c__top-c__date h2,
   #pl2-playlist-c__top-c__artist-duration h2 {
-  font-size: 15px;
+  font-size: 15px; 
   top: 6px;
 }
   .pl2-track-ul__li {
@@ -72,4 +65,22 @@
     font-size: 18px;
   }
   /* ------------------------- */
+  /* -----Playlist-2----- */
+  .pl2-playlist-ul__li__album {
+    min-width: 100px;
+  }
+  .pl2-playlist-ul__li__genre {
+    min-width: 100px;
+  }
+  .pl2-playlist-ul__li__date {
+    min-width: 90px;
+  }
+  .pl2-playlist-ul__li__rating {
+    min-width: 70px;
+  }
+  .pl2-playlist-track-artist-rating-span {
+    font-size: 12px;
+    top: 5px;
+  }
+  /* -------------------- */
 }

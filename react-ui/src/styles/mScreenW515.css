@@ -15,5 +15,16 @@
     font-size: 7px;
   }
   /* ------------------------------ */
+    /* -----Playlist-2----- */
+    .pl2-playlist-ul__li__name {
+      min-width: 100px;
+    }
+    .pl2-playlist-ul__li__album {
+      min-width: 55px;
+    }
+    .pl2-playlist-ul__li__genre {
+      min-width: 55px;
+    }
+    /* -------------------- */
   
 }

@@ -14,5 +14,13 @@
     margin: 0px 0px 0px 50px;
   }
   /* ----------------------- */
+  /* -----Playlist-2----- */
+  .pl2-playlist-ul__li__name {
+    min-width: 200px;
+  }
+  .pl2-playlist-ul__li__album {
+    min-width: 120px;
+  }
+  /* -------------------- */
 
 }

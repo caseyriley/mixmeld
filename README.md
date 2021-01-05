@@ -164,3 +164,16 @@ npm install package-name --save
 ```
 # formless-music-player
 # formless-music-player
+
+// Extra small devices (portrait phones, less than 480px)
+// No media query since this is the default
+// Small devices (landscape phones, 480px and up)
+@media (min-width: 480px) { ... }
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+// Large devices (desktops, 980px and up)
+@media (min-width: 980px) { ... }
+// Extra large devices (large desktops, 1220px and up)
+@media (min-width: 1220px) { ... }
+// Extra extra large devices (large desktops, 1440px and up)
+@media (min-width: 1440px) { ... }

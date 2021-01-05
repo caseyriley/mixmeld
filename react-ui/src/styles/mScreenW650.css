@@ -247,4 +247,12 @@
     font-size: 16px;
   }
   /* ------------------------- */
+  /* -----Playlist-2----- */
+  .pl2-playlist-ul__li__album {
+    min-width: 80px;
+  }
+  .pl2-playlist-ul__li__duration {
+    display: none;
+  }
+  /* -------------------- */
 }

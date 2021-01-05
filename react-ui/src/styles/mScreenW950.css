@@ -60,4 +60,23 @@
     font-size: 19px;
   }
   /* ------------------------- */
+  /* -----Playlist-2----- */
+  .pl2-playlist-ul__li__name {
+    min-width: 150px;
+  }
+  .pl2-playlist-ul__li__rating {
+    min-width: 80px;
+  }
+  .pl2-playlist-track-artist-rating-span {
+    font-size: 13px;
+    top: 5px;
+  }
+  .three-dots {
+    min-width: 20px;
+  }
+  .dot {
+    width: 4px;
+    height: 4px;
+  }
+  /* -------------------- */
 }
