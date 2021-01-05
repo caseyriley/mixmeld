@@ -7,6 +7,10 @@ const Pl2ArtistsPage = (props) => {
   const [artistArrayState, setArtistArrayState] = useState([])
   const idCount = useRef(-1);
 
+  useEffect(()=> {
+    idCount.current = -1;
+  })
+
 
   useEffect(()=>{
 
@@ -34,14 +38,56 @@ const Pl2ArtistsPage = (props) => {
 
   },[props.currentUser])
 
-  const artistPage = useMemo(()=>{
-    return (
-      <>
+  // const artistPage = useMemo(()=>{
+  //   return (
+  //     <>
+  //     {artistArrayState[0] ? Object.keys(artistArrayState[0]).map((k, ki)=> {
+  //       return(
+  //         <div key={ki} id={"pl2-artist-c-main"}>
+  //           <div id={"pl2-artist-page-top"}>
+  //             <h1>{k}</h1>
+  //           </div>
+  //           {artistArrayState[0][k].map((album, kii) => {
+  //             return (
+  //               <div className={"pl2-artist-c"} key={10000 + kii}>
+  //                 <img src={artistArrayState[1][album][0]["trackart"]} alt="" ></img>
+  //                 <div className={"pl2-artist-info-c"}>
+  //                   <div className={"pl2-artist-info-c__top"}>
+  //                     <h2>{album}</h2>
+  //                   </div>
+  //                   {/* <h3 class={"pl2-album-artist"}>By {k}</h3> */}
+  //                   <div className={"pl2-artist-info-c__scroll"}>
+  //                     <div className={"pl2-artist-info-c__scroll__inner"}>
+  //                     {artistArrayState[1][album].map((track, index) => {
+  //                       return (
+  //                         <div key={100000 + index} class={"pl2-artist-track-c"}>
+  //                           <div id={`nti${idCount.current += 1 }`} className={`next-track-info audioId${track.id}`}>{`{"tracklocation":"${track.tracklocation}","trackname":"${track.trackname}","audioId":"${track.id}", "trackartist":"${track.trackartist}", "trackart":"${track.trackart}"}`}</div> 
+  //                           <h3 class={"pl2-artist-track"} onClick={()=>{props.setTrack(track.tracklocation, track.trackname, track.trackartist, track.id, track.trackart)}}>{track.trackname}</h3>
+  //                         </div>
+  //                       )
+  //                     })}
+  //                     </div>
+  //                   </div>
+  //                 </div>
+  //               </div>
+  //             )
+  //           })}
+  //         </div>
+  //       )
+      
+  //     }):null}
+  //   </>
+  //   )
+  // },[artistArrayState])
+
+  return (
+    <>
+    <div id={"pl2-artist-page-c"} className={"fade-in"}>
       {artistArrayState[0] ? Object.keys(artistArrayState[0]).map((k, ki)=> {
         return(
           <div key={ki} id={"pl2-artist-c-main"}>
             <div id={"pl2-artist-page-top"}>
-              <h1>{k}</h1>
+              <h1>{k.length > 20 ? `${k.slice(0,20)}...` : k}</h1>
             </div>
             {artistArrayState[0][k].map((album, kii) => {
               return (
@@ -49,9 +95,8 @@ const Pl2ArtistsPage = (props) => {
                   <img src={artistArrayState[1][album][0]["trackart"]} alt="" ></img>
                   <div className={"pl2-artist-info-c"}>
                     <div className={"pl2-artist-info-c__top"}>
-                      <h2>{album}</h2>
+                      <h2>{album.length > 30 ? `${album.slice(0,30)}...` : album}</h2>
                     </div>
-                    {/* <h3 class={"pl2-album-artist"}>By {k}</h3> */}
                     <div className={"pl2-artist-info-c__scroll"}>
                       <div className={"pl2-artist-info-c__scroll__inner"}>
                       {artistArrayState[1][album].map((track, index) => {
@@ -72,14 +117,6 @@ const Pl2ArtistsPage = (props) => {
         )
       
       }):null}
-    </>
-    )
-  },[artistArrayState])
-
-  return (
-    <>
-    <div id={"pl2-artist-page-c"}>
-      {artistPage}
     </div>
     </>
   )

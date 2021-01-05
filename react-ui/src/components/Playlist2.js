@@ -4,6 +4,7 @@ import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
 import { v4 as uuidv4 } from 'uuid';
 import formlessMusicIcon from "../images/formless-music-icon.png"
 import TrackRatingModal from './TrackRatingModal';
+import plusSign from '../images/plusSing2.png';
 
 // const itemsFromBackend = [
 //   {id: uuidv4(), content: 'First task'},
@@ -311,6 +312,7 @@ function deleteFromPlaylist(trackId){
     setTrackRatingModalState(true)
     setRatingAudioState(audio)
   }
+  const [playlistDeleteModal, setPlaylistDeleteModal] = useState(true)
 
   return (
     <>
@@ -322,7 +324,17 @@ function deleteFromPlaylist(trackId){
 
               <div className={"dnd-column fade-in"} key={"187687"} >
                 
-                <div id={"playlist2-top"} className={"fade-in"}> 
+                <div id={"playlist2-top"} className={"fade-in"} > 
+                  {playlistDeleteModal === true ? 
+                  <div className={"playlist2-top-three-dots"} onClick={()=>{setPlaylistDeleteModal(false)}}>                          
+                    <div className={"playlist2-top-dot"}></div><div className={"playlist2-top-dot"}></div><div className={"playlist2-top-dot"}></div>
+                  </div> 
+                  : 
+                  <div className={"playlist2-top-three-dots-delete fade-in"} >
+                    <div id={"delete-it"} onClick={()=>{setPlaylistDeleteModal(true)}}>X</div>
+                    <span >delete</span>
+                  </div>
+                  }
                   <img src={props.trackArtState ? props.trackArtState : column.items[0] ? column.items[0].trackart : formlessMusicIcon} alt={""}/>
                   <div id={"playlist2-top__info"}>
                     <div id={"playlist2-top__info__h2-c"} >

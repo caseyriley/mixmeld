@@ -16,8 +16,7 @@
     align-items: center;
     /* border: 1px solid blue; */
   }
-  .control-2
-{
+  .control-2 {
   position: relative;
   left: calc(50% - 12px);
   width: 55px;
@@ -44,6 +43,12 @@
 #pl2-uploading-track-visibility {
   display: none;
 }
+.playlist2-top-three-dots {
+  top: 160px;
+}
+.playlist2-top-three-dots-delete {
+  top: 170px;
+}
   /* ------------------------- */
   /* -----Pl2-Left-Column----- */
   .add-to-playlist span {
@@ -52,7 +57,11 @@
   }
   .left-playlist span {
     font-size: 13px;
+  }
+  .playlist-button-c span{
+    font-size: 13px;
     color: rgb(192, 192, 192);
+    margin: 0px 0px 0px 2px;
   }
   .left-playlist-add img {
     width: 12px;
@@ -97,7 +106,7 @@
   }
   #pl2-artist-page-c h2 {
     font-size: 15px;
-    padding: 4px 15px 4px 15px;
+    padding: 9px 15px 0px 15px;
   }
   #pl2-artist-page-c h3 {
     font-size: 14px;

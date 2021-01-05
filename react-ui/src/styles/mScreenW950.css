@@ -24,6 +24,10 @@
   .left-playlist-name {
       font-size: 16px;
   }
+  .playlist-button-c span{
+    font-size: 16px;
+    margin: 0px 0px 0px 2px;
+  }
   /* ------------------------ */
   /* -----Tracklist-2----- */
   #pl2-uploading-track-c{

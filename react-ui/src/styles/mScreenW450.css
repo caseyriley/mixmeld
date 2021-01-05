@@ -102,6 +102,14 @@
   width: 2px;
   height: 2px;
 }
+.playlist2-top-three-dots {
+  top: 120px;
+  left: 85%;
+}
+.playlist2-top-three-dots-delete {
+  top: 130px;
+  left: 85%;
+}
 /* ---
 
 /* -------------------- */

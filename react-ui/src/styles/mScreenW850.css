@@ -32,6 +32,10 @@
   .left-playlist-name {
     font-size: 14px;
   }
+  .playlist-button-c span{
+    font-size: 14px;
+    margin: 0px 0px 0px 2px;
+  }
   
   /* -------------------------------- */
   /* -----Tracklist-2----- */

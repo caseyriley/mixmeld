@@ -47,9 +47,65 @@ ul{
   justify-content: center;
   align-items: center;
 }
+.playlist2-top-three-dots {
+  min-width: 40px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 80px;
+  left: 15%;
+}
+.playlist2-top-three-dots-delete {
+  min-width: 50px;
+  height: 40px;
+  color: rgb(36, 36, 36);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 90px;
+  left: 15%;
+  border-radius: 6px;
+  background-color: lightgray;
+  transition: all .3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  transition: all .3s;
+}
+
+.playlist2-top-three-dots-delete span:hover {
+  color: rgb(255, 0, 255);
+}
+.playlist2-top-dot {
+  width: 7px;
+  height: 7px;
+  margin: 0px 0px 0px 3px;
+  border-radius: 100%;
+  background-color: lightgray;
+}
 #playlist2-top img {
   height: 200px;
   width: 200px;
+}
+#delete-it {
+  font-family: 'Goldman', cursive;
+  min-height: 15px;
+  min-width: 15px;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  left: 15px;
+  opacity: .7;
+  transition: all .3s;
+}
+#delete-it:hover {
+  color: rgb(0, 166, 255);
 }
 #playlist2-top__info {
   height: 200px;

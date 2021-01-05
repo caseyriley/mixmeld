@@ -569,12 +569,18 @@ div.control-2 span.eq-3 span.eq-level
 }
 .plus-sign {
   position: absolute;
-  height: 14px;
-  width: 14px;
-  border: 1px solid rgb(146, 146, 146);
+  height: 18px;
+  width: 18px;
+  /* border: 1px solid rgb(146, 146, 146);
+  border: 1px solid pink; */
+  border: 1px solid rgb(0, 0, 0, 1);
   padding: 2px;
   border-radius: 100%;
   left: calc(100% - 24px);
-  filter: sepia(55%) hue-rotate(255deg) brightness(85%) saturate(450%) ;
-
+  /* filter: sepia(55%) hue-rotate(255deg) brightness(85%) saturate(450%) ; */
+  /* background-color: rgb(147, 83, 83, .7); */
+  background-color: rgb(197, 195, 195);
+  filter: invert();
+  opacity: .6;
+  z-index: 2;
 }

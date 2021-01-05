@@ -6,7 +6,8 @@ import pen from '../images/pen.png';
 import deleteX from '../images/deleteX.png';
 import UploadModal from './UploadModal';
 import UploadingTrackPl2 from './UploadingTrackPl2';
-import plusSign from '../images/plusSign.png';
+// import plusSign from '../images/plusSign.png';
+import plusSign from '../images/plusSing2.png';
 import TrackRatingModal from './TrackRatingModal';
 
 
