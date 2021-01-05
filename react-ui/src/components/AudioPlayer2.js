@@ -676,7 +676,7 @@ const [trackLocationState, setTrackLocationState] = useState();
         scrollToThis={scrollToThis} scrollToThis2={scrollToThis2} scrollToThis3={scrollToThis3} 
         scrollToTargetAdjusted={scrollToTargetAdjusted} uploadModalState={uploadModalState} 
         setUploadModalState={setUploadModalState} trackLocationState={trackLocationState} 
-        setTrackLocationState={setTrackLocationState}
+        setTrackLocationState={setTrackLocationState} setPlaylistSwitchState={setPlaylistSwitchState}
         />
         </div>
       </div>
