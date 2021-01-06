@@ -36,7 +36,8 @@
 }
 #pl2-uploading-track-x {
   position: absolute;
-  right: -180px;
+  /* left: 80px; */
+  left: 88%;
   top: 40px;
   display: block;
 }

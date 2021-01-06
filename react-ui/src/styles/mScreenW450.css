@@ -1,4 +1,9 @@
 @media screen and (max-width: 450px){
+  /* -----Audio-Player-2----- */
+  #pl2-uploading-track-x {
+    left: 79%;
+  }
+  /* ------------------------ */
   .track-art {
     display: none;
   }

@@ -1,4 +1,9 @@
 @media screen and (max-width: 550px) {
+  /* -----Audio-Player-2----- */
+  #pl2-uploading-track-x {
+    left: 83%;
+  }
+  /* ------------------------ */
   .pl2-search-column__top h1{
     font-size: 28px;
   }

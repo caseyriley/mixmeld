@@ -1,4 +1,15 @@
 @media screen and (max-width: 350px) {
+  /* -----Audio-Player-2----- */
+  #pl2-uploading-track-x {
+    left: 83%;
+    width: 145px;
+    position: fixed;
+    top: 40px;
+  }
+  #pl2-uploading-track-x span{
+    font-size: 10px;
+  }
+  /* ------------------------ */
   /* -----Playlist2----- */
   .playlist2-top-three-dots-delete {
     top: 130px;
@@ -19,19 +30,8 @@
   #pl2-playhead-input {
     width: 200px;
   }
-
-  #pl2-uploading-track-x {
-    width: 145px;
-    position: fixed;
-    right: -100px;
-    top: 40px;
-  }
   #pl2-uploading-track-c__span__inner {
     display: none;
-  }
-  #pl2-uploading-track-x span{
-    font-size: 10px;
-
   }
   .pl2-track-artist-rating-span {
     font-size: 9px;

@@ -46,6 +46,9 @@
 #pl2-playlist-name-c h2 {
   margin-top: 6px;
 }
+#pl2-uploading-track-x {
+  left: 86%;
+}
   /* ------------------------------ */
   /* ------------Pl2-Left-Column----- */
   #pl2-left-column {
