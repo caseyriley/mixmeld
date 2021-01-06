@@ -37,4 +37,9 @@
   .pl2-playlist-ul__li__name {
     min-width: 80px;
   }
+  /* -----Artist-Page----- */
+  .pl2-artist-c img{ 
+    margin-left: 0px;
+  }
+  /* --------------------- */
 }

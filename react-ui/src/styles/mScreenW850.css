@@ -56,6 +56,12 @@
     height: 200px;
     margin: 0px 0px 0px 25px;
   }
+  .pl2-album-info-c {
+    height: 200px;
+  }
+  .pl2-album-info-c__scroll {
+    height: 135px;
+  }
   /* ------------------------ */
   /* -----Pl2-Artist-Page----- */
   .pl2-artist-c img {

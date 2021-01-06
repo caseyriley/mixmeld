@@ -7,6 +7,7 @@
     position: fixed;
     top: 39px;
     left: 75px;
+    border: 1ps solid pink;
   }
   #pl2-audio__bottom {
     width: 250px;
@@ -74,6 +75,7 @@
   align-items: center;
   margin: 0px 0px 0px 20px;
 }
+
 #playlist2-top img {
   height: 100px;
   width: 100px;
@@ -110,7 +112,39 @@
   top: 130px;
   left: 85%;
 }
-/* ---
-
-/* -------------------- */
+/* /* --------------------- */
+/* ------Artist-Page----- */
+.pl2-artist-page-top__h1-450 {
+  display: inline-block;
+  background-color: transparent !important;
+  padding: 0px !important;
+  border-radius: 0px !important;
+  margin: 0px;
+  font-size: 20px !important;
+  position: relative;
+  left: 15px;
+}
+.pl2-artist-page-top__h1 {
+  display: none;
+}
+.pl2-artist-info-c__top__h2-450 {
+  display: inline-block;
+  background-color: transparent !important;
+  padding: 0px !important;
+  margin: 0px !important;
+  box-shadow: none !important;
+  position: relative;
+  left: 11px;
+  font-size: 17px !important;
+}
+.pl2-artist-info-c__top__h2 {
+  display: none;
+}
+.pl2-artist-info-c__top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+/* ---------------------- */
 }

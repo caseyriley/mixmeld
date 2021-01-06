@@ -87,7 +87,8 @@ const Pl2ArtistsPage = (props) => {
         return(
           <div key={ki} id={"pl2-artist-c-main"}>
             <div id={"pl2-artist-page-top"}>
-              <h1>{k.length > 20 ? `${k.slice(0,20)}...` : k}</h1>
+              <h1 className={"pl2-artist-page-top__h1"}>{k.length > 20 ? `${k.slice(0,20)}...` : k}</h1>
+              <h1 className={"pl2-artist-page-top__h1-450"}>{k.length > 12 ? `${k.slice(0,12)}...` : k}</h1>
             </div>
             {artistArrayState[0][k].map((album, kii) => {
               return (
@@ -95,7 +96,8 @@ const Pl2ArtistsPage = (props) => {
                   <img src={artistArrayState[1][album][0]["trackart"]} alt="" ></img>
                   <div className={"pl2-artist-info-c"}>
                     <div className={"pl2-artist-info-c__top"}>
-                      <h2>{album.length > 30 ? `${album.slice(0,30)}...` : album}</h2>
+                      <h2 className={"pl2-artist-info-c__top__h2"}>{album.length > 30 ? `${album.slice(0,30)}...` : album}</h2>
+                      <h2 className={"pl2-artist-info-c__top__h2-450"}>{album.length > 15 ? `${album.slice(0,15)}...` : album}</h2>
                     </div>
                     <div className={"pl2-artist-info-c__scroll"}>
                       <div className={"pl2-artist-info-c__scroll__inner"}>

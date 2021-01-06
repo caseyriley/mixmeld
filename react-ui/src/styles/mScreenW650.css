@@ -131,7 +131,7 @@
   /* ---------------------- */
   /* -----Pl2-Album-Page----- */
   .pl2-album-c {
-    height: 350px;
+    height: 400px;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
@@ -143,8 +143,11 @@
   .pl2-album-info-c {
     justify-content: space-evenly;
     align-items: center;
-    margin: 0px 0px 20px 0px;
- 
+    margin: 0px 0px 0px 0px;
+    height: 160px;
+  }
+  .pl2-album-info-c__scroll {
+    height: 135px;
   }
   #pl2-album-page-c h1 {
     width: 104px;
@@ -200,9 +203,6 @@
     font-size: 24px;
     /* left: 15px; */
     margin: 0px 0px 0px 0px;
-  }
-  .pl2-artist-info-c__top {
-    height: 40px;
   }
 
   #pl2-artist-page-c h2 {

@@ -114,7 +114,7 @@
   
 }
 .pl2-album-info-c__scroll__inner {
-  height: 200px;
+  height: auto;
   width: 100%;
 
   display: flex;
