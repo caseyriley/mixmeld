@@ -1,2 +1,1 @@
-web gunicorn manage:server
-worker: python -u __init__.py run_worker
+web: gunicorn formless-music-player.wsgi --log-file -
