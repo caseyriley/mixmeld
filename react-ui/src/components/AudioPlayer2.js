@@ -660,9 +660,11 @@ const [trackLocationState, setTrackLocationState] = useState();
                   <VolumeUiSlider volumeLevel={volumeLevel} volumeFader={volumeFader} 
                   volumeSlider={volumeSlider} changeVolume={changeVolume}/>
                 </div>
+                {playlistSwitchState === "Tracklist2" ?
                 <div id={"pl2-uploading-track-x"}>
                   <UploadingTrackPl2  refreshTrackState={refreshTrackState} setRefreshTrackState={setRefreshTrackState} setUploadModalState={setUploadModalState} setTrackLocationState={setTrackLocationState}/>
-                </div>          
+                </div>  
+                : null}        
               </div>
             </div>
           </div>
