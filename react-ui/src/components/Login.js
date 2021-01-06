@@ -84,7 +84,7 @@ const Login = () => {
   return(
     <>
       <div id={"login-c"}>
-        <h1 id={"main-page__title"} >Mixed Media</h1>
+        <h1 id={"main-page__title"} >Mix Meld</h1>
         <div id={"login-c__login-form"}>
           <label>Login Email</label>
             <input className="login-input-1"  placeholder="Email" value={email} type="email" onChange={updateEmail} />
