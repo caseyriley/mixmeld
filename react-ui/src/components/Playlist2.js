@@ -37,7 +37,6 @@ import plusSign from '../images/plusSing2.png';
 const Playlist2 = (props) => {
 
   const [trackEditModalState, setTrackEditModalState] = useState({boolean: false, index: ""})
-
   function toggleTrackEditModal(index){
     const nextState = !trackEditModalState.boolean
     setTrackEditModalState({boolean: nextState, index: index});
@@ -438,10 +437,11 @@ function deleteFromPlaylist(trackId){
                                                     </div>
                                                   </div>
                                             : null}
-                                            <div className={"three-dots"} onClick={() => {toggleTrackEditModal(index)}} >
-                                              
+                                            {trackEditModalState.boolean === false ? <div className={"three-dots"} onClick={() => {toggleTrackEditModal(index)}} >
                                               <div className={"dot"}></div><div className={"dot"}></div><div className={"dot"}></div>
                                             </div>
+                                            : null}
+                                            
                                           </div>
                                         </div>
                                       </li>

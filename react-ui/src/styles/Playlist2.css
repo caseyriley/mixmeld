@@ -406,6 +406,8 @@ ul{
   width: 70px;
   height: auto;
   position: absolute;
+  bottom: -20px;
+  right: 0px;
   background-color: white;
 }
 .track-edit-modal__close {

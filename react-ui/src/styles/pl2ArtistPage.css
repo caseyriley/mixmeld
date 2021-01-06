@@ -151,3 +151,8 @@
   margin: 10px 0px 0px 20px;
 
 }
+#pl2-artist-page-c__bottom-space {
+  min-height: 100px;
+  width: 100%;
+  /* background-color: yellow; */
+}

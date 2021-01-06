@@ -144,3 +144,7 @@
   margin: 10px 0px 0px 20px;
 
 }
+#pl2-album-page-c {
+  min-width: 100%;
+  min-height: 100px;
+}

@@ -70,7 +70,7 @@ return (
       )
     })
     : ""}
-
+    <div id={"pl2-album-page-c"} ></div>
   </div>
 )
 

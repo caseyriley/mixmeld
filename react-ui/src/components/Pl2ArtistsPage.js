@@ -119,6 +119,7 @@ const Pl2ArtistsPage = (props) => {
         )
       
       }):null}
+      <div id={"pl2-artist-page-c__bottom-space"}></div>
     </div>
     </>
   )
