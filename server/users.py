@@ -32,4 +32,4 @@ def api():
     current_user = User.query.filter_by(email=user['email']).first()
     safe_user = current_user.to_safe_object()
     return jsonify(safe_user), 200
- #
+ 

@@ -1,1 +1,1 @@
-web: gunicorn formless-music-player.wsgi --log-file -
+web: gunicorn app:__init__
