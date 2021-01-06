@@ -1,4 +1,9 @@
 @media screen and (max-width: 350px) {
+  /* -----Playlist2----- */
+  .playlist2-top-three-dots-delete {
+    top: 130px;
+    left: 81%;
+  }
   .track-art-450 {
     height: 30px;
     width: 30px;
@@ -37,6 +42,7 @@
   .pl2-playlist-ul__li__name {
     min-width: 80px;
   }
+  /* ------------------ */
   /* -----Artist-Page----- */
   .pl2-artist-c img{ 
     margin-left: 0px;
