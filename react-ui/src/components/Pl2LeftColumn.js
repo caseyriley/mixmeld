@@ -124,6 +124,13 @@ const Pl2LeftColumn = (props) => {
     }
    
   }
+
+  function selectFirstPlaylist(){
+    const firstPlaylist = document.getElementsByClassName("playlist-button-c")
+    console.log("firstPlaylist", firstPlaylist)
+    console.log("firstPlaylist[0].name", firstPlaylist[0].getAttribute("name"))
+    setPlaylistIdRef(Number(firstPlaylist[0].getAttribute("name")))
+  }
   
 
   return (
@@ -150,11 +157,10 @@ const Pl2LeftColumn = (props) => {
                 <img className={"selectIcon"} src={noteFloat} alt={""}  />
                 <span>Tracks</span>
               </div>
-              <div className={`add-to-playlist ${props.addToPlaylistState ? "add-to-playlist--on" : ""}`} onClick={props.toggleAddToPlaylist}>
+              <div className={`add-to-playlist ${props.addToPlaylistState ? "add-to-playlist--on" : ""}`} onClick={()=>{props.toggleAddToPlaylist(); selectFirstPlaylist()}}>
                 <span>Add Tracks To</span> 
                 <span>Playlist</span> 
-                <div className={"left-playlist-add"} >
-                </div>
+                <div className={"left-playlist-add"} ></div>
               </div>
               <div className={`left-playlist ${props.addToPlaylistState ? "hidden" : "visible"}`}>
                 <span>Playlist</span> 
@@ -166,7 +172,7 @@ const Pl2LeftColumn = (props) => {
                 { props.playlistState ?
                   props.playlistState.map((playlist, index)=> {
                     return(
-                      <div className={`${props.playlistIdRef.current.playlistId === playlist.id ? "playlist-highlight" : "" } playlist-button-c`} onClick={()=>{setPlaylistIdRef(playlist.id)}}>
+                      <div name={`${playlist.id}`} className={`${props.playlistIdRef.current.playlistId === playlist.id ? "playlist-highlight" : "" } playlist-button-c`} onClick={()=>{setPlaylistIdRef(playlist.id)}}>
                         {/* <input type="button" className={"playlist-radio"}  id={playlist.playlist_name} name="playlist-radio" value={playlist.playlist_name} checked /> */}
                         <span >{playlist.playlist_name}</span>
                       </div>

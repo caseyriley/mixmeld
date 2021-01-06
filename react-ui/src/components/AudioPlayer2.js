@@ -475,14 +475,17 @@ function nextTrack() {
   }
 
   function showTracklist(){
-    setPlaylistSwitchState("Tracklist2")
-  }
+    setPlaylistSwitchState("Tracklist2");
+    setAddToPlaylistState(false);
+  };
   function showPl2AlbumPage(){
-    setPlaylistSwitchState("Pl2AlbumPage")
+    setPlaylistSwitchState("Pl2AlbumPage");
+    setAddToPlaylistState(false);
   }
   function showPl2ArtistPage(){
-    setPlaylistSwitchState("Pl2ArtistPage")
-  }
+    setPlaylistSwitchState("Pl2ArtistPage");
+    setAddToPlaylistState(false);
+  };
 
   // ----------------------------------------------------
   // ----------Add-To-Playlist---------------------------
