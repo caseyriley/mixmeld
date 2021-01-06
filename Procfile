@@ -1,1 +1,1 @@
-web: gunicorn mixmeld:__init__
+web: gunicorn init:app
