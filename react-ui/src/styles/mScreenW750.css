@@ -133,6 +133,9 @@
   .pl2-playlist-ul__li__date {
     display: none;
   }
+  .playlist-2-bottom-space {
+    height: 200px;
+  }
   /* -------------------- */
 
 }

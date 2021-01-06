@@ -344,8 +344,8 @@ function deleteFromPlaylist(trackId){
                   </div> 
                   : 
                   <div className={"playlist2-top-three-dots-delete fade-in"} >
-                    <div id={"delete-it"} onClick={()=>{setPlaylistDeleteModal(true); deletePlaylist()}}>X</div>
-                    <span >delete</span>
+                    <div id={"delete-it"} onClick={()=>{setPlaylistDeleteModal(true)}}>X</div>
+                    <span onClick={deletePlaylist}>delete</span>
                   </div>
                   }
                   <img src={props.trackArtState ? props.trackArtState : column.items[0] ? column.items[0].trackart : formlessMusicIcon} alt={""}/>
