@@ -347,7 +347,8 @@ function deleteFromPlaylist(trackId){
                     <span onClick={deletePlaylist}>delete</span>
                   </div>
                   }
-                  <img src={props.trackArtState ? props.trackArtState : formlessMusicIcon } alt={""}/>
+                  {/* <img src={props.trackArtState ? props.trackArtState : formlessMusicIcon } alt={""}/> */}
+                  <img src={props.trackArtState ? props.trackArtState : (column.items[0].trackart ? column.items[0].trackart : formlessMusicIcon)} alt={""}/>
                   <div id={"playlist2-top__info"}>
                     <div id={"playlist2-top__info__h2-c"} >
                       <h2  >{props.playlistIdRef.current.playlistName}</h2>
@@ -396,7 +397,7 @@ function deleteFromPlaylist(trackId){
                                           <div id={`nti${index}`} className={`next-track-info audioId${audio.id}`}>{`{"tracklocation":"${audio.tracklocation}","trackname":"${audio.trackname}","audioId":"${audio.id}", "trackartist":"${audio.trackartist}", "trackart":"${audio.trackart}"}`}</div> 
 
                                           <img className={`pl2-playlist-ul__li__track-art ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`} src={audio.trackart ? audio.trackart : formlessMusicIcon} alt={""}></img>
-
+                                          
                                           <div className={`pl2-playlist-ul__li__name ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`} >                                 
                                             <span className={"pl2-playlist-artist-name-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.trackartist, audio.id, audio.trackart)}} >{audio.trackname ? audio.trackname : ""} </span>                                                               
                                             <span className={"pl2-playlist-artist-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.trackartist, audio.id, audio.trackart)}} >{audio.trackartist ? audio.trackartist : ""} </span>                                       
