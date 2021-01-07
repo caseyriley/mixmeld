@@ -6,7 +6,7 @@
     "node": "10.x"
   },
   "scripts": {
-    "start": "gunicorn server:app",
+    "start": "gunicorn server",
     "build": "cd react-ui/ && npm install && npm run build"
   },
   "cacheDirectories": [
