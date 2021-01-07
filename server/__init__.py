@@ -34,7 +34,8 @@ jwt = JWTManager(app)
 @app.route('/', defaults={'path': ''})
 @app.route('/<path>')
 def react_root(path):
-    return app.send_static_file('index.html')
+    return send_from_directory(os.path.join(root_dir, 'react-ui', 'public'), 'index.html')
+    
 
 
 @app.route('/api', methods=['GET'])
