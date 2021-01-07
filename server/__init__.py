@@ -19,7 +19,7 @@ from .playlists import playlists
 
 app = Flask(__name__, 
     static_url_path='',
-    static_folder='react-ui/public')
+    static_folder='../react-ui/public')
 app.config.from_object(Config)
 CORS(app)
 
