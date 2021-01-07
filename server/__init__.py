@@ -19,8 +19,7 @@ from .playlists import playlists
 
 app = Flask(__name__, 
     static_url_path='',
-    static_folder='react-ui/public',
-    template_folder='react-ui/public')
+    static_folder='react-ui/public')
 app.config.from_object(Config)
 CORS(app)
 
@@ -34,10 +33,15 @@ db.init_app(app)
 jwt = JWTManager(app)
 
 
-@app.route('/', defaults={'path': ''})
-@app.route('/<path>')
-def react_root(path):
-    return "Helloooooooo"
+@app.route('/')
+def root():
+    return app.send_static_file('index.html')
+
+
+# @app.route('/', defaults={'path': ''})
+# @app.route('/<path>')
+# def react_root(path):
+    # return "Helloooooooo"
     # return app.send_static_file('index.html')
     # return send_from_directory(os.path.join(root_dir, 'react-ui', 'public'), 'index.html')
     
