@@ -34,7 +34,8 @@ jwt = JWTManager(app)
 @app.route('/', defaults={'path': ''})
 @app.route('/<path>')
 def react_root(path):
-    return send_from_directory(os.path.join(app.root_path, 'react-ui', 'public'), 'index.html')
+    return app.send_static_file('index.html')
+    # return send_from_directory(os.path.join(root_dir, 'react-ui', 'public'), 'index.html')
     
 
 
@@ -43,7 +44,7 @@ def api():
     return jsonify(message='Successful API ping'), 200
 
 
-# @app.route('/favicon.ico')
-# def favicon():
-#     return send_from_directory(os.path.join(app.root_path, 'static'),
-#         'favicon.ico',mimetype='image/vnd.microsoft.icon')
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+        'favicon.ico',mimetype='image/vnd.microsoft.icon')
