@@ -33,8 +33,7 @@ db.init_app(app)
 jwt = JWTManager(app)
 
 
-@app.route('/', defaults={'path': ''})
-@app.route('/<path>')
+@app.route('/')
 def root():
     return app.send_static_file('index.html')
 
