@@ -21,7 +21,7 @@ app = Flask(__name__,
     static_url_path='',
     static_folder='../react-ui/build')
 app.config.from_object(Config)
-CORS(app)
+cors = CORS(app)
 
 app.register_blueprint(user, url_prefix='/users')
 app.register_blueprint(auth, url_prefix='/auth')
