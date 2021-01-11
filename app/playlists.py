@@ -8,7 +8,7 @@ from flask_jwt_extended  import jwt_required
 
 from flask_cors import CORS
 
-from server.models import db, Playlist
+from app.models import db, Playlist
 
 playlists = Blueprint('playlists', __name__)
 

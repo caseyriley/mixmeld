@@ -8,7 +8,7 @@ from flask_jwt_extended  import jwt_required
 
 from flask_cors import CORS
 
-from server.models import db, Track
+from app.models import db, Track
 
 tracks = Blueprint('tracks', __name__)
 
