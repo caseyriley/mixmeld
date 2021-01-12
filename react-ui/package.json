@@ -36,6 +36,7 @@
     "not op_mini all"
   ],
   "http.proxyStrictSSL": false,
+  "proxy": "http//localhost:5000",
   "devDependencies": {
     "nodemon": "^2.0.6"
   }

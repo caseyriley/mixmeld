@@ -2,7 +2,7 @@ from flask import Blueprint, request, jsonify
 from flask_jwt_extended import JWTManager, create_access_token
 import bcrypt
 
-from .models import db, User
+from .models import db, User, Track
 
 auth = Blueprint('auth', __name__)
 
@@ -88,7 +88,42 @@ def signup():
             lastname=lastname,
             zipcode=zipcode,
         )
+
         db.session.add(user)
+        db.session.commit()
+
+        m_user_id='2'
+        m_trackname='3121'
+        m_trackartist='Prince'
+        m_trackalbum='3121'
+        m_tracklocation='https://formless.s3.amazonaws.com/01 3121.mp3'
+        m_tracktime='04:31'
+        m_trackrating=''
+        m_trackgenre='Pop'
+        m_trackart='https://formless.s3.amazonaws.com/220px-Prince_-_3121.jpg'
+
+
+
+        print('email66666666666', email)
+        current_user = User.query.filter(User.email == email).first()
+        print("current_user77777777777777", current_user)
+
+        first_track = Track(
+            user_id=current_user.id,
+            trackname=m_trackname,
+            trackartist=m_trackartist,
+            trackalbum=m_trackalbum,
+            tracklocation=m_tracklocation,
+            tracktime=m_tracktime,
+            trackrating=m_trackrating,
+            trackgenre=m_trackgenre,
+            trackart=m_trackart,
+        )
+
+        
+        # print ("first_track00000000000000", first_track)
+        # db.session.add(user)
+        db.session.add(first_track)
         db.session.commit()
 
         auth_token = create_access_token(identity={"email": user.email})

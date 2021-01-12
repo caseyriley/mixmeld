@@ -26,6 +26,7 @@ import './styles/mScreenW515.css';
 import './styles/mScreenW450.css';
 import './styles/mScreenW350.css';
 import './styles/mScreenH700.css';
+import './styles/mScreen600.css';
 import './styles/MainNav.css';
 
 import App from './App';

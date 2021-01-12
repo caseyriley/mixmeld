@@ -27,7 +27,6 @@ def post_track():
         trackrating="",
         trackart="",
         created_date= func.current_timestamp()
-
     )
     db.session.add(track)
     db.session.commit()

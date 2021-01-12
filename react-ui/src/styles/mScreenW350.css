@@ -48,4 +48,20 @@
     margin-left: 0px;
   }
   /* --------------------- */
+  /* -----Sign-Up----- */
+  .signup-pop--container {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0px 0px 0px 0px;
+    background-color: rgb(105, 105, 105, .95);
+    border-radius: 20px;
+    width: 250px;
+    position: absolute;
+    top: 40px;
+    left: 15px;
+    border: 1px solid purple;
+  }
+  /* ----------------- */
 }

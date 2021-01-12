@@ -1,0 +1,11 @@
+@media screen and (max-height: 600px) {
+  .signup-head__text p {
+    font-size: 15px;
+  }
+  .signup-form__text P{
+    font-size: 15px;
+  }
+  .signup-form--container input {
+    height: 20px;
+  }
+}

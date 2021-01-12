@@ -1,55 +1,52 @@
 .signup-pop--container {
   display: flex;
   justify-items: center;
+  align-items: center;
   flex-direction: column;
-  margin: 40px 70px 0px 0px;
-  background-color: rgb(105, 105, 105, .5);
+  margin: 0px 0px 0px 0px;
+  background-color: rgb(105, 105, 105, .95);
   border-radius: 20px;
   width: 250px;
   position: absolute;
-  top: 0px;
+  top: 40px;
   left: 70px;
+  z-index: 5;
 }
 .signup-head--container {
   display: flex;
   flex-direction: column;
   justify-items: center;
-  align-content: center;
+  color: rgb(205, 203, 203);
+  font-family: 'Electrolize', sans-serif;
 }
 .signup-head--topElements {
   display: flex;
   justify-items: center;
   align-content: center;
   width: 100%;
-  margin: 0px;
-}
-.signup-head__logo {
-  width: 45px;
-  height: 45px;
-  /* margin: auto; */
+  margin: 0px;  
 }
 .signup__closeButton--container {
   position: relative;
-  top: 15px;
-  left: 200px;
+  top: 5px;
+  left:160px;
   z-index: 1;
-  /* border: 5px solid green; */
   width: 30px;
-  fill: rgb(134, 134, 134);
-
+  fill: rgb(186, 186, 186);
+  cursor: pointer;
 }
 .signup-head__text p {
   font-size: 20px;
   display: flex;
   justify-content: center;
-  margin: 30px 0px 0px 0px;
-
+  margin: 5px 0px 0px 0px;
 }
 .signup-form--container div {
   display: flex;
   flex-direction: column;
   justify-items: center;
-  margin: 20px;
+  align-items: center;
+  margin: 10px;
 }
 .signup-form__text {
   font-size: 18px;
@@ -60,19 +57,20 @@
 }
 .signup-form__text P{
   text-align: center;
+  color: rgb(205, 203, 203);
+  font-family: 'Electrolize', sans-serif;
   margin: 0px 0px 0px 0px;
-
 }
 .signup-form--container input {
   margin-bottom: 5px;
-  color: black;
-  height: 40px;
+  color: rgb(168, 168, 168);
+  font-family: 'Audiowide', cursive;
+  height: 30px;
   border-radius: 8px;
-  font-size: 18px;
+  font-size: 16px;
   text-align: center;
   outline: none;
   background-color: rgb(196, 196, 196);
-
 }
 .signup-form__submitButton--container {
   width: 84%;
@@ -82,8 +80,17 @@
   align-items: center;
   border: 1px solid rgb(143, 143, 143);
   border-radius: 10px;
-  background-color: #2e2e2e;
+  background-color: #dbdbdb;
   cursor: pointer;
+  color: rgb(93, 93, 93);
+  transition: all .3s;
+  position: relative;
+  left: 8px;
+  font-family: 'Audiowide', cursive;
+}
+.signup-form__submitButton--container:hover {
+  background-color: #ededed;
+  color: rgb(106, 106, 106);
 }
 .modal-hiding {
   display: none;
