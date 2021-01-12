@@ -7,8 +7,9 @@
 // };
 
 // export let API_URL = process.env.FLASK_ENV === 'development' ? 'http://localhost:5000' : 'https://mixmeld.herokuapp.com';
-export let API_URL = process.env.REACT_APP_BASE_URL
+// export let API_URL = process.env.REACT_APP_BASE_URL
+export let API_URL = 'https://mixmeld.herokuapp.com'
 
 // console.log("API_URL", API_URL)
 
-console.log('new-build 2')
+console.log('new-build 3')
