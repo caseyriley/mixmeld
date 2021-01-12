@@ -36,7 +36,6 @@
     "not op_mini all"
   ],
   "http.proxyStrictSSL": false,
-  "homepage" : ".",
   "devDependencies": {
     "nodemon": "^2.0.6"
   }
