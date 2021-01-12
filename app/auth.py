@@ -120,9 +120,6 @@ def signup():
             trackart=m_trackart,
         )
 
-        
-        # print ("first_track00000000000000", first_track)
-        # db.session.add(user)
         db.session.add(first_track)
         db.session.commit()
 
