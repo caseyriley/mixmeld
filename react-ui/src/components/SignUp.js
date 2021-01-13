@@ -61,6 +61,8 @@ const SignUp = props => {
 
   
   return (
+    <>
+    <div id={"signup-modal-background"} onClick={props.handleClose}></div>
     <div className="signup-pop--container">
       <div className="signup-head--container">
         <div className="signup-head--topElements">
@@ -151,6 +153,7 @@ const SignUp = props => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

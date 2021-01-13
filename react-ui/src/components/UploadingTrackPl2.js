@@ -26,6 +26,7 @@ const UploadingTrackPl2 = (props) => {
     accessKeyId: process.env.REACT_APP_ACCESSKEYID,
     secretAccessKey: process.env.REACT_APP_SECRETACCESSKEY
   }
+  console.log("config###########", config)
 
   const [currentUser, setCurrentUser] = useState({});
 
@@ -60,9 +61,9 @@ const UploadingTrackPl2 = (props) => {
   }
   
 
-function removeSpecialChars(str) {
-  return str.replace(/[^\w\s\\.\\*\\_\\(\\)!\\'-]/gi, '');           
-}
+  function removeSpecialChars(str) {
+    return str.replace(/[^\w\s\\.\\*\\_\\(\\)!\\'-]/gi, '');           
+  }
 
   const upload = (e) => {
     console.log("e.target.value", e.target.value)
@@ -101,6 +102,7 @@ function removeSpecialChars(str) {
       .then((data) => {
 
         location = data.location;
+        console.log("location of upoad UploadingJs", location)
 
         let au = document.createElement('audio');
         au.src = location;

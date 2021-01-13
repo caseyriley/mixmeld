@@ -12,7 +12,7 @@ import TrackDisplay from './TrackDisplay';
 import UploadingTrackPl2 from './UploadingTrackPl2';
 import formlessMusicIcon from '../images/formless-music-icon.png'
 
-
+console.log('REACT_APP_BASE_URL2', process.env.REACT_APP_BASE_URL)
 
 let vol = .5;
 
