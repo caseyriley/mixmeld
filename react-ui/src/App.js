@@ -6,7 +6,7 @@ import MainPage from './components/MainPage';
 function App() {
   const {resolve} = require('path')
   // require('dotenv').config({ path: "../../formless-music-player"});
-  require('dotenv').config({path: "../../.env"})
+  require('dotenv').config()
   // require('dotenv').config({ path: resolve("../../formless-music-player", ".env")});
   console.log('REACT_APP_BASE_URL1', process.env.REACT_APP_BASE_URL)
   console.log("Current directory:", __dirname)
