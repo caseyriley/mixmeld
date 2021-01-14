@@ -4,7 +4,7 @@ import Login from './components/Login';
 import MainPage from './components/MainPage';
 
 function App() {
-  require('dotenv').config();
+  require('dotenv').config({ path: "../../.env" });
   console.log('REACT_APP_BASE_URL1', process.env.REACT_APP_BASE_URL)
   const loggedIn = window.localStorage.getItem("auth_token");
 
