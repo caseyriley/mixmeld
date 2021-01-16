@@ -51,27 +51,44 @@
   font-family: 'Electrolize', sans-serif;
 
 }
-#instruction-1 {
+.instruction-gif {
   height: 300px;
   width: auto;
 }
-#instruction-2 {
+.instruction-gif-2 {
   height: 300px;
   width: auto;
+  position: relative;
+  top: -50px;
 }
-#instruction-3 {
-  height: 300px;
-  width: auto;
+.left-playlist-add-2 {
+    width: 15px;
+    height: 15px;
+    opacity: .8;
+    transition: all .3s;
+    border-radius: 100%;
+    border: 1px solid rgb(176, 176, 176);
+    background-color: rgb(176, 176, 176);
+    position: absolute;
+    top: -32px;
+    left:  -78px;
 }
-#instruction-4 {
-  height: 300px;
-  width: auto;
+#left-playlist-add-2-p {
+  position: relative;
+  /* top: -65px;
+  left:  81px; */
 }
-#instruction-5 {
-  height: 300px;
-  width: auto;
+.instruction-gif-2 {
+  position: relative;
+  top: -60px;
 }
-#instruction-6 {
-  height: 300px;
-  width: auto;
+#instruction-developer-name {
+  color: rgb(182, 181, 181);
+  font-family: 'Source Code Pro', monospace;
+  font-family: 'Goldman', cursive;
+  /* font-family: 'Audiowide', cursive; */
+  /* font-family: 'Syncopate', sans-serif; */
+  /* font-family: 'Electrolize', sans-serif; */
+  margin: 0px 10px 0px 0px;
 }
+

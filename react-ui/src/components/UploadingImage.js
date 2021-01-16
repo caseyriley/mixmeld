@@ -65,6 +65,7 @@ const UploadingImage = (props) => {
           case "waiting":
             return (
               <div id={"waiting"}>
+                <span>Uploading...</span>
                 <LoadingRipples/>
               </div>
             )

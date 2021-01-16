@@ -80,6 +80,11 @@
   background-color: black;
   margin: 0px 0px 10px 0px;
 }
+#waiting span {
+  position: absolute;
+  z-index: 5;
+  color: white;
+}
 #loading-ripples {
   height: 100px;
   

@@ -128,22 +128,22 @@ const Login = () => {
           
         </div>
         <div className="login-footer__creditBox">
-                        <span>Casey Riley</span>
-                        <div className={"login-footer__creditBox--links"} >
-                            <a href={"mailto:innerforest7@gmail.com"} target={"_blank"} rel={"noreferrer noopener"}>
-                                <img alt={""} src={"https://img.icons8.com/doodle/48/000000/new-post.png"} />
-                            </a>
-                            <a href={"https://github.com/caseyriley"} target={"_blank"} rel={"noreferrer noopener"}>
-                                <GithubIcon />
-                            </a>
-                            <a href={"https://www.linkedin.com/in/casey-riley-3396231a1/"} target={"_blank"} rel={"noreferrer noopener"}>
-                                <img src={"https://img.icons8.com/fluent/48/000000/linkedin.png"} alt={""} />
-                            </a>
-                            <a href={"https://angel.co/u/casey-riley-1"} target={"_blank"} rel={"noreferrer noopener"}>
-                                <img src={"https://img.icons8.com/color/48/000000/angelist.png"} alt={""} />
-                            </a>
-                        </div>
-                    </div>
+          <span>Casey Riley</span>
+          <div className={"login-footer__creditBox--links"} >
+              <a href={"mailto:innerforest7@gmail.com"} target={"_blank"} rel={"noreferrer noopener"}>
+                  <img alt={""} src={"https://img.icons8.com/doodle/48/000000/new-post.png"} />
+              </a>
+              <a href={"https://github.com/caseyriley"} target={"_blank"} rel={"noreferrer noopener"}>
+                  <GithubIcon />
+              </a>
+              <a href={"https://www.linkedin.com/in/casey-riley-3396231a1/"} target={"_blank"} rel={"noreferrer noopener"}>
+                  <img src={"https://img.icons8.com/fluent/48/000000/linkedin.png"} alt={""} />
+              </a>
+              <a href={"https://angel.co/u/casey-riley-1"} target={"_blank"} rel={"noreferrer noopener"}>
+                  <img src={"https://img.icons8.com/color/48/000000/angelist.png"} alt={""} />
+              </a>
+          </div>
+        </div>
       </div>
     </>
   )
