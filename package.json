@@ -2,7 +2,6 @@
   "cacheDirectories": [
     "react-ui/node_modules"
   ],
-  
   "scripts": {
     "heroku-postbuild": "cd react-ui && npm install && npm run build"
   }

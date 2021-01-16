@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { API_URL } from '../config';
 import GithubIcon from '../images/GithubIcon';
 import SignupModal from './SignupModal';
@@ -6,6 +6,30 @@ import SignupModal from './SignupModal';
 
 
 const Login = () => {
+
+
+
+  useEffect(()=> {
+    const api = async () => {
+      console.log("Login.js")
+      const response = await fetch(`${API_URL}/api`, {
+          method: "GET",
+          mode: "cors",
+          headers: { "Content-Type": "application/json" },
+      });
+      const res = await response.json()
+      if (res.auth_token !== undefined) {
+        console.log(res)
+      } else {
+        console.log("not hitting the api")
+      }
+    }
+    api()
+  })
+
+
+
+
   const [signUpModal, setSignUpModal] = useState(false);
   const [antiModal, setAntiModal] = useState("login-block")
   const [email, setEmail] = useState("");

@@ -123,8 +123,6 @@ const UploadingTrackPl2 = (props) => {
        
     }
 
-//https://formless.s3.amazonaws.com/You%2520are%2520the%2520sunshine%2520of%2520my%2520life.mp3
-//https://formless.s3.amazonaws.com/You%20are%20the%20sunshine%20of%20my%20life.mp3
   return (
     <>
       <div id={"pl2-uploading-track-c"}>

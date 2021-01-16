@@ -21,7 +21,8 @@ app = Flask(__name__,
     static_url_path='',
     static_folder='../react-ui/build')
 app.config.from_object(Config)
-cors = CORS(app)
+CORS(app)
+
 
 app.register_blueprint(user, url_prefix='/users')
 app.register_blueprint(auth, url_prefix='/auth')
@@ -31,6 +32,9 @@ app.register_blueprint(playlists, url_prefix='/playlists')
 
 db.init_app(app)
 jwt = JWTManager(app)
+
+
+
 
 
 @app.route('/')
@@ -50,7 +54,7 @@ def root():
 
 @app.route('/api', methods=['GET'])
 def api():
-    return jsonify(message='Successful API ping'), 200
+    return jsonify(message='Successful API ping')
 
 
 @app.route('/favicon.ico')
