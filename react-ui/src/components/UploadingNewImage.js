@@ -1,9 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import S3FileUpload from 'react-s3';
 import { API_URL } from '../config';
-import lottie from 'lottie-web';
-import deleteX from '../images/deleteX.png'
-import LoadingRipples from '../images/LoadingRipples';
 import uploadImage from "../images/uploadImage.png"
 
 
@@ -37,7 +34,7 @@ const UploadingNewImage = (props) => {
         location = data.location;
           updateTrackArt(location);
           props.setTrackArtState(location);
-          props.setRefreshTrackState(props.refreshTrackState + 1)
+          props.setRefreshTrackState(props.refreshTrackState + 1);
       })
 
     }

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { API_URL } from '../config';
 import GithubIcon from '../images/GithubIcon';
+import Instructions from './Instructions';
 import SignupModal from './SignupModal';
 
 
@@ -105,8 +106,14 @@ const Login = () => {
     }
     setTimeout(demoLogin, 1500);
   }
+  const [instructionsModalState, setInstructionsModalState] = useState(false);
   return(
     <>
+      {instructionsModalState ? <Instructions setInstructionsModalState={setInstructionsModalState}/> : null}
+
+      <div className={"login-instructions"} onClick={()=>{setInstructionsModalState(true)}}>
+        <span>Instructions</span>
+      </div>
       <div id={"login-c"}>
         <h1 id={"main-page__title"} >Mix Meld</h1>
         <div id={"login-c__login-form"}>
