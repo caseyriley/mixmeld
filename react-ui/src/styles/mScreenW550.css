@@ -85,4 +85,10 @@
     min-width: 70px;
   }
   /* -------------------- */
+  /* -----Login----- */
+  #instructions-modal {
+    width: 90vw;
+    margin: 10vh 5vw 10vh 5vw;
+  }
+  /* --------------- */
 }

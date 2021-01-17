@@ -64,10 +64,20 @@
     border: 1px solid purple;
   }
   /* ----------------- */
-  /* -----Login----- */
+/* -----Login----- */
 .login-instructions {
-
   font-size: 10px;
+}
+#instructions-modal {
+  width: 100vw;
+  margin: 10vh 0vw 10vh 0vw;
+}
+
+.instruction-c p{
+  width: 250px;
+}
+.instruction-gif {
+  height: 200px;
 }
 /* --------------- */
 }

@@ -154,10 +154,20 @@
 }
 /* ---------------------- */
 /* -----Login----- */
+#instructions-modal {
+  width: 90vw;
+  margin: 10vh 5vw 10vh 5vw;
+}
 .login-instructions {
   top: 10px;
   right: 10px;
   font-size: 12px;
+}
+.instruction-c p{
+  width: 250px;
+}
+.instruction-gif {
+  height: 200px;
 }
 /* --------------- */
 }

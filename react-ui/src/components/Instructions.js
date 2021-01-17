@@ -27,7 +27,7 @@ const Instructions = (props)=>{
           <p>4. Scrubbing the song to the part you want to hear is easy, just click 
             and drag the play-head. 
           </p>
-          <img className={"instruction-gif"} src="https://i.gyazo.com/1c20eec51f7299d5655265ef39c275bd.gif" alt="Image from Gyazo" width="434"/>
+          <img className={"instruction-gif"} src="https://i.gyazo.com/1c20eec51f7299d5655265ef39c275bd.gif" alt="" width="434"/>
         </div>
         <div className={"instruction-c"}>
           <p>5. Tacks can be organized by Rating, Name, Artist, Album, Time, Genre 
