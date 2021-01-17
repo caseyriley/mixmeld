@@ -111,9 +111,7 @@ const Login = () => {
     <>
       {instructionsModalState ? <Instructions setInstructionsModalState={setInstructionsModalState}/> : null}
 
-      <div className={"login-instructions"} onClick={()=>{setInstructionsModalState(true)}}>
-        <span>Instructions</span>
-      </div>
+
       <div id={"login-c"}>
         <h1 id={"main-page__title"} >Mix Meld</h1>
         <div id={"login-c__login-form"}>
@@ -131,9 +129,13 @@ const Login = () => {
             <span>Sign up</span>
           </div>
 
+
           <SignupModal signUpModal={signUpModal} hideSignUpModal={hideSignUpModal} />
           
         </div>
+        <div className={"login-instructions"} onClick={()=>{setInstructionsModalState(true)}}>
+            <span>Instructions</span>
+          </div>
         <div className="login-footer__creditBox">
           <span>Casey Riley</span>
           <div className={"login-footer__creditBox--links"} >

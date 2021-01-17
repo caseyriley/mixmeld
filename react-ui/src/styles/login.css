@@ -1,16 +1,17 @@
 
 .login-instructions {
-  margin: 10px;
-  color: rgb(185, 185, 185);
+  color: rgb(123, 200, 219);
   font-family: 'Electrolize', sans-serif;
   transition: all .3s;
   cursor: pointer;
   padding: 1px 5px;
   border-radius: 6px;
   border: none;
+  background-color: rgb(69, 69, 69, .7);
   position: fixed;
   top: 20px;
   right: 20px;
+
 }
 .login-instructions:hover {
   color: rgb(162, 148, 255);

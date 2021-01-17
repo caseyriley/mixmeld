@@ -64,4 +64,10 @@
     border: 1px solid purple;
   }
   /* ----------------- */
+  /* -----Login----- */
+.login-instructions {
+
+  font-size: 10px;
+}
+/* --------------- */
 }

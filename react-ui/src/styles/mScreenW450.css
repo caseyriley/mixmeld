@@ -153,4 +153,11 @@
   width: 100%;
 }
 /* ---------------------- */
+/* -----Login----- */
+.login-instructions {
+  top: 10px;
+  right: 10px;
+  font-size: 12px;
+}
+/* --------------- */
 }
