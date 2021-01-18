@@ -21,7 +21,7 @@ const UploadingNewImage = (props) => {
         const trackData = { trackart: artLocation, tracklocation: props.pl2TrackLocationState, user_id: props.currentUser.id}
         const options = {
           method: 'POST',
-          // headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(trackData),
         }
         fetch(`${API_URL}/tracks/art`, options)
@@ -35,6 +35,9 @@ const UploadingNewImage = (props) => {
           updateTrackArt(location);
           props.setTrackArtState(location);
           props.setRefreshTrackState(props.refreshTrackState + 1);
+      })
+      .catch((err) => {
+        alert(err)
       })
 
     }

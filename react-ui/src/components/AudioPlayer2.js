@@ -568,7 +568,7 @@ function nextTrack() {
   function scrollToThis3(className){
     setTimeout(() => {
       const newTrackInfo = document.getElementsByClassName(className);
-      newTrackInfo[0].parentNode.parentNode.scrollIntoView({ behavior: 'smooth', alignToTop:false })  
+      newTrackInfo[0].parentNode.parentNode.parentNode.parentNode.scrollIntoView({ behavior: 'smooth', alignToTop:false })  
     }, 500);
   }
 
