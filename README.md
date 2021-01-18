@@ -150,7 +150,7 @@ the desired page and query.
     <img src="https://img.icons8.com/doodle/48/000000/new-post.png" height="30"/>
 </a>
 <a href="https://github.com/caseyriley">
-    <img src="react-ui/src/images/github.png" height="30" />
+    <img src="react-ui/src/images/github2.png" height="30" />
 </a>
 <a href="https://www.linkedin.com/in/casey-riley-3396231a1/">
     <img src="https://img.icons8.com/fluent/48/000000/linkedin.png" height="30" />
