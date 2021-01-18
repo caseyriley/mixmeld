@@ -40,7 +40,7 @@ const Instructions = (props)=>{
             Tracks are rated by selecting a number from 1-5 and a emoji to represent 
             the track. This allows tracks to be compared based on thier feeling.
           </p>
-          <img className={"instruction-gif"} src="https://i.gyazo.com/6541e33ad257cf231716205912b48fa4.gif" alt="" width="980"/>
+          <img className={"instruction-gif"} src="https://i.gyazo.com/6541e33ad257cf231716205912b48fa4.gif" alt="" width="600"/>
         </div>
         <div className={"instruction-c"}>
           <p>7. Uploading a track is easily done by clicking the "Upload Track" button located 
