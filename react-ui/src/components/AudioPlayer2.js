@@ -167,16 +167,19 @@ const AudioPlayer2 = (props)=>{
       }
     } else {
       const trackLi = document.getElementsByClassName(`audioId${currentTrack.current}`) //get Li element of current track regarless of sort choice
-      let trackLiIdNumber = Number(trackLi[0].id.slice(3)) //get index of current track
-      if (trackLiIdNumber === 0){
-        trackLiIdNumber = 1
-    }
-    const newTrackLi = document.getElementById(`nti${trackLiIdNumber - 1}`) //get Li element of previous track regardless of sort choice
-    const newTrackObj = JSON.parse(newTrackLi.innerHTML); //get key values of next track info
-    console.log("skib back set track newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId, newTrackObj.trackart", newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId, newTrackObj.trackart)
-    setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId, newTrackObj.trackart); // start the next track
-    }
-
+      console.log("trackli+++++++", trackLi)
+      let trackLiIdNumber = null;
+      if (trackLi.length > 0) {
+        trackLiIdNumber = Number(trackLi[0].id.slice(3)) //get index of current track
+        if (trackLiIdNumber === 0){
+            trackLiIdNumber = 1
+        }
+        const newTrackLi = document.getElementById(`nti${trackLiIdNumber - 1}`) //get Li element of previous track regardless of sort choice
+        const newTrackObj = JSON.parse(newTrackLi.innerHTML); //get key values of next track info
+        console.log("skib back set track newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId, newTrackObj.trackart", newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId, newTrackObj.trackart)
+        setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId, newTrackObj.trackart); // start the next track
+        }
+      }
   }
 // ------------------------------------------------
 
@@ -412,46 +415,46 @@ const AudioPlayer2 = (props)=>{
 //----------------------------------------------
 
 function nextTrack() {
-  console.log("currentTrack.current", currentTrack.current)
+  // console.log("currentTrack.current", currentTrack.current)
   const trackLi = document.getElementsByClassName(`audioId${currentTrack.current}`) //get Li element of current track regarless of sort choice
   console.log("AudioPlayer2===trackLi",trackLi)
-  let trackLiIdNumber = Number(trackLi[0].id.slice(3)) //get index of current track
-  console.log("trackLiIdNumber", trackLiIdNumber)
-  console.log("trackArrayLengthState", trackArrayLengthState)
+  let trackLiIdNumber = undefined;
+  if (trackLi.length > 0) {
+    trackLiIdNumber = Number(trackLi[0].id.slice(3)) //get index of current track
 
-  if (randomState === "pl2-random-play"){
+    if (randomState === "pl2-random-play"){
 
-    function getRandomInt(max) {
-      return Math.floor(Math.random() * Math.floor(max));
-    }
+      function getRandomInt(max) {
+        return Math.floor(Math.random() * Math.floor(max));
+      }
 
-    const randomNum = getRandomInt(trackArrayLengthState -1);
-    console.log("randomNum==================>", randomNum)
-    const newTrackLi = document.getElementById(`nti${randomNum}`) //get Li element of next track regardless of sort choice
-    const newTrackObj = JSON.parse(newTrackLi.innerHTML); //get key values of next track info
-    // console.log("nnneeeeewwTrackObj====>", newTrackObj)
-    setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId, newTrackObj.trackart); // start the next track
-  } else {
-
-    if (loopState && trackLiIdNumber >= trackArrayLengthState -1){
-      trackLiIdNumber = -1;
-    }
-  
-    if (!loopState && trackLiIdNumber >= trackArrayLengthState -1){
-      console.log("trackArrayLengthState", trackArrayLengthState)
-      trackLiIdNumber = -1;
-      const newTrackLi = document.getElementById(`nti${trackLiIdNumber + 1}`) //get Li element of next track regardless of sort choice
+      const randomNum = getRandomInt(trackArrayLengthState -1);
+      console.log("randomNum==================>", randomNum)
+      const newTrackLi = document.getElementById(`nti${randomNum}`) //get Li element of next track regardless of sort choice
       const newTrackObj = JSON.parse(newTrackLi.innerHTML); //get key values of next track info
       setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId, newTrackObj.trackart); // start the next track
-      stopMedia()
     } else {
-      const newTrackLi = document.getElementById(`nti${trackLiIdNumber + 1}`) //get Li element of next track regardless of sort choice
-      console.log("trackLiIdNumber in else", trackLiIdNumber)
-      console.log("newTrackLi", newTrackLi)
-      const newTrackObj = JSON.parse(newTrackLi.innerHTML); //get key values of next track info
-      // console.log("nnneeeeewwTrackObj====>", newTrackObj)
-      console.log("newTrackObj.tracklocation", newTrackObj.tracklocation)
-      setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId, newTrackObj.trackart); // start the next track
+
+      if (loopState && trackLiIdNumber >= trackArrayLengthState -1){
+        trackLiIdNumber = -1;
+      }
+    
+      if (!loopState && trackLiIdNumber >= trackArrayLengthState -1){
+        console.log("trackArrayLengthState", trackArrayLengthState)
+        trackLiIdNumber = -1;
+        const newTrackLi = document.getElementById(`nti${trackLiIdNumber + 1}`) //get Li element of next track regardless of sort choice
+        const newTrackObj = JSON.parse(newTrackLi.innerHTML); //get key values of next track info
+        setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId, newTrackObj.trackart); // start the next track
+        stopMedia()
+      } else {
+        const newTrackLi = document.getElementById(`nti${trackLiIdNumber + 1}`) //get Li element of next track regardless of sort choice
+        console.log("trackLiIdNumber in else", trackLiIdNumber)
+        console.log("newTrackLi", newTrackLi)
+        const newTrackObj = JSON.parse(newTrackLi.innerHTML); //get key values of next track info
+        // console.log("nnneeeeewwTrackObj====>", newTrackObj)
+        console.log("newTrackObj.tracklocation", newTrackObj.tracklocation)
+        setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId, newTrackObj.trackart); // start the next track
+      }
     }
   }
 
