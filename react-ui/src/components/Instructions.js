@@ -80,10 +80,6 @@ const Instructions = (props)=>{
         <div className={"instruction-c"}>
           <p>12. The rest of the controls are easy to discover <span role="img" aria-label="musical notes">🎵🎶🎵🎶🎵</span>
           </p>
-          <div className="login-footer__creditBox">
-          
-
-        </div>
           <div className={"login-footer__creditBox--links"} >
           <span id={"instruction-developer-name"}>Casey Riley</span>
             <a href={"mailto:innerforest7@gmail.com"} target={"_blank"} rel={"noreferrer noopener"}>
