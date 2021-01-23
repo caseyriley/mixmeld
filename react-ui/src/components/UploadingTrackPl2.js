@@ -62,7 +62,10 @@ const UploadingTrackPl2 = (props) => {
   
 
   function removeSpecialChars(str) {
-    return str.replace(/[^\w\s\\.\\*\\_\\(\\)!\\'-]/gi, '') + Math.floor(Math.random() * 100);           
+    const newStr = str.replace(/[^\w\s\\.\\*\\_\\(\\)!\\'-]/gi, '');
+    const splitStr = newStr.split(/\.(?=[^\.]+$)/)
+    const randNewStr = splitStr[0] + Math.floor(Math.random() * 100) + '.' + splitStr[1]  
+    return randNewStr 
   }
 
   const upload = (e) => {
