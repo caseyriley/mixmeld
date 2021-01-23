@@ -16,29 +16,44 @@ const UploadingImage = (props) => {
 
   const [trackArtLocationState, setTrackArtLocationState] = useState();
 
-    const upload = (e) => {
-      
-      const updateTrackArt = async (artLocation) => {
-        console.log("trackLocationState==================>", props.trackLocationState)
-        const trackData = { trackart: artLocation, tracklocation: props.trackLocationState, user_id: props.currentUser.id}
-        const options = {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(trackData),
-        }
-        fetch(`${API_URL}/tracks/art`, options)
-      }
-    
-      let location
-      
-      S3FileUpload.uploadFile(e.target.files[0], config)
-      .then((data)=>{
-        location = data.location;
-          updateTrackArt(location);
-          setTrackArtLocationState(location);
-      })
+  function removeSpecialChars(str) {
+    return str.replace(/[^\w\s\\.\\*\\_\\(\\)!\\'-]/gi, '') + Math.floor(Math.random() * 100);           
+  }
 
+  const upload = (e) => {
+
+    const prevName = e.target.files[0]["name"]
+    let newFile = e.target.files[0]
+
+    Object.defineProperties(newFile, {
+      name: {
+        value: `${removeSpecialChars(prevName)}`,
+        writable: true,
+        configurable: true
+      },
+  });
+      
+  const updateTrackArt = async (artLocation) => {
+    console.log("trackLocationState==================>", props.trackLocationState)
+    const trackData = { trackart: artLocation, tracklocation: props.trackLocationState, user_id: props.currentUser.id}
+    const options = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(trackData),
     }
+    fetch(`${API_URL}/tracks/art`, options)
+  }
+    
+    let location
+    
+    S3FileUpload.uploadFile(e.target.files[0], config)
+    .then((data)=>{
+      location = data.location;
+        updateTrackArt(location);
+        setTrackArtLocationState(location);
+    })
+
+  }
         
   return (
     <>
