@@ -13,8 +13,25 @@ const UploadingNewImage = (props) => {
     secretAccessKey: process.env.REACT_APP_SECRETACCESSKEY
   }
 
+  function removeSpecialChars(str) {
+    const newStr = str.replace(/[^\w\s\\.\\*\\_\\(\\)!\\'-]/gi, '');
+    const splitStr = newStr.split(/\.(?=[^\.]+$)/)
+    const randNewStr = splitStr[0] + Math.floor(Math.random() * 1000) + '.' + splitStr[1]  
+    return randNewStr 
+  }
 
     const upload = (e) => {
+
+      const prevName = e.target.files[0]["name"]
+      let newFile = e.target.files[0]
+  
+      Object.defineProperties(newFile, {
+        name: {
+          value: `${removeSpecialChars(prevName)}`,
+          writable: true,
+          configurable: true
+        },
+      });
       
       const updateTrackArt = async (artLocation) => {
         console.log("trackLocationState==================>", props.pl2TrackLocationState)
