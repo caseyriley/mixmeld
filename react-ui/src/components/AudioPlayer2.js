@@ -630,7 +630,7 @@ const [trackLocationState, setTrackLocationState] = useState();
                   <img className={"pl2-fast-forward"} onClick={nextTrack} ref={fwd} src={fastForward} alt={""}  ></img>
                   <img  className={`pl2-loop ${loopState ? "pl2-looping" : "not-looping"}`} src={loop} alt={""} onClick={toggleLoop}></img>
                 </div>
-                <TrackDisplay media={media} trackEditState={trackEditState} 
+                <TrackDisplay media={media} trackEditState={trackEditState} setTrackEditState={setTrackEditState} 
                 currentUser={currentUser} refreshTrackState={refreshTrackState}
                 setRefreshTrackState={setRefreshTrackState} setTrackArtState={setTrackArtState} 
                 setPl2TrackLocationState={setPl2TrackLocationState} pl2TrackLocationState={pl2TrackLocationState} 
