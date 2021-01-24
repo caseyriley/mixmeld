@@ -238,7 +238,7 @@
   background-color: lightgrey;
 }
 .playlist-highlight span{
-  color: rgb(70, 70, 70);
+  color: rgb(70, 70, 70) !important;
 }
 /* .playlist-radio {
   -webkit-appearance: none;
@@ -282,9 +282,14 @@
   /* height: 30px; */
   height: auto;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 10px 0px 10px 5%;
+
+}
+.left-playlist-inst p {
+  margin: 0px;
 }
 .left-playlist-inst span {
   font-size: 15px;

@@ -169,10 +169,11 @@ const Pl2LeftColumn = (props) => {
                 </div>
               </div>
               <div className={`left-playlist-inst ${props.addToPlaylistState ? "visible" : "hidden"}`}>
-                <span>select a playlist below then add tracks by clicking the  
-                  <img class={"left-playlist-inst-add"} src={circlePlusHollow} alt={""} />
-                  icon.
-                </span> 
+                <p><span>select a playlist below then </span> <span>add tracks by clicking the  
+                    <img class={"left-playlist-inst-add"} src={circlePlusHollow} alt={""} />
+                    icon.
+                  </span> 
+                </p>
               </div>
               <div className={`${props.addToPlaylistState ? "visible" : "hidden"}`}>
                 { props.playlistState ?
