@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useMemo} from 'react';
+import React, {useState} from 'react';
 import { API_URL } from '../config';
 import NewPlaylistModal from './NewPlaylistModal';
 import vintageMic from "../images/vintageMic.png"
