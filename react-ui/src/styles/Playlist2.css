@@ -87,10 +87,17 @@ ul{
   border-radius: 100%;
   background-color: lightgray;
 }
-#playlist2-top img {
+#playlist2-img-c {
   height: 200px;
   width: 200px;
-
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#playlist2-img-c img {
+  height: 200px;
+  /* width: 200px; */
 }
 #delete-it {
   font-family: 'Goldman', cursive;

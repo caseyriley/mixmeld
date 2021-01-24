@@ -347,8 +347,9 @@ function deleteFromPlaylist(trackId){
                     <span onClick={deletePlaylist}>delete</span>
                   </div>
                   }
-                  {/* <img src={props.trackArtState ? props.trackArtState : formlessMusicIcon } alt={""}/> */}
-                  <img src={props.trackArtState ? props.trackArtState : (column.items[0] ? column.items[0].trackart : formlessMusicIcon)} alt={""}/>
+                  <div id={"playlist2-img-c"} >
+                    <img src={props.trackArtState ? props.trackArtState : (column.items[0] ? column.items[0].trackart : formlessMusicIcon)} alt={""}/>
+                  </div>   
                   <div id={"playlist2-top__info"}>
                     <div id={"playlist2-top__info__h2-c"} >
                       <h2  >{props.playlistIdRef.current.playlistName}</h2>
