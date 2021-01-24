@@ -276,3 +276,42 @@
   white-space: nowrap;
   cursor: pointer;
 } */
+
+.left-playlist-inst {
+  width: 90%;
+  /* height: 30px; */
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0px 10px 5%;
+}
+.left-playlist-inst span {
+  font-size: 15px;
+  color: rgb(192, 192, 192); 
+  color: rgb(62, 182, 238); 
+}
+.left-playlist-inst-add {
+  width: 15px;
+  height: 15px;
+  /* opacity: .8; / */
+  border-radius: 100%;
+  border: 1px solid rgb(176, 176, 176);
+  background-color: rgb(176, 176, 176);
+  position: relative;
+  top: 4px;
+  left: 4px;
+  margin: 0px 6px 0px 0px;
+}
+/* .left-playlist-inst-add img {
+  width: 15px;
+  height: 15px;
+  opacity: .8;
+  transition: all .3s;
+  border-radius: 100%;
+  border: 1px solid rgb(176, 176, 176);
+  background-color: rgb(176, 176, 176);
+} */
+.hidden {
+  display: none;
+}
