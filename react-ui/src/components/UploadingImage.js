@@ -67,7 +67,9 @@ const UploadingImage = (props) => {
               <>
                 {trackArtLocationState ? 
                   <div id={"uploaded-image-c"} >
-                    <img id={"uploaded-image"} src={trackArtLocationState} alt={""}/>
+                    <div id={"uploaded-image"} 
+                    style={{backgroundImage:  "url(" + trackArtLocationState + ")"}} 
+                    alt={""}></div>
                     <div onClick={()=>{setTrackArtLocationState("")}}> 
                       <img src={deleteX} alt={""}/> 
                     </div>
