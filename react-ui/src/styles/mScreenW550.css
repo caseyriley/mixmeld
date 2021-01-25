@@ -90,5 +90,32 @@
     width: 90vw;
     margin: 10vh 5vw 10vh 5vw;
   }
+  #login-c__login-form{
+    position: fixed;
+    top: 100px;
+    left: calc(50% - 150px);
+  }
+  .login-footer__creditBox {
+    position: fixed;
+    /* bottom: 40px; */
+    top: 485px;
+    /* right: calc(50% - 117px); */
+    left: calc(50% - 117px);
+    width: 235px;
+    height: 40px;
+    /* border: 2px solid white; */
+    border-radius: 15px;
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-evenly;
+    align-items: center;
+    /* box-shadow: 
+        inset 5px 4px 6px -4px rgba(255, 255, 255, 0.9), 
+        inset -5px -4px 3px -4px rgba(255, 255, 255, 0.9); */
+    cursor: pointer;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
   /* --------------- */
 }
