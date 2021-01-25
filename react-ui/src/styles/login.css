@@ -26,9 +26,11 @@
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  background-image: url("../images/tessalate3.jpg");
+  /* background-image: url("../images/tessalate3.jpg"); */
+  background-image: url("../images/mixmeld-background2.jpg");
   /* background-repeat: space; */
   background-size: cover;
+
 }
 #login-c h1{
   font-size: 4vw;
@@ -42,13 +44,16 @@
   text-shadow: 2px 2px 0 rgb(239, 142, 248), 2px -2px 0 #25ff99, -2px 2px 0 #56caf8, -2px -2px 0 #56caf8, 2px 0px 0 #f7b867, 0px 2px 0 #dd4338, -2px 0px 0 #0c6fe9, 0px -2px 0 #f010e5;
 }
 #login-c__login-form{
-  width: 30vw;
+  width: 300px;
   height: 400px;
   /* background-color: grey; */
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
+  position: fixed;
+  top: 100px;
+  left: 50px;
 }
 #login-c__login-form label{
   color: lightgray;
@@ -124,8 +129,9 @@
 .login-footer__creditBox {
   position: fixed;
   /* bottom: 40px; */
-  top: 480px;
-  right: calc(50% - 117px);
+  top: 485px;
+  /* right: calc(50% - 117px); */
+  left: 90px;
   width: 235px;
   height: 40px;
   /* border: 2px solid white; */
