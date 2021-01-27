@@ -256,6 +256,7 @@ function deleteFromPlaylist(trackId){
   }
   fetch(`${API_URL}/playlists/delete`, options)
   props.setRefreshPlaylistState(props.refreshPlaylistState + 1)
+  setTrackEditModalState({boolean: false, index: ""});
 }
 // -------------------------------------------
   const [totallPlaylistTime, setTotallPlaylistTime] = useState();
