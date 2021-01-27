@@ -1,4 +1,4 @@
-import React, {useRef, useEffect} from 'react';
+import React, {useRef, useEffect, useState} from 'react';
 import UseTime from './UseTime';
 import TimeRemaining from './TimeRemaining';
 import UploadingNewImage from './UploadingNewImage';
@@ -28,6 +28,14 @@ const TrackDisplay = (props) => {
 
     }, [props.play, props.isPlayingState])
 
+    const [largeImageState, setLargeImageState] = useState("small-image")
+    function toglleImageSize(){
+      if (largeImageState === "small-image"){
+        setLargeImageState("large-image")
+      } else {
+        setLargeImageState("small-image")
+      }
+    }
 
   return (
     <>
@@ -42,7 +50,9 @@ const TrackDisplay = (props) => {
           trackEditState={props.trackEditState} setTrackEditState={props.setTrackEditState}/>
         </>
         : ""}
-        <img className={"track-art"} src={`${props.trackArtState ? props.trackArtState : formlessMusicIcon}`} alt={""}/>
+        <div className={"track-art-c"} >
+          <img className={`track-art ${largeImageState}`} src={`${props.trackArtState ? props.trackArtState : formlessMusicIcon}`} alt={""} onClick={toglleImageSize}/>
+        </div>
         <div id={"pl2-audio__bottom"} >
           <p id={"pl2-audio__top__song-name"}>{props.songNameState ? props.songNameState : `${props.firstTrack ? props.firstTrack[0].trackname : ""}`}</p>
           {/* <p id={"pl2-audio__top__song-artist"}>{artistNameState ? artistNameState : `${firstTrack ? firstTrack[0].trackartist : ""}`}</p> */}

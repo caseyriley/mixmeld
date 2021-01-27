@@ -593,6 +593,14 @@ function nextTrack() {
 const [uploadModalState, setUploadModalState] = useState("no-modal");
 const [trackLocationState, setTrackLocationState] = useState();
 //  ---------------------------------------------
+const [largeImageState, setLargeImageState] = useState("small-image")
+function toglleImageSize(){
+  if (largeImageState === "small-image"){
+    setLargeImageState("large-image")
+  } else {
+    setLargeImageState("small-image")
+  }
+}
  
   return(
     <>
@@ -621,7 +629,7 @@ const [trackLocationState, setTrackLocationState] = useState();
               <code>audio</code> element.
             </audio>
             <div  id={"pl2-audio__top"}>
-              <img className={"track-art-450"} src={`${trackArtState ? trackArtState : formlessMusicIcon}`} alt={""}/>
+              <img className={`track-art-450 ${largeImageState}`} src={`${trackArtState ? trackArtState : formlessMusicIcon}`} alt={""} onClick={toglleImageSize}/>
               <div className={"pl2-audio__top__inner"}>
                 <div id={"pl2-controls"}>
                   <img className={`pl2-random ${randomState}`} src={random} alt={""} onClick={toggleRandom}></img>
