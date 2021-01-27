@@ -7,6 +7,9 @@
   .track-art {
     display: none;
   }
+  .track-art-c {
+    display: none;
+  }
   .track-art-450 {
     display: block;
     position: fixed;
