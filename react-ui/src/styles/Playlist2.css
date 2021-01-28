@@ -56,7 +56,9 @@ ul{
   position: fixed;
   top: 80px;
   left: 15%;
+  cursor: pointer;
 }
+
 .playlist2-top-three-dots-delete {
   min-width: 50px;
   height: 40px;
@@ -75,10 +77,12 @@ ul{
   justify-content: flex-start;
   align-items: center;
   transition: all .3s;
+  cursor: pointer;
 }
 
 .playlist2-top-three-dots-delete span:hover {
   color: rgb(255, 0, 255);
+  cursor: pointer;
 }
 .playlist2-top-dot {
   width: 7px;
