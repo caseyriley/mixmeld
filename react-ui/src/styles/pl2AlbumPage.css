@@ -135,6 +135,9 @@
   text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
   margin: 10px 0px 0px 20px;
 }
+.pl2-album-track {
+  cursor: pointer;
+}
 .pl2-album-artist {
   font-size: 21px;
   color: #bfbfbf;
