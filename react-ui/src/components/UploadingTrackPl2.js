@@ -26,7 +26,6 @@ const UploadingTrackPl2 = (props) => {
     accessKeyId: process.env.REACT_APP_ACCESSKEYID,
     secretAccessKey: process.env.REACT_APP_SECRETACCESSKEY
   }
-  console.log("config###########", config)
 
   const [currentUser, setCurrentUser] = useState({});
 
@@ -69,8 +68,6 @@ const UploadingTrackPl2 = (props) => {
   }
 
   const upload = (e) => {
-    console.log("e.target.value", e.target.value)
-    console.log("e.target.files[0]", e.target.files[0])
     const prevName = e.target.files[0]["name"]
     let newFile = e.target.files[0]
 
@@ -81,8 +78,6 @@ const UploadingTrackPl2 = (props) => {
         configurable: true
       },
     });
-
-    console.log("newFile ===>", newFile)
 
     props.setUploadModalState("upload-modal");
     
@@ -105,7 +100,6 @@ const UploadingTrackPl2 = (props) => {
       .then((data) => {
 
         location = data.location;
-        console.log("location of upoad UploadingJs", location)
 
         let au = document.createElement('audio');
         au.src = location;

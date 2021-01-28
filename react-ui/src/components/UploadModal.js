@@ -8,17 +8,13 @@ const UploadModal = (props) => {
   // ---------------Update-Track-Info--------------------
 
 function updateTrackInfo(e) {
-  // console.log("updatTrackInfo e", e.target.trackartist.value, e.target.trackname.value, e.target.trackgenre.value)
  
   const newTrack = async () => {
-    console.log(e.target.trackalbum.value)
-
     const trackArtist = e.target.trackartist.value;
     const trackName = e.target.trackname.value;
     const trackGenre = e.target.trackgenre.value;
     const trackAlbum = e.target.trackalbum.value;
     const trackData = { trackartist: trackArtist, trackname: trackName, trackgenre: trackGenre, trackalbum: trackAlbum, tracklocation: props.trackLocationState}
-    console.log("trackData======>",trackData)
     const options = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

@@ -54,7 +54,6 @@ async function updatePlaylistOrder() {
     for (let i = 0; i < liList.length; i ++) {
       let track_id = JSON.parse(liList[i].innerHTML).audioId
       array.push(Number(track_id))
-      console.log("array=============>",array)
     }
   }
 
@@ -72,9 +71,6 @@ async function updatePlaylistOrder() {
     
   }
   await updatePlaylist();
-  // setTimeout(() => {
-  //   setRefreshPlaylistState(refreshPlaylistState + 7);
-  // }, 2000);
 }
 // ---------------------------------------------------------
   // ------------On-Drag-End----------------------------------
@@ -119,35 +115,6 @@ async function updatePlaylistOrder() {
   };
   // ----------------------------------------------------------
 
-  const [trackEditState, setTrackEditState] = useState(true);
-
-  // // ----------------Get-Selected-Playlists------------------------
-  // const [playlistState, setPlaylistState] = useState();
-  
-
-  // useEffect(() => {
-  //   setPlaylistState(null)
-  //   const getSelectedPlaylist = async () => {
-  //     const token = window.localStorage.getItem('auth_token')
-  //     console.log("props.playlistIdRef.current.playlistId", props.playlistIdRef.current.playlistId)
-  //     const response = await fetch(`${API_URL}/playlists/list/${props.playlistIdRef.current.playlistId}`, {
-  //       method: "GET",
-  //       mode: "cors",
-
-  //       headers: { "Authorization": `Bearer ${token}` },
-  //     })
-  //     if (!response.ok) {
-  //       console.log("getSelectedPlaylist failed in Playlist2.js");
-  //     } else {
-  //       const json = await response.json();
-  //       setPlaylistState(json);
-  //       console.log("getSelectedPlaylist", json)
-      
-  //     }
-  //   }
-  //   getSelectedPlaylist();
-  // },[props.playlistIdRef, props.refreshPlaylistState])
-  // // -----------------------------------------------------
   // -------------------------------------
   
   // const itemsFromBackend = [
@@ -193,47 +160,13 @@ function updateTrackRating(e) {
     }
     fetch(`${API_URL}/tracks/track_rating`, options)
     props.setRefreshPlaylistState(props.refreshPlaylistState + 5)
-    setTrackEditState(false)
     setTrackRatingModalState(false)
   }
   newRating();
 
 }
 // -----------------------------------------------------
-// ---------------Delete-Track-------------------------
-function deleteTrack(trackId){
-  const trackData = {id: trackId}
-  const options = {
-    method: 'DELETE',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(trackData)
-  }
-  fetch(`${API_URL}/tracks/delete`, options)
-  props.setRefreshPlaylistState(props.refreshPlaylistState + 1)
-  setTrackEditState(false)
-}
-// ----------------------------------------------------
-// ---------------Update-Track-Genre--------------------
 
-function updateTrackGenre(e) {
-
-const newName = e.target.firstChild.value;
-const key = e.target.name
-const newTrack = async () => {
-  const trackData = { id: key, genre: newName}
-  console.log("trackData======>",trackData)
-  const options = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(trackData),
-  }
-  fetch(`${API_URL}/tracks/genre`, options)
-  props.setRefreshPlaylistState(props.refreshPlaylistState + 1)
-  setTrackEditState(false)
-}
-newTrack();
-}
-// ------------------------------------------------------
 // ---------Convert-to-standard-time---------
   function toStandardTime(militaryTime) {
     let first = militaryTime.slice(0,3);

@@ -13,7 +13,6 @@ const Login = () => {
 
   useEffect(()=> {
     const api = async () => {
-      console.log("Login.js")
       const response = await fetch(`${API_URL}/api`, {
           method: "GET",
           mode: "cors",
@@ -21,7 +20,6 @@ const Login = () => {
       });
       const res = await response.json()
       if (res.auth_token !== undefined) {
-        console.log(res)
       } else {
         console.log("not hitting the api")
       }

@@ -13,10 +13,7 @@ import TrackRatingModal from './TrackRatingModal';
 
 
 const Tracklist2 = (props) => {
-  console.log("Tracklist2 rendered")
   // ----------Toggle-Track-Edit-----------
-  // const [trackEditState, setTrackEditState] = useState(false);
-
   function toggleTrackEditState(){
     const newState = !props.trackEditState;
     props.setTrackEditState(newState);
@@ -39,7 +36,6 @@ const Tracklist2 = (props) => {
       } else {
         const json = await response.json();
         setCurrentUser(json);
-        console.log(json)
       }
     }
     getCurrentUser();
@@ -120,8 +116,6 @@ const getUserTracksReverse = async (path) => {
       }
     }
 
-    
-    console.log("organiseByState", organiseByState)
   }
 
   useEffect(() => {
@@ -230,7 +224,6 @@ function updateTrackName(e) {
     const key = e.target.name
     const newTrack = async () => {
       const trackData = { id: key, name: newName}
-      console.log("trackData======>",trackData)
       const options = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -251,7 +244,6 @@ function updateTrackAlbumName(e) {
   const key = e.target.name
   const newTrack = async () => {
     const trackData = { id: key, albumname: newName}
-    console.log("trackData======>",trackData)
     const options = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -272,7 +264,6 @@ function updateTrackGenre(e) {
   const key = e.target.name
   const newTrack = async () => {
     const trackData = { id: key, genre: newName}
-    console.log("trackData======>",trackData)
     const options = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -298,23 +289,9 @@ function updateTrackGenre(e) {
     props.setTrackEditState(false)
   }
 // ----------------------------------------------------
-// // --------------Add-To-Playlist-Function--------------
-  
-//   function addToPlaylistFunc(trackId){
-//     console.log("props.playlistIdRef", props.playlistIdRef.current, "trackId", trackId)
-//     const playlistAndTrackData = {track_id: `${trackId}`, playlist_id: `${props.playlistIdRef.current}`}
-//     const options = {
-//       method: 'POST',
-//       headers: { 'Content-Type': 'application/json' },
-//       body: JSON.stringify(playlistAndTrackData),
-//     }
-//     fetch(`${API_URL}/playlists_tracks/post`, options)
-//   }
-// // ----------------------------------------------------
 // --------------Add-To-Playlist-Function--------------
   
   function addToPlaylistFunc(trackId){
-    console.log("props.playlistIdRef", props.playlistIdRef.current, "trackId", trackId)
     const playlistAndTrackData = {track_id: `${trackId}`, playlist_id: `${props.playlistIdRef.current.playlistId}`}
     const options = {
       method: 'POST',
@@ -348,7 +325,6 @@ function toStandardTime(militaryTime) {
         playlistIdArray.push(track.id)
       })
       setPlaylistIdState(playlistIdArray);
-      console.log("playlistIdArray========================>", playlistIdArray)
     }
     
   }, [props.selectedPlaylistState])
@@ -391,29 +367,9 @@ function toStandardTime(militaryTime) {
                 <li name={index} className={"pl2-track-ul__li"} key={index} >
                   <div id={`nti${index}`} className={`next-track-info audioId${audio.id}`}>{`{"tracklocation":"${audio.tracklocation}","trackname":"${audio.trackname}","audioId":"${audio.id}", "trackartist":"${audio.trackartist}", "trackart":"${audio.trackart}"}`}</div> 
                   <div className={`pl2-track-ul__li__rating ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`}>
-                    {/* {props.trackEditState ? 
-                      <> */}
-                       
-                        <div className={"pl2-track-artist-rating__div"} onClick={()=>{launchTrackRatingModal(audio)}}>
-                          <span className={"pl2-track-artist-rating-span"} >{audio.trackrating ? audio.trackrating : ""}</span>
-                        </div>
-                       
-                    
-                        {/* <form name={audio.id} onSubmit={e=> {e.preventDefault(); updateTrackRating(e)}}> 
-                          <input 
-                            type={"text"}
-                            // id={"pl2-track-genre-input"} 
-                            id={`genre-${index}`} 
-                            className={"pl2-track-genre-input"}
-                            maxLength={100} 
-                            placeholder={audio.trackrating ? audio.trackrating : ""} 
-                          />
-                          <input className={"pl2-track-artist-name-submit"} type={"submit"} />
-                        </form>  */}
-                      {/* </> :
-                      <span className={"pl2-track-artist-rating-span"} onClick={()=>{props.setTrack(audio.tracklocation, audio.trackname, audio.trackartist, audio.id, audio.trackart)}}>{audio.trackrating ? audio.trackrating : ""} </span> */}
-                      
-                    {/* } */}
+                    <div className={"pl2-track-artist-rating__div"} onClick={()=>{launchTrackRatingModal(audio)}}>
+                      <span className={"pl2-track-artist-rating-span"} >{audio.trackrating ? audio.trackrating : ""}</span>
+                    </div>
                   </div>
 
                   <div className={`pl2-track-ul__li__name ${index % 2 === 1 ? "pl2-dark": "pl2-light"}`} >
@@ -430,7 +386,6 @@ function toStandardTime(militaryTime) {
                           className={"pl2-track-input"} 
                           maxLength={100} 
                           placeholder={audio.trackname ? audio.trackname : ""} 
-                          // value={audio.trackname ? audio.trackname : ""} 
                         />
                         <input className={"pl2-track-artist-name-submit"} type={"submit"}  />
                       </form>

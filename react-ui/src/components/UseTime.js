@@ -47,7 +47,6 @@ const UseTime = (media, audioBottomPlayhead) => {
         setTimeState(mediaTime)
         let barLength = audioBottomPlayhead.current.clientWidth * (media.current.currentTime/media.current.duration);
         timerBar.current.style.width = barLength + 'px';
-        console.log("interval$$$$$$$$$$$$$$$$$$$")
       }
     }, 500);
     

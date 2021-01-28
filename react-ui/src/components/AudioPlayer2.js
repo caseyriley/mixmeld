@@ -12,8 +12,6 @@ import TrackDisplay from './TrackDisplay';
 import UploadingTrackPl2 from './UploadingTrackPl2';
 import formlessMusicIcon from '../images/formless-music-icon.png'
 
-console.log('REACT_APP_BASE_URL2', process.env.REACT_APP_BASE_URL)
-
 let vol = .5;
 
 const AudioPlayer2 = (props)=>{
@@ -51,9 +49,6 @@ const AudioPlayer2 = (props)=>{
   const [refreshTrackState, setRefreshTrackState] = useState(1)
 
 
-  // let intervalFwd;
-  // let intervalRwd;
-  console.log('AudioPlayer2 rendered')
   //---------Get-Current_User--------------
   const [currentUser, setCurrentUser] = useState({});
 
@@ -75,7 +70,6 @@ const AudioPlayer2 = (props)=>{
       }
     }
     getCurrentUser();
-    // console.log("user==AudioPlayer2=====>", currentUser.id)
   }, [])
 // ----------------------------------------------
 // -------------------Get-Users-First-Track---------
@@ -94,7 +88,6 @@ const AudioPlayer2 = (props)=>{
       if (!response.ok) { console.log("error in getUserTracks") }
       else {
         const json = await response.json();
-        console.log('jsoooon==========>', json)
         if (json === []){
 
         }
@@ -115,7 +108,6 @@ const AudioPlayer2 = (props)=>{
   const [isPlayingState, setIsPlayingState] = useState(1)
 
   function playPauseMedia() {
-    console.log("playPauseMedia^^^^^^^^^^^^")
     if (!media.current.src){
       media.current.setAttribute("src", firstTrack[0].tracklocation)
     }
@@ -131,9 +123,7 @@ const AudioPlayer2 = (props)=>{
     
     if(media.current.paused) {
       play.current.src = pauseButton;
-      console.log("playPauseMedia^ALMOST PLAYED")
       media.current.play();
-      console.log("playPauseMedia^PLAYED")
       setIsPlayingState(isPlayingState + 1)
     } else {
       play.current.src = playButton;
@@ -160,14 +150,12 @@ const AudioPlayer2 = (props)=>{
 // --------------Skip-Back------------------------
   function skipBack(){
 
-    // console.log("timeState", media.current.currentTime);
     if (media.current.currentTime > 5) {
       if (media){
         media.current.currentTime = 0;
       }
     } else {
       const trackLi = document.getElementsByClassName(`audioId${currentTrack.current}`) //get Li element of current track regarless of sort choice
-      console.log("trackli+++++++", trackLi)
       let trackLiIdNumber = null;
       if (trackLi.length > 0) {
         trackLiIdNumber = Number(trackLi[0].id.slice(3)) //get index of current track
@@ -176,7 +164,6 @@ const AudioPlayer2 = (props)=>{
         }
         const newTrackLi = document.getElementById(`nti${trackLiIdNumber - 1}`) //get Li element of previous track regardless of sort choice
         const newTrackObj = JSON.parse(newTrackLi.innerHTML); //get key values of next track info
-        console.log("skib back set track newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId, newTrackObj.trackart", newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId, newTrackObj.trackart)
         setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId, newTrackObj.trackart); // start the next track
         }
       }
@@ -354,8 +341,6 @@ const AudioPlayer2 = (props)=>{
   const [pl2TrackLocationState, setPl2TrackLocationState] = useState();
 
   function setTrack(track, songName, artistName, audioId, trackArt){
-    console.log("setTrack newTrackObj.tracklocation", track)
-    console.log("audioId%%%%%%%%%%%%%%%%%%%%", audioId)
     media.current.setAttribute("src", track);
     playPauseMedia();
 
@@ -415,9 +400,7 @@ const AudioPlayer2 = (props)=>{
 //----------------------------------------------
 
 function nextTrack() {
-  // console.log("currentTrack.current", currentTrack.current)
   const trackLi = document.getElementsByClassName(`audioId${currentTrack.current}`) //get Li element of current track regarless of sort choice
-  console.log("AudioPlayer2===trackLi",trackLi)
   let trackLiIdNumber = undefined;
   if (trackLi.length > 0) {
     trackLiIdNumber = Number(trackLi[0].id.slice(3)) //get index of current track
@@ -429,7 +412,6 @@ function nextTrack() {
       }
 
       const randomNum = getRandomInt(trackArrayLengthState -1);
-      console.log("randomNum==================>", randomNum)
       const newTrackLi = document.getElementById(`nti${randomNum}`) //get Li element of next track regardless of sort choice
       const newTrackObj = JSON.parse(newTrackLi.innerHTML); //get key values of next track info
       setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId, newTrackObj.trackart); // start the next track
@@ -440,7 +422,6 @@ function nextTrack() {
       }
     
       if (!loopState && trackLiIdNumber >= trackArrayLengthState -1){
-        console.log("trackArrayLengthState", trackArrayLengthState)
         trackLiIdNumber = -1;
         const newTrackLi = document.getElementById(`nti${trackLiIdNumber + 1}`) //get Li element of next track regardless of sort choice
         const newTrackObj = JSON.parse(newTrackLi.innerHTML); //get key values of next track info
@@ -448,11 +429,7 @@ function nextTrack() {
         stopMedia()
       } else {
         const newTrackLi = document.getElementById(`nti${trackLiIdNumber + 1}`) //get Li element of next track regardless of sort choice
-        console.log("trackLiIdNumber in else", trackLiIdNumber)
-        console.log("newTrackLi", newTrackLi)
         const newTrackObj = JSON.parse(newTrackLi.innerHTML); //get key values of next track info
-        // console.log("nnneeeeewwTrackObj====>", newTrackObj)
-        console.log("newTrackObj.tracklocation", newTrackObj.tracklocation)
         setTrack(newTrackObj.tracklocation, newTrackObj.trackname, newTrackObj.trackartist, newTrackObj.audioId, newTrackObj.trackart); // start the next track
       }
     }
@@ -534,7 +511,6 @@ function nextTrack() {
     setSelectedPlaylistState(null)
     const getSelectedPlaylist = async () => {
       const token = window.localStorage.getItem('auth_token')
-      // console.log("props.playlistIdRef.current.playlistId", playlistIdRef.current.playlistId)
       const response = await fetch(`${API_URL}/playlists/list/${playlistIdRef.current.playlistId}`, {
         method: "GET",
         mode: "cors",

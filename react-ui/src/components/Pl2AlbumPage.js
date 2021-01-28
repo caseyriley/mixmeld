@@ -26,7 +26,6 @@ const Pl2AlbumPage = (props) => {
           setAlbumArrayState(json); 
           const trackArraylength = document.getElementsByClassName('next-track-info').length
           props.setTrackArrayLengthState(trackArraylength);
-        console.log("albums=====>",json)
       }
     }
     getUserTracksByAlbum();

@@ -7,63 +7,13 @@ import vinylRecord from "../images/vinylRecord.png"
 import circlePlusHollow from "../images/circlePlusHollow.png"
 
 const Pl2LeftColumn = (props) => {
-  //  const [artistAlbumSongState, setArtistAlbumSongState] = useState("selected-song")
   // -----------------Playlist-Modal----------------------
   const [playlistModalState, setPlaylistModalState] = useState(false);
   function toggleModal(){
     setPlaylistModalState(!playlistModalState)
   }
   // -----------------------------------------------------
-  console.log("pl2LeftColumn Rendered")
-  //---------Get-Current_User--------------
-  // const [currentUser, setCurrentUser] = useState({});
 
-  // useEffect(() => {
-
-  //   const getCurrentUser = async () => {
-  //     const token = window.localStorage.getItem('auth_token')
-  //     const response = await fetch(`${API_URL}/users/token`, {
-  //       method: "GET",
-  //       mode: "cors",
-  //       headers: { "Authorization": `Bearer ${token}` },
-  //     })
-  //     if (!response.ok) {
-  //       console.log("getCurrent user response failed in Uploading.js");
-  //     } else {
-  //       const json = await response.json();
-  //       setCurrentUser(json);
-        
-  //     }
-  //   }
-  //   getCurrentUser();
-  //   console.log("user==Pl2LeftColumn=====>", currentUser.id)
-  // }, [])
-// ----------------------------------------------
-  //  // ----------------Get-Playlists------------------------
-  //  const [playlistState, setPlaylistState] = useState();
-   
- 
-  //  useEffect(() => {
-   
-  //    const getCurrentUserPlaylists = async () => {
-  //      const token = window.localStorage.getItem('auth_token')
-  //      const response = await fetch(`${API_URL}/playlists/${currentUser.id}`, {
-  //        method: "GET",
-  //        mode: "cors",
-  //        headers: { "Authorization": `Bearer ${token}` },
-  //      })
-  //      if (!response.ok) {
-  //        console.log("getCurrentUserPlaylists failed in Pl2LeftColumn.js");
-  //      } else {
-  //        const json = await response.json();
-  //        setPlaylistState(json);
-  //        console.log("getCurrentUserPlaylists json", json)
-        
-  //      }
-  //    }
-  //    getCurrentUserPlaylists();
-  //  },[currentUser, props.refreshPlaylistState])
-  //  // -----------------------------------------------------
 
    async function setPlaylistIdRef(id) {
     let name = "";
@@ -127,8 +77,6 @@ const Pl2LeftColumn = (props) => {
 
   function selectFirstPlaylist(){
     const firstPlaylist = document.getElementsByClassName("playlist-button-c")
-    console.log("firstPlaylist", firstPlaylist)
-    console.log("firstPlaylist[0].name", firstPlaylist[0].getAttribute("name"))
     setPlaylistIdRef(Number(firstPlaylist[0].getAttribute("name")))
   }
   

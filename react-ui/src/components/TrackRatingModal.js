@@ -7,33 +7,10 @@ import CloseButton from '../images/CloseButton';
 
 const TrackRatingModal = (props) => {
   
-//   useEffect(() => {
-//     const mySelect = document.getElementById('my-select')
-//     const newOption;
-//     const emojRange = [
-//       [128512, 129488], [127744, 127895]
-//     ];
-//     for (const i = 0; i < emojRange.length; i++) {
-//       const range = emojRange[i];
-//       for (const x = range[0]; x < range[1]; x++) {
-
-//         newOption = document.createElement('option');
-//         newOption.value = x;
-//         newOption.innerHTML = "&#" + x + ";";
-//         console.log('newOption', newOption)
-//         if (newOption.codePointAt(0)){
-          
-
-//           mySelect.appendChild(newOption);
-//         }
-//   }
-
-// }
-//   },[])
   const ratingNumberSelect = useRef()
   const emojiSelect = useRef()
   const trackRatingInput = useRef()
-  const emojiArray = ['⭐️','🎵', '🎶', '😸', '😹', '🙀', '😻', '🐍', '🦄','🦚','🐉','🐲','🐝', '🦋', '🐋', '🦑', '🤬', '🧜🏼‍♂️','🧚🏾‍♂️','🤮','🤑','🌙','👀','💘','💞','💔','💗','♥️', '🧡', '💛','💚','💜','💙','🤎','🤍','🖤', '🔥', '🧨', '💣']
+  const emojiArray = ['⭐️','🎵', '🎶', '😸', '😹', '🙀', '😻', '🐯', '🦊', '🐻', '🐼', '🐍', '🦄','🦚','🐉','🐲','🐝', '🦋', '🐋', '🦑', '🤬', '🧜🏼‍♂️','🧚🏾‍♂️','🤮','🤑','🌙','👀','💘','💞','💔','💗','♥️', '🧡', '💛','💚','💜','💙','🤎','🤍','🖤', '🔥', '🧨', '💣']
 
   function rateTrack() {
     trackRatingInput.current.value = emojiSelect.current.value.repeat(ratingNumberSelect.current.value);
@@ -53,8 +30,6 @@ const TrackRatingModal = (props) => {
             <input 
               ref={trackRatingInput}
               type={"text"}
-              // id={"pl2-track-genre-input"} 
-              // id={`genre-${index}`} 
               className={"pl2-track-rating-input"}
               maxLength={100} 
               placeholder={props.ratingAudioState.trackrating ? props.ratingAudioState.trackrating : ""} 

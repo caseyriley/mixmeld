@@ -30,8 +30,6 @@ const Pl2ArtistsPage = (props) => {
 
           const trackArraylength = document.getElementsByClassName('next-track-info').length
           props.setTrackArrayLengthState(trackArraylength);
-
-        console.log("artists=====>",json)
       }
     }
     getUserTracksByArtist();

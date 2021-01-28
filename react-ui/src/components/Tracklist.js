@@ -33,11 +33,9 @@ const Tracklist = (props) => {
       } else {
         const json = await response.json();
         setCurrentUser(json);
-        console.log(json)
       }
     }
     getCurrentUser();
-    console.log("user=======>", currentUser.id)
   }, [])
 // ----------------------------------------------
 
@@ -151,13 +149,11 @@ const Tracklist = (props) => {
 // -----------------------------------------------------
 // ---------------Update-Track-Rating--------------------
 function updateTrackRating(e) {
-  // console.log("Before newName--------->", e.target.firstChild)
+
   const inputRating = e.target.firstChild.value;
   const trackId = e.target.name
-  // console.log("key****************************>",key)
   const newRating = async () => {
     const trackData = { id: trackId, rating: inputRating}
-    // console.log("trackData======>",trackData)
     const options = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -197,7 +193,6 @@ function updateTrackName(e) {
     const key = e.target.name
     const newTrack = async () => {
       const trackData = { id: key, name: newName}
-      console.log("trackData======>",trackData)
       const options = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -218,7 +213,6 @@ function updateTrackGenre(e) {
   const key = e.target.name
   const newTrack = async () => {
     const trackData = { id: key, genre: newName}
-    console.log("trackData======>",trackData)
     const options = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

@@ -34,7 +34,6 @@ const UploadingNewImage = (props) => {
       });
       
       const updateTrackArt = async (artLocation) => {
-        console.log("trackLocationState==================>", props.pl2TrackLocationState)
         const trackData = { trackart: artLocation, tracklocation: props.pl2TrackLocationState, user_id: props.currentUser.id}
         const options = {
           method: 'POST',
@@ -64,7 +63,6 @@ const UploadingNewImage = (props) => {
   return (
     <>
       <div id={"uploading-new-image-c"}>
-        {/* <span id={"uploading-image-c__span"}>Drop Track Art Here</span> */}
         <img id={"uploading-new-image-icon"} src={uploadImage} alt={""}/>
         <input id={"uploading-new-image-c__input"} type="file" onChange={upload} />
       </div>

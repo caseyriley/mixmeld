@@ -5,15 +5,12 @@ import { API_URL } from '../config';
 const NewPlaylistModal = (props) => {
 
   function postNewPlaylist(e) {
-    console.log("postNewPlaylist e.target.playlist_name.value", e.target.playlist_name.value)
    
     const newPlaylist = async () => {
-      console.log(e.target.playlist_name.value)
   
       const playlist_name = e.target.playlist_name.value
      
       const trackData = { playlist_name: playlist_name, user_id: props.currentUser.id}
-      console.log("trackData======>",trackData)
       const options = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

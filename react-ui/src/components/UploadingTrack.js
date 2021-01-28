@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import S3FileUpload from 'react-s3';
 import { API_URL } from '../config';
-const jsmediatags = require('jsmediatags');
+// const jsmediatags = require('jsmediatags'); 
 
 const UploadingTrack = (props) => {
 
