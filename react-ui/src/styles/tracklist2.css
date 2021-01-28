@@ -145,6 +145,7 @@
   /* font-family: 'Syncopate', sans-serif; */
   position: relative;
   top: 4px;
+  cursor: pointer;
 }
 li {
   margin: 0px;
