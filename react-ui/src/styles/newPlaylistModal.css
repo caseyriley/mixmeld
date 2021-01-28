@@ -32,7 +32,7 @@
   /* font-family: 'Syncopate', sans-serif; */
   font-family: 'Electrolize', sans-serif;
   font-size: 30px;
-  margin: 20px 0px 0px 0px;
+  margin: 20px 0px 20px 0px;
 }
 #new-playlist-form {
   flex-direction: column;
@@ -72,4 +72,11 @@
   color: rgb(131, 131, 131);
   font-family: 'Electrolize', sans-serif;
   margin: 0px 0px 10px 0px;
+  transition: all .3s;
+  cursor: pointer;
+}
+#new-playlist-submit:hover{
+  color: rgb(253, 152, 253);
+  background-color: #333;
+  border: 1px solid rgb(253, 152, 253);
 }
