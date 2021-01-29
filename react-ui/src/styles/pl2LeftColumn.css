@@ -147,8 +147,9 @@
 }
 .add-to-playlist--on  span{
   color:  rgb(162, 148, 255);
-  /* font-family: 'Electrolize', sans-serif; */
- 
+}
+.add-to-playlist--on:hover {
+  background-color: rgb(83, 83, 83);
 }
 .left-playlist {
   width: 100%;
@@ -294,6 +295,7 @@
 .left-playlist-inst span {
   font-size: 12px;
   color: rgb(62, 182, 238); 
+  color: rgb(194, 236, 255); 
 }
 .left-playlist-inst-add {
   width: 15px;
@@ -304,7 +306,7 @@
   position: relative;
   top: 4px;
   left: 4px;
-  margin: 0px 6px 0px 0px;
+  margin: 0px 8px 0px 0px;
 }
 /* .left-playlist-inst-add img {
   width: 15px;
