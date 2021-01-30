@@ -138,11 +138,7 @@
   display: flex;
   justify-content: center;
   margin: 0px;
-  
-  /* font-family: 'Source Code Pro', monospace; */
   font-family: 'Goldman', cursive;
-  /* font-family: 'Audiowide', cursive; */
-  /* font-family: 'Syncopate', sans-serif; */
   position: relative;
   top: 4px;
   cursor: pointer;
