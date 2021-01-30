@@ -61,7 +61,6 @@
 
 }
 .pl2-artist-c img{
-  /* width: 250px; */
   min-width: 250px;
   height: 250px;
   margin: 0px 0px 0px 100px;
@@ -141,5 +140,4 @@
 #pl2-artist-page-c__bottom-space {
   min-height: 100px;
   width: 100%;
-  /* background-color: yellow; */
 }

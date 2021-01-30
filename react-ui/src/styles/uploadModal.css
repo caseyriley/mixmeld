@@ -1,6 +1,4 @@
-/* #upload-modal-portal {
 
-} */
 .upload-modal-background {
   width: 100vw;
   height: 100vh;
@@ -86,7 +84,6 @@
 }
 #loading-ripples {
   height: 100px;
-  
 }
 #upload-modal__form {
   display: flex;
@@ -107,7 +104,6 @@
   color: rgb(131, 131, 131);
   font-family: 'Electrolize', sans-serif;
   margin: 0px 0px 10px 0px;
-
 }
 #upload-modal__submit {
   height: 30px;
@@ -121,7 +117,6 @@
   font-family: 'Electrolize', sans-serif;
   margin: 0px 0px 10px 0px;
 }
-
 #uploading-image-c {
   width: 100px;
   height: 100px;
@@ -131,7 +126,6 @@
   justify-content: center;
   align-items: center;
   margin: 0px 0px 10px 0px;
-
 }
 #uploading-image-c__span {
   font-size: 22px;

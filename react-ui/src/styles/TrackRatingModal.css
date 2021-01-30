@@ -8,8 +8,6 @@
   position: fixed;
   top: 0px;
   left: 0px;
-
-
 }
 #track-rating-modal-top {
   width: 70vw;
@@ -24,7 +22,6 @@
   justify-content: flex-start;
   flex-direction: column;
   align-items: center;
-
 }
 #track-rating-modal-close-button {
   height: 30px;
@@ -64,10 +61,6 @@
     text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
     display: block;
     font-size: 1.17em;
-    /* margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px; */
 }
 #track-rating-form {
   position: relative;
@@ -77,7 +70,6 @@
   align-items: center;
 }
 .pl2-track-rating-input {
-  /* background-color: transparent; */
   background-color: darkgrey;
   width: 200px;
   height: 30px;
@@ -111,8 +103,6 @@
 }
 #rating-number-input:in-range {
   text-align: center;
-  
-
 }
 #emoji-select {
   height: 54px;

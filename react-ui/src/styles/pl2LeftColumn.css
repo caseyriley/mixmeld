@@ -1,8 +1,6 @@
 #pl2-main-page {
   display: flex;
   justify-content: center;
-  /* align-items: flex-end; */
-  /* flex-direction: column; */
   background-color: black;
   height: 100vh;
   width: 100vw;
@@ -11,12 +9,10 @@
   width: 10%;
   height: 100vh;
   background-color: rgb(109, 109, 109);
-  /* border: 1px solid green; */
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-
 }
 #pl2-left-column__scroll-outer {
   width: 100%;
@@ -37,7 +33,6 @@
 #pl2-search{
   height: 30px;
   background-color: transparent;
-  /* font-size: 20px; */
   color: rgb(192, 192, 192);
   border: 1px solid rgb(196, 196, 196);
   border-radius: 5px;
@@ -182,8 +177,6 @@
   background-color: rgb(176, 176, 176);
 }
 .left-playlist-add img:hover {
-  /* filter: brightness(20%); */
-  /* opacity: .3; */
   border: 1px solid rgb(211, 211, 211);
   background-color: rgb(211, 211, 211);
 
@@ -241,46 +234,8 @@
 .playlist-highlight span{
   color: rgb(70, 70, 70) !important;
 }
-/* .playlist-radio {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-
-  border-radius: 100%;
-  min-width: 14px;
-  min-height: 14px;
-
-  border: 2px solid #999;
-  transition: 0.2s all linear;
-  margin-right: 5px;
-
-  position: relative;
-  top: 4px;
-  outline: none;
-  cursor: pointer;
-
-
-}
-.playlist-radio:checked {
-  border: 4px solid rgb(237, 149, 237);
-
-}
-.playlist-radio-label {
-  position: relative;
-  top: 13px;
-  height: 30px;
-  width: 100%;
-  font-size: 15px;
-  color: rgb(192, 192, 192);
-  overflow-x: scroll;
-  overflow-y: hidden;
-  white-space: nowrap;
-  cursor: pointer;
-} */
-
 .left-playlist-inst {
   width: 90%;
-  /* height: 30px; */
   height: auto;
   display: flex;
   flex-direction: column;
@@ -308,15 +263,6 @@
   left: 4px;
   margin: 0px 8px 0px 0px;
 }
-/* .left-playlist-inst-add img {
-  width: 15px;
-  height: 15px;
-  opacity: .8;
-  transition: all .3s;
-  border-radius: 100%;
-  border: 1px solid rgb(176, 176, 176);
-  background-color: rgb(176, 176, 176);
-} */
 .hidden {
   display: none;
 }

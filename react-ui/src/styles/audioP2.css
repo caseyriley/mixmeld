@@ -1,6 +1,4 @@
 
-
-
 /* --------------------------------- */
 #pl2-audio-tracklist-c {
   width: 90%;
@@ -55,14 +53,6 @@
   background-color: rgb(0, 0, 0, .4);
   
 }
-/* #pl2-audio__top {
-  height: 25px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid blue;
-} */
 #uploading-new-image-c {
   height: 30px;
   width: 20px;
@@ -195,24 +185,6 @@
   z-index: 10;
 
 }
-/* #pl2-audio__bottom-c {
-  width: 300px;
-  height: 25px;
-  position: relative;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-direction: column;
-  border: 1px solid rgb(0, 195, 255);
-} */
-/* #pl2-timer-loop-random-c {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  
-} */
 .pl2-random {
   height: 20px;
   width: 20px;
@@ -236,10 +208,8 @@
   opacity: .6;
 }
 #pl2-audio__bottom {
-  
   width: 300px;
   position: relative;
-  /* pointer-events: none; */
 }
 .pl2-audio__bottom__playhead {
   position: relative;
@@ -251,8 +221,6 @@
   margin: 0px 0px 5px 0px;
   border-radius: 10px;
   overflow: hidden;
-  /* pointer-events: none; */
-
 }
 .pl2-audio__bottom__playhead__left {
   height: 100%;
@@ -285,23 +253,15 @@
   align-items: center;
   overflow: hidden;
 }
-.control-2
-{
+.control-2{
   position: relative;
   left: calc(50% - 12px);
   width: 55px;
-  /* height: 200px; */
   display: flex;
   justify-content: center;
-  
-
-  /* margin-top: 70px; */
-  /* margin-left: 146px; */
   transform: rotate(90deg);
-  /* border: 1px solid green; */
   pointer-events: none;
   margin: 0px 10px;
-
 }
 .pl2-slider-input {
   transform: rotate(-90deg);
@@ -314,40 +274,28 @@
   cursor: pointer;
 }
 
-div.control-2 span.eq
-{
+div.control-2 span.eq{
   position: relative;
   top: 50px;
   left: 22px;
-  /* width: 40px; */
   width: 20px;
-  /* height: 200px; */
   height: 100px;
   display: inline-block;
   border-radius: 100px;
   border: 1px solid rgba(255,255,255,0.05);
-  /* border: 1px solid rgba(255,255,255); */
   margin-right: 45px;
   box-shadow: inset 0 0 65px rgba(0,0,0,0.4),
               inset 0 10px 15px rgba(0,0,0,0.3),
               inset 0 -10px 15px rgba(0,0,0,0.3),
               0 0 5px rgba(0,0,0,0.7);
-  
-    
 }
 
 div.control-2 span.eq:before,
-div.control-2 span.eq:after
-{
+div.control-2 span.eq:after{
   position: absolute;
   content: '';
-  /* width: 10px; */
   width: 3px;
   display: inline-block;
-  
-  /* top: 50%; */
-  /* margin-top: -80px; */
-  /* left: 50%; */
   left: 35%;
   top: 10%;
   margin-left: -3px;
@@ -360,32 +308,13 @@ div.control-2 span.eq:before
   left: 3px;
   margin: 0px 0px 0px 0px;
   z-index: 8;
-  /* height: 160px; */
   height: 80px;
-  /* border: 1px solid black; */
   box-shadow: inset 0 0 15px rgba(0,0,0,0.7),
               inset 0 7px 10px -2px rgba(0,0,0,0.5),
               inset 0 -7px 10px -2px rgba(0,0,0,0.5);
 }
-
-/* div.control-2 span.eq:after
-{
-  position: relative;
-  top: 10px;
-  left: 0px;
-  z-index: 9;
- 
-  height: 70px;
-  background: #05d4f4;
-  margin: 0px 0px 0px 0px;
-
-  box-shadow: inset 0 0 25px rgba(255,255,255,0.5),
-              0 0 10px #05d4f4;
-} */
 .pl2-volume-level {
   position: absolute;
-  /* top: 70px; */
-
   left: 26px;
   bottom: -35px;
   z-index: 9;
@@ -393,30 +322,22 @@ div.control-2 span.eq:before
   width: 2px;
   background: #05d4f4;
   margin: 0px 0px 0px 0px;
-
   box-shadow: inset 0 0 25px rgba(255,255,255,0.5),
               0 0 10px #05d4f4;
-  /* border: 1px solid yellow; */
 }
 
-span.eq span.eq-level
-{
+span.eq span.eq-level{
   position: absolute;
-  
-  /* width: 50px; */
   width: 20px;
-  /* height: 75px; */
   height: 30px;
   display: inline-block;
   background: #373542;
   left: -5px;
   bottom: 37px;
-  /* margin-left: -5px; */
   margin-top: 0px;
   border-radius: 100px;
   overflow: hidden;
   z-index: 10;
-
   box-shadow: inset 0 5px 5px -3px rgba(255,255,255,0.4),
               inset 0 -8px 8px -3px rgba(0,0,0,0.4),
               inset 0 0 55px rgba(0,0,0,0.6),
@@ -427,8 +348,7 @@ span.eq span.eq-level
 }
 
 span.eq span.eq-level:before,
-span.eq span.eq-level:after
-{
+span.eq span.eq-level:after{
   position: absolute;
   content: '';
   width: 100%;
@@ -436,56 +356,41 @@ span.eq span.eq-level:after
   display: inline-block;
 }
 
-span.eq span.eq-level:before
-{
+span.eq span.eq-level:before{
   top: 50%;
   margin-top: -2px;
   background: rgba(0,0,0,0.4);
 }
 
-span.eq span.eq-level:after
-{
+span.eq span.eq-level:after{
   top: 50%;
   background: rgba(255,255,255,0.1);
   box-shadow: 0 1px 3px rgba(255,255,255,0.01);
 }
 
-span.eq span.eq-level img
-{
+span.eq span.eq-level img{
   position: absolute;
   opacity: 0.2;
 }
 
-div.control-2 span.eq-1:after
-{
+div.control-2 span.eq-1:after{
   height: 50px;
   margin-top: 30px;
 }
 
-div.control-2 span.eq-1 span.eq-level
-{
+div.control-2 span.eq-1 span.eq-level{
   margin-top: 80px;
 }
-
-/* div.control-2 span.eq-2:after
-{
-  height: 0px;
-  margin-top: 0px;
-} */
-
-div.control-2 span.eq-2 span.eq-level
-{
+div.control-2 span.eq-2 span.eq-level{
   margin-top: 125px;
 }
 
-div.control-2 span.eq-3:after
-{
+div.control-2 span.eq-3:after{
   height: 120px;
   margin-top: -40px;
 }
 
-div.control-2 span.eq-3 span.eq-level
-{
+div.control-2 span.eq-3 span.eq-level{
   margin-top: 35px;
 }
 
@@ -511,7 +416,6 @@ div.control-2 span.eq-3 span.eq-level
   bottom: 0;
   margin: 0px 0px 0px -5px;
   margin-bottom: -48px;
-  
   text-align: center;
   color: rgba(255,255,255,0.4);
   font-size: 12px;
@@ -563,14 +467,10 @@ div.control-2 span.eq-3 span.eq-level
   position: absolute;
   height: 18px;
   width: 18px;
-  /* border: 1px solid rgb(146, 146, 146);
-  border: 1px solid pink; */
   border: 1px solid rgb(0, 0, 0, 1);
   padding: 2px;
   border-radius: 100%;
   left: calc(100% - 24px);
-  /* filter: sepia(55%) hue-rotate(255deg) brightness(85%) saturate(450%) ; */
-  /* background-color: rgb(147, 83, 83, .7); */
   background-color: rgb(197, 195, 195);
   filter: invert();
   opacity: .6;
