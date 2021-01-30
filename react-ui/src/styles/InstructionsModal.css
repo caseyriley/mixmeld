@@ -32,10 +32,7 @@
 }
 #instructions-modal__scroll h1 {
   color: rgb(182, 181, 181);
-  /* font-family: 'Source Code Pro', monospace; */
-  /* font-family: 'Goldman', cursive; */
   font-family: 'Audiowide', cursive;
-  /* font-family: 'Syncopate', sans-serif; */
 }
 .instruction-c {
   width: 100%;
@@ -75,8 +72,6 @@
 }
 #left-playlist-add-2-p {
   position: relative;
-  /* top: -65px;
-  left:  81px; */
 }
 .instruction-gif-2 {
   position: relative;
@@ -84,11 +79,7 @@
 }
 #instruction-developer-name {
   color: rgb(182, 181, 181);
-  font-family: 'Source Code Pro', monospace;
   font-family: 'Goldman', cursive;
-  /* font-family: 'Audiowide', cursive; */
-  /* font-family: 'Syncopate', sans-serif; */
-  /* font-family: 'Electrolize', sans-serif; */
   margin: 0px 10px 0px 0px;
 }
 

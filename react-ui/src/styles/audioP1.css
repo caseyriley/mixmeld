@@ -10,9 +10,6 @@
 #s-main-page__title {
   color: rgb(218, 163, 255);
   font-size: 4vw;
-  font-family: 'Source Code Pro', monospace;
-  font-family: 'Goldman', cursive;
-  font-family: 'Audiowide', cursive;
   font-family: 'Syncopate', sans-serif;
   letter-spacing: 5px;
   color: #000000;
@@ -616,11 +613,7 @@ div.volume-control img {
   display: flex;
   justify-content: center;
   margin: 0px;
-  
-  /* font-family: 'Source Code Pro', monospace; */
   font-family: 'Goldman', cursive;
-  /* font-family: 'Audiowide', cursive; */
-  /* font-family: 'Syncopate', sans-serif; */
   position: relative;
   top: 4px;
 }
@@ -660,7 +653,6 @@ li {
 
 }
 .zindex-5 {
-  /* pointer-events: none; */
   z-index: -5;
 }
 .s-track-ul__li__rating {

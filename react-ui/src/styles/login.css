@@ -26,17 +26,11 @@
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  /* background-image: url("../images/tessalate3.jpg"); */
   background-image: url("../images/mixmeld-background2.jpg");
-  /* background-repeat: space; */
   background-size: cover;
-
 }
 #login-c h1{
   font-size: 4vw;
-  font-family: 'Source Code Pro', monospace;
-  font-family: 'Goldman', cursive;
-  font-family: 'Audiowide', cursive;
   font-family: 'Syncopate', sans-serif;
   letter-spacing: 5px;
   color: rgb(0, 0, 0);
@@ -46,7 +40,6 @@
 #login-c__login-form{
   width: 300px;
   height: 400px;
-  /* background-color: grey; */
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -58,9 +51,6 @@
 #login-c__login-form label{
   color: lightgray;
   font-size: 20px;
-  font-family: 'Source Code Pro', monospace;
-  /* font-family: 'Goldman', cursive; */
-  /* font-family: 'Audiowide', cursive; */
   font-family: 'Syncopate', sans-serif;
   text-shadow: 0 0 10px rgba(0,0,0,1);
   white-space: nowrap;
@@ -99,13 +89,7 @@
   color: lightgray;
   background-color: grey;
   font-size: 20px;
-  font-family: 'Source Code Pro', monospace;
-  font-family: 'Goldman', cursive;
   font-family: 'Audiowide', cursive;
-  /* font-family: 'Syncopate', sans-serif; */
-  
-  /* text-shadow: 0 0 10px rgba(0,0,0,1); */
-  /* width: 100px; */
   height: 30px;
   min-width: auto;
   padding: 0px 15px 0px 15px;
@@ -128,31 +112,20 @@
 }
 .login-footer__creditBox {
   position: fixed;
-  /* bottom: 40px; */
   top: 485px;
-  /* right: calc(50% - 117px); */
   left: 90px;
   width: 235px;
   height: 40px;
-  /* border: 2px solid white; */
   border-radius: 15px;
   display: flex;
-  /* flex-direction: column; */
   justify-content: space-evenly;
   align-items: center;
-  /* box-shadow: 
-      inset 5px 4px 6px -4px rgba(255, 255, 255, 0.9), 
-      inset -5px -4px 3px -4px rgba(255, 255, 255, 0.9); */
   cursor: pointer;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 .login-footer__creditBox span {
-    font-family: 'Source Code Pro', monospace;
-  /* font-family: 'Goldman', cursive; */
-  /* font-family: 'Audiowide', cursive; */
-  font-family: 'Syncopate', sans-serif;
   font-family: 'Roboto', sans-serif;
   font-weight: 900;
   color: rgb(255, 255, 255);

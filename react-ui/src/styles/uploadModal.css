@@ -57,7 +57,6 @@
   font-family: 'Electrolize', sans-serif;
   color: white;
   margin: 35px 0px 0px 5px;
-  /* border-radius: 999px; */
 }
 #uploaded-image-c div img {
   height: 20px;
@@ -124,7 +123,6 @@
 }
 
 #uploading-image-c {
-  /* position: absolute; */
   width: 100px;
   height: 100px;
   border: 1px solid white;
