@@ -270,7 +270,8 @@
   top: 91px;
   left: -25px;
   width: 100px;
-  opacity: .0;
+  opacity: 0;
+  background-color: blueviolet;
   pointer-events: all;
   cursor: pointer;
 }
