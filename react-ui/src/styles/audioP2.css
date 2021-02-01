@@ -265,6 +265,7 @@
 }
 .pl2-slider-input {
   transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
   position: absolute;
   top: 91px;
   left: -25px;
