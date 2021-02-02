@@ -477,4 +477,8 @@ div.control-2 span.eq-3 span.eq-level{
   filter: invert();
   opacity: .6;
   z-index: 2;
+  transition: opacity .2s;
+}
+.plus-sign:hover {
+  opacity: 1;
 }
