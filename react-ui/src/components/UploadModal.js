@@ -54,6 +54,7 @@ function updateTrackInfo(e) {
                           id={"upload-modal__form__track-name"} 
                           maxLength={100} 
                           placeholder={""} 
+                          required
                         />
                       <label for={"upload-modal__form__track-album"}>Album Name</label>
                       <input 
