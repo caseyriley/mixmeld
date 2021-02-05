@@ -55,11 +55,16 @@
   cursor: pointer;
   font-size: 12px;
   font-family: 'Electrolize', sans-serif;
+  transition: border .3s;
+}
+#pl2-uploading-track-c:hover {
+  border: 1px dashed rgb(255, 162, 0);
 }
 #pl2-uploading-track-c__span{
   position: absolute;
   color: rgb(202, 202, 202);
 }
+
 #pl2-uploading-track {
   opacity: 0;
   cursor: pointer;
