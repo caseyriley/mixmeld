@@ -362,7 +362,10 @@ li {
   
 }
 .pl2-track-artist-name-span:hover,
-.pl2-track-artist-span:hover{
+.pl2-track-artist-span:hover,
+.track-genre-span:hover,
+.pl2-track-ul__li__duration:hover,
+.pl2-track-genre-span:hover{
   color:rgb(142, 236, 248);
 }
 .next-track-info {
