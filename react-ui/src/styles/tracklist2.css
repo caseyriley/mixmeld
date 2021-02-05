@@ -347,9 +347,23 @@ li {
 }
 .pl2-dark{
   background-color: rgb(68, 68, 68);
+  transition: background-color .3s;
+}
+.pl2-dark:hover{
+  background-color: rgb(48, 48, 48);
+  color:rgb(142, 236, 248);
 }
 .pl2-light{
   background-color: rgb(92, 92, 92);
+  transition: background-color .3s;
+}
+.pl2-light:hover{
+  background-color: rgb(48, 48, 48);
+  
+}
+.pl2-track-artist-name-span:hover,
+.pl2-track-artist-span:hover{
+  color:rgb(142, 236, 248);
 }
 .next-track-info {
   opacity: 0;
