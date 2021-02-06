@@ -43,6 +43,9 @@
   position: relative;
   left: 25px;
 }
+.large-image {
+  top: -245px;
+}
   /* ------------------------- */
   /* -----Pl2-Left-Column----- */
   .add-to-playlist span {
