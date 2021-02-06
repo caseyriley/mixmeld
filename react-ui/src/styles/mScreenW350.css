@@ -42,6 +42,23 @@
   .pl2-playlist-ul__li__name {
     min-width: 80px;
   }
+  .pl2-random {
+    height: 15px;
+    width: 15px;
+  }
+  .pl2-rewind{
+    width: 15px;
+  }
+  .pl2-play {
+    width: 19px;
+  }
+  .pl2-fast-forward{
+    width: 15px;
+  }
+  .pl2-loop {
+    height: 15px;
+    width: 15px;
+  }
   /* ------------------ */
   /* -----Artist-Page----- */
   .pl2-artist-c img{ 
