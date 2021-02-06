@@ -30,8 +30,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
-  left: 25px;
 }
 
 #pl2-audio__volume {

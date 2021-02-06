@@ -39,6 +39,10 @@
 .playlist2-top-three-dots-delete {
   top: 170px;
 }
+#pl2-controls {
+  position: relative;
+  left: 25px;
+}
   /* ------------------------- */
   /* -----Pl2-Left-Column----- */
   .add-to-playlist span {
