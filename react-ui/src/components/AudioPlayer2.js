@@ -42,11 +42,12 @@ const AudioPlayer2 = (props)=>{
   // const [intervalFwdState, setIntervalFwdState] = useState();
   // const [intervalRwdState, setIntervalRwdState] = useState();
 
-  const [songNameState, setSongNameState] = useState("")
-  const [artistNameState, setArtistNameState] = useState("")
-  const [trackArrayLengthState, setTrackArrayLengthState] = useState()
+  const [songNameState, setSongNameState] = useState("");
+  const [artistNameState, setArtistNameState] = useState("");
+  const [trackArrayLengthState, setTrackArrayLengthState] = useState();
   const [refreshPlaylistState, setRefreshPlaylistState] = useState(1);
-  const [refreshTrackState, setRefreshTrackState] = useState(1)
+  const [refreshTrackState, setRefreshTrackState] = useState(1);
+  const [imageTopState, setImageTopState] = useState(false)
 
 
   //---------Get-Current_User--------------
@@ -570,13 +571,15 @@ const [uploadModalState, setUploadModalState] = useState("no-modal");
 const [trackLocationState, setTrackLocationState] = useState();
 //  ---------------------------------------------
 const [largeImageState, setLargeImageState] = useState("small-image")
-function toglleImageSize(){
+function toggleImageSize(){
   if (largeImageState === "small-image"){
     setLargeImageState("large-image")
   } else {
     setLargeImageState("small-image")
   }
+
 }
+// ------------------------------------------------
  
   return(
     <>
@@ -592,6 +595,7 @@ function toglleImageSize(){
         setArtistAlbumSongState={setArtistAlbumSongState} artistAlbumSongState={artistAlbumSongState}/>
 
         <div id={"pl2-audio-tracklist-c"} className={"fade-in-2"}>
+        <div className={`pl2-image-top-space--closed ${imageTopState ? "pl2-image-top-space--open" : ""}`}></div>
           <div id={"pl2-audio"} >
             <audio
               id={"audio"}
@@ -605,7 +609,7 @@ function toglleImageSize(){
               <code>audio</code> element.
             </audio>
             <div  id={"pl2-audio__top"}>
-              <img className={`track-art-450 ${largeImageState}`} src={`${trackArtState ? trackArtState : formlessMusicIcon}`} alt={""} onClick={toglleImageSize}/>
+              <img className={`track-art-450 ${largeImageState}`} src={`${trackArtState ? trackArtState : formlessMusicIcon}`} alt={""}/>
               <div className={"pl2-audio__top__inner"}>
                 <div id={"pl2-controls"}>
                   <img className={`pl2-random ${randomState}`} src={random} alt={""} onClick={toggleRandom}></img>
@@ -621,7 +625,7 @@ function toglleImageSize(){
                 trackArtState={trackArtState} songNameState={songNameState} firstTrack={firstTrack} 
                 artistNameState={artistNameState} playHeadSlider={playHeadSlider} 
                 movePlayheadOnClick={movePlayheadOnClick} 
-                isPlayingState={isPlayingState}/>
+                isPlayingState={isPlayingState} setImageTopState={setImageTopState}/>
                 {/* <div id={"pl2-track-display"}>
                   <div>{media.current ? `${Math.floor(media.current.currentTime / 60)}:${Math.floor(media.current.currentTime - Math.floor(media.current.currentTime / 60) * 60)}` : ""}</div>
                   

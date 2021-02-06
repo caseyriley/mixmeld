@@ -16,6 +16,16 @@
   }#pl2-controls {
     left: 0px;
   }
+  .pl2-image-top-space--open {
+    min-height: 150px !important;
+  }
+  .large-image {
+    width: 150px;
+    height: 150px;
+    top: -195px;
+    left: 105px;
+    position: absolute;
+  }
   /* ------------------------------ */
     /* -----Playlist-2----- */
     .pl2-playlist-ul__li__name {

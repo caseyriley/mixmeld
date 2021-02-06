@@ -3,7 +3,9 @@
   #pl2-uploading-track-x {
     left: 79%;
   }
-  /* ------------------------ */
+  .pl2-image-top-space--open {
+    min-height: 0px !important;
+  }
   .track-art {
     display: none;
   }

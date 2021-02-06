@@ -19,6 +19,17 @@
   flex-direction: column;
   background-color: rgb(92, 92, 92);
 }
+.pl2-image-top-space--closed { 
+  width: 100%;
+  min-height: 0px;
+  transition: all .3s;
+  background-color: rgb(92, 92, 92);
+}
+.pl2-image-top-space--open {
+  min-height: 200px !important;
+  width: 100%;
+  background-color: rgb(92, 92, 92);
+}
 .pl2-audio__top__inner{
   height: 50px;
   width: 100%;
@@ -183,7 +194,8 @@
   height: 200px;
   position: absolute;
   z-index: 10;
-
+  top: -245px;
+  left: 100px;
 }
 .pl2-random {
   height: 20px;
