@@ -173,3 +173,6 @@ the desired page and query.
 [angelist-url]: https://angel.co/u/casey-riley-1
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/casey-riley-3396231a1/
+
+<!-- web: gunicorn wsgi:app -->
+<!-- web: newrelic-admin run-program gunicorn -b "0.0.0.0:$PORT" -w 3 hello:app -->
