@@ -1,2 +1,2 @@
-web: gunicorn wsgi:app
+web: newrelic-admin run-program gunicorn wsgi:app
 
