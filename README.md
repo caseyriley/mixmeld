@@ -177,3 +177,4 @@ the desired page and query.
 <!-- web: gunicorn wsgi:app -->
 <!-- web: newrelic-admin run-program gunicorn -b "0.0.0.0:$PORT" -w 3 hello:app -->
 <!-- web: newrelic-admin run-program gunicorn -b "0.0.0.0:$PORT" -w 3 wsgi:app -->
+<!-- web: NEW_RELIC_CONFIG_FILE=newrelic.ini newrelic-admin run-program gunicorn -w 3 wsgi:application -->
