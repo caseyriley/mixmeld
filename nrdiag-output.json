@@ -1,0 +1,1455 @@
+{
+	"RunDate": "2021-02-08T15:46:49.076946-08:00",
+	"NRDiagVersion": "1.12.33",
+	"Configuration": {
+		"Verbose": false,
+		"Quiet": false,
+		"VeryQuiet": false,
+		"YesToAll": false,
+		"ShowOverrideHelp": false,
+		"ProxySpecified": false,
+		"SkipVersionCheck": false,
+		"Tasks": "",
+		"AttachmentKey": "",
+		"ConfigFile": "",
+		"Override": "",
+		"OutputPath": "./",
+		"Filter": "success,warning,failure,error,info",
+		"BrowserURL": "",
+		"Suites": ""
+	},
+	"Results": [
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Env",
+				"Name": "CollectEnvVars"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Info",
+				"Summary": "Gathered Environment variables of current shell.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": {
+					"HOME": "/Users/caseyriley",
+					"PATH": "/Users/caseyriley/.nvm/versions/node/v12.16.1/bin:/Users/caseyriley/.pyenv/shims:/Users/caseyriley/.pyenv/shims:/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Applications/Wireshark.app/Contents/MacOS"
+				}
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Env",
+				"Name": "CollectSysProps"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "No new relic system properties were found",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Config",
+				"Name": "Collect"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Success",
+				"Summary": "There were 1 config file(s) found",
+				"URL": "",
+				"FilesToCopy": [
+					{
+						"Path": "/Users/caseyriley/Desktop/aA/formless-music-player/newrelic.ini",
+						"Name": "./newrelic.ini",
+						"StoredName": "newrelic.ini",
+						"Streamed": false,
+						"Identifier": ""
+					}
+				],
+				"Payload": [
+					{
+						"FileName": "newrelic.ini",
+						"FilePath": "/Users/caseyriley/Desktop/aA/formless-music-player/"
+					}
+				]
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Config",
+				"Name": "Validate"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Success",
+				"Summary": "Successfully parsed config file(s) - See json for full detail",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": [
+					{
+						"FileName": "newrelic.ini",
+						"FilePath": "/Users/caseyriley/Desktop/aA/formless-music-player/",
+						"Status": "Success",
+						"Error": ""
+					}
+				]
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Infra",
+				"Subcategory": "Config",
+				"Name": "Agent"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "No Infra agent found on system",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Infra",
+				"Subcategory": "Agent",
+				"Name": "Version"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "Task did not meet requirements necessary to run: Infrastructure Agent not detected on system",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Ruby",
+				"Subcategory": "Config",
+				"Name": "Agent"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "No Ruby agent found on system",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Ruby",
+				"Subcategory": "Env",
+				"Name": "Process"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "DotNetCore",
+				"Subcategory": "Agent",
+				"Name": "Installed"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "The .NET CoreCLR agent is not installed in: /usr/local/newrelic-netcore20-agent/",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Env",
+				"Name": "HostInfo"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Info",
+				"Summary": "Collected host information",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": {
+					"Hostname": "caseys-MacBook-Pro.local",
+					"OS": "darwin",
+					"Platform": "darwin",
+					"PlatformFamily": "Standalone Workstation",
+					"PlatformVersion": "10.15.7",
+					"KernelVersion": "19.6.0",
+					"KernelArch": "x86_64",
+					"CPUs": [
+						{
+							"Cores": 4,
+							"Mhz": 2800
+						}
+					],
+					"TotalVirtualMemoryMB": 16384
+				}
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "DotNetCore",
+				"Subcategory": "Requirements",
+				"Name": "OS"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "Did not detect .Net Core Agent as being installed, skipping this task.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Infra",
+				"Subcategory": "Config",
+				"Name": "IntegrationsCollect"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "No Infra Agent detected. Task not executed.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Infra",
+				"Subcategory": "Config",
+				"Name": "IntegrationsValidate"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "No On-host Integration config and definitions files were collected. Task not executed.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Infra",
+				"Subcategory": "Config",
+				"Name": "IntegrationsMatch"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "Task did not meet requirements necessary to run: no validated integrations",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Config",
+				"Name": "LicenseKey"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Success",
+				"Summary": "1 unique New Relic license key(s) found.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": [
+					{
+						"Value": "94c6ee30216746d029a6720aa581ff9f9640NRAL",
+						"Source": "/Users/caseyriley/Desktop/aA/formless-music-player/newrelic.ini"
+					}
+				]
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "PHP",
+				"Subcategory": "Config",
+				"Name": "Agent"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "No PHP agent found on system",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "PHP",
+				"Subcategory": "Agent",
+				"Name": "Version"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "Task did not meet requirements necessary to run: type assertion failure",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Infra",
+				"Subcategory": "Log",
+				"Name": "LevelCheck"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "Infrastructure Agent config not present",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "DotNetCore",
+				"Subcategory": "Config",
+				"Name": "Agent"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": ".NET Core Agent not installed, not checking config",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Java",
+				"Subcategory": "Config",
+				"Name": "Agent"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "No Java agent found on system",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Java",
+				"Subcategory": "Env",
+				"Name": "Process"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "Java agent config file was not detected on this host. This task did not run",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Env",
+				"Name": "DetectAWS"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "AWS metadata endpoint timeout",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Log",
+				"Name": "Copy"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Failure",
+				"Summary": "Diagnostics CLI cannot collect New Relic log files from the provided path():stat : no such file or directory\nIf you are working with a support ticket, manually provide your New Relic log file for further troubleshooting\n",
+				"URL": "https://docs.newrelic.com/docs/agents/manage-apm-agents/troubleshooting/generate-new-relic-agent-logs-troubleshooting",
+				"FilesToCopy": null,
+				"Payload": [
+					{
+						"FileName": "",
+						"FilePath": "",
+						"Source": {
+							"FoundBy": "Found by looking at standard locations",
+							"KeyVals": null,
+							"FullPath": ""
+						},
+						"IsSecureLocation": false,
+						"CanCollect": false,
+						"ReasonToNotCollect": "stat : no such file or directory"
+					}
+				]
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Python",
+				"Subcategory": "Config",
+				"Name": "Agent"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Success",
+				"Summary": "Python agent identified as present on system",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": [
+					{
+						"FileName": "newrelic.ini",
+						"FilePath": "/Users/caseyriley/Desktop/aA/formless-music-player/",
+						"Status": "Success",
+						"Error": ""
+					},
+					{
+						"FileName": "newrelic.ini",
+						"FilePath": "/Users/caseyriley/Desktop/aA/formless-music-player/",
+						"Status": "Success",
+						"Error": ""
+					},
+					{
+						"FileName": "newrelic.ini",
+						"FilePath": "/Users/caseyriley/Desktop/aA/formless-music-player/",
+						"Status": "Success",
+						"Error": ""
+					}
+				]
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Python",
+				"Subcategory": "Env",
+				"Name": "Dependencies"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Info",
+				"Summary": "Collected pip freeze. See pipFreeze.txt for more info.",
+				"URL": "",
+				"FilesToCopy": [
+					{
+						"Path": "pipFreeze.txt",
+						"Name": "./pipFreeze.txt",
+						"StoredName": "pipFreeze.txt",
+						"Streamed": true,
+						"Identifier": ""
+					}
+				],
+				"Payload": [
+					"appdirs==1.4.4",
+					"astroid==2.4.2",
+					"attrs==19.3.0",
+					"bcrypt==3.2.0",
+					"black==19.10b0",
+					"certifi==2020.6.20",
+					"cffi==1.14.2",
+					"chardet==3.0.4",
+					"click==7.1.2",
+					"faker==4.1.2",
+					"flask==1.1.2",
+					"flask-cors==3.0.8",
+					"flask-jwt-extended==3.24.1",
+					"flask-login==0.5.0",
+					"flask-sqlalchemy==2.4.4",
+					"flask-wtf==0.14.3",
+					"gunicorn==20.0.4",
+					"idna==2.10",
+					"isort==4.3.21",
+					"itsdangerous==1.1.0",
+					"jinja2==2.11.2",
+					"lazy-object-proxy==1.4.3",
+					"markupsafe==1.1.1",
+					"mccabe==0.6.1",
+					"newrelic==6.0.1.155",
+					"pathspec==0.8.0",
+					"psycopg2-binary==2.8.5",
+					"pycodestyle==2.6.0",
+					"pycparser==2.20",
+					"pyjwt==1.7.1",
+					"pylint==2.5.3",
+					"python-dateutil==2.8.1",
+					"python-dotenv==0.14.0",
+					"regex==2020.7.14",
+					"requests==2.24.0",
+					"six==1.15.0",
+					"sqlalchemy==1.3.19",
+					"text-unidecode==1.3",
+					"tinytag==1.5.0",
+					"toml==0.10.1",
+					"typed-ast==1.4.1",
+					"urllib3==1.25.10",
+					"werkzeug==1.0.1",
+					"wrapt==1.12.1",
+					"wtforms==2.3.3",
+					"yapf==0.30.0"
+				]
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Config",
+				"Name": "ProxyDetect"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "No proxy server settings found for this app",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Config",
+				"Name": "ValidateLicenseKey"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Success",
+				"Summary": "We validated 1 license key(s):\nThe license key found in /Users/caseyriley/Desktop/aA/formless-music-player/newrelic.ini passed our validation check when verifying against your account:\n 94c6ee30216746d029a6720aa581ff9f9640NRAL\nNote: If your agent is reporting an 'Invalid license key' log entry for this valid License key, reach out to New Relic support to verify any issues in our end.\n\n",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": {
+					"94c6ee30216746d029a6720aa581ff9f9640NRAL": [
+						"/Users/caseyriley/Desktop/aA/formless-music-player/newrelic.ini"
+					]
+				}
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Config",
+				"Name": "RegionDetect"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Info",
+				"Summary": "1 unique New Relic region(s) detected from config.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": [
+					"us01"
+				]
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Infra",
+				"Subcategory": "Agent",
+				"Name": "Connect"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "Infrastructure Agent config not present.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Infra",
+				"Subcategory": "Env",
+				"Name": "ClockSkew"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "Task did not meet requirements necessary to run: type assertion failure",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "DotNetCore",
+				"Subcategory": "Env",
+				"Name": "Versions"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Error",
+				"Summary": "Unable to complete this health check because we ran into some unexpected errors when attempting to collect this application's .NET Core SDK version:\nUnable to run 'dotnet --version':\n%w\nexec: \"dotnet\": executable file not found in $PATH",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "DotNetCore",
+				"Subcategory": "Env",
+				"Name": "Process"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "Did not detect .Net Core as being installed, skipping this task.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Python",
+				"Subcategory": "Env",
+				"Name": "Version"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Info",
+				"Summary": "3.8.2",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": "3.8.2"
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Java",
+				"Subcategory": "Env",
+				"Name": "Version"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Infra",
+				"Subcategory": "Config",
+				"Name": "ValidateJMX"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "No On-host Integration config and definitions files were collected. Task not executed.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Infra",
+				"Subcategory": "Env",
+				"Name": "NrjmxMbeans"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "No jmx-config.yml was found or Infra/Config/ValidateJMX did not pass our validation (in which case, the issue will need to be resolved first before this task can be executed.)",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Node",
+				"Subcategory": "Config",
+				"Name": "Agent"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "No Node agent found on system",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Node",
+				"Subcategory": "Env",
+				"Name": "Version"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "Node agent config file not detected. This task did not run",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Node",
+				"Subcategory": "Env",
+				"Name": "NpmVersion"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "Node.js was not detected. This task didn't run.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Node",
+				"Subcategory": "Env",
+				"Name": "Dependencies"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "NPM is not installed. This task did not run",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Env",
+				"Name": "InitSystem"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "Task does not apply to Mac OS",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Java",
+				"Subcategory": "Config",
+				"Name": "ValidateSettings"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "No config files found",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Node",
+				"Subcategory": "Agent",
+				"Name": "Version"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "Node Modules not detected. This task did not run.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Browser",
+				"Subcategory": "Agent",
+				"Name": "GetSource"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "This health check requires the usage of the command option '-browser-url'. Please re-run Diagnostics CLI using the flag in this manner: ./nrdiag -browser-url http://YOUR-WEBSITE-URL -suites browser",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Browser",
+				"Subcategory": "Agent",
+				"Name": "Detect"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "This tasks did not run because the previous task 'Browser/Agent/GetSource' either did not run or was not successful.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "DotNetCore",
+				"Subcategory": "Requirements",
+				"Name": "ProcessorType"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "Did not pass OS check, skipping this task.",
+				"URL": "https://docs.newrelic.com/docs/agents/net-agent/getting-started/compatibility-requirements-net-core-20-agent#architecture",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Env",
+				"Name": "DetectAzure"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "Detected that this is not an Azure environment.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Log",
+				"Name": "ReportingTo"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "New Relic logs not found",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Containers",
+				"Name": "DetectDocker"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Info",
+				"Summary": "Docker Daemon is Running",
+				"URL": "",
+				"FilesToCopy": [
+					{
+						"Path": "docker-info.json",
+						"Name": "Base/Containers/docker-info.json",
+						"Streamed": true
+					}
+				],
+				"Payload": {
+					"Driver": "overlay2",
+					"ServerVersion": "19.03.12",
+					"MemTotal": 2087837696,
+					"NCPU": 4
+				}
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Ruby",
+				"Subcategory": "Env",
+				"Name": "Version"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "Ruby Agent not installed. This task didn't run.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Synthetics",
+				"Subcategory": "Minion",
+				"Name": "DetectCPM"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "No Containerized Private Minions found",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Config",
+				"Name": "ValidateHSM"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Success",
+				"Summary": "High Security Mode setting for accounts associated with found license keys match local configuration.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": [
+					{
+						"LicenseKey": "94c6ee30216746d029a6720aa581ff9f9640NRAL",
+						"AccountHSM": false,
+						"LocalHSM": {
+							"/Users/caseyriley/Desktop/aA/formless-music-player/newrelic.ini": false
+						}
+					}
+				]
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Synthetics",
+				"Subcategory": "Minion",
+				"Name": "CollectLogs"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "No CPMs detected to collect logs from",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Python",
+				"Subcategory": "Agent",
+				"Name": "Version"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Python",
+				"Subcategory": "Requirements",
+				"Name": "PythonVersion"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "Python Agent version not detected. This task didn't run.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Ruby",
+				"Subcategory": "Agent",
+				"Name": "Version"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "Task did not meet requirements necessary to run: Ruby agent is not installed",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Ruby",
+				"Subcategory": "Requirements",
+				"Name": "Version"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "Ruby version not detected. This task didn't run.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Ruby",
+				"Subcategory": "Config",
+				"Name": "Collect"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "DotNetCore",
+				"Subcategory": "Log",
+				"Name": "LevelCollect"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": ".NET Core Agent not installed, skipping this task.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "DotNetCore",
+				"Subcategory": "Log",
+				"Name": "LevelValidate"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": ".NET Core Agent not installed, skipping this task.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Node",
+				"Subcategory": "Env",
+				"Name": "NpmPackage"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "Node agent config file not detected. This task did not run",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "DotNetCore",
+				"Subcategory": "Requirements",
+				"Name": "DotNetCoreVersion"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "Did not detect .Net Core Agent as being installed, skipping this task.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Collector",
+				"Name": "ConnectEU"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "EU Region not detected, skipping EU collector connect check",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Java",
+				"Subcategory": "Agent",
+				"Name": "Version"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "Java agent not detected. Task did not run.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Java",
+				"Subcategory": "JVM",
+				"Name": "Permissions"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "The New Relic agent has not been added to a running JVM process yet. This task did not run.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Java",
+				"Subcategory": "Config",
+				"Name": "Validate"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "Java agent not detected",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Infra",
+				"Subcategory": "Config",
+				"Name": "IntegrationsValidateJson"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "Task did not meet requirements necessary to run: no validated integrations",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Android",
+				"Subcategory": "Agent",
+				"Name": "Detect"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "Android environment not detected",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Agent",
+				"Name": "EOL"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "No New Relic agent versions detected. This task did not run",
+				"URL": "https://discuss.newrelic.com/t/important-upcoming-changes-to-supported-agent-versions/72280",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Python",
+				"Subcategory": "Requirements",
+				"Name": "Webframework"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Success",
+				"Summary": "Found compatible web framework.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": [
+					"flask==1.1.2"
+				]
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Node",
+				"Subcategory": "Requirements",
+				"Name": "ProblematicModules"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "A list of Node modules was not found. This task did not run",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Java",
+				"Subcategory": "AppServer",
+				"Name": "WebSphere"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "Websphere was not detected in this environment.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Java",
+				"Subcategory": "Appserver",
+				"Name": "JBossAsCheck"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "Could not find JBoss AS Home Path. Assuming JBoss AS is not installed",
+				"URL": "https://docs.newrelic.com/docs/agents/java-agent/getting-started/compatibility-requirements-java-agent#app-web-servers",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "iOS",
+				"Subcategory": "Env",
+				"Name": "Detect"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "iOS environment not detected",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "iOS",
+				"Subcategory": "Agent",
+				"Name": "Version"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "Task did not meet requirements necessary to run: iOS environment not detected.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "PHP",
+				"Subcategory": "Env",
+				"Name": "PHPinfoCLI"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "PHP Agent was not detected on this host. Skipping PHP info check.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "DotNetCore",
+				"Subcategory": "CustomInstrumentation",
+				"Name": "Collect"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": ".NET Core Agent not installed, not checking for custom instrumentation files",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Config",
+				"Name": "AppName"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Warning",
+				"Summary": "One or more of your applications is using a default appname: \n\t\"Python Application (Staging)\" as specified in /Users/caseyriley/Desktop/aA/formless-music-player/newrelic.ini \nMultiple applications with the same default appname will all report to the same source. Consider changing to a unique appname and review the recommended documentation",
+				"URL": "https://docs.newrelic.com/docs/agents/manage-apm-agents/app-naming/name-your-application",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Java",
+				"Subcategory": "JVM",
+				"Name": "VendorsVersions"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "This task did not detect any running Java processes on this system.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "PHP",
+				"Subcategory": "Daemon",
+				"Name": "Running"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "PHP Agent was not detected on this host. Skipping daemon detection.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Ruby",
+				"Subcategory": "Config",
+				"Name": "IncompatibleGems"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "Either no Gemfile or newrelic.yml was found",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Infra",
+				"Subcategory": "Config",
+				"Name": "DataDirectoryCollect"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "No New Relic Infrastructure agent detected",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Java",
+				"Subcategory": "Appserver",
+				"Name": "JbossEapCheck"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "Java config file not detected, this task didn't run",
+				"URL": "https://docs.newrelic.com/docs/agents/java-agent/getting-started/compatibility-requirements-java-agent#app-web-servers",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Infra",
+				"Subcategory": "Log",
+				"Name": "Collect"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "None",
+				"Summary": "Not executing task. Infra agent not found.",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		},
+		{
+			"Identifier": {
+				"Category": "Base",
+				"Subcategory": "Collector",
+				"Name": "ConnectUS"
+			},
+			"Override": false,
+			"Result": {
+				"Status": "Success",
+				"Summary": "Status Code = 200 Body = mongrel ==\u003e up\n",
+				"URL": "",
+				"FilesToCopy": null,
+				"Payload": null
+			}
+		}
+	]
+}

@@ -1,0 +1,15 @@
+List of files in zipfile
+Stored file name:Base/Config/newrelic.ini
+Original path:/Users/caseyriley/Desktop/aA/formless-music-player/newrelic.ini
+
+Stored file name:Python/Env/pipFreeze.txt
+Original path:pipFreeze.txt
+
+Stored file name:Base/Containers/docker-info.json
+Original path:docker-info.json
+
+Stored file name:nrdiag-filelist.txt
+Original path:./nrdiag-filelist.txt
+
+Stored file name:nrdiag-output.json
+Original path:./nrdiag-output.json
