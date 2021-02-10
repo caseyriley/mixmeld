@@ -290,7 +290,7 @@ function updateTrackGenre(e) {
   }
 // ----------------------------------------------------
 // --------------Add-To-Playlist-Function--------------
-  
+const [playlistIdState, setPlaylistIdState] = useState([]);
   function addToPlaylistFunc(trackId){
     const playlistAndTrackData = {track_id: `${trackId}`, playlist_id: `${props.playlistIdRef.current.playlistId}`}
     const options = {
@@ -300,6 +300,9 @@ function updateTrackGenre(e) {
     }
     fetch(`${API_URL}/playlists/list/post`, options)
     props.setRefreshTrackState(props.refreshTrackState + 7);
+    let currentPlaylistIdState = playlistIdState;
+    setPlaylistIdState([]);
+    setPlaylistIdState(currentPlaylistIdState);
   }
 // ----------------------------------------------------
 // ---------Convert-to-standard-time---------
@@ -315,7 +318,7 @@ function toStandardTime(militaryTime) {
 }
 // -------------------------------------------
 // -----------set-Playlist-Id-Array--------------
-  const [playlistIdState, setPlaylistIdState] = useState([]);
+  // const [playlistIdState, setPlaylistIdState] = useState([]);
 
   useEffect(() => {
     const playlistIdArray = [];

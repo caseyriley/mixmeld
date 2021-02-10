@@ -1,5 +1,8 @@
 List of files in zipfile
 Stored file name:Base/Config/newrelic.ini
+Original path:/Users/caseyriley/Desktop/aA/formless-music-player/.venv/lib/python3.8/site-packages/newrelic/newrelic.ini
+
+Stored file name:Base/Config/newrelic(1).ini
 Original path:/Users/caseyriley/Desktop/aA/formless-music-player/newrelic.ini
 
 Stored file name:Base/Containers/docker-info.json
