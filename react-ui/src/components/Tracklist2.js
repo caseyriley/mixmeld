@@ -299,10 +299,11 @@ const [playlistIdState, setPlaylistIdState] = useState([]);
       body: JSON.stringify(playlistAndTrackData),
     }
     fetch(`${API_URL}/playlists/list/post`, options)
-    props.setRefreshTrackState(props.refreshTrackState + 7);
-    let currentPlaylistIdState = playlistIdState;
-    setPlaylistIdState([]);
-    setPlaylistIdState(currentPlaylistIdState);
+    let prevRefreshTrackState = props.refreshTrackState;
+    props.setRefreshTrackState(prevRefreshTrackState  + 7);
+    // let currentPlaylistIdState = playlistIdState;
+    // setPlaylistIdState([]);
+    // setPlaylistIdState(currentPlaylistIdState);
   }
 // ----------------------------------------------------
 // ---------Convert-to-standard-time---------
