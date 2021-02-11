@@ -450,7 +450,8 @@ function nextTrack() {
   function showPlaylist(playlistName, playlistId){
     setPlaylistSwitchState("Playlist2")
     playlistIdRef.current = {playlistId: playlistId, playlistName: playlistName};
-    setRefreshPlaylistState( refreshPlaylistState + 3);
+    let nextState = refreshPlaylistState;
+    setRefreshPlaylistState(nextState + 3);
     setTrackArtState(null);
 
   }
