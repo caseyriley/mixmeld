@@ -159,7 +159,8 @@ function updateTrackRating(e) {
       body: JSON.stringify(trackData),
     }
     fetch(`${API_URL}/tracks/track_rating`, options)
-    props.setRefreshPlaylistState(props.refreshPlaylistState + 5)
+    let prevState = props.refreshPlaylistState;
+    props.setRefreshPlaylistState(prevState + 5)
     setTrackRatingModalState(false)
   }
   newRating();
