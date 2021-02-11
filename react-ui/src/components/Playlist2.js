@@ -257,7 +257,8 @@ function deleteFromPlaylist(trackId){
       body: JSON.stringify(trackData)
     }
     fetch(`${API_URL}/playlists/delete_playlist`, options)
-    props.setRefreshPlaylistState(props.refreshPlaylistState + 1);
+    let prevState = props.refreshPlaylistState;
+    props.setRefreshPlaylistState(prevState + 1);
     props.setPlaylistSwitchState("Tracklist2");
   }
   // -------------------------
