@@ -190,7 +190,8 @@ function updateTrackRating(e) {
     fetch(`${API_URL}/tracks/track_rating`, options)
     setTrackRatingModalState(false)
     setTimeout(() => {
-      props.setRefreshTrackState(props.refreshTrackState + 1)
+      let prevState = props.refreshTrackState;
+      props.setRefreshTrackState(prevState + 1)
     }, 100);
     
   }

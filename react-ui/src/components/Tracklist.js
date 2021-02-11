@@ -180,7 +180,8 @@ function updateTrackName(e) {
       body: JSON.stringify(trackData),
     }
     fetch(`${API_URL}/tracks/track_name`, options)
-    setRefreshTrackState(refreshTrackState + 1)
+    let prevState = refreshTrackState;
+    setRefreshTrackState(prevState + 1)
     setTrackEditState(false)
   }
   newTrackName();
@@ -200,7 +201,8 @@ function updateTrackName(e) {
         body: JSON.stringify(trackData),
       }
       fetch(`${API_URL}/tracks/artist_name`, options)
-      setRefreshTrackState(refreshTrackState + 1)
+      let prevState = refreshTrackState;
+      setRefreshTrackState(prevState + 1)
       setTrackEditState(false)
     }
     newTrack();
@@ -220,7 +222,8 @@ function updateTrackGenre(e) {
       body: JSON.stringify(trackData),
     }
     fetch(`${API_URL}/tracks/genre`, options)
-    setRefreshTrackState(refreshTrackState + 1)
+    let prevState = refreshTrackState;
+    setRefreshTrackState(prevState + 1)
     setTrackEditState(false)
   }
   newTrack();
@@ -235,7 +238,8 @@ function updateTrackGenre(e) {
       body: JSON.stringify(trackData)
     }
     fetch(`${API_URL}/tracks/delete`, options)
-    setRefreshTrackState(refreshTrackState + 1)
+    let prevState = refreshTrackState;
+    setRefreshTrackState(prevState + 1)
     setTrackEditState(false)
   }
 // ----------------------------------------------------
