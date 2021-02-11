@@ -160,7 +160,8 @@ function updateTrackRating(e) {
       body: JSON.stringify(trackData),
     }
     fetch(`${API_URL}/tracks/track_rating`, options)
-    setRefreshTrackState(refreshTrackState + 1)
+    let prevState = refreshTrackState;
+    setRefreshTrackState(prevState + 1)
     setTrackEditState(false)
   }
   newRating();
