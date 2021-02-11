@@ -50,7 +50,8 @@ const UploadingNewImage = (props) => {
         location = data.location;
           updateTrackArt(location);
           props.setTrackArtState(location);
-          props.setRefreshTrackState(props.refreshTrackState + 1);
+          let prevState = props.refreshTrackState;
+          props.setRefreshTrackState(prevState + 1)
           const newState = !props.trackEditState;
           props.setTrackEditState(newState);
       })

@@ -22,7 +22,8 @@ function updateTrackInfo(e) {
     }
     fetch(`${API_URL}/tracks/track_info`, options)
     props.setTrackLocationState("")
-    props.setRefreshTrackState(props.refreshTrackState + 1)
+    let prevState = props.refreshTrackState;
+    props.setRefreshTrackState(prevState + 1)
     props.setUploadModalState("no-modal")
     
   }

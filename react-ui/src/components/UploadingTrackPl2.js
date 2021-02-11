@@ -109,7 +109,8 @@ const UploadingTrackPl2 = (props) => {
             formattedTime = await formatTime(au.duration)
             newTrack(location).then(()=>{
               props.setTrackLocationState(location)
-              props.setRefreshTrackState(props.refreshTrackState + 1)
+              let prevState = props.refreshTrackState;
+              props.setRefreshTrackState(prevState + 1)
             })
           }
           inner()

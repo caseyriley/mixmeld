@@ -211,7 +211,8 @@ function updateTrackName(e) {
       body: JSON.stringify(trackData),
     }
     fetch(`${API_URL}/tracks/track_name`, options)
-    props.setRefreshTrackState(props.refreshTrackState + 1)
+    let prevState = props.refreshTrackState;
+    props.setRefreshTrackState(prevState + 1)
     props.setTrackEditState(false)
   }
   newTrackName();
@@ -231,7 +232,8 @@ function updateTrackName(e) {
         body: JSON.stringify(trackData),
       }
       fetch(`${API_URL}/tracks/artist_name`, options)
-      props.setRefreshTrackState(props.refreshTrackState + 1)
+      let prevState = props.refreshTrackState;
+      props.setRefreshTrackState(prevState + 1)
       props.setTrackEditState(false)
     }
     newTrack();
@@ -251,7 +253,8 @@ function updateTrackAlbumName(e) {
       body: JSON.stringify(trackData),
     }
     fetch(`${API_URL}/tracks/album_name`, options)
-    props.setRefreshTrackState(props.refreshTrackState + 1)
+    let prevState = props.refreshTrackState;
+    props.setRefreshTrackState(prevState + 1)
     props.setTrackEditState(false)
   }
   newTrack();
@@ -271,7 +274,8 @@ function updateTrackGenre(e) {
       body: JSON.stringify(trackData),
     }
     fetch(`${API_URL}/tracks/genre`, options)
-    props.setRefreshTrackState(props.refreshTrackState + 1)
+    let prevState = props.refreshTrackState;
+    props.setRefreshTrackState(prevState + 1)
     props.setTrackEditState(false)
   }
   newTrack();
@@ -286,7 +290,8 @@ function updateTrackGenre(e) {
       body: JSON.stringify(trackData)
     }
     fetch(`${API_URL}/tracks/delete`, options)
-    props.setRefreshTrackState(props.refreshTrackState + 1)
+    let prevState = props.refreshTrackState;
+    props.setRefreshTrackState(prevState + 1)
     props.setTrackEditState(false)
   }
 // ----------------------------------------------------
