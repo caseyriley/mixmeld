@@ -18,8 +18,8 @@ const NewPlaylistModal = (props) => {
       }
       fetch(`${API_URL}/playlists/post`, options)
       props.toggleModal();
-      let prevRefreshPlaylistState = props.refreshPlaylistState;
-      props.setRefreshPlaylistState(prevRefreshPlaylistState + 5);
+      let prevState = props.refreshPlaylistState;
+      props.setRefreshPlaylistState(prevState + 5);
       
     }
     newPlaylist();

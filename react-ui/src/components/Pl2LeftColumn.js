@@ -31,8 +31,8 @@ const Pl2LeftColumn = (props) => {
     }
     
     props.playlistIdRef.current = {playlistId: id, playlistName: name};
-
-    props.setRefreshTrackState(props.refreshTrackState + 7);
+    let prevState = props.refreshTrackState;
+    props.setRefreshTrackState(prevState + 7);
     
   }
   //  --------Memoize-Playlist-Radio-Buttons----------------------
