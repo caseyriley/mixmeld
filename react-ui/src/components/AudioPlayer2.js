@@ -17,30 +17,15 @@ let vol = .5;
 const AudioPlayer2 = (props)=>{
   const media = useRef()
   const play = useRef()
-
   const rwd = useRef();
   const fwd = useRef();
-
-  // const audioBottomPlayhead = useRef();
-  const timerBar = useRef();
-
-
   const volumeLevel =useRef();
   const volumeSlider =useRef();
   const volumeFader =useRef();
-
   const playHeadSlider = useRef();
-
   const currentTrack = useRef([]);
-
   const playlistIdRef = useRef({playlistId: "", playlistName: ""});
 
- 
-  // const [timeState, setTimeState] = useState(":");
-  // const timeRef = useRef(":");
-
-  // const [intervalFwdState, setIntervalFwdState] = useState();
-  // const [intervalRwdState, setIntervalRwdState] = useState();
 
   const [songNameState, setSongNameState] = useState("");
   const [artistNameState, setArtistNameState] = useState("");
@@ -78,13 +63,11 @@ const AudioPlayer2 = (props)=>{
   const [firstTrack, setFirstTrack] = useState();
 
   useEffect(()=>{
-    const token = window.localStorage.getItem('auth_token');
 
     const getUserFirstTrack = async () => {
       const response = await fetch(`${API_URL}/tracks/first/${currentUser.id}`, {
         method: "GET",
         mode: "cors",
-        headers: { "Authorizaion": `Bearer ${token}` }
       })
       if (!response.ok) { console.log("error in getUserTracks") }
       else {
@@ -94,6 +77,7 @@ const AudioPlayer2 = (props)=>{
         }
         setFirstTrack(json);
         currentTrack.current = json[0].id;
+        setTrackArtState(json[0].trackart);
       }
     }
     getUserFirstTrack();
