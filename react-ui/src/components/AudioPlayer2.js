@@ -33,6 +33,7 @@ const AudioPlayer2 = (props)=>{
   const [refreshPlaylistState, setRefreshPlaylistState] = useState(1);
   const [refreshTrackState, setRefreshTrackState] = useState(1);
   const [imageTopState, setImageTopState] = useState(false)
+  const [firstTrack, setFirstTrack] = useState();
 
 
   //---------Get-Current_User--------------
@@ -52,6 +53,26 @@ const AudioPlayer2 = (props)=>{
       } else {
         const json = await response.json();
         setCurrentUser(json);
+
+        const getUserFirstTrack = async () => {
+          const response = await fetch(`${API_URL}/tracks/first/${json.id}`, {
+            method: "GET",
+            mode: "cors",
+          })
+          if (!response.ok) { console.log("error in getUserTracks") }
+          else {
+            const json = await response.json();
+            if (json === []){
+    
+            }
+            console.log("tracks/first/<id>+++++++++++++++++++++++>>>>>",json)
+            setFirstTrack(json);
+            currentTrack.current = json.id;
+            setTrackArtState(json.trackart);
+          }
+        }
+        getUserFirstTrack();
+        media.current.volume = .5;
        
       }
     }
@@ -60,30 +81,31 @@ const AudioPlayer2 = (props)=>{
 // ----------------------------------------------
 // -------------------Get-Users-First-Track---------
 
-  const [firstTrack, setFirstTrack] = useState();
+  // const [firstTrack, setFirstTrack] = useState();
 
-  useEffect(()=>{
+  // useEffect(()=>{
 
-    const getUserFirstTrack = async () => {
-      const response = await fetch(`${API_URL}/tracks/first/${currentUser.id}`, {
-        method: "GET",
-        mode: "cors",
-      })
-      if (!response.ok) { console.log("error in getUserTracks") }
-      else {
-        const json = await response.json();
-        if (json === []){
+  //   const getUserFirstTrack = async () => {
+  //     const response = await fetch(`${API_URL}/tracks/first/${currentUser.id}`, {
+  //       method: "GET",
+  //       mode: "cors",
+  //     })
+  //     if (!response.ok) { console.log("error in getUserTracks") }
+  //     else {
+  //       const json = await response.json();
+  //       if (json === []){
 
-        }
-        setFirstTrack(json);
-        currentTrack.current = json[0].id;
-        setTrackArtState(json[0].trackart);
-      }
-    }
-    getUserFirstTrack();
-    media.current.volume = .5;
+  //       }
+  //       console.log("tracks/first/<id>+++++++++++++++++++++++>>>>>",json)
+  //       setFirstTrack(json);
+  //       currentTrack.current = json.id;
+  //       setTrackArtState(json.trackart);
+  //     }
+  //   }
+  //   getUserFirstTrack();
+  //   media.current.volume = .5;
 
-  },[currentUser])
+  // },[currentUser])
   // -----------------------------------------------
 
 
@@ -94,7 +116,7 @@ const AudioPlayer2 = (props)=>{
 
   function playPauseMedia() {
     if (!media.current.src){
-      media.current.setAttribute("src", firstTrack[0].tracklocation)
+      media.current.setAttribute("src", firstTrack.tracklocation)
     }
     
     rwd.current.classList.remove('active');
@@ -465,30 +487,30 @@ function nextTrack() {
   }
   // ----------------------------------------------------
      // ----------------Get-Playlists------------------------
-     const [playlistState, setPlaylistState] = useState();
-   
- 
-     useEffect(() => {
-     
-       const getCurrentUserPlaylists = async () => {
-         const token = window.localStorage.getItem('auth_token')
-         const response = await fetch(`${API_URL}/playlists/${currentUser.id}`, {
-           method: "GET",
-           mode: "cors",
-           headers: { "Authorization": `Bearer ${token}` },
-         })
-         if (!response.ok) {
-           console.log("getCurrentUserPlaylists failed in Pl2LeftColumn.js");
-         } else {
-           const json = await response.json();
-           setPlaylistState(json);
-           console.log("getCurrentUserPlaylists json", json)
-          
-         }
-       }
-       getCurrentUserPlaylists();
-     },[currentUser, refreshPlaylistState])
-     // -----------------------------------------------------
+  const [playlistState, setPlaylistState] = useState();
+
+
+  useEffect(() => {
+  
+    const getCurrentUserPlaylists = async () => {
+      const token = window.localStorage.getItem('auth_token')
+      const response = await fetch(`${API_URL}/playlists/${currentUser.id}`, {
+        method: "GET",
+        mode: "cors",
+        headers: { "Authorization": `Bearer ${token}` },
+      })
+      if (!response.ok) {
+        console.log("getCurrentUserPlaylists failed in Pl2LeftColumn.js");
+      } else {
+        const json = await response.json();
+        setPlaylistState(json);
+        console.log("getCurrentUserPlaylists json", json)
+      
+      }
+    }
+    getCurrentUserPlaylists();
+  },[currentUser, refreshPlaylistState])
+  // -----------------------------------------------------
        // ----------------Get-Selected-Playlists------------------------
        const [selectedPlaylistState, setSelectedPlaylistState] = useState();
   
@@ -555,15 +577,8 @@ function nextTrack() {
 const [uploadModalState, setUploadModalState] = useState("no-modal");
 const [trackLocationState, setTrackLocationState] = useState();
 //  ---------------------------------------------
-const [largeImageState, setLargeImageState] = useState("small-image")
-function toggleImageSize(){
-  if (largeImageState === "small-image"){
-    setLargeImageState("large-image")
-  } else {
-    setLargeImageState("small-image")
-  }
 
-}
+
 // ------------------------------------------------
  
   return(
@@ -594,7 +609,7 @@ function toggleImageSize(){
               <code>audio</code> element.
             </audio>
             <div  id={"pl2-audio__top"}>
-              <img className={`track-art-450 ${largeImageState}`} src={`${trackArtState ? trackArtState : formlessMusicIcon}`} alt={""}/>
+              <img className={`track-art-450`} src={`${trackArtState ? trackArtState : formlessMusicIcon}`} alt={""}/>
               <div className={"pl2-audio__top__inner"}>
                 <div id={"pl2-controls"}>
                   <img className={`pl2-random ${randomState}`} src={random} alt={""} onClick={toggleRandom}></img>
@@ -611,30 +626,6 @@ function toggleImageSize(){
                 artistNameState={artistNameState} playHeadSlider={playHeadSlider} 
                 movePlayheadOnClick={movePlayheadOnClick} 
                 isPlayingState={isPlayingState} setImageTopState={setImageTopState}/>
-                {/* <div id={"pl2-track-display"}>
-                  <div>{media.current ? `${Math.floor(media.current.currentTime / 60)}:${Math.floor(media.current.currentTime - Math.floor(media.current.currentTime / 60) * 60)}` : ""}</div>
-                  
-                  {trackEditState ? 
-                  <> 
-                    <UploadingNewImage currentUser={currentUser} refreshTrackState={refreshTrackState} setRefreshTrackState={setRefreshTrackState} setTrackArtState={setTrackArtState} setPl2TrackLocationState={setPl2TrackLocationState} pl2TrackLocationState={pl2TrackLocationState}/>
-                  </>
-                  : ""}
-                  <img className={"track-art"} src={`${trackArtState ? trackArtState : formlessMusicIcon}`} alt={""}/>
-                  <div id={"pl2-audio__bottom"} >
-                    <p id={"pl2-audio__top__song-name"}>{songNameState ? songNameState : `${firstTrack ? firstTrack[0].trackname : ""}`}</p>
-                    
-                    <p id={"pl2-audio__top__song-artist"}>{artistNameState ? artistNameState : ``}</p>
-                  
-                    <div className={"pl2-audio__bottom__playhead"} ref={audioBottomPlayhead} >
-                      <input id={"pl2-playhead-input"} ref={playHeadSlider} type={"range"} min={"0"} max={"1"} step={"0.01"} onChange={movePlayheadOnClick} ></input>
-                      <div className={"pl2-audio__bottom__playhead__left"} ref={timerBar} ></div>
-                      <div className="pl2-timer">
-                        <span id={"pl2-audio__bottom__time__start"} >{"timeState"}</span>
-                      </div>
-                      <TimeRemaining media={media}/>
-                    </div>
-                  </div>
-                </div> */}
                 <div id={"volume-slider-c"}>
                   <VolumeUiSlider volumeLevel={volumeLevel} volumeFader={volumeFader} 
                   volumeSlider={volumeSlider} changeVolume={changeVolume}/>

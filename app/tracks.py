@@ -1,16 +1,21 @@
 from flask import Blueprint, jsonify, request
 from sqlalchemy.orm import subqueryload, joinedload
-from sqlalchemy import func
-from .models import db, Track, User
+from sqlalchemy import func, desc
+from .models import db, Track, TrackSchema, User
 import requests
 import json, difflib
+import marshmallow as ma
+
 from flask_jwt_extended  import jwt_required
 
 from flask_cors import CORS
 
 from app.models import db, Track
 
+
 tracks = Blueprint('tracks', __name__)
+
+track_schema = TrackSchema()
 
 @tracks.route('/post', methods=["POST"])
 def post_track():
@@ -229,7 +234,6 @@ def get_user_tracks_sort_by_trackrating(id):
     tracks = []
     for model_track in model_tracks:
         track = model_track.to_dict()
-        # track["user"] = model_track.user.to_safe_object()
         tracks.append(track)
     return jsonify(sorted(tracks, reverse=True, key=lambda i: i["trackrating"].lower()))
 
@@ -241,7 +245,6 @@ def get_user_tracks_sort_by_trackname(id):
     tracks = []
     for model_track in model_tracks:
         track = model_track.to_dict()
-        # track["user"] = model_track.user.to_safe_object()
         tracks.append(track)
     return jsonify(sorted(tracks, key=lambda i: i["trackname"].lower()))
 
@@ -265,7 +268,6 @@ def get_user_albums(id):
     tracks = []
     for model_track in model_tracks:
         track = model_track.to_dict()
-        # track["user"] = model_track.user.to_safe_object()
         tracks.append(track)
     tracks_by_album = sorted(tracks, key=lambda i: i["trackalbum"].lower())
 
@@ -273,9 +275,7 @@ def get_user_albums(id):
     # album = []
     prev_album = None
     for track_obj in tracks_by_album:
-        # print("traaaaaaaaaaaaaaaaaaaaaack", hasattr(track_obj, "trackalbum"))
         if track_obj["trackalbum"]:
-            print("yesssssssss traaaaackalbummmmmm")
             if prev_album == None:
                 albums.append([track_obj])
                 prev_album = track_obj["trackalbum"]
@@ -285,18 +285,12 @@ def get_user_albums(id):
                 albums.append([track_obj])
                 prev_album = track_obj["trackalbum"]
         else:
-            print("nnnnooooooooooo traaackalbummmmmm")
+            pass
     return jsonify(albums)
 
 
 @tracks.route("/user/artists/<id>", methods=["GET"])
 def get_user_artists(id):
-
-    # artist_names_query = db.session.query(Track.trackartist).filter(Track.user_id == id).all()
-    # artist_names = ["".join(name) for name in artist_names_query]
-
-    # album_names_query = db.session.query(Track.trackalbum).filter(Track.user_id == id).all()
-    # album_names = ["".join(name) for name in album_names_query]
 
     model_tracks = Track.query.filter(Track.user_id == id).all()
 
@@ -328,64 +322,9 @@ def get_user_artists(id):
         else:
             album_dict[track["trackalbum"]] = [track]
 
-        # tracks.append(track)
-
-    # tracks_by_album = sorted(tracks, key=lambda i: i["trackartist"].lower())
-
-    # artist_albums = []
-    # for artist in artist_names:
-        
-    #     artist_albums_query = db.session.query(Track.trackalbum).filter(Track.user_id == id, Track.trackartist == artist).all()
-    #     artist_album_names = ["".join(name) for name in artist_albums_query]
-    #     artist_albums.append({f'{artist}': artist_album_names})
-
-    print("artist_name00000000000000000000000000", album_dict)
     return jsonify([artist_dict, album_dict])
 
-
-# @tracks.route("/user/artists/<id>", methods=["GET"])
-# def get_user_artists(id):
-
-    # model_tracks = Track.query.filter(Track.user_id == id).all()
-    # tracks = []
-    # for model_track in model_tracks:
-    #     track = model_track.to_dict()
-    #     track["user"] = model_track.user.to_safe_object()
-    #     tracks.append(track)
-    # tracks_by_album = sorted(tracks, key=lambda i: i["trackartist"].lower())
-    # ------All-Tracks-Should-Be-Organised-By-Album-----
-
-    # artists = []    
-
-    # prev_artist = None
-    # for track_obj in tracks_by_album:
-        # print("traaaaaaaaaaaaaaaaaaaaaack", hasattr(track_obj, "trackalbum"))
-        # if track_obj["trackartist"]:
-        #     print("yesssssssss traaaaackartiiiiiist")
-        #     if prev_artist == None:
-        #         artists.append([[[track_obj]]])  #artists[ artist [ albums[[],[]]]artist]artists
-        #         prev_artist = track_obj["trackartist"]
-        #     elif prev_artist == track_obj["trackartist"]:
-        #         for album in artists[-1]:
-
-        #         artists[-1].append([track_obj])
-        #     elif prev_artist != track_obj["trackartist"]:
-        #         artists.append([track_obj])
-        #         prev_artist = track_obj["trackartist"] 
-        # else:
-        #     print("nnnnooooooooooo traaackartiiiiist")
-
-# --------tracks-should-be-Artists=>[Aritist=>[]]------------
-    
-    # new_artists = []
-    # for artist in artists:
-    #     new_artists.append(sorted(artist, key=lambda i: i["trackalbum"].lower()))
-    
-    # print("nnnnneeeeeeeew_arrrrrrrtistttttttts", artists)
-    # return jsonify(artists)
         
-
-
 
 @tracks.route("/user/trackgenre/<id>", methods=["GET"])
 def get_user_tracks_sort_by_trackgenre(id):
@@ -424,7 +363,7 @@ def get_user_tracks_sort_by_date(id):
     return jsonify(sorted(tracks, reverse=True, key=lambda i: i["created_date"]))
 
 
-
+# /////Not used
 @tracks.route("/user/id/<id>", methods=["GET"])
 def get_user_tracks(id):
 
@@ -432,7 +371,6 @@ def get_user_tracks(id):
     tracks = []
     for model_track in model_tracks:
         track = model_track.to_dict()
-        # track["user"] = model_track.user.to_safe_object()
         tracks.append(track)
     return jsonify(sorted(tracks, key=lambda i: i["id"]))
 
@@ -441,10 +379,6 @@ def get_user_tracks(id):
 @tracks.route("/first/<id>", methods=["GET"])
 def get_first_track(id):
 
-    model_tracks = Track.query.filter(Track.user_id == id).all()
-    tracks = []
-    for model_track in model_tracks:
-        track = model_track.to_dict()
-        # track["user"] = model_track.user.to_safe_object()
-        tracks.append(track)
-    return jsonify(sorted(tracks, reverse=True, key=lambda i: i["id"]))
+    track = Track.query.filter(Track.user_id == id).order_by('id').all()[-1]
+
+    return  track_schema.dump(track)

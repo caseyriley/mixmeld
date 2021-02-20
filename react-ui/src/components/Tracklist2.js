@@ -44,24 +44,24 @@ const Tracklist2 = (props) => {
 // -------------------Get-Users-First-Track---------
 
 
-  useEffect(()=>{
-    const token = window.localStorage.getItem('auth_token');
+  // useEffect(()=>{
+  //   const token = window.localStorage.getItem('auth_token');
 
-    const getUserFirstTrack = async () => {
-      const response = await fetch(`${API_URL}/tracks/first/${currentUser.id}`, {
-        method: "GET",
-        mode: "cors",
-        headers: { "Authorizaion": `Bearer ${token}` }
-      })
-      if (!response.ok) { console.log("error in getUserTracks") }
-      else {
-        const json = await response.json();
-        props.firstTrack.current = json;
-      }
-    }
-    getUserFirstTrack();
+  //   const getUserFirstTrack = async () => {
+  //     const response = await fetch(`${API_URL}/tracks/first/${currentUser.id}`, {
+  //       method: "GET",
+  //       mode: "cors",
+  //       headers: { "Authorizaion": `Bearer ${token}` }
+  //     })
+  //     if (!response.ok) { console.log("error in getUserTracks") }
+  //     else {
+  //       const json = await response.json();
+  //       props.firstTrack.current = json;
+  //     }
+  //   }
+  //   getUserFirstTrack();
 
-  },[])
+  // },[])
   // -----------------------------------------------
 
 

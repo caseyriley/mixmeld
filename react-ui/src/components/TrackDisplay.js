@@ -57,7 +57,7 @@ const TrackDisplay = (props) => {
           <img className={`track-art ${largeImageState}`} src={`${props.trackArtState ? props.trackArtState : formlessMusicIcon}`} alt={""} onClick={toglleImageSize}/>
         </div>
         <div id={"pl2-audio__bottom"} >
-          <p id={"pl2-audio__top__song-name"}>{props.songNameState ? props.songNameState : `${props.firstTrack ? props.firstTrack[0].trackname : ""}`}</p>
+          <p id={"pl2-audio__top__song-name"}>{props.songNameState ? props.songNameState : `${props.firstTrack ? props.firstTrack.trackname : ""}`}</p>
           {/* <p id={"pl2-audio__top__song-artist"}>{artistNameState ? artistNameState : `${firstTrack ? firstTrack[0].trackartist : ""}`}</p> */}
           <p id={"pl2-audio__top__song-artist"}>{props.artistNameState ? props.artistNameState : ``}</p>
         

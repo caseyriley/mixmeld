@@ -1,8 +1,10 @@
 from flask_sqlalchemy import SQLAlchemy
+from flask_marshmallow import Marshmallow
 from sqlalchemy.orm import relationship, backref
 
 
 db = SQLAlchemy()
+ma = Marshmallow()
 
 follows = db.Table(
   "follows",
@@ -42,6 +44,10 @@ class User(db.Model):
             "banner_pic": self.banner_pic,
         }
 
+
+
+
+
 class Track(db.Model):
     __tablename__ = 'tracks'
 
@@ -71,6 +77,11 @@ class Track(db.Model):
             "trackart": self.trackart,
             "created_date": self.created_date,
         }
+
+
+class TrackSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = Track
 
 
 class Playlist(db.Model):
