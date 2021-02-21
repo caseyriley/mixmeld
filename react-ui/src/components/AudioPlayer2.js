@@ -25,6 +25,7 @@ const AudioPlayer2 = (props)=>{
   const playHeadSlider = useRef();
   const currentTrack = useRef([]);
   const playlistIdRef = useRef({playlistId: "", playlistName: ""});
+  const trackArtRef = useRef(formlessMusicIcon);
 
 
   const [songNameState, setSongNameState] = useState("");
@@ -71,6 +72,7 @@ const AudioPlayer2 = (props)=>{
             setFirstTrack(json);
             currentTrack.current = json.id;
             setTrackArtState(json.trackart);
+            trackArtRef.current = json.trackart;
           }
         }
         getUserFirstTrack();
@@ -225,6 +227,11 @@ const AudioPlayer2 = (props)=>{
     setSongNameState(newSongName);
     setArtistNameState(newArtistName);
     setTrackArtState(trackArt);
+    if(!trackArt){
+      trackArtRef.current = formlessMusicIcon;
+    }else {
+      trackArtRef.current = trackArt;
+    }
     setPl2TrackLocationState(track);
     
     currentTrack.current = audioId;
@@ -475,7 +482,7 @@ const [trackLocationState, setTrackLocationState] = useState();
                 setPl2TrackLocationState={setPl2TrackLocationState} pl2TrackLocationState={pl2TrackLocationState} 
                 trackArtState={trackArtState} songNameState={songNameState} firstTrack={firstTrack} 
                 artistNameState={artistNameState} playHeadSlider={playHeadSlider} 
-                movePlayheadOnClick={movePlayheadOnClick} 
+                movePlayheadOnClick={movePlayheadOnClick} trackArtRef={trackArtRef}
                 isPlayingState={isPlayingState} setImageTopState={setImageTopState}/>
                 <div id={"volume-slider-c"}>
                   <VolumeUiSlider volumeLevel={volumeLevel} volumeFader={volumeFader} 

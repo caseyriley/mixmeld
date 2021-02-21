@@ -8,37 +8,34 @@ import formlessMusicIcon from '../images/formless-music-icon.png'
 const TrackDisplay = (props) => {
   const audioBottomPlayhead = useRef()
 
+  const [trackImage, setTrackImage] = useState();
+
+  useEffect(()=> {
+    if(props.trackArtState){
+      setTrackImage(props.trackArtState)
+    } else if (!props.trackArtState){
+      setTrackImage(props.trackArtRef.current)
+    }
+  },[props.trackArtState, props.trackArtRef])
+
   const {start, timeState, timerBar} = UseTime(props.media, audioBottomPlayhead);
 
  
-    useEffect(()=> {
-      start();
-      // if (props.media.current.paused){
-      //   clearInterval(intervalRef.current)
-      //   intervalRef.current = null
-      // }
-      // if (props.media.current.ended){
-      //   clearInterval(intervalRef.current)
-      //   intervalRef.current = null
-      // }
-      // if (true) {
-      //   clearInterval(intervalRef.current)
-      //   intervalRef.current = null
-      // }
+  useEffect(()=> {
+    start();
+  }, [props.play, props.isPlayingState])
 
-    }, [props.play, props.isPlayingState])
-
-    const [largeImageState, setLargeImageState] = useState("small-image")
-    function toglleImageSize(){
-      if (largeImageState === "small-image"){
-        setLargeImageState("large-image")
-        props.setImageTopState(true)
-      } else {
-        setLargeImageState("small-image")
-        props.setImageTopState(false)
-      }
-      
+  const [largeImageState, setLargeImageState] = useState("small-image")
+  function toglleImageSize(){
+    if (largeImageState === "small-image"){
+      setLargeImageState("large-image")
+      props.setImageTopState(true)
+    } else {
+      setLargeImageState("small-image")
+      props.setImageTopState(false)
     }
+    
+  }
 
   return (
     <>
@@ -52,7 +49,7 @@ const TrackDisplay = (props) => {
         </>
         : ""}
         <div className={"track-art-c"} >
-          <img className={`track-art ${largeImageState}`} src={`${props.trackArtState ? props.trackArtState : formlessMusicIcon}`} alt={""} onClick={toglleImageSize}/>
+          <img className={`track-art ${largeImageState}`} src={`${trackImage}`} alt={""} onClick={toglleImageSize}/>
         </div>
         <div id={"pl2-audio__bottom"} >
           <p id={"pl2-audio__top__song-name"}>{props.songNameState ? props.songNameState : `${props.firstTrack ? props.firstTrack.trackname : ""}`}</p>
