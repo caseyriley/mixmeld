@@ -42,9 +42,7 @@ const TrackDisplay = (props) => {
 
   return (
     <>
-      <div id={"pl2-track-display"}>
-        {/* <div>{media.current ? `${Math.floor(media.current.currentTime / 60)}:${Math.floor(media.current.currentTime - Math.floor(media.current.currentTime / 60) * 60)}` : ""}</div> */}
-                  
+      <div id={"pl2-track-display"}>          
         {props.trackEditState ? 
         <> 
           <UploadingNewImage currentUser={props.currentUser} refreshTrackState={props.refreshTrackState} 
@@ -58,7 +56,6 @@ const TrackDisplay = (props) => {
         </div>
         <div id={"pl2-audio__bottom"} >
           <p id={"pl2-audio__top__song-name"}>{props.songNameState ? props.songNameState : `${props.firstTrack ? props.firstTrack.trackname : ""}`}</p>
-          {/* <p id={"pl2-audio__top__song-artist"}>{artistNameState ? artistNameState : `${firstTrack ? firstTrack[0].trackartist : ""}`}</p> */}
           <p id={"pl2-audio__top__song-artist"}>{props.artistNameState ? props.artistNameState : ``}</p>
         
           <div className={"pl2-audio__bottom__playhead"} ref={audioBottomPlayhead} >

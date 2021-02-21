@@ -4,33 +4,6 @@ import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
 import { v4 as uuidv4 } from 'uuid';
 import formlessMusicIcon from "../images/formless-music-icon.png"
 import TrackRatingModal from './TrackRatingModal';
-import plusSign from '../images/plusSing2.png';
-
-// const itemsFromBackend = [
-//   {id: uuidv4(), content: 'First task'},
-//   {id: uuidv4(), content: 'Second task'}
-// ];
-
-
-// const columnsStateFromBackend = 
-//   { [uuidv4()]: {
-//     name: 'Requested',
-//     items: itemsFromBackend
-//     },
-    // [uuidv4()]: {
-    //   name: 'To do',
-    //   items: []
-    // },
-    // [uuidv4()]: {
-    //   name: 'In progress',
-    //   items: []
-    // },
-    // [uuidv4()]: {
-    //   name: 'Done',
-    //   items: []
-    // }
-  // };
-
 
 
 
@@ -115,13 +88,7 @@ async function updatePlaylistOrder() {
   };
   // ----------------------------------------------------------
 
-  // -------------------------------------
-  
-  // const itemsFromBackend = [
-  //   {id: uuidv4(), content: 'First task'},
-  //   {id: uuidv4(), content: 'Second task'}
-  // ];
-
+  // ---------DnD-Columns---------------------------
   const columnsStateFromBackend = 
   props.selectedPlaylistState ?
   { [uuidv4()]: {
@@ -146,6 +113,7 @@ async function updatePlaylistOrder() {
   }, [props.selectedPlaylistState])
 
   const [columnsState, setColumnsState] = useState(columnsStateFromBackend);
+  // ------------------------------------------
 
   // ---------------Update-Track-Rating--------------------
 function updateTrackRating(e) {
@@ -241,6 +209,7 @@ function deleteFromPlaylist(trackId){
     props.setTrackArrayLengthState(trackArraylength);
   })
   // --------------------------------
+  // ----------Track-Rating-Modal--------
   const [trackRatingModalState, setTrackRatingModalState] = useState(false);
   const [ratingAudioState, setRatingAudioState] = useState();
   function launchTrackRatingModal(audio){
@@ -265,7 +234,7 @@ function deleteFromPlaylist(trackId){
 
   return (
     <>
-      { trackRatingModalState ? <TrackRatingModal updateTrackRating={updateTrackRating} ratingAudioState={ratingAudioState}  setTrackRatingModalState={setTrackRatingModalState}/> : null}
+      {trackRatingModalState ? <TrackRatingModal updateTrackRating={updateTrackRating} ratingAudioState={ratingAudioState}  setTrackRatingModalState={setTrackRatingModalState}/> : null}
       <div id={"dnd"} >
         <DragDropContext onDragEnd={result => onDragEnd(result, columnsState, setColumnsState)}>
           {columnsState ? Object.entries(columnsState).map(([id, column]) => {

@@ -34,6 +34,8 @@ const AudioPlayer2 = (props)=>{
   const [refreshTrackState, setRefreshTrackState] = useState(1);
   const [imageTopState, setImageTopState] = useState(false)
   const [firstTrack, setFirstTrack] = useState();
+  const [trackEditState, setTrackEditState] = useState(false);  
+  const [artistAlbumSongState, setArtistAlbumSongState] = useState("selected-song")
 
 
   //---------Get-Current_User--------------
@@ -79,39 +81,7 @@ const AudioPlayer2 = (props)=>{
     getCurrentUser();
   }, [])
 // ----------------------------------------------
-// -------------------Get-Users-First-Track---------
-
-  // const [firstTrack, setFirstTrack] = useState();
-
-  // useEffect(()=>{
-
-  //   const getUserFirstTrack = async () => {
-  //     const response = await fetch(`${API_URL}/tracks/first/${currentUser.id}`, {
-  //       method: "GET",
-  //       mode: "cors",
-  //     })
-  //     if (!response.ok) { console.log("error in getUserTracks") }
-  //     else {
-  //       const json = await response.json();
-  //       if (json === []){
-
-  //       }
-  //       console.log("tracks/first/<id>+++++++++++++++++++++++>>>>>",json)
-  //       setFirstTrack(json);
-  //       currentTrack.current = json.id;
-  //       setTrackArtState(json.trackart);
-  //     }
-  //   }
-  //   getUserFirstTrack();
-  //   media.current.volume = .5;
-
-  // },[currentUser])
-  // -----------------------------------------------
-
-
 // ---------------Play/Pause-Button---------------
-  // const [firstTrack, setFirstTrack] = useState();
-  // const firstTrack = useRef()
   const [isPlayingState, setIsPlayingState] = useState(1)
 
   function playPauseMedia() {
@@ -121,12 +91,6 @@ const AudioPlayer2 = (props)=>{
     
     rwd.current.classList.remove('active');
     fwd.current.classList.remove('active');
-    // if (intervalRwdState){
-    //   clearInterval(intervalRwdState.intervalRwd);
-    // }
-    // if (intervalFwdState){
-    //   clearInterval(intervalFwdState.intervalFwd);
-    // }
     
     if(media.current.paused) {
       play.current.src = pauseButton;
@@ -138,9 +102,6 @@ const AudioPlayer2 = (props)=>{
     }
   }
 // --------------------------------------------------
-    // function startTimer(func){
-    //   func()
-    // }
 // ---------------Stop-Button---------------------------
   function stopMedia() {
     media.current.pause();
@@ -176,102 +137,6 @@ const AudioPlayer2 = (props)=>{
       }
   }
 // ------------------------------------------------
-
-// -------------------fast-forward-and-rewind----------------------
-  // function mediaBackward() {
-    
-  //   clearInterval(intervalFwdState.intervalFwd);
-  //   fwd.current.classList.remove('active');
-
-  //   if(rwd.current.classList.contains('active')) {
-  //     rwd.current.classList.remove('active');
-  //     clearInterval(intervalRwdState.intervalRwd);
-  //     media.current.play(); //
-  //   } else {
-  //     rwd.current.classList.add('active');
-  //     media.current.pause();
-  //     intervalRwd = setInterval(windBackward, 200);
-  //     setIntervalRwdState({intervalRwd: intervalRwd})
-  //   }
-  // }
-
-  // function mediaForward() {
-  //   if (intervalRwdState){
-  //     clearInterval(intervalRwdState.intervalRwd);
-  //   }
-    
-  //   rwd.current.classList.remove('active');
-
-  //   if(fwd.current.classList.contains('active')) {
-  //     fwd.current.classList.remove('active');
-  //     clearInterval(intervalFwdState.intervalFwd);
-  //     media.current.play();
-  //   } else {
-  //     fwd.current.classList.add('active');
-  //     media.current.pause();
-  //     intervalFwd = setInterval(windForward, 200);
-  //     setIntervalFwdState({intervalFwd: intervalFwd})
-  //   }
-  // }
-
-  // function windBackward() {
-  //   if(media.current.currentTime <= 3) {
-  //     rwd.current.classList.remove('active');
-  //     if (intervalRwdState){
-  //       clearInterval(intervalRwdState.intervalRwd);
-  //     }
-  //     stopMedia();
-  //   } else {
-  //     media.current.currentTime -= 3;
-  //   }
-  // }
-
-  // function windForward() {
-  //   if(media.currentTime >= media.duration - 4) {
-  //     fwd.current.classList.remove('active');
-  //     if (intervalFwdState){
-  //       clearInterval(intervalFwdState.intervalFwd);
-  //     }
-  //   } else {
-  //     media.current.currentTime += 3;
-  //   }
-  // }
-// -------------------------------------------------
-
-  // const {start, timeState, timerBar} = UseTime(media, audioBottomPlayhead);
-
-// -------Update-Time--------------------------------
-  // useEffect(()=>{
-  //   setInterval(() => {
-  //     if (media){
-  //       let minutes = Math.floor(media.current.currentTime / 60);
-  //       let seconds = Math.floor(media.current.currentTime - minutes * 60);
-    
-  //       let minuteValue;
-  //       let secondValue;
-      
-  //       if (minutes < 10) {
-  //         minuteValue = '0' + minutes;
-  //       } else {
-  //         minuteValue = minutes;
-  //       }
-      
-  //       if (seconds < 10) {
-  //         secondValue = '0' + seconds;
-  //       } else {
-  //         secondValue = seconds;
-  //       }
-      
-  //       let mediaTime = minuteValue + ':' + secondValue;
-  //       // setTimeState(mediaTime)
-  //       // timeRef.current = mediaTime
-  //       let barLength = audioBottomPlayhead.current.clientWidth * (media.current.currentTime/media.current.duration);
-  //       timerBar.current.style.width = barLength + 'px';
-  //       // console.log(timeRef.current)
-  //     }
-  //   }, 500);
-  // }, [])
-// -------------------------------------------------
 // -------------Move-Playhead-onClick---------------
   function movePlayheadOnClick(e){
     if (media){
@@ -279,7 +144,7 @@ const AudioPlayer2 = (props)=>{
         media.current.currentTime = parseFloat(media.current.duration * playHeadSlider.current.value);
       } else {
         if (!media.current.src){
-          media.current.setAttribute("src", firstTrack[0].tracklocation)
+          media.current.setAttribute("src", firstTrack.tracklocation)
           playPauseMedia();
           if (media.current.currentTime > 0){
             media.current.currentTime = parseFloat(media.current.duration * playHeadSlider.current.value);
@@ -297,8 +162,6 @@ const AudioPlayer2 = (props)=>{
       
     }
   }
-// -------------------------------------------------
-
 // -------------------------------------------------
 //-------------loop----------------------------
   const [loopState, setLoopState] = useState(false)
@@ -370,9 +233,6 @@ const AudioPlayer2 = (props)=>{
 //----------------------------------------------
 
 //---------------Set-Track-Onclick-Via-Search------
- 
-
-
   function setTrackViaSearch(track, songName, artistName, audioId, trackArt, page){
     media.current.setAttribute("src", track);
     playPauseMedia();
@@ -405,7 +265,7 @@ const AudioPlayer2 = (props)=>{
     setArtistAlbumSongState(selected);
   }
 //----------------------------------------------
-
+// -------------next-track-function-------------
 function nextTrack() {
   const trackLi = document.getElementsByClassName(`audioId${currentTrack.current}`) //get Li element of current track regarless of sort choice
   let trackLiIdNumber = undefined;
@@ -445,11 +305,6 @@ function nextTrack() {
  
 }
 // --------------------------------
-  const [trackEditState, setTrackEditState] = useState(false);  
-  const [artistAlbumSongState, setArtistAlbumSongState] = useState("selected-song")
-  
-  
-
 // -----------PlaylistSwitch--functions-------------------
   const [playlistSwitchState, setPlaylistSwitchState] = useState("Tracklist2")
 
@@ -489,7 +344,6 @@ function nextTrack() {
      // ----------------Get-Playlists------------------------
   const [playlistState, setPlaylistState] = useState();
 
-
   useEffect(() => {
   
     const getCurrentUserPlaylists = async () => {
@@ -511,10 +365,9 @@ function nextTrack() {
     getCurrentUserPlaylists();
   },[currentUser, refreshPlaylistState])
   // -----------------------------------------------------
-       // ----------------Get-Selected-Playlists------------------------
-       const [selectedPlaylistState, setSelectedPlaylistState] = useState();
+  // ----------------Get-Selected-Playlists------------------------
+  const [selectedPlaylistState, setSelectedPlaylistState] = useState();
   
-
   useEffect(() => {
     setSelectedPlaylistState(null)
     const getSelectedPlaylist = async () => {
@@ -537,6 +390,7 @@ function nextTrack() {
     getSelectedPlaylist();
   },[playlistIdRef, refreshPlaylistState, refreshTrackState])
   // -----------------------------------------------------
+  //-----------scroll-to-this-functions-------------------
   const [queryState, setQueryState] = useState();
 
   function scrollToThis(className){
@@ -578,9 +432,6 @@ const [uploadModalState, setUploadModalState] = useState("no-modal");
 const [trackLocationState, setTrackLocationState] = useState();
 //  ---------------------------------------------
 
-
-// ------------------------------------------------
- 
   return(
     <>
       <div id={"pl2-main-page"} className={"fade-in"}>

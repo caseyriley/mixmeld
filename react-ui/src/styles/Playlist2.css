@@ -100,6 +100,8 @@ ul{
 }
 #playlist2-img-c img {
   height: 200px;
+  object-position: center;
+  object-fit: cover;
 }
 #delete-it {
   font-family: 'Goldman', cursive;
@@ -223,6 +225,7 @@ ul{
   font-family: 'Electrolize', sans-serif; 
   outline: none;
   position: relative;
+
 }
 
 #pl2-playlist2-box-shadow {
@@ -239,6 +242,8 @@ ul{
 .pl2-playlist-ul__li__track-art {
   height: 60px;
   width: 60px;
+  object-position: center;
+  object-fit: cover;
   
 }
 .pl2-playlist-ul__li__rating {
