@@ -583,7 +583,7 @@ const [trackLocationState, setTrackLocationState] = useState();
  
   return(
     <>
-      <div id={"pl2-main-page"} >
+      <div id={"pl2-main-page"} className={"fade-in"}>
 
         <Pl2LeftColumn refreshTrackState={refreshTrackState} setRefreshTrackState={setRefreshTrackState} 
         setRefreshPlaylistState={setRefreshPlaylistState} refreshPlaylistState={refreshPlaylistState}
