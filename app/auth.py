@@ -5,7 +5,6 @@ from flask_cors import CORS
 from .models import db, User, Track
 
 auth = Blueprint('auth', __name__)
-# CORS(auth)
 
 
 def set_password(password):
@@ -15,7 +14,6 @@ def set_password(password):
 
 
 def verify_password(password, hashed_password):
-    # Return value could be made more sophisticated
     if bcrypt.checkpw(password.encode('utf-8'), hashed_password):
         return True
     else:
@@ -34,14 +32,14 @@ def login():
             return jsonify(message='Password Required'), 400
 
         user = User.query.filter_by(email=email).first()
-        print('user=====>', user)
+
         if not user:
             return jsonify(message='Email Required'), 400
 
         verified = verify_password(password, user.hashed_password)
 
         if not verified:
-            # Error needs handling decision
+
             return jsonify(message='Password verify failed')
         else:
             auth_token = create_access_token(identity={"email": user.email})
@@ -55,7 +53,6 @@ def login():
 @auth.route('/signup', methods=['POST'])
 def signup():
     data = request.get_json()
-    print("data================================>", data)
 
     try:
         username = data['username']
@@ -77,7 +74,7 @@ def signup():
 
         try:
             hashed_password = set_password(data['password'])
-            print("hashed_password========================>", hashed_password)
+
         except Exception:
             return jsonify(message='Password Required'), 400
         
@@ -104,10 +101,7 @@ def signup():
         m_trackart='https://formless.s3.amazonaws.com/220px-Prince_-_3121.jpg'
 
 
-
-        print('email66666666666', email)
         current_user = User.query.filter(User.email == email).first()
-        print("current_user77777777777777", current_user)
 
         first_track = Track(
             user_id=current_user.id,

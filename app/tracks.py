@@ -165,7 +165,6 @@ def get_user_tracks_sort_by_trackartist(id):
     tracks = []
     for model_track in model_tracks:
         track = model_track.to_dict()
-        # track["user"] = model_track.user.to_safe_object()
         tracks.append(track)
     return jsonify(sorted(tracks, key=lambda i: i["trackartist"].lower()))
 
@@ -256,7 +255,6 @@ def get_user_tracks_sort_by_trackalbum(id):
     tracks = []
     for model_track in model_tracks:
         track = model_track.to_dict()
-        # track["user"] = model_track.user.to_safe_object()
         tracks.append(track)
     return jsonify(sorted(tracks, key=lambda i: i["trackalbum"].lower()))
 
@@ -272,8 +270,8 @@ def get_user_albums(id):
     tracks_by_album = sorted(tracks, key=lambda i: i["trackalbum"].lower())
 
     albums = []
-    # album = []
     prev_album = None
+
     for track_obj in tracks_by_album:
         if track_obj["trackalbum"]:
             if prev_album == None:
