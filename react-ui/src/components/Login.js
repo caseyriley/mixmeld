@@ -31,16 +31,14 @@ const Login = () => {
 
 
   const [signUpModal, setSignUpModal] = useState(false);
-  const [antiModal, setAntiModal] = useState("login-block")
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [instructionsModalState, setInstructionsModalState] = useState(false);
 
   const showSignUpModal = () => {
-      setAntiModal("hide-div login-block")
       setSignUpModal(true)
   };
   const hideSignUpModal = () => {
-      setAntiModal("login-block")
       setSignUpModal(false)
   };
 
@@ -105,7 +103,9 @@ const Login = () => {
     }
     setTimeout(demoLogin, 1500);
   }
-  const [instructionsModalState, setInstructionsModalState] = useState(false);
+
+
+
   return(
     <>
       {instructionsModalState ? <Instructions setInstructionsModalState={setInstructionsModalState}/> : null}

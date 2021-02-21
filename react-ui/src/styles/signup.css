@@ -1,3 +1,5 @@
+
+
 #signup-modal-background {
   width: 100%;
   height: 100%;
@@ -7,8 +9,18 @@
   background-color: rgba(215, 215, 215, 0.95);
   z-index: 4;
 }
+.signup-pop-centering{
+  position: fixed;
+  top: 0px;
+  left: 0px; 
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  z-index: 5;
+}
 .signup-pop--container {
-  display: flex;
   justify-items: center;
   align-items: center;
   flex-direction: column;
@@ -16,10 +28,9 @@
   background-color: rgb(105, 105, 105, .95);
   border-radius: 20px;
   width: 250px;
-  position: absolute;
-  top: -80px;
-  left: calc(50% - 125px);
-  z-index: 5;
+  position: relative;
+  /* top: -80px; */
+  /* left: calc(50% - 125px); */
 }
 .signup-head--container {
   display: flex;
@@ -37,8 +48,8 @@
 }
 .signup__closeButton--container {
   position: relative;
-  top: 5px;
-  left:160px;
+  top: 10px;
+  left:210px;
   z-index: 1;
   width: 30px;
   fill: rgb(186, 186, 186);
