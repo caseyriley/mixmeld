@@ -15,7 +15,7 @@ const MainNav = (props)=>{
   }
   const [instructionsModalState, setInstructionsModalState] = useState(false);
   return(
-    <div id={"main-nav"}>
+    <div id={"main-nav"} className={"fade-in"} >
       {instructionsModalState ? <Instructions setInstructionsModalState={setInstructionsModalState}/> : null}
       {/* <div className={"main-nav__option"} onClick={()=>{switchAudioPlayer("AudioPlayer1")}} >
         <span>Stereo</span>

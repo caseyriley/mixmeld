@@ -452,7 +452,7 @@ const [trackLocationState, setTrackLocationState] = useState();
         showPl2AlbumPage={showPl2AlbumPage} showPl2ArtistPage={showPl2ArtistPage}
         setArtistAlbumSongState={setArtistAlbumSongState} artistAlbumSongState={artistAlbumSongState}/>
 
-        <div id={"pl2-audio-tracklist-c"} className={"fade-in-2"}>
+        <div id={"pl2-audio-tracklist-c"}>
         <div className={`pl2-image-top-space--closed ${imageTopState ? "pl2-image-top-space--open" : ""}`}></div>
           <div id={"pl2-audio"} >
             <audio

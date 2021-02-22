@@ -84,7 +84,7 @@ const Pl2LeftColumn = (props) => {
   return (
     <>
       {playlistModalState ? <NewPlaylistModal toggleModal={toggleModal} currentUser={props.currentUser} setRefreshPlaylistState={props.setRefreshPlaylistState} refreshPlaylistState={props.refreshPlaylistState} /> : null}
-        <div id={"pl2-left-column"}>
+        <div id={"pl2-left-column"} className={"fade-in"} >
           <div id={"pl2-search"}>
             <input id={"pl2-search__input"} type={"text"} placeholder={"search"}
             onChange={(e) => setQ(e.target.value)}
