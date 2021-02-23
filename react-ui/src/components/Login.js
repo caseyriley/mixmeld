@@ -109,7 +109,7 @@ const Login = () => {
   return(
     <>
       {instructionsModalState ? <Instructions setInstructionsModalState={setInstructionsModalState}/> : null}
-      <div className="login-footer__creditBox">
+      <div className="login-footer__creditBox fade-in">
           <span>Casey Riley</span>
           <div className={"login-footer__creditBox--links"} >
               <a href={"mailto:innerforest7@gmail.com"} target={"_blank"} rel={"noreferrer noopener"}>
@@ -127,7 +127,7 @@ const Login = () => {
           </div>
       </div>
 
-      <div id={"login-c"}>
+      <div id={"login-c"} className={"fade-in"} >
         <h1 id={"main-page__title"} >Mix Meld</h1>
         <div id={"login-c__login-form"}>
           <label>Login Email</label>

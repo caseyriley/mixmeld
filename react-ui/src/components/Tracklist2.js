@@ -351,7 +351,7 @@ function toStandardTime(militaryTime) {
     <>
     {props.uploadModalState === "upload-modal" ? <UploadModal currentUser={currentUser} refreshTrackState={props.refreshTrackState} setRefreshTrackState={props.setRefreshTrackState} uploadModalState={props.uploadModalState} setUploadModalState={props.setUploadModalState} setTrackLocationState={props.setTrackLocationState} trackLocationState={props.trackLocationState}/> : ""}
     { trackRatingModalState ? <TrackRatingModal updateTrackRating={updateTrackRating} ratingAudioState={ratingAudioState}  setTrackRatingModalState={setTrackRatingModalState}/> : null}
-    <div id={"pl2-playlist-border"}>
+    <div id={"pl2-playlist-border"} className={"fade-in-2"}>
       <div id={"pl2-playlist-c"} >
         <div id={"pl2-playlist-c__top-c"}>
           <div id={"pl2-playlist-c__top-c__rating"}><h2 onClick={()=>{organise("trackrating")}}>Rating</h2></div>
