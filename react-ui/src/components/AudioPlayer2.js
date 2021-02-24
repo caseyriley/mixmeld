@@ -11,6 +11,7 @@ import PlaylistSwitch from './PlaylistSwitch';
 import TrackDisplay from './TrackDisplay';
 import UploadingTrackPl2 from './UploadingTrackPl2';
 import formlessMusicIcon from '../images/formless-music-icon.png'
+import LiquidMix from './LiquidMix';
 
 let vol = .5;
 
@@ -488,6 +489,7 @@ const [trackLocationState, setTrackLocationState] = useState();
                   <VolumeUiSlider volumeLevel={volumeLevel} volumeFader={volumeFader} 
                   volumeSlider={volumeSlider} changeVolume={changeVolume}/>
                 </div>
+                <LiquidMix/>
                 {playlistSwitchState === "Tracklist2" ?
                 <div id={"pl2-uploading-track-x"}>
                   <UploadingTrackPl2  refreshTrackState={refreshTrackState} setRefreshTrackState={setRefreshTrackState} setUploadModalState={setUploadModalState} setTrackLocationState={setTrackLocationState}/>

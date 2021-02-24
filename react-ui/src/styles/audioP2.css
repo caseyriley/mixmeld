@@ -501,3 +501,12 @@ div.control-2 span.eq-3 span.eq-level{
 .plus-sign:hover {
   opacity: 1;
 }
+.liquid-mix {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  filter: hue-rotate(-50deg);
+  position: fixed;
+  top: 0px;
+  right: 0px;
+}
