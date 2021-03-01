@@ -135,10 +135,10 @@ const Login = () => {
             <label>Password</label>
           <input className="login-input-2" type="password" placeholder="Password" value={password} onChange={updatePassword} /> 
           <div className="login-button" onClick={handleSubmit}>
-            <span>Log in</span>
+            <span>Login</span>
           </div>
           <div className="login-button" onClick={loginDemoUser}>
-            <span>Log in as Demo User</span>
+            <span>Login As Demo User</span>
           </div>
           <div className="login-button" onClick={showSignUpModal}>
             <span>Sign up</span>
