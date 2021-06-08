@@ -6,6 +6,7 @@
     "heroku-postbuild": "cd react-ui && npm install && npm run build"
   },
   "dependencies": {
-    "postcss-preset-env": "^6.7.0"
+    "postcss-preset-env": "^6.7.0",
+    "styled-components": "^5.3.0"
   }
 }
