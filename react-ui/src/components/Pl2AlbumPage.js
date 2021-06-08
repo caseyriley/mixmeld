@@ -26,9 +26,8 @@ const Pl2AlbumPage = (props) => {
       } else {
         const json = await response.json();
         setAlbumArrayState(json);
-        const trackArraylength = document.getElementsByClassName(
-          "next-track-info"
-        ).length;
+        const trackArraylength =
+          document.getElementsByClassName("next-track-info").length;
         props.setTrackArrayLengthState(trackArraylength);
       }
     };

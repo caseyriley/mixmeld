@@ -29,9 +29,8 @@ const Pl2ArtistsPage = (props) => {
 
         setArtistArrayState(json);
 
-        const trackArraylength = document.getElementsByClassName(
-          "next-track-info"
-        ).length;
+        const trackArraylength =
+          document.getElementsByClassName("next-track-info").length;
         props.setTrackArrayLengthState(trackArraylength);
       }
     };
