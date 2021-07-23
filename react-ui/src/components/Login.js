@@ -13,13 +13,13 @@ const Login = () => {
         headers: { "Content-Type": "application/json" },
       });
       const res = await response.json();
-      if (res.auth_token !== undefined) {
+      if (res !== undefined) {
       } else {
         console.log("not hitting the api");
       }
     };
     api();
-  });
+  },[]);
 
   const [signUpModal, setSignUpModal] = useState(false);
   const [email, setEmail] = useState("");

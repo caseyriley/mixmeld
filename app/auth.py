@@ -22,30 +22,42 @@ def verify_password(password, hashed_password):
 
 @auth.route('/login', methods=['POST'])
 def login():
+    print("in login")
     data = request.get_json()
     try:
+        print("in try")
         email = data['email']
         password = data['password']
+        print('data=================@', data)
         if not email:
+            print("not email")
             return jsonify(message='Email Required'), 400
         elif not password:
+            print("not password")
             return jsonify(message='Password Required'), 400
 
         user = User.query.filter_by(email=email).first()
+        print("user ^^^^^^^^^^^^^^^^^^>", user)
 
         if not user:
+            print("not user")
             return jsonify(message='Email Required'), 400
 
         verified = verify_password(password, user.hashed_password)
+        print('verified /////////////////////}', verified)
 
         if not verified:
-
+            print("not verified")
             return jsonify(message='Password verify failed')
         else:
+            print("Else !!!!!!!!!!!!!!!!")
+            print("user.email0000000000000000000)))", user.email)
             auth_token = create_access_token(identity={"email": user.email})
-        return jsonify(auth_token=auth_token)
+            print('created token ##############')
+            return jsonify(auth_token=auth_token)
 
     except Exception as e:
+         print("Exception")
          print(e)
          return jsonify(message='Login Failed')
 

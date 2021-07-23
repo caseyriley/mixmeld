@@ -1,0 +1,13 @@
+{
+  "minify": true,
+  "options": [
+    "prefixes",
+    "prefixedCSS",
+    "prefixedCSSValue",
+    "testStyles",
+    "setClasses"
+  ],
+  "feature-detects": [
+    "test/audio"
+  ]
+}
