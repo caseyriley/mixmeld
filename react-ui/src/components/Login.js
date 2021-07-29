@@ -91,6 +91,7 @@ const Login = () => {
         }),
       });
       const res = await response.json();
+      console.log('ressssssssssss', res)
       if (res.auth_token !== undefined) {
         window.localStorage.setItem("auth_token", res.auth_token);
         window.location.reload();

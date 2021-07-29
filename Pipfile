@@ -2,7 +2,7 @@
 url = "https://pypi.org/simple"
 verify_ssl = true
 name = "pypi"
-
+cffi==1.14.2
 [packages]
 appdirs = "==1.4.4"
 astroid = "==2.4.2"
@@ -56,4 +56,4 @@ flask-marshmallow = "*"
 [dev-packages]
 
 [requires]
-python_version = "3.8"
+python_version = "3.8.6"
