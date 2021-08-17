@@ -21,7 +21,13 @@ const Login = () => {
       const res = await response.json()
       if (res.auth_token !== undefined) {
       } else {
-        console.log("not hitting the api")
+        if (res !== undefined){
+          console.log(res)
+        } else {
+          console.log("not hitting the api")
+        }
+        
+        
       }
     }
     api()
@@ -99,6 +105,8 @@ const Login = () => {
         if (res.auth_token !== undefined) {
             window.localStorage.setItem('auth_token', res.auth_token)
             window.location.reload()
+        } else {
+          console.log(res)
         }
     }
     setTimeout(demoLogin, 1500);
