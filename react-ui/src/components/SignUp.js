@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { API_URL } from '../config';
-import CloseButton from '../images/CloseButton';
+import { API_URL } from "../config";
+import CloseButton from "../images/CloseButton";
 
-
-const SignUp = props => {
+const SignUp = (props) => {
   const [username, setUsername] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -12,19 +11,18 @@ const SignUp = props => {
   const [lastname, setLastname] = useState();
   const [zipcode, setZipcode] = useState();
 
-  const updateUsername = e => setUsername(e.target.value);
-  const updateEmail = e => setEmail(e.target.value);
-  const updatePassword = e => setPassword(e.target.value);
-  const updatePasswordConfirm = e => setPasswordConfirm(e.target.value);
-  const updateFirstname = e => setFirstname(e.target.value);
-  const updateLastname = e => setLastname(e.target.value);
-  const updateZipcode = e => setZipcode(e.target.value);
-
+  const updateUsername = (e) => setUsername(e.target.value);
+  const updateEmail = (e) => setEmail(e.target.value);
+  const updatePassword = (e) => setPassword(e.target.value);
+  const updatePasswordConfirm = (e) => setPasswordConfirm(e.target.value);
+  const updateFirstname = (e) => setFirstname(e.target.value);
+  const updateLastname = (e) => setLastname(e.target.value);
+  const updateZipcode = (e) => setZipcode(e.target.value);
 
   const createUser = async (e) => {
     e.preventDefault();
     if (password !== passwordConfirm) {
-      return
+      return;
     }
 
     const user = {
@@ -33,9 +31,8 @@ const SignUp = props => {
       password: password,
       firstname: firstname,
       lastname: lastname,
-      zipcode: zipcode
-    }
-
+      zipcode: zipcode,
+    };
 
     // const response = await fetch(`${API_URL}/auth/signup`, {
     const response = await fetch(`${API_URL}/auth/signup`, {
@@ -45,7 +42,7 @@ const SignUp = props => {
       body: JSON.stringify(user),
     });
     if (response.ok) {
-      console.log("response OK======================>")
+      console.log("response OK======================>");
       const res = await response.json();
       if (res.auth_token === undefined) {
         console.log("Bad Auth Token Generated");
@@ -59,103 +56,102 @@ const SignUp = props => {
     }
   };
 
-  
   return (
     <>
-    <div id={"signup-modal-background"} onClick={props.handleClose}></div>
-    <div className="signup-pop-centering">
-      <div className="signup-pop--container">
-        <div className="signup-head--container">
-          <div className="signup-head--topElements">
-        
-            <div
-              className="signup__closeButton--container"
-              onClick={props.handleClose}>
-              <div className="signup__closeButton">
-                <CloseButton/>
+      <div id={"signup-modal-background"} onClick={props.handleClose}></div>
+      <div className="signup-pop-centering">
+        <div className="signup-pop--container">
+          <div className="signup-head--container">
+            <div className="signup-head--topElements">
+              <div
+                className="signup__closeButton--container"
+                onClick={props.handleClose}
+              >
+                <div className="signup__closeButton">
+                  <CloseButton />
+                </div>
               </div>
             </div>
+            <div className="signup-head__text">
+              <p>Create your account</p>
+            </div>
           </div>
-          <div className="signup-head__text">
-            <p>Create your account</p>
-          </div>
-        </div>
-        <div className="signup-form--container">
-          <div className="signup-form__account-fields">
-            <input
-              className="signup-form__username"
-              name="username"
-              value={username}
-              onChange={updateUsername}
-              placeholder="User Name"
-            />
-            <input
-              className="signup-form__email"
-              name="email"
-              value={email}
-              onChange={updateEmail}
-              placeholder="Email"
-              type="email"
-            />
-          </div>
-          <div className="signup-form__text">
-            <p>Please provide a password</p>
-          </div>
-          <div className="signup-form__password-fields">
-            <input
-              className="signup-form__password"
-              name="password"
-              value={password}
-              onChange={updatePassword}
-              placeholder="Password"
-              type="password"
-            />
-            <input
-              className="signup-from__password-confirm"
-              name="password-confirm"
-              value={passwordConfirm}
-              onChange={updatePasswordConfirm}
-              placeholder="Confirm Password"
-              type="password"
-            />
-          </div>
-          <div className="signup-form__text">
-            <p>Please provide your information</p>
-          </div>
-          <div className="signup-form__info-fields">
-            <input
-              className="signup-form__firstname"
-              name="firstname"
-              value={firstname}
-              onChange={updateFirstname}
-              placeholder="First Name"
-            />
-            <input
-              className="signup-form__lastname"
-              name="lastname"
-              value={lastname}
-              onChange={updateLastname}
-              placeholder="Last Name"
-            />
-            <input
-              className="signup-form__zipcode"
-              name="zipcode"
-              value={zipcode}
-              onChange={updateZipcode}
-              placeholder="Zip Code"
-            />
-          </div>
-          <div
-            className="signup-form__submitButton--container"
-            onClick={createUser}>
-            <div className="signup-form__submitButton">
-              <span>Submit</span>
+          <div className="signup-form--container">
+            <div className="signup-form__account-fields">
+              <input
+                className="signup-form__username"
+                name="username"
+                value={username}
+                onChange={updateUsername}
+                placeholder="User Name"
+              />
+              <input
+                className="signup-form__email"
+                name="email"
+                value={email}
+                onChange={updateEmail}
+                placeholder="Email"
+                type="email"
+              />
+            </div>
+            <div className="signup-form__text">
+              <p>Please provide a password</p>
+            </div>
+            <div className="signup-form__password-fields">
+              <input
+                className="signup-form__password"
+                name="password"
+                value={password}
+                onChange={updatePassword}
+                placeholder="Password"
+                type="password"
+              />
+              <input
+                className="signup-from__password-confirm"
+                name="password-confirm"
+                value={passwordConfirm}
+                onChange={updatePasswordConfirm}
+                placeholder="Confirm Password"
+                type="password"
+              />
+            </div>
+            <div className="signup-form__text">
+              <p>Please provide your information</p>
+            </div>
+            <div className="signup-form__info-fields">
+              <input
+                className="signup-form__firstname"
+                name="firstname"
+                value={firstname}
+                onChange={updateFirstname}
+                placeholder="First Name"
+              />
+              <input
+                className="signup-form__lastname"
+                name="lastname"
+                value={lastname}
+                onChange={updateLastname}
+                placeholder="Last Name"
+              />
+              <input
+                className="signup-form__zipcode"
+                name="zipcode"
+                value={zipcode}
+                onChange={updateZipcode}
+                placeholder="Zip Code"
+              />
+            </div>
+            <div
+              className="signup-form__submitButton--container"
+              onClick={createUser}
+            >
+              <div className="signup-form__submitButton">
+                <span>Submit</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    
     </>
   );
 };

@@ -174,8 +174,5 @@ the desired page and query.
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/casey-riley-3396231a1/
 
-<!-- web: gunicorn wsgi:app -->
-<!-- web: newrelic-admin run-program gunicorn -b "0.0.0.0:$PORT" -w 3 hello:app -->
-<!-- web: newrelic-admin run-program gunicorn -b "0.0.0.0:$PORT" -w 3 wsgi:app -->
-<!-- web: NEW_RELIC_CONFIG_FILE=newrelic.ini newrelic-admin run-program gunicorn -w 3 wsgi:application -->
-<!-- arn:aws:iam::588808917552:role/NewRelicInfrastructure-Integrations -->
+
+
