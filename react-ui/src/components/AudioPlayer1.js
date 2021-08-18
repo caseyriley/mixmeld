@@ -247,7 +247,7 @@ const AudioPlayer2 = (props)=>{
               <img className={"s-play"} ref={play} src={playButton} alt={""} onClick={playPauseMedia} ></img>
               <div id={"volume-knob-c"}>
                 <VolumeKnobUi volumeKnob={volumeKnob} volumeLevel={volumeLevel}/>
-                <div class="s-slider-wrapper">
+                <div className="s-slider-wrapper">
                   <input type={"range"} min={"-136"} max={"136"}
                   step={"1"}
                   ref={volumeSlider}

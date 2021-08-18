@@ -288,7 +288,7 @@ function deleteFromPlaylist(trackId){
                                 {(provided, snapshot) => {
                                   return (
                                     <>
-                                    <li name={index} class={"pl2-playlist-ul__li"} key={index}
+                                    <li name={index} className={"pl2-playlist-ul__li"} key={index}
                                       ref={provided.innerRef}
                                       {...provided.draggableProps}
                                       {...provided.dragHandleProps}
@@ -362,7 +362,7 @@ function deleteFromPlaylist(trackId){
                             )
                           }): null}
                           {provided.placeholder}
-                          <div class={"playlist-2-bottom-space"}></div>
+                          <div className={"playlist-2-bottom-space"}></div>
                         </ul>
                       )
                     }}

@@ -53,14 +53,14 @@ const Pl2ArtistsPage = (props) => {
   //                   <div className={"pl2-artist-info-c__top"}>
   //                     <h2>{album}</h2>
   //                   </div>
-  //                   {/* <h3 class={"pl2-album-artist"}>By {k}</h3> */}
+  //                   {/* <h3 className={"pl2-album-artist"}>By {k}</h3> */}
   //                   <div className={"pl2-artist-info-c__scroll"}>
   //                     <div className={"pl2-artist-info-c__scroll__inner"}>
   //                     {artistArrayState[1][album].map((track, index) => {
   //                       return (
-  //                         <div key={100000 + index} class={"pl2-artist-track-c"}>
+  //                         <div key={100000 + index} className={"pl2-artist-track-c"}>
   //                           <div id={`nti${idCount.current += 1 }`} className={`next-track-info audioId${track.id}`}>{`{"tracklocation":"${track.tracklocation}","trackname":"${track.trackname}","audioId":"${track.id}", "trackartist":"${track.trackartist}", "trackart":"${track.trackart}"}`}</div> 
-  //                           <h3 class={"pl2-artist-track"} onClick={()=>{props.setTrack(track.tracklocation, track.trackname, track.trackartist, track.id, track.trackart)}}>{track.trackname}</h3>
+  //                           <h3 className={"pl2-artist-track"} onClick={()=>{props.setTrack(track.tracklocation, track.trackname, track.trackartist, track.id, track.trackart)}}>{track.trackname}</h3>
   //                         </div>
   //                       )
   //                     })}
@@ -101,9 +101,9 @@ const Pl2ArtistsPage = (props) => {
                       <div className={"pl2-artist-info-c__scroll__inner"}>
                       {artistArrayState[1][album].map((track, index) => {
                         return (
-                          <div key={100000 + index} class={"pl2-artist-track-c"}>
+                          <div key={100000 + index} className={"pl2-artist-track-c"}>
                             <div id={`nti${idCount.current += 1 }`} className={`next-track-info audioId${track.id}`}>{`{"tracklocation":"${track.tracklocation}","trackname":"${track.trackname}","audioId":"${track.id}", "trackartist":"${track.trackartist}", "trackart":"${track.trackart}"}`}</div> 
-                            <h3 class={"pl2-artist-track"} onClick={()=>{props.setTrack(track.tracklocation, track.trackname, track.trackartist, track.id, track.trackart)}}>{track.trackname}</h3>
+                            <h3 className={"pl2-artist-track"} onClick={()=>{props.setTrack(track.tracklocation, track.trackname, track.trackartist, track.id, track.trackart)}}>{track.trackname}</h3>
                           </div>
                         )
                       })}
