@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import favicon from './images/favicon.ico'
 
 import './index.css';
 import './styles/login.css';

@@ -464,20 +464,6 @@ const AudioPlayer2 = (props) => {
     }, 500);
   }
 
-  function scrollToTargetAdjusted(className) {
-    setTimeout(() => {
-      const element = document.getElementsByClassName(className);
-      var headerOffset = 45;
-      var elementPosition = element[0].getBoundingClientRect().top;
-      var offsetPosition = elementPosition - headerOffset;
-
-      window.scrollTo({
-        top: -500,
-        behavior: "smooth",
-      });
-    }, 500);
-  }
-
   // --------------Upload-State------------------
   const [uploadModalState, setUploadModalState] = useState("no-modal");
   const [trackLocationState, setTrackLocationState] = useState();
@@ -631,7 +617,6 @@ const AudioPlayer2 = (props) => {
             scrollToThis={scrollToThis}
             scrollToThis2={scrollToThis2}
             scrollToThis3={scrollToThis3}
-            scrollToTargetAdjusted={scrollToTargetAdjusted}
             uploadModalState={uploadModalState}
             setUploadModalState={setUploadModalState}
             trackLocationState={trackLocationState}
