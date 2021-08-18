@@ -133,13 +133,13 @@ const UploadingTrackPl2 = (props) => {
           id={"pl2-uploading-track"}
           type="file"
           onChange={upload}
-          onKeyPress={(event) =>
-            (event.charCode > 64 && event.charCode < 91) ||
-            (event.charCode > 96 && event.charCode < 123) ||
-            event.charCode === 8 ||
-            event.charCode === 32 ||
-            (event.charCode >= 48 && event.charCode <= 57)
-          }
+          // onKeyPress={(event) =>
+          //   (event.charCode > 64 && event.charCode < 91) ||
+          //   (event.charCode > 96 && event.charCode < 123) ||
+          //   event.charCode === 8 ||
+          //   event.charCode === 32 ||
+          //   (event.charCode >= 48 && event.charCode <= 57)
+          // }
         />
       </div>
     </>
