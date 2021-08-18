@@ -2,7 +2,11 @@
   "cacheDirectories": [
     "react-ui/node_modules"
   ],
+  "engines": {
+    "node": "16.6.1"
+  },
   "scripts": {
-    "heroku-postbuild": "cd react-ui && npm install && npm run build"
+    "heroku-postbuild": "cd react-ui && npm install && npm run build",
+    "deploy": "git push heroku main"
   }
 }
