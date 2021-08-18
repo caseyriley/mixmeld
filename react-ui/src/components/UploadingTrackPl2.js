@@ -1,134 +1,148 @@
-import React, { useEffect, useState } from 'react';
-import S3FileUpload from 'react-s3';
-import { API_URL } from '../config';
-
+import React, { useEffect, useState } from "react";
+import S3FileUpload from "react-s3";
+import { API_URL } from "../config";
 
 const UploadingTrackPl2 = (props) => {
-  
-
-// ---------------get-mp3-meta-data---------------
-// function getMp3MetaData(){
-//   new jsmediatags.Reader("https://formless.s3.amazonaws.com/12 Pretty Bird (Freestyle) [feat. Common].mp3")
-//   .setTagsToRead(["title", "artist"])
-//   .read({
-//     onSuccess: function(tag) {
-//       console.log("ttttttttaaaaaaaaaaaggggggg",tag);
-//     },
-//     onError: function(error) {
-//       console.log(':(', error.type, error.info);
-//     }
-//   });
-// } 
-// -----------------------------------------------
+  // ---------------get-mp3-meta-data---------------
+  // function getMp3MetaData(){
+  //   new jsmediatags.Reader("https://formless.s3.amazonaws.com/12 Pretty Bird (Freestyle) [feat. Common].mp3")
+  //   .setTagsToRead(["title", "artist"])
+  //   .read({
+  //     onSuccess: function(tag) {
+  //       console.log("ttttttttaaaaaaaaaaaggggggg",tag);
+  //     },
+  //     onError: function(error) {
+  //       console.log(':(', error.type, error.info);
+  //     }
+  //   });
+  // }
+  // -----------------------------------------------
   const config = {
     bucketName: process.env.REACT_APP_BUCKETNAME,
     region: process.env.REACT_APP_REGION,
     accessKeyId: process.env.REACT_APP_ACCESSKEYID,
-    secretAccessKey: process.env.REACT_APP_SECRETACCESSKEY
-  }
+    secretAccessKey: process.env.REACT_APP_SECRETACCESSKEY,
+  };
 
   const [currentUser, setCurrentUser] = useState({});
 
   useEffect(() => {
-
     const getCurrentUser = async () => {
-      const token = window.localStorage.getItem('auth_token')
+      const token = window.localStorage.getItem("auth_token");
       const response = await fetch(`${API_URL}/users/token`, {
         method: "GET",
         mode: "cors",
-        headers: { "Authorization": `Bearer ${token}` },
-      })
+        headers: { Authorization: `Bearer ${token}` },
+      });
       if (!response.ok) {
         console.log("getCurrent user response failed in Uploading.js");
       } else {
         const json = await response.json();
         setCurrentUser(json);
       }
-    }
+    };
     getCurrentUser();
-  }, [])
+  }, []);
 
-  async function formatTime(time){
+  async function formatTime(time) {
     let start = 12;
     let end = 8;
-    if (time < 3600){
+    if (time < 3600) {
       start = 14;
       end = 5;
-    } 
-    const formattedTime = `${new Date(time * 1000).toISOString().substr(start, end)}`
+    }
+    const formattedTime = `${new Date(time * 1000)
+      .toISOString()
+      .substr(start, end)}`;
     return formattedTime;
   }
-  
 
   function removeSpecialChars(str) {
-    const newStr = str.replace(/[^\w\s\\.\\*\\_\\(\\)!\\'-]/gi, '');
-    const splitStr = newStr.split(/\.(?=[^\.]+$)/)
-    const randNewStr = splitStr[0] + Math.floor(Math.random() * 1000) + '.' + splitStr[1]  
-    return randNewStr 
+    const newStr = str.replace(/[^\w\s\\.\\*\\_\\(\\)!\\'-]/gi, "");
+    const splitStr = newStr.split(/\.(?=[^.]+$)/);
+    const randNewStr =
+      splitStr[0] + Math.floor(Math.random() * 1000) + "." + splitStr[1];
+    return randNewStr;
   }
 
   const upload = (e) => {
-    const prevName = e.target.files[0]["name"]
-    let newFile = e.target.files[0]
+    const prevName = e.target.files[0]["name"];
+    let newFile = e.target.files[0];
 
     Object.defineProperties(newFile, {
       name: {
         value: `${removeSpecialChars(prevName)}`,
         writable: true,
-        configurable: true
+        configurable: true,
       },
     });
 
     props.setUploadModalState("upload-modal");
-    
+
     let formattedTime;
-    const trackName = e.target.value.slice(12,).slice(0,-4)
-   
+    const trackName = e.target.value.slice(12).slice(0, -4);
+
     const newTrack = async (uploadLocation) => {
-      const trackData = { user_id: currentUser.id, trackname: trackName, tracklocation: uploadLocation, tracktime: formattedTime}
+      const trackData = {
+        user_id: currentUser.id,
+        trackname: trackName,
+        tracklocation: uploadLocation,
+        tracktime: formattedTime,
+      };
       const options = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(trackData),
-      }
-      fetch(`${API_URL}/tracks/post`, options)
-    }
-  
-    let location
-    
-    S3FileUpload.uploadFile(e.target.files[0], config)
-      .then((data) => {
+      };
+      fetch(`${API_URL}/tracks/post`, options);
+    };
 
-        location = data.location;
+    let location;
 
-        let au = document.createElement('audio');
-        au.src = location;
+    S3FileUpload.uploadFile(e.target.files[0], config).then((data) => {
+      location = data.location;
 
-        au.addEventListener('loadedmetadata', function(){
-          async function inner(){
-            formattedTime = await formatTime(au.duration)
-            newTrack(location).then(()=>{
-              props.setTrackLocationState(location)
+      let au = document.createElement("audio");
+      au.src = location;
+
+      au.addEventListener(
+        "loadedmetadata",
+        function () {
+          async function inner() {
+            formattedTime = await formatTime(au.duration);
+            newTrack(location).then(() => {
+              props.setTrackLocationState(location);
               let prevState = props.refreshTrackState;
-              props.setRefreshTrackState(prevState + 1)
-            })
+              props.setRefreshTrackState(prevState + 1);
+            });
           }
-          inner()
-          
-        },false);
-
-      })
-       
-    }
+          inner();
+        },
+        false
+      );
+    });
+  };
 
   return (
     <>
       <div id={"pl2-uploading-track-c"}>
-        <span id={"pl2-uploading-track-c__span"}>Upload <span id={"pl2-uploading-track-c__span__inner"}>Track</span></span>
-        <input id={"pl2-uploading-track"} type="file" onChange={upload} onKeyPress={(event)=> ((event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || event.charCode == 8 || event.charCode == 32 || (event.charCode >= 48 && event.charCode <= 57))}/>
+        <span id={"pl2-uploading-track-c__span"}>
+          Upload <span id={"pl2-uploading-track-c__span__inner"}>Track</span>
+        </span>
+        <input
+          id={"pl2-uploading-track"}
+          type="file"
+          onChange={upload}
+          onKeyPress={(event) =>
+            (event.charCode > 64 && event.charCode < 91) ||
+            (event.charCode > 96 && event.charCode < 123) ||
+            event.charCode === 8 ||
+            event.charCode === 32 ||
+            (event.charCode >= 48 && event.charCode <= 57)
+          }
+        />
       </div>
     </>
-
-  )
-}
+  );
+};
 export default UploadingTrackPl2;
