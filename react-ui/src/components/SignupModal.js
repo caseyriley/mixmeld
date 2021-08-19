@@ -3,7 +3,7 @@ import ReactDom from 'react-dom';
 import Signup from './SignUp';
 
 const SignupModal = (props) => {
-  const showHideClassName = props.signUpModal ? "modal-showing" : "modal-hiding";
+  const showHideClassName = props.signUpModalState ? "modal-showing" : "modal-hiding";
   return ReactDom.createPortal(
     <>
       <div className={showHideClassName}>
