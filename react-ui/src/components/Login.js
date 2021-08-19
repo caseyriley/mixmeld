@@ -7,7 +7,7 @@ import SignupModal from "./SignupModal";
 const Login = () => {
   const [signUpModalState, setSignUpModalState] = useState(false);
   const [emailState, setEmailState] = useState("");
-  const [password, setPassword] = useState("");
+  const [passwordState, setPasswordState] = useState("");
   const [instructionsModalState, setInstructionsModalState] = useState(false);
 
   const showSignUpModal = () => {
@@ -19,14 +19,14 @@ const Login = () => {
 
   const updateEmail = (e) => setEmailState(e.target.value);
 
-  const updatePassword = (e) => setPassword(e.target.value);
+  const updatePassword = (e) => setPasswordState(e.target.value);
 
   const handleSubmit = async () => {
     const response = await fetch(`${API_URL}/auth/login`, {
       method: "POST",
       mode: "cors",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: `${emailState}`, password: `${password}` }),
+      body: JSON.stringify({ email: `${emailState}`, password: `${passwordState}` }),
     });
 
     if (response.ok) {
@@ -57,7 +57,7 @@ const Login = () => {
     const ghostWritePassword = () => {
       if (k <= demoPassword.length) {
         let text = demoPassword.slice(0, k);
-        setPassword(text);
+        setPasswordState(text);
         k++;
         setTimeout(ghostWritePassword, speed);
       }
@@ -147,7 +147,7 @@ const Login = () => {
             className="login-input-2"
             type="password"
             placeholder="Password"
-            value={password}
+            value={passwordState}
             onChange={updatePassword}
           />
           <div className="login-button" onClick={handleSubmit}>
