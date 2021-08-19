@@ -6,7 +6,7 @@ import SignupModal from "./SignupModal";
 
 const Login = () => {
   const [signUpModalState, setSignUpModalState] = useState(false);
-  const [email, setEmail] = useState("");
+  const [emailState, setEmailState] = useState("");
   const [password, setPassword] = useState("");
   const [instructionsModalState, setInstructionsModalState] = useState(false);
 
@@ -17,7 +17,7 @@ const Login = () => {
     setSignUpModalState(false);
   };
 
-  const updateEmail = (e) => setEmail(e.target.value);
+  const updateEmail = (e) => setEmailState(e.target.value);
 
   const updatePassword = (e) => setPassword(e.target.value);
 
@@ -26,7 +26,7 @@ const Login = () => {
       method: "POST",
       mode: "cors",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: `${email}`, password: `${password}` }),
+      body: JSON.stringify({ email: `${emailState}`, password: `${password}` }),
     });
 
     if (response.ok) {
@@ -49,7 +49,7 @@ const Login = () => {
     const ghostWriteEmail = () => {
       if (i <= demoEmail.length) {
         let text = demoEmail.slice(0, i);
-        setEmail(text);
+        setEmailState(text);
         i++;
         setTimeout(ghostWriteEmail, speed);
       }
@@ -138,7 +138,7 @@ const Login = () => {
           <input
             className="login-input-1"
             placeholder="Email"
-            value={email}
+            value={emailState}
             type="email"
             onChange={updateEmail}
           />
