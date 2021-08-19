@@ -9,6 +9,7 @@ const Login = () => {
   const [emailState, setEmailState] = useState("");
   const [passwordState, setPasswordState] = useState("");
   const [instructionsModalState, setInstructionsModalState] = useState(false);
+  const [errorState, setErrorState] = useState(false);
 
   const showSignUpModal = () => {
     setSignUpModalState(true);
@@ -26,11 +27,15 @@ const Login = () => {
       method: "POST",
       mode: "cors",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: `${emailState}`, password: `${passwordState}` }),
+      body: JSON.stringify({
+        email: `${emailState}`,
+        password: `${passwordState}`,
+      }),
     });
 
     if (response.ok) {
     } else {
+      setErrorState(true);
     }
     const res = await response.json();
     if (res.auth_token !== undefined) {
@@ -159,7 +164,7 @@ const Login = () => {
           <div className="login-button" onClick={showSignUpModal}>
             <span>Sign up</span>
           </div>
-
+          {errorState && <div className={"login-error"}>Invalid email or password</div>}
           <SignupModal
             signUpModalState={signUpModalState}
             hideSignUpModal={hideSignUpModal}

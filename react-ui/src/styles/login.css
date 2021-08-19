@@ -109,6 +109,20 @@
   border: 1px solid rgb(205, 205, 205);
   
 }
+
+.login-error {
+  font-family: sans-serif;
+  color: red;
+  background-color: rgb(22, 22, 22);
+  border: 1px dashed red;
+  border-radius: 10px;
+  padding: 0px 15px 0px 15px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  margin: 20px 0px 0px 0px;
+}
+
 .login-footer__creditBox {
   position: fixed;
   top: 485px;
