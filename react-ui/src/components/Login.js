@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import { API_URL } from '../config';
 import GithubIcon from '../images/GithubIcon';
 import Instructions from './Instructions';

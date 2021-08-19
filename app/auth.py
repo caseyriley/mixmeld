@@ -1,7 +1,6 @@
 from flask import Blueprint, request, jsonify
-from flask_jwt_extended import JWTManager, create_access_token
+from flask_jwt_extended import create_access_token
 import bcrypt
-from flask_cors import CORS 
 from .models import db, User, Track
 
 auth = Blueprint('auth', __name__)
