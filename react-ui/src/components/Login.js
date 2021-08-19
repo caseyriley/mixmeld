@@ -9,27 +9,6 @@ import SignupModal from './SignupModal';
 
 const Login = () => {
 
-
-
-  useEffect(()=> {
-    const api = async () => {
-      const response = await fetch(`${API_URL}/api`, {
-          method: "GET",
-          mode: "cors",
-          headers: { "Content-Type": "application/json" },
-      });
-      const res = await response.json()
-      if (res.auth_token !== undefined) {
-      } else {
-        console.log("not hitting the api")
-      }
-    }
-    api()
-  })
-
-
-
-
   const [signUpModal, setSignUpModal] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
