@@ -1,6 +1,5 @@
-import React, {useEffect, useState, useRef, useMemo} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import { API_URL } from '../config';
-import formlessMusicIcon from '../images/formless-music-icon.png'
 
 const Pl2ArtistsPage = (props) => {
 

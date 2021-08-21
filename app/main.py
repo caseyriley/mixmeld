@@ -1,12 +1,10 @@
 import os
 from flask import Flask, render_template, redirect, jsonify, request, send_from_directory
-from flask_login import LoginManager
-from flask_jwt_extended import (
-    JWTManager,
-    jwt_required,
-    get_jwt_identity,
-    get_raw_jwt,
-    verify_jwt_in_request)
+# from flask_login import LoginManager
+from flask_jwt_extended import JWTManager
+# from flask_jwt_extended import jwt_required
+# from flask_jwt_extended import verify_jwt_in_request
+
 from flask_cors import CORS 
 
 from .config import Config

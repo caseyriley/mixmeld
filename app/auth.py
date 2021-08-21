@@ -1,7 +1,6 @@
 from flask import Blueprint, request, jsonify
-from flask_jwt_extended import JWTManager, create_access_token
+from flask_jwt_extended import create_access_token
 import bcrypt
-from flask_cors import CORS 
 from .models import db, User, Track
 
 auth = Blueprint('auth', __name__)
@@ -26,6 +25,8 @@ def login():
     try:
         email = data['email']
         password = data['password']
+        print('email))))))', email)
+        print('password)))))', password)
         if not email:
             return jsonify(message='Email Required'), 400
         elif not password:
@@ -33,16 +34,20 @@ def login():
 
         user = User.query.filter_by(email=email).first()
 
+        print('user)))))', user)
+
         if not user:
             return jsonify(message='Email Required'), 400
 
         verified = verify_password(password, user.hashed_password)
+        print('verified)))))', verified)
 
         if not verified:
 
             return jsonify(message='Password verify failed')
         else:
             auth_token = create_access_token(identity={"email": user.email})
+            print('auth_token)))))', auth_token)
         return jsonify(auth_token=auth_token)
 
     except Exception as e:

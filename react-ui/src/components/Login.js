@@ -19,13 +19,14 @@ const Login = () => {
           headers: { "Content-Type": "application/json" },
       });
       const res = await response.json()
-      if (res.auth_token !== undefined) {
+      if (res) {
+        console.log(res)
       } else {
-        console.log("not hitting the api")
+        console.log("Not hitting the API")
       }
     }
     api()
-  })
+  }, [])
 
 
 

@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request
-from flask_jwt_extended import jwt_required, get_jwt_identity
+from flask_jwt_extended import jwt_required
+from flask_jwt_extended import get_jwt_identity
 
 
 
@@ -22,10 +23,20 @@ def user_by_id(id):
 
 # get current user from access token
 @user.route('/token', methods=['GET'])
-@jwt_required
+@jwt_required(fresh=False)
 def api():
+    print('before get_jwt_identity111111111111111111111')
     user = get_jwt_identity()
+    print('user9999999999999999999999999999999999', user)
     current_user = User.query.filter_by(email=user['email']).first()
     safe_user = current_user.to_safe_object()
-    return jsonify(safe_user), 200
- 
+    if safe_user:
+      return jsonify(safe_user), 200
+    else:
+      print('Failed in users/token^^^^^^^^^^^^^^^^^^^^^^^^^^^')
+# @user.route('/token', methods=['GET'])
+# @jwt_required
+# def api():
+#   print('Hit users/token^^^')
+#   user = get_jwt_identity()
+#   print('user9999999999999999999999999999999999', user)

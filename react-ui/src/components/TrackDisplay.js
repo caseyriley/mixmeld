@@ -2,7 +2,6 @@ import React, {useRef, useEffect, useState} from 'react';
 import UseTime from './UseTime';
 import TimeRemaining from './TimeRemaining';
 import UploadingNewImage from './UploadingNewImage';
-import formlessMusicIcon from '../images/formless-music-icon.png'
 
 
 const TrackDisplay = (props) => {

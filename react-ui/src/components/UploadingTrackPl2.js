@@ -62,7 +62,7 @@ const UploadingTrackPl2 = (props) => {
 
   function removeSpecialChars(str) {
     const newStr = str.replace(/[^\w\s\\.\\*\\_\\(\\)!\\'-]/gi, '');
-    const splitStr = newStr.split(/\.(?=[^\.]+$)/)
+    const splitStr = newStr.split(/\.(?=[^.]+$)/)
     const randNewStr = splitStr[0] + Math.floor(Math.random() * 1000) + '.' + splitStr[1]  
     return randNewStr 
   }
@@ -125,7 +125,7 @@ const UploadingTrackPl2 = (props) => {
     <>
       <div id={"pl2-uploading-track-c"}>
         <span id={"pl2-uploading-track-c__span"}>Upload <span id={"pl2-uploading-track-c__span__inner"}>Track</span></span>
-        <input id={"pl2-uploading-track"} type="file" onChange={upload} onKeypress={(event)=> ((event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || event.charCode == 8 || event.charCode == 32 || (event.charCode >= 48 && event.charCode <= 57))}/>
+        <input id={"pl2-uploading-track"} type="file" onChange={upload} onKeyPress={(event)=> ((event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || event.charCode == 8 || event.charCode == 32 || (event.charCode >= 48 && event.charCode <= 57))}/>
       </div>
     </>
 

@@ -3,7 +3,7 @@ import texture from '../images/texture.jpg'
 
 const VolumeUiSlider = (props)=> {
   return (
-    <div class="control-2">
+    <div className="control-2">
       <span className="eq eq-2">
         <span className="eq-level" ref={props.volumeFader}>
           <img src={texture} alt=""/>

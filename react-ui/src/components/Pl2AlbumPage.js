@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useMemo } from 'react';
+import React, { useEffect, useState, useRef} from 'react';
 import { API_URL } from '../config';
 
 const Pl2AlbumPage = (props) => {
