@@ -1,12 +1,7 @@
 from flask import Blueprint, jsonify, request
-from sqlalchemy.orm import subqueryload, joinedload
-from sqlalchemy import func, desc
+from sqlalchemy import func
 from .models import db, Track, TrackSchema, User
-import requests
 import json, difflib
-import marshmallow as ma
-
-from flask_jwt_extended  import jwt_required
 
 from flask_cors import CORS
 

@@ -1,12 +1,6 @@
 from flask import Blueprint, jsonify, request
-from sqlalchemy.orm import subqueryload, joinedload
-from sqlalchemy import func
 from .models import db, Playlist, Track
-import requests
 import json
-from flask_jwt_extended  import jwt_required
-
-from flask_cors import CORS
 
 from app.models import db, Playlist
 

@@ -1,12 +1,7 @@
 import os
-from flask import Flask, render_template, redirect, jsonify, request, send_from_directory
-# from flask_login import LoginManager
+from flask import Flask, jsonify, request, send_from_directory
 from flask_jwt_extended import JWTManager
-# from flask_jwt_extended import jwt_required
-# from flask_jwt_extended import verify_jwt_in_request
-
 from flask_cors import CORS 
-
 from .config import Config
 from .models import db
 from .users import user
@@ -32,22 +27,9 @@ db.init_app(app)
 jwt = JWTManager(app)
 
 
-
-
-
 @app.route('/')
 def root():
     return send_from_directory(app.static_folder, 'index.html')
-
-
-
-# @app.route('/', defaults={'path': ''})
-# @app.route('/<path>')
-# def react_root(path):
-    # return "Helloooooooo"
-    # return app.send_static_file('index.html')
-    # return send_from_directory(os.path.join(root_dir, 'react-ui', 'public'), 'index.html')
-    
 
 
 @app.route('/api', methods=['GET'])

@@ -1,6 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
-from sqlalchemy.orm import relationship, backref
 
 
 db = SQLAlchemy()

@@ -25,8 +25,7 @@ def login():
     try:
         email = data['email']
         password = data['password']
-        print('email))))))', email)
-        print('password)))))', password)
+
         if not email:
             return jsonify(message='Email Required'), 400
         elif not password:
@@ -34,25 +33,21 @@ def login():
 
         user = User.query.filter_by(email=email).first()
 
-        print('user)))))', user)
-
         if not user:
             return jsonify(message='Email Required'), 400
 
         verified = verify_password(password, user.hashed_password)
-        print('verified)))))', verified)
 
         if not verified:
-
             return jsonify(message='Password verify failed')
         else:
-            auth_token = create_access_token(identity={"email": user.email}, fresh=True)
-            print('auth_token)))))', auth_token)
+            auth_token = create_access_token(
+                identity={"email": user.email}, fresh=True)
         return jsonify(auth_token=auth_token)
 
     except Exception as e:
-         print(e)
-         return jsonify(message='Login Failed')
+        print(e)
+        return jsonify(message='Login Failed')
 
 
 @auth.route('/signup', methods=['POST'])
@@ -82,7 +77,7 @@ def signup():
 
         except Exception:
             return jsonify(message='Password Required'), 400
-        
+
         user = User(
             username=username,
             email=email,
@@ -95,16 +90,15 @@ def signup():
         db.session.add(user)
         db.session.commit()
 
-        m_user_id='2'
-        m_trackname='3121'
-        m_trackartist='Prince'
-        m_trackalbum='3121'
-        m_tracklocation='https://formless.s3.amazonaws.com/01 3121.mp3'
-        m_tracktime='04:31'
-        m_trackrating=''
-        m_trackgenre='Pop'
-        m_trackart='https://formless.s3.amazonaws.com/220px-Prince_-_3121.jpg'
-
+        m_user_id = '2'
+        m_trackname = '3121'
+        m_trackartist = 'Prince'
+        m_trackalbum = '3121'
+        m_tracklocation = 'https://formless.s3.amazonaws.com/01 3121.mp3'
+        m_tracktime = '04:31'
+        m_trackrating = ''
+        m_trackgenre = 'Pop'
+        m_trackart = 'https://formless.s3.amazonaws.com/220px-Prince_-_3121.jpg'
 
         current_user = User.query.filter(User.email == email).first()
 
@@ -123,7 +117,8 @@ def signup():
         db.session.add(first_track)
         db.session.commit()
 
-        auth_token = create_access_token(identity={"email": user.email}, fresh=True)
+        auth_token = create_access_token(
+            identity={"email": user.email}, fresh=True)
         return jsonify(auth_token=auth_token), 200
 
     except Exception:
