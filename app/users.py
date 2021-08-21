@@ -23,7 +23,7 @@ def user_by_id(id):
 
 # get current user from access token
 @user.route('/token', methods=['GET'])
-@jwt_required(fresh=False)
+@jwt_required(fresh=True)
 def api():
     print('before get_jwt_identity111111111111111111111')
     user = get_jwt_identity()

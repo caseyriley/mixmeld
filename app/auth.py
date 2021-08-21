@@ -46,7 +46,7 @@ def login():
 
             return jsonify(message='Password verify failed')
         else:
-            auth_token = create_access_token(identity={"email": user.email})
+            auth_token = create_access_token(identity={"email": user.email}, fresh=True)
             print('auth_token)))))', auth_token)
         return jsonify(auth_token=auth_token)
 
@@ -123,7 +123,7 @@ def signup():
         db.session.add(first_track)
         db.session.commit()
 
-        auth_token = create_access_token(identity={"email": user.email})
+        auth_token = create_access_token(identity={"email": user.email}, fresh=True)
         return jsonify(auth_token=auth_token), 200
 
     except Exception:
