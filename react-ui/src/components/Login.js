@@ -3,6 +3,7 @@ import { API_URL } from "../config";
 import GithubIcon from "../images/GithubIcon";
 import Instructions from "./Instructions";
 import SignupModal from "./SignupModal";
+import infoIcon from "../images/information-sign-symbol-computer-icons-clip-art-form-icon.png"
 
 const Login = () => {
   useEffect(() => {
@@ -28,6 +29,8 @@ const Login = () => {
   const [instructionsModalState, setInstructionsModalState] = useState(false);
   const [formErrorState, setFormErrorState] = useState(false);
   const [errorState, setErrorState] = useState({email: true, password: true});
+  const [emailReqState, setEmailReqState] = useState(false);
+  const [passwordReqState, setPasswordReqState] = useState(false);
 
   const showSignUpModal = () => {
     setSignUpModalState(true);
@@ -49,6 +52,16 @@ const Login = () => {
   function validatePassword(password) {
     const re = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
     return re.test(password);
+  }
+
+  function showEmailReq() {
+    let prev = emailReqState;
+    setEmailReqState(!prev);
+  }
+
+  function showPasswordReq() {
+    let prev = passwordReqState;
+    setPasswordReqState(!prev);
   }
 
   const handleSubmit = async () => {
@@ -180,7 +193,8 @@ const Login = () => {
       <div id={"login-c"} className={"fade-in"}>
         <h1 id={"main-page__title"}>Mix Meld</h1>
         <div id={"login-c__login-form"}>
-          <label>Login Email</label>
+          <label>Login Email <img className={"input-info-icon"} onClick={showEmailReq} src={infoIcon} alt={"information icon for info about acceptable emails"}/></label>
+          {emailReqState && <div className={"reqInfoText"}><span>Must be a valid email address such as "demo@example.com"</span></div>}
           <input
             className={`login-email-input ${errorState.email === false ? "login-error" :  ""}`}
             placeholder="Email"
@@ -188,7 +202,8 @@ const Login = () => {
             type="email"
             onChange={updateEmail}
           />
-          <label>Password</label>
+          <label>Password <img className={"input-info-icon"} onClick={showPasswordReq} src={infoIcon} alt={"information icon for info about acceptable passwords"}/></label>
+          {passwordReqState && <div className={"reqInfoText"}><span>Must be a min 8 letter password, with at least a symbol, upper and lower case letters and a number"</span></div>}
           <input
             className={`login-input-2 ${errorState.password === false ? "login-error" : ""}`}
             type="password"

@@ -161,6 +161,22 @@
   height: 30px;
   cursor: pointer;
 }
+.input-info-icon{
+  width: 15px;
+  
+}
+.reqInfoText {
+  font-size: 15px;
+  font-family: sans-serif;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 15px 5px 15px;
+  background-color: gray;
+  color: white;
+  border-radius: 10px;
+}
 .login-error {
   border: 2px dashed red !important;
 }
