@@ -198,7 +198,6 @@ const Pl2LeftColumn = (props) => {
                           setPlaylistIdRef(playlist.id);
                         }}
                       >
-                        {/* <input type="button" className={"playlist-radio"}  id={playlist.playlist_name} name="playlist-radio" value={playlist.playlist_name} checked /> */}
                         <span>{playlist.playlist_name}</span>
                       </div>
                     );
