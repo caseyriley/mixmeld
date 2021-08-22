@@ -88,7 +88,7 @@
   color: lightgray;
   background-color: grey;
   font-size: 20px;
-  font-family: 'Audiowide', cursive;
+  font-family: 'Audiowide', sans-serif;
   height: 30px;
   min-width: auto;
   padding: 0px 15px 0px 15px;
@@ -108,6 +108,19 @@
   background-color: rgb(69, 69, 69, .7);
   border: 1px solid rgb(205, 205, 205);
   
+}
+.form-error-message {
+  font-family: sans-serif;
+  color: red;
+  border: 1px dashed red;
+  padding: 0px 15px 0px 15px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  height: 30px;
+  margin: 20px 0px 0px 0px;
 }
 .login-footer__creditBox {
   position: fixed;

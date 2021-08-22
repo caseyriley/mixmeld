@@ -26,6 +26,7 @@ const Login = () => {
   const [emailState, setEmailState] = useState("");
   const [passwordState, setPasswordState] = useState("");
   const [instructionsModalState, setInstructionsModalState] = useState(false);
+  const [formErrorState, setFormErrorState] = useState(false);
 
   const showSignUpModal = () => {
     setSignUpModalState(true);
@@ -45,10 +46,10 @@ const Login = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: `${emailState}`, password: `${passwordState}` }),
     });
-    if (response.ok) {
-    } else {
-    }
     const res = await response.json();
+    if (!response.ok) {
+      setFormErrorState(true);
+    } 
     if (res.auth_token !== undefined) {
       window.localStorage.setItem("auth_token", res.auth_token);
       window.location.reload();
@@ -166,15 +167,19 @@ const Login = () => {
             value={passwordState}
             onChange={updatePassword}
           />
-          <div className="login-button" onClick={handleSubmit}>
+          <div className={"login-button"} onClick={handleSubmit}>
             <span>Login</span>
           </div>
-          <div className="login-button" onClick={loginDemoUser}>
+          <div className={"login-button"} onClick={loginDemoUser}>
             <span>Login As Demo User</span>
           </div>
-          <div className="login-button" onClick={showSignUpModal}>
+          <div className={"login-button"} onClick={showSignUpModal}>
             <span>Sign up</span>
           </div>
+          {formErrorState &&
+          <div className={"form-error-message"}>
+            <span>Invalid email or password</span>
+          </div>}
 
           <SignupModal
             signUpModal={signUpModalState}
