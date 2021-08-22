@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
-import psychoTantricJuju from '../media/TrillianGreen-PsychoTantricJujuJazz-01-BhenPaUlRaga.wav';
+// import psychoTantricJuju from '../media/TrillianGreen-PsychoTantricJujuJazz-01-BhenPaUlRaga.wav';
 
 import playButton from '../images/playButton.svg';
 import pauseButton from '../images/pauseButton.png';
@@ -231,7 +231,7 @@ const AudioPlayer2 = (props)=>{
             id={"audio"}
             ref={media}
             // controls
-            src={psychoTantricJuju}
+            // src={psychoTantricJuju}
             // autoPlay
             loop={loopState}
             >            

@@ -1,5 +1,5 @@
 import React from 'react';
-import AudioPlayer1 from './AudioPlayer1'
+// import AudioPlayer1 from './AudioPlayer1'
 import AudioPlayer2 from './AudioPlayer2';
 
 const AudioPlayerSwitch = (props)=>{
@@ -10,7 +10,7 @@ const AudioPlayerSwitch = (props)=>{
         switch(props.audioSwitchState ? props.audioSwitchState : "AudioPlayer2") {
           case "AudioPlayer1":
             return (
-              <AudioPlayer1/>
+              <AudioPlayer2/>
             )
           case "AudioPlayer2":
             return (

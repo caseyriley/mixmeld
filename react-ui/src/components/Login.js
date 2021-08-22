@@ -44,12 +44,15 @@ const Login = () => {
       method: "POST",
       mode: "cors",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: `${emailState}`, password: `${passwordState}` }),
+      body: JSON.stringify({
+        email: `${emailState}`,
+        password: `${passwordState}`,
+      }),
     });
     const res = await response.json();
     if (!response.ok) {
       setFormErrorState(true);
-    } 
+    }
     if (res.auth_token !== undefined) {
       window.localStorage.setItem("auth_token", res.auth_token);
       window.location.reload();
@@ -147,17 +150,17 @@ const Login = () => {
           </a>
         </div>
       </div>
-
+          
       <div id={"login-c"} className={"fade-in"}>
         <h1 id={"main-page__title"}>Mix Meld</h1>
         <div id={"login-c__login-form"}>
           <label>Login Email</label>
           <input
-            className="login-input-1"
+            className="login-email-input"
             placeholder="Email"
-            value={emailState}
-            type="email"
-            onChange={updateEmail}
+            // value={emailState}
+            // type="email"
+            // onChange={updateEmail}
           />
           <label>Password</label>
           <input
@@ -176,10 +179,11 @@ const Login = () => {
           <div className={"login-button"} onClick={showSignUpModal}>
             <span>Sign up</span>
           </div>
-          {formErrorState &&
-          <div className={"form-error-message"}>
-            <span>Invalid email or password</span>
-          </div>}
+          {formErrorState && (
+            <div className={"form-error-message"} onClick={()=>{setFormErrorState(false)}}>
+              <span>Invalid email or password</span>
+            </div>
+          )}
 
           <SignupModal
             signUpModal={signUpModalState}
