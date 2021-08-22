@@ -27,6 +27,7 @@ const Login = () => {
   const [passwordState, setPasswordState] = useState("");
   const [instructionsModalState, setInstructionsModalState] = useState(false);
   const [formErrorState, setFormErrorState] = useState(false);
+  const [errorState, setErrorState] = useState({email: true, password: true});
 
   const showSignUpModal = () => {
     setSignUpModalState(true);
@@ -39,24 +40,49 @@ const Login = () => {
 
   const updatePassword = (e) => setPasswordState(e.target.value);
 
+  function validateEmail(email) {
+    const re =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  }
+
+  function validatePassword(password) {
+    const re = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    return re.test(password);
+  }
+
   const handleSubmit = async () => {
-    const response = await fetch(`${API_URL}/auth/login`, {
-      method: "POST",
-      mode: "cors",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email: `${emailState}`,
-        password: `${passwordState}`,
-      }),
-    });
-    const res = await response.json();
-    if (!response.ok) {
-      setFormErrorState(true);
+
+    let prev = {email: true, password: true};
+
+    if (validateEmail(emailState) === false) {
+      prev.email = false;
     }
-    if (res.auth_token !== undefined) {
-      window.localStorage.setItem("auth_token", res.auth_token);
-      window.location.reload();
+
+    if (validatePassword(passwordState) === false) {
+      prev.password = false;
     }
+
+    if (prev.email && prev.password){
+      const response = await fetch(`${API_URL}/auth/login`, {
+        method: "POST",
+        mode: "cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: `${emailState}`,
+          password: `${passwordState}`,
+        }),
+      });
+      const res = await response.json();
+      if (!response.ok) {
+        setFormErrorState(true);
+      }
+      if (res.auth_token !== undefined) {
+        window.localStorage.setItem("auth_token", res.auth_token);
+        window.location.reload();
+      }
+    }
+    setErrorState(prev);
   };
 
   const loginDemoUser = async () => {
@@ -156,15 +182,15 @@ const Login = () => {
         <div id={"login-c__login-form"}>
           <label>Login Email</label>
           <input
-            className="login-email-input"
+            className={`login-email-input ${errorState.email === false ? "login-error" :  ""}`}
             placeholder="Email"
-            // value={emailState}
-            // type="email"
-            // onChange={updateEmail}
+            value={emailState}
+            type="email"
+            onChange={updateEmail}
           />
           <label>Password</label>
           <input
-            className="login-input-2"
+            className={`login-input-2 ${errorState.password === false ? "login-error" : ""}`}
             type="password"
             placeholder="Password"
             value={passwordState}
