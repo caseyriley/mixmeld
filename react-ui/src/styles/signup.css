@@ -115,3 +115,12 @@
 .modal-hiding {
   display: none;
 }
+.signup-input-error {
+  font-family: sans-serif;
+  font-size: 15px;
+  color: white;
+  padding: 10px;
+  border: 1px dashed red;
+  text-align: center;
+  border-radius: 5px;
+}
