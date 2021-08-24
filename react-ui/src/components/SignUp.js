@@ -10,9 +10,12 @@ const SignUp = (props) => {
   const [firstnameState, setFirstnameState] = useState();
   const [lastnameState, setLastnameState] = useState();
   const [zipcodeState, setZipcodeState] = useState();
-  const [errorState, setErrorState] = useState({ email: true, password: true });
-  const [emailReqState, setEmailReqState] = useState(false);
-  const [passwordReqState, setPasswordReqState] = useState(false);
+  const [errorState, setErrorState] = useState({
+    username: true,
+    email: true,
+    password: true,
+    passwordConfirm: true,
+  });
 
   const updateUsernameState = (e) => setUsernameState(e.target.value);
   const updateEmailState = (e) => setEmailState(e.target.value);
@@ -33,20 +36,25 @@ const SignUp = (props) => {
     return re.test(password);
   }
 
-  function showEmailReq() {
-    let prev = emailReqState;
-    setEmailReqState(!prev);
+  function validateName(name) {
+    if (usernameState.length < 3) return false;
+    else return true;
   }
 
-  function showPasswordReq() {
-    let prev = passwordReqState;
-    setPasswordReqState(!prev);
+  function validatePasswordConfirm(passwordState, passwordConfirmState) {
+    if (passwordState !== passwordConfirmState) return false;
+    else return true;
   }
 
   const submitUser = async (e) => {
     e.preventDefault();
 
-    let prev = { email: true, password: true, passwordConfirm: true };
+    let prev = {
+      username: true,
+      email: true,
+      password: true,
+      passwordConfirm: true,
+    };
 
     if (validateEmail(emailState) === false) {
       prev.email = false;
@@ -56,8 +64,18 @@ const SignUp = (props) => {
       prev.password = false;
     }
 
-    if (passwordState !== passwordConfirmState) {
-      prev.passwordConfirm = false;
+    if (passwordState){
+      if (
+        validatePasswordConfirm(passwordState, setPasswordConfirmState) === false
+      ) {
+        prev.passwordConfirm = false;
+      }
+    }
+
+    if (usernameState) {
+      if (validateName(usernameState) === false) {
+        prev.username = false;
+      }
     }
 
     const user = {
@@ -121,6 +139,13 @@ const SignUp = (props) => {
                 onChange={updateUsernameState}
                 placeholder="User Name"
               />
+              {!errorState.username && (
+                <div className={"signup-input-error"}>
+                  <span>
+                    User Name must be at least 3 characters
+                  </span>
+                </div>
+              )}
               <input
                 className="signup-form__email"
                 name="email"
@@ -149,6 +174,14 @@ const SignUp = (props) => {
                 placeholder="Password"
                 type="password"
               />
+              {!errorState.password && (
+                <div className={"signup-input-error"}>
+                  <span>
+                    Must be a min 8 letter password, with at least a symbol,
+                    upper and lower case letters, and a number
+                  </span>
+                </div>
+              )}
               <input
                 className="signup-from__password-confirm"
                 name="password-confirm"
@@ -158,6 +191,13 @@ const SignUp = (props) => {
                 type="password"
               />
             </div>
+            {!errorState.passwordConfirm && (
+              <div className={"signup-input-error"}>
+                <span>
+                  Provided password and confirmation passwords must match
+                </span>
+              </div>
+            )}
             <div className="signup-form__text">
               <p>Please provide your information</p>
             </div>
