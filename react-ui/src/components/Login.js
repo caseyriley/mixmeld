@@ -203,7 +203,7 @@ const Login = () => {
             onChange={updateEmail}
           />
           <label>Password <img className={"input-info-icon"} onClick={showPasswordReq} src={infoIcon} alt={"information icon for info about acceptable passwords"}/></label>
-          {passwordReqState && <div className={"reqInfoText"}><span>Must be a min 8 letter password, with at least a symbol, upper and lower case letters and a number"</span></div>}
+          {passwordReqState && <div className={"reqInfoText"}><span>Must be a min 8 letter password, with at least a symbol, upper and lower case letters, and a number</span></div>}
           <input
             className={`login-input-2 ${errorState.password === false ? "login-error" : ""}`}
             type="password"
