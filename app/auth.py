@@ -42,7 +42,7 @@ def login():
             return jsonify(message='Password verify failed')
         else:
             auth_token = create_access_token(
-                identity={"email": user.email}, fresh=True)
+                identity={"email": user.email}, fresh=False)
         return jsonify(auth_token=auth_token)
 
     except Exception as e:
@@ -120,7 +120,7 @@ def signup():
         db.session.commit()
 
         auth_token = create_access_token(
-            identity={"email": user.email}, fresh=True)
+                identity={"email": user.email}, fresh=False)
         return jsonify(auth_token=auth_token), 200
 
     except Exception:
