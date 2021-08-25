@@ -90,7 +90,6 @@ def signup():
         db.session.add(user)
         db.session.commit()
 
-        m_user_id = '2'
         m_trackname = '3121'
         m_trackartist = 'Prince'
         m_trackalbum = '3121'
@@ -101,6 +100,7 @@ def signup():
         m_trackart = 'https://formless.s3.amazonaws.com/220px-Prince_-_3121.jpg'
 
         current_user = User.query.filter(User.email == email).first()
+        print('current_user999999999999999999999999999999', current_user)
 
         first_track = Track(
             user_id=current_user.id,
@@ -113,6 +113,8 @@ def signup():
             trackgenre=m_trackgenre,
             trackart=m_trackart,
         )
+
+        print('first_track88888888888888888888888888888', first_track)
 
         db.session.add(first_track)
         db.session.commit()
