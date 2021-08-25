@@ -36,12 +36,12 @@ const SignUp = (props) => {
     return re.test(password);
   }
 
-  function validateName(name) {
+  function validateName() {
     if (usernameState.length < 3) return false;
     else return true;
   }
 
-  function validatePasswordConfirm(passwordState, passwordConfirmState) {
+  function validatePasswordConfirm() {
     if (passwordState !== passwordConfirmState) return false;
     else return true;
   }
@@ -66,14 +66,14 @@ const SignUp = (props) => {
 
     if (passwordState){
       if (
-        validatePasswordConfirm(passwordState, setPasswordConfirmState) === false
+        validatePasswordConfirm() === false
       ) {
         prev.passwordConfirm = false;
       }
     }
 
     if (usernameState) {
-      if (validateName(usernameState) === false) {
+      if (validateName() === false) {
         prev.username = false;
       }
     }
