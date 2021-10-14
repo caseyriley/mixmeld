@@ -41,7 +41,7 @@ const AudioPlayer2 = (props)=>{
 
 
   //---------Get-Current_User--------------
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState();
 
   useEffect(() => {
 
@@ -353,24 +353,25 @@ function nextTrack() {
   const [playlistState, setPlaylistState] = useState();
 
   useEffect(() => {
-  
-    const getCurrentUserPlaylists = async () => {
-      const token = window.localStorage.getItem('auth_token')
-      const response = await fetch(`${API_URL}/playlists/${currentUser.id}`, {
-        method: "GET",
-        mode: "cors",
-        headers: { "Authorization": `Bearer ${token}` },
-      })
-      if (!response.ok) {
-        console.log("getCurrentUserPlaylists failed in Pl2LeftColumn.js");
-      } else {
-        const json = await response.json();
-        setPlaylistState(json);
-        console.log("getCurrentUserPlaylists json", json)
-      
+    if (currentUser){
+      console.log("AudioPlayer2.js line 357 currentUser", currentUser);
+      const getCurrentUserPlaylists = async () => {
+        const token = window.localStorage.getItem('auth_token')
+        const response = await fetch(`${API_URL}/playlists/${currentUser.id}`, {
+          method: "GET",
+          mode: "cors",
+          headers: { "Authorization": `Bearer ${token}` },
+        })
+        if (!response.ok) {
+          console.log("getCurrentUserPlaylists failed in AudioPlayer2.js");
+        } else {
+          const json = await response.json();
+          setPlaylistState(json);
+          console.log("getCurrentUserPlaylists json", json)
+        }
       }
+      getCurrentUserPlaylists();
     }
-    getCurrentUserPlaylists();
   },[currentUser, refreshPlaylistState])
   // -----------------------------------------------------
   // ----------------Get-Selected-Playlists------------------------

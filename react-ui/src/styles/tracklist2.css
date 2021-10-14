@@ -182,6 +182,12 @@ li {
   align-items: center;
   font-family: 'Electrolize', sans-serif;  
 }
+* ::-webkit-scrollbar{
+  display: none;
+}
+* {
+  scrollbar-width: none;
+}
 .pl2-track-pointer-block {
   min-height: 30px;
   min-width: 100%;

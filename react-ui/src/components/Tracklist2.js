@@ -20,7 +20,7 @@ const Tracklist2 = (props) => {
   }
   // -------------------------------------- 
   //---------Get-Current_User--------------
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState();
 
   useEffect(() => {
 
@@ -68,32 +68,37 @@ const Tracklist2 = (props) => {
 
 // ---------------------Get-User-Tracks-pl2----------
 const getUserTracks = async (path) => {
-  const token = window.localStorage.getItem('auth_token');
-  const response = await fetch(`${API_URL}/tracks/user/${path}/${currentUser.id}`, {
-    method: "GET",
-    mode: "cors",
-    headers: { "Authorizaion": `Bearer ${token}` }
-  })
-  if (!response.ok) { console.log("error in getUserTracks") }
-  else {
-    const json = await response.json();
-    setTrackArrayState(json);
-    props.setTrackArrayLengthState(json.length);
+  if (currentUser){
+    console.log("Tracklist2.js currentUser!!!!!", currentUser)
+    const token = window.localStorage.getItem('auth_token');
+    const response = await fetch(`${API_URL}/tracks/user/${path}/${currentUser.id}`, {
+      method: "GET",
+      mode: "cors",
+      headers: { "Authorizaion": `Bearer ${token}` }
+    })
+    if (!response.ok) { console.log("error in getUserTracks") }
+    else {
+      const json = await response.json();
+      setTrackArrayState(json);
+      props.setTrackArrayLengthState(json.length);
+    }
   }
 }
 
 const getUserTracksReverse = async (path) => {
-  const token = window.localStorage.getItem('auth_token');
-  const response = await fetch(`${API_URL}/tracks/user/${path}/${currentUser.id}`, {
-    method: "GET",
-    mode: "cors",
-    headers: { "Authorizaion": `Bearer ${token}` }
-  })
-  if (!response.ok) { console.log("error iiiiiin getUserTracks") }
-  else {
-    const json = await response.json();
-    setTrackArrayState(json.reverse());
-    props.setTrackArrayLengthState(json.length);
+  if (currentUser){
+    const token = window.localStorage.getItem('auth_token');
+    const response = await fetch(`${API_URL}/tracks/user/${path}/${currentUser.id}`, {
+      method: "GET",
+      mode: "cors",
+      headers: { "Authorizaion": `Bearer ${token}` }
+    })
+    if (!response.ok) { console.log("error in getUserTracks") }
+    else {
+      const json = await response.json();
+      setTrackArrayState(json.reverse());
+      props.setTrackArrayLengthState(json.length);
+    }
   }
 }
 
@@ -119,61 +124,60 @@ const getUserTracksReverse = async (path) => {
   }
 
   useEffect(() => {
-
-    if (organiseByState[1] === "id") {
-      getUserTracks("date");
-
-    } else if (organiseByState[1] === "trackartist") {
-      if (organiseByState[1] === organiseByState[2]){
-        getUserTracksReverse("trackartist")
-      } else {
-        getUserTracks("trackartist");
-      }
-
-    } else if (organiseByState[1] === "trackrating") {
-      if (organiseByState[1] === organiseByState[2]){
-        getUserTracksReverse("trackrating")
-      } else {
-        getUserTracks("trackrating");
-      }
-
-    } else if (organiseByState[1] === "trackname") {
-      if (organiseByState[1] === organiseByState[2]){
-        getUserTracksReverse("trackname")
-      } else {
-        getUserTracks("trackname");
-      }
-
-    } else if (organiseByState[1] === "trackgenre") {
-      if (organiseByState[1] === organiseByState[2]){
-        getUserTracksReverse("trackgenre")
-      } else {
-        getUserTracks("trackgenre");
-      }
-
-    } else if (organiseByState[1] === "tracktime") {
-      if (organiseByState[1] === organiseByState[2]){
-        getUserTracksReverse("tracktime")
-      } else {
-        getUserTracks("tracktime");
-      }
-
-    } else if (organiseByState[1] === "date") {
-      if (organiseByState[1] === organiseByState[2]){
-        getUserTracksReverse("date")
-      } else {
+    if (currentUser){
+      if (organiseByState[1] === "id") {
         getUserTracks("date");
+  
+      } else if (organiseByState[1] === "trackartist") {
+        if (organiseByState[1] === organiseByState[2]){
+          getUserTracksReverse("trackartist")
+        } else {
+          getUserTracks("trackartist");
+        }
+  
+      } else if (organiseByState[1] === "trackrating") {
+        if (organiseByState[1] === organiseByState[2]){
+          getUserTracksReverse("trackrating")
+        } else {
+          getUserTracks("trackrating");
+        }
+  
+      } else if (organiseByState[1] === "trackname") {
+        if (organiseByState[1] === organiseByState[2]){
+          getUserTracksReverse("trackname")
+        } else {
+          getUserTracks("trackname");
+        }
+  
+      } else if (organiseByState[1] === "trackgenre") {
+        if (organiseByState[1] === organiseByState[2]){
+          getUserTracksReverse("trackgenre")
+        } else {
+          getUserTracks("trackgenre");
+        }
+  
+      } else if (organiseByState[1] === "tracktime") {
+        if (organiseByState[1] === organiseByState[2]){
+          getUserTracksReverse("tracktime")
+        } else {
+          getUserTracks("tracktime");
+        }
+  
+      } else if (organiseByState[1] === "date") {
+        if (organiseByState[1] === organiseByState[2]){
+          getUserTracksReverse("date")
+        } else {
+          getUserTracks("date");
+        }
+  
+      } else if (organiseByState[1] === "trackalbum") {
+        if (organiseByState[1] === organiseByState[2]){
+          getUserTracksReverse("trackalbum")
+        } else {
+          getUserTracks("trackalbum");
+        }
       }
-
-    } else if (organiseByState[1] === "trackalbum") {
-      if (organiseByState[1] === organiseByState[2]){
-        getUserTracksReverse("trackalbum")
-      } else {
-        getUserTracks("trackalbum");
-      }
-
     }
-    
   }, [currentUser, props.refreshTrackState, organiseByState])
 // ------------------------------------------------------
 // ---------------Update-Track-Rating--------------------

@@ -25,7 +25,9 @@ def api():
     user = get_jwt_identity()
     current_user = User.query.filter_by(email=user['email']).first()
     safe_user = current_user.to_safe_object()
+    print("/user/token safe_user11111111111111", safe_user)
     if safe_user:
+      print("/user/token jsonify(safe_user)22222222222222", jsonify(safe_user))
       return jsonify(safe_user), 200
     else:
       print('Failed in users/token')
