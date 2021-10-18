@@ -23,22 +23,24 @@ const Tracklist2 = (props) => {
   const [currentUser, setCurrentUser] = useState();
 
   useEffect(() => {
-
-    const getCurrentUser = async () => {
-      const token = window.localStorage.getItem('auth_token')
-      const response = await fetch(`${API_URL}/users/token`, {
-        method: "GET",
-        mode: "cors",
-        headers: { "Authorization": `Bearer ${token}` },
-      })
-      if (!response.ok) {
-        console.log("getCurrent user response failed in Uploading.js");
-      } else {
-        const json = await response.json();
-        setCurrentUser(json);
+    if (currentUser){
+      const getCurrentUser = async () => {
+        const token = window.localStorage.getItem('auth_token')
+        const response = await fetch(`${API_URL}/users/token`, {
+          method: "GET",
+          mode: "cors",
+          headers: { "Authorization": `Bearer ${token}` },
+        })
+        if (!response.ok) {
+          console.log("getCurrent user response failed in Uploading.js");
+        } else {
+          const json = await response.json();
+          setCurrentUser(json);
+        }
       }
+      getCurrentUser();
     }
-    getCurrentUser();
+
   }, [])
 // ----------------------------------------------
 // -------------------Get-Users-First-Track---------

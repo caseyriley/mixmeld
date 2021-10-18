@@ -44,44 +44,45 @@ const AudioPlayer2 = (props)=>{
   const [currentUser, setCurrentUser] = useState();
 
   useEffect(() => {
-
-    const getCurrentUser = async () => {
-      const token = window.localStorage.getItem('auth_token')
-      const response = await fetch(`${API_URL}/users/token`, {
-        method: "GET",
-        mode: "cors",
-        headers: { "Authorization": `Bearer ${token}` },
-      })
-      if (!response.ok) {
-        console.log("getCurrent user response failed in Uploading.js");
-      } else {
-        const json = await response.json();
-        setCurrentUser(json);
-
-        const getUserFirstTrack = async () => {
-          const response = await fetch(`${API_URL}/tracks/first/${json.id}`, {
-            method: "GET",
-            mode: "cors",
-          })
-          if (!response.ok) { console.log("error in getUserTracks") }
-          else {
-            const json = await response.json();
-            if (json === []){
-    
+    if (currentUser){
+      const getCurrentUser = async () => {
+        const token = window.localStorage.getItem('auth_token')
+        const response = await fetch(`${API_URL}/users/token`, {
+          method: "GET",
+          mode: "cors",
+          headers: { "Authorization": `Bearer ${token}` },
+        })
+        if (!response.ok) {
+          console.log("getCurrent user response failed in Uploading.js");
+        } else {
+          const json = await response.json();
+          setCurrentUser(json);
+  
+          const getUserFirstTrack = async () => {
+            const response = await fetch(`${API_URL}/tracks/first/${json.id}`, {
+              method: "GET",
+              mode: "cors",
+            })
+            if (!response.ok) { console.log("error in getUserTracks") }
+            else {
+              const json = await response.json();
+              if (json === []){
+      
+              }
+              console.log("tracks/first/<id>+++++++++++++++++++++++>>>>>",json)
+              setFirstTrack(json);
+              currentTrack.current = json.id;
+              setTrackArtState(json.trackart);
+              trackArtRef.current = json.trackart;
             }
-            console.log("tracks/first/<id>+++++++++++++++++++++++>>>>>",json)
-            setFirstTrack(json);
-            currentTrack.current = json.id;
-            setTrackArtState(json.trackart);
-            trackArtRef.current = json.trackart;
           }
+          getUserFirstTrack();
+          media.current.volume = .5;
+         
         }
-        getUserFirstTrack();
-        media.current.volume = .5;
-       
       }
+      getCurrentUser();
     }
-    getCurrentUser();
   }, [])
 // ----------------------------------------------
 // ---------------Play/Pause-Button---------------
