@@ -11,25 +11,25 @@ const Pl2AlbumPage = (props) => {
   })
 
   useEffect(()=>{
+    if (props.currentUser){
+      const token = window.localStorage.getItem('auth_token');
 
-    const token = window.localStorage.getItem('auth_token');
-
-    const getUserTracksByAlbum = async () => {
-      const response = await fetch(`${API_URL}/tracks/user/albums/${props.currentUser.id}`, {
-        method: "GET",
-        mode: "cors",
-        headers: { "Authorizaion": `Bearer ${token}` }
-      })
-      if (!response.ok) { console.log("error in getUserTracks") }
-      else {
-        const json = await response.json();
-          setAlbumArrayState(json); 
-          const trackArraylength = document.getElementsByClassName('next-track-info').length
-          props.setTrackArrayLengthState(trackArraylength);
+      const getUserTracksByAlbum = async () => {
+        const response = await fetch(`${API_URL}/tracks/user/albums/${props.currentUser.id}`, {
+          method: "GET",
+          mode: "cors",
+          headers: { "Authorizaion": `Bearer ${token}` }
+        })
+        if (!response.ok) { console.log("error in getUserTracks") }
+        else {
+          const json = await response.json();
+            setAlbumArrayState(json); 
+            const trackArraylength = document.getElementsByClassName('next-track-info').length
+            props.setTrackArrayLengthState(trackArraylength);
+        }
       }
+      getUserTracksByAlbum();
     }
-    getUserTracksByAlbum();
-
   },[props.currentUser])
 
 return (

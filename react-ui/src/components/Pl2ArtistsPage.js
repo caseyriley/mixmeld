@@ -12,27 +12,27 @@ const Pl2ArtistsPage = (props) => {
 
 
   useEffect(()=>{
+    if (props.currentUser){
+      const token = window.localStorage.getItem('auth_token');
 
-    const token = window.localStorage.getItem('auth_token');
-
-    const getUserTracksByArtist = async () => {
-      const response = await fetch(`${API_URL}/tracks/user/artists/${props.currentUser.id}`, {
-        method: "GET",
-        mode: "cors",
-        headers: { "Authorizaion": `Bearer ${token}` }
-      })
-      if (!response.ok) { console.log("error in getUserTracks") }
-      else {
-        const json = await response.json();
+      const getUserTracksByArtist = async () => {
+        const response = await fetch(`${API_URL}/tracks/user/artists/${props.currentUser.id}`, {
+          method: "GET",
+          mode: "cors",
+          headers: { "Authorizaion": `Bearer ${token}` }
+        })
+        if (!response.ok) { console.log("error in getUserTracks") }
+        else {
+          const json = await response.json();
+    
+            setArtistArrayState(json); 
   
-          setArtistArrayState(json); 
-
-          const trackArraylength = document.getElementsByClassName('next-track-info').length
-          props.setTrackArrayLengthState(trackArraylength);
+            const trackArraylength = document.getElementsByClassName('next-track-info').length
+            props.setTrackArrayLengthState(trackArraylength);
+        }
       }
+      getUserTracksByArtist();
     }
-    getUserTracksByArtist();
-
   },[props.currentUser])
 
   // const artistPage = useMemo(()=>{
