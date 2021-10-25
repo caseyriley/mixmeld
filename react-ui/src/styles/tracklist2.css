@@ -220,19 +220,19 @@ li {
 }
 .pl2-track-artist-rating__div {
   width: 100%;
-  height: 30px;
+  height: 30px;align-items: center;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-content: center;
   position: relative;
   left: -1px;
+  display: flex;
+  align-items: center;
 }
 .pl2-track-artist-rating-span {
   margin-left: 0px !important;
   font-size: 15px;
-  position: relative;
-  top: 0px;
 }
 
 .pl2-track-ul__li__name {
