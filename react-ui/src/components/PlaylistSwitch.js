@@ -20,7 +20,7 @@ const PlaylistSwitch = (props)=>{
               trackEditState={props.trackEditState} setTrackEditState={props.setTrackEditState} 
               setTrack={props.setTrack} setTrackArrayLengthState={props.setTrackArrayLengthState}
               uploadModalState={props.uploadModalState} setUploadModalState={props.setUploadModalState} 
-              trackLocationState={props.trackLocationState} 
+              trackLocationState={props.trackLocationState} currentUser={props.currentUser}
               setTrackLocationState={props.setTrackLocationState}/>
             )
           case "Playlist2":

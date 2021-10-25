@@ -20,28 +20,28 @@ const Tracklist2 = (props) => {
   }
   // -------------------------------------- 
   //---------Get-Current_User--------------
-  const [currentUser, setCurrentUser] = useState();
+  // const [currentUser, setCurrentUser] = useState();
 
-  useEffect(() => {
-    if (currentUser){
-      const getCurrentUser = async () => {
-        const token = window.localStorage.getItem('auth_token')
-        const response = await fetch(`${API_URL}/users/token`, {
-          method: "GET",
-          mode: "cors",
-          headers: { "Authorization": `Bearer ${token}` },
-        })
-        if (!response.ok) {
-          console.log("getCurrent user response failed in Uploading.js");
-        } else {
-          const json = await response.json();
-          setCurrentUser(json);
-        }
-      }
-      getCurrentUser();
-    }
+  // useEffect(() => {
+  //   if (currentUser){
+  //     const getCurrentUser = async () => {
+  //       const token = window.localStorage.getItem('auth_token')
+  //       const response = await fetch(`${API_URL}/users/token`, {
+  //         method: "GET",
+  //         mode: "cors",
+  //         headers: { "Authorization": `Bearer ${token}` },
+  //       })
+  //       if (!response.ok) {
+  //         console.log("getCurrent user response failed in Uploading.js");
+  //       } else {
+  //         const json = await response.json();
+  //         setCurrentUser(json);
+  //       }
+  //     }
+  //     getCurrentUser();
+  //   }
 
-  }, [])
+  // }, [])
 // ----------------------------------------------
 // -------------------Get-Users-First-Track---------
 
@@ -70,10 +70,10 @@ const Tracklist2 = (props) => {
 
 // ---------------------Get-User-Tracks-pl2----------
 const getUserTracks = async (path) => {
-  if (currentUser){
-    console.log("Tracklist2.js currentUser!!!!!", currentUser)
+  if (props.currentUser){
+    console.log("Tracklist2.js currentUser!!!!!", props.currentUser)
     const token = window.localStorage.getItem('auth_token');
-    const response = await fetch(`${API_URL}/tracks/user/${path}/${currentUser.id}`, {
+    const response = await fetch(`${API_URL}/tracks/user/${path}/${props.currentUser.id}`, {
       method: "GET",
       mode: "cors",
       headers: { "Authorizaion": `Bearer ${token}` }
@@ -88,9 +88,9 @@ const getUserTracks = async (path) => {
 }
 
 const getUserTracksReverse = async (path) => {
-  if (currentUser){
+  if (props.currentUser){
     const token = window.localStorage.getItem('auth_token');
-    const response = await fetch(`${API_URL}/tracks/user/${path}/${currentUser.id}`, {
+    const response = await fetch(`${API_URL}/tracks/user/${path}/${props.currentUser.id}`, {
       method: "GET",
       mode: "cors",
       headers: { "Authorizaion": `Bearer ${token}` }
@@ -126,7 +126,7 @@ const getUserTracksReverse = async (path) => {
   }
 
   useEffect(() => {
-    if (currentUser){
+    if (props.currentUser){
       if (organiseByState[1] === "id") {
         getUserTracks("date");
   
@@ -180,7 +180,7 @@ const getUserTracksReverse = async (path) => {
         }
       }
     }
-  }, [currentUser, props.refreshTrackState, organiseByState])
+  }, [props.currentUser, props.refreshTrackState, organiseByState])
 // ------------------------------------------------------
 // ---------------Update-Track-Rating--------------------
 function updateTrackRating(e) {
@@ -355,7 +355,7 @@ function toStandardTime(militaryTime) {
 
   return(
     <>
-    {props.uploadModalState === "upload-modal" ? <UploadModal currentUser={currentUser} refreshTrackState={props.refreshTrackState} setRefreshTrackState={props.setRefreshTrackState} uploadModalState={props.uploadModalState} setUploadModalState={props.setUploadModalState} setTrackLocationState={props.setTrackLocationState} trackLocationState={props.trackLocationState}/> : ""}
+    {props.uploadModalState === "upload-modal" ? <UploadModal currentUser={props.currentUser} refreshTrackState={props.refreshTrackState} setRefreshTrackState={props.setRefreshTrackState} uploadModalState={props.uploadModalState} setUploadModalState={props.setUploadModalState} setTrackLocationState={props.setTrackLocationState} trackLocationState={props.trackLocationState}/> : ""}
     { trackRatingModalState ? <TrackRatingModal updateTrackRating={updateTrackRating} ratingAudioState={ratingAudioState}  setTrackRatingModalState={setTrackRatingModalState}/> : null}
     <div id={"pl2-playlist-border"} className={"fade-in-2"}>
       <div id={"pl2-playlist-c"} >
