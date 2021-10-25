@@ -6,7 +6,6 @@ import pen from '../images/pen.png';
 import deleteX from '../images/deleteX.png';
 import UploadModal from './UploadModal';
 import UploadingTrackPl2 from './UploadingTrackPl2';
-// import plusSign from '../images/plusSign.png';
 import plusSign from '../images/plusSing2.png';
 import TrackRatingModal from './TrackRatingModal';
 
@@ -19,52 +18,6 @@ const Tracklist2 = (props) => {
     props.setTrackEditState(newState);
   }
   // -------------------------------------- 
-  //---------Get-Current_User--------------
-  // const [currentUser, setCurrentUser] = useState();
-
-  // useEffect(() => {
-  //   if (currentUser){
-  //     const getCurrentUser = async () => {
-  //       const token = window.localStorage.getItem('auth_token')
-  //       const response = await fetch(`${API_URL}/users/token`, {
-  //         method: "GET",
-  //         mode: "cors",
-  //         headers: { "Authorization": `Bearer ${token}` },
-  //       })
-  //       if (!response.ok) {
-  //         console.log("getCurrent user response failed in Uploading.js");
-  //       } else {
-  //         const json = await response.json();
-  //         setCurrentUser(json);
-  //       }
-  //     }
-  //     getCurrentUser();
-  //   }
-
-  // }, [])
-// ----------------------------------------------
-// -------------------Get-Users-First-Track---------
-
-
-  // useEffect(()=>{
-  //   const token = window.localStorage.getItem('auth_token');
-
-  //   const getUserFirstTrack = async () => {
-  //     const response = await fetch(`${API_URL}/tracks/first/${currentUser.id}`, {
-  //       method: "GET",
-  //       mode: "cors",
-  //       headers: { "Authorizaion": `Bearer ${token}` }
-  //     })
-  //     if (!response.ok) { console.log("error in getUserTracks") }
-  //     else {
-  //       const json = await response.json();
-  //       props.firstTrack.current = json;
-  //     }
-  //   }
-  //   getUserFirstTrack();
-
-  // },[])
-  // -----------------------------------------------
 
 
 
@@ -108,7 +61,6 @@ const getUserTracksReverse = async (path) => {
 
 
   const [trackArrayState, setTrackArrayState] = useState([])
-  // const [refreshTrackState, setRefreshTrackState] = useState(1)
   const [organiseByState, setOrganiseByState] = useState({1:"date", 2:"", 3:false})
 
   function organise(string){
@@ -313,9 +265,6 @@ const [playlistIdState, setPlaylistIdState] = useState([]);
     fetch(`${API_URL}/playlists/list/post`, options)
     let prevRefreshTrackState = props.refreshTrackState;
     props.setRefreshTrackState(prevRefreshTrackState  + 7);
-    // let currentPlaylistIdState = playlistIdState;
-    // setPlaylistIdState([]);
-    // setPlaylistIdState(currentPlaylistIdState);
   }
 // ----------------------------------------------------
 // ---------Convert-to-standard-time---------

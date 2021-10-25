@@ -42,7 +42,7 @@ const AudioPlayer2 = (props) => {
   const [trackEditState, setTrackEditState] = useState(false);
   const [artistAlbumSongState, setArtistAlbumSongState] =
     useState("selected-song");
-
+  const [trackArtState, setTrackArtState] = useState(formlessMusicIcon);
   //---------Get-Current_User--------------
   const [currentUser, setCurrentUser] = useState();
 
@@ -225,7 +225,7 @@ const AudioPlayer2 = (props) => {
   // ---------------------------------------------
   //---------------Set-Track-Onclick--------------
 
-  const [trackArtState, setTrackArtState] = useState();
+
   const [pl2TrackLocationState, setPl2TrackLocationState] = useState();
 
   function setTrack(track, songName, artistName, audioId, trackArt) {
