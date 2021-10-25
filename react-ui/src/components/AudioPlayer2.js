@@ -74,8 +74,10 @@ const AudioPlayer2 = (props) => {
             console.log("tracks/first/<id>+++++++++++++++++++++++>>>>>", json);
             setFirstTrack(json);
             currentTrack.current = json.id;
-            setTrackArtState(json.trackart);
-            trackArtRef.current = json.trackart;
+            if (json.trackart){
+              setTrackArtState(json.trackart);
+              trackArtRef.current = json.trackart;
+            }
           }
         };
         getUserFirstTrack();
