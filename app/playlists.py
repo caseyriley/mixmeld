@@ -31,6 +31,7 @@ def get_playlist_list(id):
     
     playlist_l = json.loads(playlist.playlist_list)
     playlist = []
+    
     for track_id in playlist_l:
         track = Track.query.filter(Track.id == track_id).first()
         track_dict = track.to_dict()

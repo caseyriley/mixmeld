@@ -6,6 +6,7 @@ import SearchTracklist2 from './SearchTracklist2';
 import Tracklist2 from './Tracklist2';
 
 const PlaylistSwitch = (props)=>{
+  console.log("PlaylistSwitch props----------------------------->>>", props)
   
   return (
     <>
