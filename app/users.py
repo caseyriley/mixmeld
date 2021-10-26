@@ -20,7 +20,10 @@ def user_by_id(id):
 
 # get current user from access token
 @user.route('/token', methods=['GET'])
-@jwt_required()
+@jwt_required
+# ---- old @jwt_required syntax:
+# @jwt_required()
+#-----
 def api():
     user = get_jwt_identity()
     current_user = User.query.filter_by(email=user['email']).first()
