@@ -20,7 +20,7 @@ def user_by_id(id):
 
 # get current user from access token
 @user.route('/token', methods=['GET'])
-@jwt_required
+@jwt_required()
 # ---- old @jwt_required syntax:
 # @jwt_required()
 #-----
