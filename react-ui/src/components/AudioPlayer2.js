@@ -69,9 +69,6 @@ const AudioPlayer2 = (props) => {
             console.log("error in getUserTracks");
           } else {
             const json = await response.json();
-            // if (json === []) {
-            // }
-            console.log("tracks/first/<id>+++++++++++++++++++++++>>>>>", json);
             setFirstTrack(json);
             currentTrack.current = json.id;
             if (json.trackart){
@@ -422,9 +419,6 @@ const AudioPlayer2 = (props) => {
   const [selectedPlaylistState, setSelectedPlaylistState] = useState();
 
   useEffect(() => {
-    // if (playlistIdRef.current){
-    //   if (playlistIdRef.current.playlistId){
-    console.log("AudioPlayer2-line-383");
     setSelectedPlaylistState(null);
     const getSelectedPlaylist = async () => {
       const token = window.localStorage.getItem("auth_token");
@@ -446,9 +440,6 @@ const AudioPlayer2 = (props) => {
       }
     };
     getSelectedPlaylist();
-    //   }
-
-    // }
   }, [playlistIdRef, refreshPlaylistState, refreshTrackState]);
   // -----------------------------------------------------
   //-----------scroll-to-this-functions-------------------
