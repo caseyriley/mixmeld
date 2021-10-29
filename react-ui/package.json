@@ -2,8 +2,8 @@
   "name": "react-ui",
   "version": "0.1.0",
   "engines" : { 
-    "npm" : "~7.20.3",
-    "node" : ">=16.6.1"
+    "npm" : "~8.1.0",
+    "node" : ">=17.0.1"
    },
   "private": true,
   "dependencies": {
