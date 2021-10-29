@@ -1,7 +1,7 @@
 {
   "engines" : { 
-    "npm" : "~7.20.3",
-    "node" : ">=16.6.1"
+    "npm" : "~8.1.0",
+    "node" : "17.0.1"
    },
   "cacheDirectories": [
     "react-ui/node_modules"
